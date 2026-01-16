@@ -1,3 +1,11 @@
+:root {
+    --header-footer-bg-color: #F0F4F2;
+    --nav-lateral-bg-color: #D1DBD7;
+    --text-color: #2F3E38;
+    --button-bg-color: #059669;
+    --button-hover-bg-color: #047857;
+}
+
 body {
     margin: 0 0 0 0;
     max-width: 100%;
@@ -11,17 +19,17 @@ main > h2{
 }
 
 header {
-    background-color: lightskyblue;
+    background-color: var(--header-footer-bg-color);
     text-align: center;
-    color: mediumblue;
+    color: var(--text-color);
     padding: 5px 0;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 footer {
-    background-color: lightskyblue;
+    background-color: var(--header-footer-bg-color);
     text-align: center;
-    color: mediumblue;
+    color: #2F3E38;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -56,7 +64,7 @@ nav:nth-of-type(2) {
     right: 0;
     top: 0;
     max-width: 100%;
-    background-color: red;
+    background-color: var(--nav-lateral-bg-color);
     text-align: center;
     height: 90vh;
     padding: 5vh 0;
@@ -84,14 +92,25 @@ nav:nth-of-type(2) > ul > li > button {
     font-size: 1.2rem;
     font-weight: bold;
     cursor:pointer;
+    background-color: #059669;
+    color: white;
+    border: none;
     border-radius: 8px;
-    border: 1px solid #ccc;
-    transition: background 0.2s;
+    /* Ombra morbida verso il basso */
+    box-shadow: 0 4px 0px #047857; 
+    transition: all 0.2s ease;
 }
 
 nav:nth-of-type(2) > ul > li > button:hover {
-    background-color: orange;
-    border-color: black;
+    /* Si alza leggermente */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px #047857;
+}
+
+nav:nth-of-type(2) > ul > li > button:active {
+    /* Quando clicchi, il bottone si "schiaccia" */
+    transform: translateY(4px);
+    box-shadow: 0 0px 0px #047857;
 }
 
 nav:nth-of-type(n+2) > button {
@@ -118,7 +137,7 @@ nav:nth-of-type(3) {
     height: 90vh;
     padding: 5vh 0;
     list-style: none;
-    background-color:lightsteelblue;
+    background-color: var(--nav-lateral-bg-color);
     z-index: 20;
 
     /*effetto tenda*/
@@ -137,7 +156,8 @@ nav:nth-of-type(3)> div {
     border: 1px solid grey;
     padding: 10px 15px;
     gap: 15px;
-    background-color:powderblue;
+    background-color:#FDFCF0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 nav:nth-of-type(3) > div > button {
