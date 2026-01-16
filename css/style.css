@@ -78,6 +78,13 @@ nav:nth-of-type(n+2) > button {
     position:absolute;
     right:2px;
     top:2px;
+    border-radius: 5px;
+    border:1px solid transparent;
+    cursor:pointer;
+}
+
+nav:nth-of-type(n+2) > button:hover {
+    border: 2px solid white;
 }
 
 nav:nth-of-type(3) {
@@ -92,7 +99,7 @@ nav:nth-of-type(3) {
     height: 90vh;
     padding: 5vh 0;
     list-style: none;
-    background-color: red;
+    background-color:lightsteelblue;
     z-index: 20;
 }
 
@@ -104,7 +111,7 @@ nav:nth-of-type(3)> div {
     border: 1px solid grey;
     padding: 10px 15px;
     gap: 15px;
-    background-color: violet;
+    background-color:powderblue;
 }
 
 nav:nth-of-type(3) > div > button {
