@@ -69,6 +69,7 @@ nav:nth-of-type(3) > ul > div {
     justify-content: space-between;
     border: 1px solid grey;
     padding: 10px 15px;
+    gap: 15px;
 }
 
 nav:nth-of-type(3) > ul > div > button {
