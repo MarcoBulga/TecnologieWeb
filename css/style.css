@@ -1,3 +1,7 @@
+body {
+    margin: 0 0 0 0;
+}
+
 header {
     background-color: lightskyblue;
     text-align: center;
@@ -53,6 +57,7 @@ nav:nth-of-type(3) {
     z-index: 2;
     /*visibility:initial; opacity: 0; transition: 0.3s; */
     box-sizing: border-box;
+    /* display: none; */
 }
 
 nav:nth-of-type(3) > ul {
@@ -74,7 +79,7 @@ nav:nth-of-type(3) > ul > div {
 
 nav:nth-of-type(3) > ul > div > button {
     flex: 0 0 auto;
-    margin: 0 0 22% 0;
+    margin: 0 0 20% 0;
     display: block;
     flex-shrink: 0;
 }
@@ -83,5 +88,5 @@ nav:nth-of-type(3) > ul > div > div {
     display: flex;
     flex-direction: column;
     overflow-wrap: break-word;
-    width: 100%;
+    width: 90%;
 }
