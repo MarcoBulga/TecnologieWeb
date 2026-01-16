@@ -13,6 +13,7 @@ header {
     text-align: center;
     color: mediumblue;
     padding: 5px 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 footer {
@@ -84,7 +85,7 @@ nav:nth-of-type(n+2) > button {
 }
 
 nav:nth-of-type(n+2) > button:hover {
-    border: 2px solid white;
+    border: 2px solid black;
 }
 
 nav:nth-of-type(3) {
@@ -119,6 +120,13 @@ nav:nth-of-type(3) > div > button {
     margin: 0 0 20% 0;
     display: block;
     flex-shrink: 0;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+nav:nth-of-type(3) > div > button:hover {
+    border: 2px solid black;
 }
 
 nav:nth-of-type(3) > div > div {
