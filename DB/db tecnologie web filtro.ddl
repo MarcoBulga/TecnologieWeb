@@ -29,6 +29,7 @@ create table UTENTE (
      cognome char(50) not null,
      telefono numeric(10) not null,
      admin boolean not null default false,
+     password char(20) not null,
      constraint ID_UTENTE_ID primary key (mail));
 
 create table GRUPPO (
