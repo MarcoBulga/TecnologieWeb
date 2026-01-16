@@ -48,6 +48,7 @@ nav:nth-of-type(1) > ul > li > button {
     height: 100%;
 }
 
+/*menu*/
 nav:nth-of-type(2) {
     position: absolute;
     margin: 0;
@@ -72,13 +73,25 @@ nav:nth-of-type(2) > ul {
     width: 90%;
     display: flex;
     flex-direction: column;
-    gap: 17vh;
+    gap: 13vh;
     list-style: none;
     padding: 0 5%;
 }
 
-nav:nth-of-type(2) > ul > button {
-    padding: 15px 10px;
+nav:nth-of-type(2) > ul > li > button {
+    width:100%;
+    padding: 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor:pointer;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    transition: background 0.2s;
+}
+
+nav:nth-of-type(2) > ul > li > button:hover {
+    background-color: orange;
+    border-color: black;
 }
 
 nav:nth-of-type(n+2) > button {
@@ -88,6 +101,7 @@ nav:nth-of-type(n+2) > button {
     border-radius: 5px;
     border:1px solid transparent;
     cursor:pointer;
+    font-weight: bold;
 }
 
 nav:nth-of-type(n+2) > button:hover {
@@ -114,6 +128,7 @@ nav:nth-of-type(3) {
     transition: transform 0.4s ease-in-out, opacity 0.3s;
 }
 
+/*notifiche*/
 nav:nth-of-type(3)> div {
     display: flex;
     flex-direction: row;
