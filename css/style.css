@@ -1,0 +1,15 @@
+header {
+    background-color: lightskyblue;
+    text-align: center;
+    color: mediumblue;
+    padding: 5px 0;
+}
+
+footer {
+    background-color: lightskyblue;
+    text-align: center;
+    color: mediumblue;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
