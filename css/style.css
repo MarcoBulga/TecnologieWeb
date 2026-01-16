@@ -1,11 +1,13 @@
 body {
     margin: 0 0 0 0;
     max-width: 100%;
+    overflow-x: hidden;
 }
 
 main > h2{
     position: relative;
     z-index: 0;
+    text-align: center;
 }
 
 header {
@@ -52,14 +54,18 @@ nav:nth-of-type(2) {
     width: 350px;  /*rende il nav largo quanto il content */
     right: 0;
     top: 0;
-    display: none;
     max-width: 100%;
     background-color: red;
     text-align: center;
     height: 90vh;
     padding: 5vh 0;
-    /*visibility:initial; opacity: 0; transition: 0.3s; */
     z-index: 1;
+
+    /*effetto tenda*/
+    pointer-events: none;
+    transform:translateX(100%); /* trasla inizialmente tutta la tendina fuori a destra */
+    opacity: 0; 
+    transition: transform 0.4s ease-in-out, opacity 0.3s;
 }
 
 nav:nth-of-type(2) > ul {
@@ -95,13 +101,17 @@ nav:nth-of-type(3) {
     right: 0;
     top: 0;
     max-width: 100%;
-    /*visibility:initial; opacity: 0; transition: 0.3s; */
-    /* display: none; */
     height: 90vh;
     padding: 5vh 0;
     list-style: none;
     background-color:lightsteelblue;
     z-index: 20;
+
+    /*effetto tenda*/
+    pointer-events: none;
+    transform:translateX(100%); /* trasla inizialmente tutta la tendina fuori a destra */
+    opacity: 0; 
+    transition: transform 0.4s ease-in-out, opacity 0.3s;
 }
 
 nav:nth-of-type(3)> div {
@@ -134,4 +144,11 @@ nav:nth-of-type(3) > div > div {
     flex-direction: column;
     overflow-wrap: break-word;
     width: 90%;
+}
+
+nav.show {
+    transform: translateX(0);
+    pointer-events: auto;
+    opacity: 1;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2); /* ombra sul lato sinistro */
 }

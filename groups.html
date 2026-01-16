@@ -16,11 +16,11 @@
     <nav>
         <ul>
             <li><p>nome utente</p></li>
-            <li><button>notifica</button></li>
-            <li><button>menu</button></li>
+            <li><button id="bottone-notifiche">notifica</button></li>
+            <li><button id="bottone-menu">menu</button></li>
         </ul>
     </nav>
-    <nav>
+    <nav id="menu">
         <ul>
             <li><button>Ricerca nuovo gruppo</button></li>
             <li><button>I tuoi gruppi</button></li>
@@ -28,9 +28,9 @@
             <li><button>Segnala un problema</button></li>
             <li><button>Logout</button></li>
         </ul>
-        <button>Chiudi</button>
+        <button id="chiudi-menu">Chiudi</button>
     </nav>
-    <nav>
+    <nav id="notifiche">
         <div class="notification">
             <div class="messaggio">
                 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
@@ -43,9 +43,9 @@
                 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
                 <p>Mittente</p>
             </div>
-            <button>X</button>
+            <button id="chiudi-notifica">X</button>
         </div>
-        <button>Chiudi</button>
+        <button id="chiudi-notifiche">Chiudi</button>
     </nav>
     <main>
         <h2>I TUOI GRUPPI</h2>
@@ -53,5 +53,30 @@
     <footer>
         <p>Daniele Tramonti - Alessandro Ravaioli - Marco Bulgarelli</p>
     </footer>
+    <script>
+        const menu = document.getElementById('menu');
+        const notifiche = document.getElementById('notifiche');
+        const btnChiudiNotifiche = document.getElementById('chiudi-notifiche');
+        const btnChiudiMenu = document.getElementById('chiudi-menu');
+        const btnMenu = document.getElementById('bottone-menu');
+        const btnNotifiche = document.getElementById('bottone-notifiche');
+
+        btnChiudiMenu.addEventListener('click', function() {
+            menu.classList.remove('show');
+        })
+
+        btnChiudiNotifiche.addEventListener('click', function() {
+            notifiche.classList.remove('show');
+        })
+
+        btnMenu.addEventListener('click', function() {
+            menu.classList.add('show');
+        })
+
+        btnNotifiche.addEventListener('click', function() {
+            notifiche.classList.add('show');
+        })
+
+    </script>
 </body>
 </html>
