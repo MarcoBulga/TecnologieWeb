@@ -35,5 +35,15 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getPartecipants($idGruppo) {
+        $stmt = $this->db->prepare("SELECT utente.nome nome,cognome,email FROM utente JOIN fa_parte JOIN gruppo ON (utente.email = fa_parte.email AND gruppo.idGruppo = fa_parte.idGruppo)
+                                    WHERE gruppo.idGruppo = ?");
+        $stmt->bind_param('i', $idGruppo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 } 
 ?>
