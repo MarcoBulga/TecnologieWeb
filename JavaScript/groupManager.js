@@ -31,7 +31,7 @@ function openPopup(groupName){
 
     text.textContent = "Sei sicuro di volerti unire a " + groupName + "?";
 
-    popup.style.display = "block";
+    popup.style.display = "flex";
 
     document.getElementById("yes").onclick = function(){
         alert("Richiesta inviata");
