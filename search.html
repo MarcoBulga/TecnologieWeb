@@ -11,7 +11,6 @@
     <a href="./register.html">registrazione</a>
     <a href="./login.html">login</a>
     <a href="./index.html">PAGINA PRESENTAZIONE</a>
-    <a href="./search.html"> test ricerca</a>
     <header>
         <h1>Ricerca Gruppi</h1>
     </header>
@@ -38,34 +37,36 @@
                 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
                 <p>Mittente</p>
             </div>
-            <button class="elimina-notifica">X</button>
+            <button>X</button>
         </div>
         <div class="notification">
             <div class="messaggio">
                 <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
                 <p>Mittente</p>
             </div>
-            <button class="elimina-notifica">X</button>
+            <button id="chiudi-notifica">X</button>
         </div>
         <button id="chiudi-notifiche">Chiudi</button>
     </nav>
     <main>
-        <div>
-            <h2>I TUOI GRUPPI</h2>
-            <button id="btn-new-group">Crea nuovo gruppo</button>
-        </div>
-        <input type="text" id="ricerca-mio-gruppo" placeholder="barra di ricerca"/>
-        <section>
-            <h3>Nome Gruppo</h3>
-            <ul class="lista-componenti-gruppo">
-                <li class="componente">Componente 1</li>
-                <li class="componente">Componente 2</li>
-                <li class="componente">Componente 3</li>
-                <li class="componente">Componente 4</li>
-                <li class="componente">Componente 5</li>
+        <h2>GRUPPI DISPONIBILI</h2>
+        <ul>
+            <li>
+                <label for="course">seleziona il corso</label>
+                <select name="course" >
+                    <option value="NULL">seleziona corso</option>
+                    <option value="TW">Tecnologie Web</option>
+                </select>
+            </li>
+            <li><button>filtri / tag</button></li>
+            <li><label for="searchbar">barra di ricerca</label><input type="text" name="searchbar" id="searchbar" placeholder="barra di ricerca"/></label></li>
+            <li><button id="searchbutton" name="searchbutton" >Cerca</button></li>
+        </ul>
+        <div class="filters">
+            <ul>
+                <li><label for="filter1"><input type="checkbox" id="filter1" name="filter1">filtro 1 di esempio</label></li>
             </ul>
-            <p class="materia-gruppo">Materia</p>
-        </section>
+        </div>
     </main>
     <footer>
         <p>Daniele Tramonti (daniele.tramonti2@studio.unibo.it) - Alessandro Ravaioli (alessandro.ravaioli8@studio.unibo.it) - Marco Bulgarelli (marco.bulgarelli6@studio.unibo.it)</p>
