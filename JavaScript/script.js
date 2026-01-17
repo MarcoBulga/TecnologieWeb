@@ -21,20 +21,23 @@ btnNotifiche.addEventListener('click', function() {
     notifiche.classList.add('show');
 })
 
+function deleteNotification(notification){
+    if(notification){
+        notification.classList.add('fade-out');
+        setTimeout(() => {
+            notification.remove();
+        }, 500)
+    }
+}
+
 //per rimuovere le notifiche
 notifiche.addEventListener('click', function(event) {
     const bottoneCliccato = event.target.closest('.elimina-notifica');
     if (bottoneCliccato) {
         const notificaDaEliminare = bottoneCliccato.closest('.notification');
-        if (notificaDaEliminare) {
-            notificaDaEliminare.classList.add('fade-out');
-
-            setTimeout(() => {
-                notificaDaEliminare.remove();
-            }, 500)
-        }
+        deleteNotification(notificaDaEliminare);
     }
-})
+});
 
 //popup notifica
 function openMessage(notification){
@@ -54,8 +57,8 @@ function openMessage(notification){
     popup.style.display = "flex";
 
     document.getElementById("no").onclick = function(){
-        // elimina notifica
-        alert("TODO: elimina la notifica");
+
+        deleteNotification(notification);
 
         popup.style.display = "none";
     };
@@ -81,8 +84,8 @@ function openRequest(notification){
     const buttonYES = popup.querySelector("#yesRequest");
 
     document.getElementById("noRequest").onclick = function(){
-        // elimina notifica
-        alert("TODO: elimina la notifica");
+
+        deleteNotification(notification);
 
         popup.style.display = "none";
     };
