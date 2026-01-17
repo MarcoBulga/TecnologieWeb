@@ -170,7 +170,7 @@ nav:nth-of-type(2) {
 
     /*effetto tenda*/
     backface-visibility: hidden;
-    pointer-events: none;
+    pointer-events: auto;
     transform:translateX(100%); /* trasla inizialmente tutta la tendina fuori a destra */
     opacity: 0; 
     transition: transform 0.4s ease-in-out, opacity 0.3s;

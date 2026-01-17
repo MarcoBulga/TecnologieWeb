@@ -7,19 +7,19 @@ const btnNotifiche = document.getElementById('bottone-notifiche');
 
 btnChiudiMenu.addEventListener('click', function() {
     menu.classList.remove('show');
-})
+});
 
 btnChiudiNotifiche.addEventListener('click', function() {
     notifiche.classList.remove('show');
-})
+});
 
 btnMenu.addEventListener('click', function() {
     menu.classList.add('show');
-})
+});
 
 btnNotifiche.addEventListener('click', function() {
     notifiche.classList.add('show');
-})
+});
 
 function deleteNotification(notification){
     if(notification){
@@ -97,3 +97,27 @@ function openRequest(notification){
         popup.style.display = "none";
     }
 }
+
+/*Per chiudere il menù se clicchi fuori dallo schermo*/
+document.addEventListener('click', function(event){
+    if(!menu.classList.contains('show')) return;
+
+    const clickInsideMenu = menu.contains(event.target);
+    const clickInsideButton = btnMenu.contains(event.target);
+
+    if(!clickInsideMenu && !clickInsideButton){
+        menu.classList.remove('show');
+    }
+});
+
+/*Per chiudere le notifiche se clicchi fuori dallo schermo*/
+document.addEventListener('click', function(event){
+    if(!notifiche.classList.contains('show')) return;
+
+    const clickInsideNotification = notifiche.contains(event.target);
+    const clickInsideButton = btnNotifiche.contains(event.target);
+
+    if(!clickInsideNotification && !clickInsideButton){
+        notifiche.classList.remove('show');
+    }
+});
