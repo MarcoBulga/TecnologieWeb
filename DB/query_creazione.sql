@@ -1,7 +1,7 @@
 insert into corso(nome) 
 values ("Tecnologie Web"),("OOP"),("Programmazione"),("Basi di dati");
 
-insert into utente(nome,cognome,mail,telefono,password) 
+insert into utente(nome,cognome,email,telefono,password) 
 values ("Alessandro", "Ravaioli", "alessandro.ravaioli@studio.unibo.it", 1234567890,"Ciao"),
 	   ("Daniele", "Tramonti", "daniele.tramonti@studio.unibo.it", 1234567890,"ciao"),
        ("Marco", "Bulgarelli", "marco.bulgarelli@studio.unibo.it", 1234567890,"ciao"),
@@ -26,7 +26,7 @@ values ("test",3,"breve","luuuuuunga",false,"Tecnologie Web","alessandro.ravaiol
        ("test",4,"breve","luuuuuunga",false,"Programmazione","alessandro.ravaioli@studio.unibo.it");
 
 
-insert into fa_parte(idGruppo,mail)
+insert into fa_parte(idGruppo,email)
 values (1,"alessandro.ravaioli@studio.unibo.it"), (1,"daniele.tramonti@studio.unibo.it"), (1,"marco.bulgarelli@studio.unibo.it"),
        (2,"carlo.verdi@studio.unibo.it"), (2,"mario.rossi@studio.unibo.it"), (2,"fulvia.bianchi@studio.unibo.it"),
        (3,"gennaro.fabbri@studio.unibo.it"), (3,"giovanni.bianchi@studio.unibo.it"), (3,"roberto.verdi@studio.unibo.it"),

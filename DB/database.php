@@ -16,5 +16,14 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function checkLogin($email, $password) {
+        $stmt = $this->db->prepare("SELECT email, nome, cognome from utente where email = ? and password = ?");
+        $stmt->bind_param('ss', $email, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 } 
 ?>
