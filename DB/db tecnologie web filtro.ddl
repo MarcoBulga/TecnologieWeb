@@ -50,7 +50,7 @@ create table CORSO (
 create table NOTIFICA (
      testo text(500) not null,
      oggetto char(30) not null,
-     tipo char(1) not null,
+     tipo enum ("messaggio","richiesta") not null,
      idNotifica int not null auto_increment,
      mittente char(50) not null,
      constraint ID_NOTIFICA_ID primary key (idNotifica));
