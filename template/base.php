@@ -51,7 +51,13 @@
     </nav>
     <main>
         <h2>I TUOI GRUPPI</h2>
-
+        <?php foreach($templateParams["Gruppi"] as $gruppo): ?>
+            <div class="gruppo">
+                <h3><?php echo $gruppo['nomeGruppo']; ?></h3>
+                <p>Descrizione: <?php echo $gruppo['descrizione']; ?></p>
+                <p>Categoria: <?php echo $gruppo['categoria']; ?></p>
+                <button>Entra nel gruppo</button>
+            </div>
     </main>
     <footer>
         <p>Daniele Tramonti (daniele.tramonti2@studio.unibo.it) - Alessandro Ravaioli (alessandro.ravaioli8@studio.unibo.it) - Marco Bulgarelli (marco.bulgarelli6@studio.unibo.it)</p>
