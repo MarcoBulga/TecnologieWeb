@@ -14,7 +14,9 @@ function creaForm() {
                 </table>
                 <input type="reset" name="reset" value="Annulla" />
                 <input type="submit" name="submit" value="Conferma" />
-            </form>`;
+            </form>
+            <p>Non hai un account?</p>
+            <a href="./register.html"><input type="button" name="Registrati" id="register" value="Registrati" /></a>`;
     return form;
 }
 
