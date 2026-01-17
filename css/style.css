@@ -42,10 +42,30 @@ main > section {
     border-radius: 15px;
 }
 
+main > section.to-enter {
+    border: none;
+}
+
 main > section > h3 {
     padding-left: 1%;
     padding-bottom: 10px;
     border-bottom: 2px solid grey;
+}
+
+main > section > h3.header-descrizione {
+    border:none;
+    padding-top: 5%;
+}
+
+main > section > h3 > a {
+    text-decoration: none;
+    color: var(--text-color);
+    display: block;
+    cursor:pointer;
+}
+
+main > section > h3 > a:hover {
+    opacity: 0.8;
 }
 
 main > section > ul {
@@ -60,6 +80,10 @@ main > section > ul > li {
 main > section > p {
     padding: 15px 10px 0 15px;
     font-weight: bold;
+}
+
+main > section > p.descrizione-gruppo {
+    font-weight: normal;
 }
 
 header {
@@ -87,7 +111,7 @@ nav:nth-of-type(1) {
 nav:nth-of-type(1) > ul {
     display: flex;
     flex-direction: row;
-    padding-left: 0;
+    padding-left: 3%;
     list-style: none;
 }
 
