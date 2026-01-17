@@ -25,12 +25,12 @@ use tecnologieWeb;
 
 create table UTENTE (
      nome char(50) not null,
-     mail char(50) not null,
+     email char(50) not null,
      cognome char(50) not null,
      telefono numeric(10) not null,
      admin boolean not null default false,
      password char(20) not null,
-     constraint ID_UTENTE_ID primary key (mail));
+     constraint ID_UTENTE_ID primary key (email));
 
 create table GRUPPO (
      nome char(30) not null,
@@ -61,9 +61,9 @@ create table FILTRO (
      constraint ID_FILTRO_ID primary key (nome));
 
 create table fa_parte (
-     mail char(50) not null,
+     email char(50) not null,
      idGruppo int not null,
-     constraint ID_fa_parte_ID primary key (idGruppo, mail));
+     constraint ID_fa_parte_ID primary key (idGruppo, email));
 
 create table possiede (
      idGruppo int not null,
@@ -71,9 +71,9 @@ create table possiede (
      constraint ID_possiede_ID primary key (nome, idGruppo));
 
 create table riceve (
-     mail char(50) not null,
+     email char(50) not null,
      idNotifica int not null,
-     constraint ID_riceve_ID primary key (mail, idNotifica));
+     constraint ID_riceve_ID primary key (email, idNotifica));
 
 
 -- Constraints Section
@@ -85,7 +85,7 @@ create table riceve (
 
 alter table GRUPPO add constraint REF_GRUPP_UTENT_FK
      foreign key (creatore)
-     references UTENTE(mail);
+     references UTENTE(email);
 
 alter table GRUPPO add constraint REF_GRUPP_CORSO_FK
      foreign key (corso_di_riferimento)
@@ -98,7 +98,7 @@ alter table GRUPPO add constraint REF_GRUPP_CORSO_FK
 
 alter table NOTIFICA add constraint REF_NOTIF_UTENT_FK
      foreign key (mittente)
-     references UTENTE(mail)
+     references UTENTE(email)
      on delete cascade;
 
 alter table fa_parte add constraint EQU_fa_pa_GRUPP
@@ -107,8 +107,8 @@ alter table fa_parte add constraint EQU_fa_pa_GRUPP
      on delete cascade;
 
 alter table fa_parte add constraint REF_fa_pa_UTENT_FK
-     foreign key (mail)
-     references UTENTE(mail)
+     foreign key (email)
+     references UTENTE(email)
      on delete cascade;
 
 alter table possiede add constraint REF_possi_FILTR
@@ -127,8 +127,8 @@ alter table riceve add constraint EQU_ricev_NOTIF_FK
      on delete cascade;
 
 alter table riceve add constraint REF_ricev_UTENT
-     foreign key (mail)
-     references UTENTE(mail)
+     foreign key (email)
+     references UTENTE(email)
      on delete cascade;
 
 
@@ -136,7 +136,7 @@ alter table riceve add constraint REF_ricev_UTENT
 -- _____________ 
 
 create unique index ID_UTENTE_IND
-     on UTENTE (mail);
+     on UTENTE (email);
 
 create unique index ID_GRUPPO_IND
      on GRUPPO (idGruppo);
@@ -160,10 +160,10 @@ create unique index ID_FILTRO_IND
      on FILTRO (nome);
 
 create unique index ID_fa_parte_IND
-     on fa_parte (idGruppo, mail);
+     on fa_parte (idGruppo, email);
 
 create index REF_fa_pa_UTENT_IND
-     on fa_parte (mail);
+     on fa_parte (email);
 
 create unique index ID_possiede_IND
      on possiede (nome, idGruppo);
@@ -172,7 +172,7 @@ create index REF_possi_GRUPP_IND
      on possiede (idGruppo);
 
 create unique index ID_riceve_IND
-     on riceve (mail, idNotifica);
+     on riceve (email, idNotifica);
 
 create index EQU_ricev_NOTIF_IND
      on riceve (idNotifica);

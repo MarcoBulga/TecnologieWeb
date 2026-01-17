@@ -26,12 +26,12 @@ use tecnologieWeb;
 
 create table UTENTE (
      nome char(50) not null,
-     mail char(50) not null,
+     email char(50) not null,
      cognome char(50) not null,
      telefono numeric(10) not null,
      admin boolean not null default false,
      password char(20) not null,
-     constraint ID_UTENTE_ID primary key (mail));
+     constraint ID_UTENTE_ID primary key (email));
 
 create table GRUPPO (
      nome char(30) not null,
@@ -62,8 +62,8 @@ create table NOTIFICA (
 
 create table fa_parte (
      idGruppo int not null auto_increment,
-     mail char(50) not null,
-     constraint ID_fa_parte_ID primary key (idGruppo, mail));
+     email char(50) not null,
+     constraint ID_fa_parte_ID primary key (idGruppo, email));
 
 create table possiede (
      nome char(30) not null,
@@ -86,7 +86,7 @@ alter table GRUPPO add constraint REF_GRUPP_CORSO_FK
 
 alter table GRUPPO add constraint REF_GRUPP_UTENT_FK
      foreign key (creatore)
-     references UTENTE(mail);
+     references UTENTE(email);
 
 /*alter table NOTIFICA add constraint ID_NOTIFICA_CHK
      check(exists(select * from riceve
@@ -94,11 +94,11 @@ alter table GRUPPO add constraint REF_GRUPP_UTENT_FK
 
 alter table NOTIFICA add constraint REF_NOTIF_UTENT_FK
      foreign key (mittente)
-     references UTENTE(mail);
+     references UTENTE(email);
 
 alter table fa_parte add constraint REF_fa_pa_UTENT_FK
-     foreign key (mail)
-     references UTENTE(mail);
+     foreign key (email)
+     references UTENTE(email);
 
 alter table fa_parte add constraint EQU_fa_pa_GRUPP
      foreign key (idGruppo)
@@ -121,7 +121,7 @@ alter table riceve add constraint EQU_ricev_NOTIF_FK
 
 alter table riceve add constraint REF_ricev_UTENT
      foreign key (destinatario)
-     references UTENTE(mail);
+     references UTENTE(email);
      
 
 /*alter table GRUPPO add constraint ID_GRUPPO_CHK
@@ -136,7 +136,7 @@ alter table GRUPPO add constraint ID_GRUPPO_CHK
 -- _____________ 
 
 create unique index ID_UTENTE_IND
-     on UTENTE (mail);
+     on UTENTE (email);
 
 create unique index ID_GRUPPO_IND
      on GRUPPO (idGruppo);
@@ -160,10 +160,10 @@ create index REF_NOTIF_UTENT_IND
      on NOTIFICA (mittente);
 
 create unique index ID_fa_parte_IND
-     on fa_parte (idGruppo, mail);
+     on fa_parte (idGruppo, email);
 
 create index REF_fa_pa_UTENT_IND
-     on fa_parte (mail);
+     on fa_parte (email);
 
 create unique index ID_possiede_IND
      on possiede (nome, idGruppo);
