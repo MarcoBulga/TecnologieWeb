@@ -103,9 +103,10 @@ footer {
     background-color: var(--header-footer-bg-color);
     text-align: center;
     color: var(--text-color);
-    position: fixed;
+    /* position: fixed; */
     bottom: 0;
     width: 100%;
+    padding: 2% 0;
 }
 
 nav:nth-of-type(1) {
