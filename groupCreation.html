@@ -12,7 +12,6 @@
     <a href="./login.html">login</a>
     <a href="./index.html">PAGINA PRESENTAZIONE</a>
     <a href="./search.html"> test ricerca</a>
-    <a href="./groupCreation.html"> test creazione gruppi</a>
     <header>
         <h1>Ricerca Gruppi</h1>
     </header>
@@ -25,8 +24,8 @@
     </nav>
     <nav id="menu">
         <ul>
-            <li><button onclick="window.location.href='./search.html'">Ricerca nuovo gruppo</button></li>
-            <li><button onclick="window.location.href='./groups.html'">I tuoi gruppi</button></li>
+            <li><button>Ricerca nuovo gruppo</button></li>
+            <li><button>I tuoi gruppi</button></li>
             <li><button>Crea nuovo gruppo</button></li>
             <li><button>Segnala un problema</button></li>
             <li><button>Logout</button></li>
@@ -51,22 +50,26 @@
         <button id="chiudi-notifiche">Chiudi</button>
     </nav>
     <main>
-        <div>
-            <h2>I TUOI GRUPPI</h2>
-            <button id="btn-new-group">Crea nuovo gruppo</button>
-        </div>
-        <input type="text" id="ricerca-mio-gruppo" placeholder="barra di ricerca"/>
-        <section>
-            <h3>Nome Gruppo</h3>
-            <ul class="lista-componenti-gruppo">
-                <li class="componente">Componente 1</li>
-                <li class="componente">Componente 2</li>
-                <li class="componente">Componente 3</li>
-                <li class="componente">Componente 4</li>
-                <li class="componente">Componente 5</li>
+        <h2>CREA GRUPPO</h2>
+        <form action="#" method="post">
+            <ul>
+                <li><label for="course">Seleziona corso : <select name="course" >
+                    <option value="NULL">seleziona corso</option>
+                    <option value="TW">Tecnologie Web</option>
+                </select></label></li>
+                <li><label for="groupname">Inserire nome gruppo : <input type="text" name="groupname" id="groupname" /></label></li>
+                <li><label for="groupsize">Numero partecipanti : <input type="number" id="groupsize" name="groupsize" value="1" /></label></li>
+                <li>
+                    <p>Tag del gruppo : </p><br/>
+                    <button id="tagbutton" name="tagbutton">Scegli tag</button>
+                </li>
+                <li><label for="private">Privato <input type="checkbox" name="private" id="private" /></label></li>
+                <li><label for="shortdescription">Descrizione breve : <br/><input type="text" name="shortdescription" id="shortdescription" /></li>
+                <li><label for="longdescription">Descrizione estesa : <br/><input type="text" name="longdescription" id="longdescription" /></li>
             </ul>
-            <p class="materia-gruppo">Materia</p>
-        </section>
+            <input type="submit" id="confirmbutton" name="confirmbutton"/>
+            <button id="undobutton" name="undobutton">annulla</button>
+        </form>
     </main>
     <footer>
         <p>Daniele Tramonti (daniele.tramonti2@studio.unibo.it) - Alessandro Ravaioli (alessandro.ravaioli8@studio.unibo.it) - Marco Bulgarelli (marco.bulgarelli6@studio.unibo.it)</p>
