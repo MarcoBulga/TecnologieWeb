@@ -20,3 +20,18 @@ btnMenu.addEventListener('click', function() {
 btnNotifiche.addEventListener('click', function() {
     notifiche.classList.add('show');
 })
+
+//per rimuovere le notifiche
+notifiche.addEventListener('click', function(event) {
+    const bottoneCliccato = event.target.closest('.elimina-notifica');
+    if (bottoneCliccato) {
+        const notificaDaEliminare = bottoneCliccato.closest('.notification');
+        if (notificaDaEliminare) {
+            notificaDaEliminare.classList.add('fade-out');
+
+            setTimeout(() => {
+                notificaDaEliminare.remove();
+            }, 500)
+        }
+    }
+})
