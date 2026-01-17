@@ -6,6 +6,10 @@
     --button-hover-bg-color: #047857;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     margin: 0 0 0 0;
     max-width: 100%;
@@ -29,7 +33,7 @@ header {
 footer {
     background-color: var(--header-footer-bg-color);
     text-align: center;
-    color: #2F3E38;
+    color: var(--text-color);
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -70,13 +74,13 @@ nav:nth-of-type(1) > ul > li > button {
 nav:nth-of-type(1) > ul > li > button:hover {
     /* Si alza leggermente */
     transform: translateY(-2px);
-    box-shadow: 0 6px 0px #047857;
+    box-shadow: 0 6px 0px var(--button-hover-bg-color);
 }
 
 nav:nth-of-type(1) > ul > li > button:active {
     /* Quando clicchi, il bottone si "schiaccia" */
     transform: translateY(4px);
-    box-shadow: 0 0px 0px #047857;
+    box-shadow: 0 0px 0px var(--button-hover-bg-color);
 }
 
 /*menu*/
@@ -84,6 +88,7 @@ nav:nth-of-type(2) {
     position: absolute;
     margin: 0;
     width: 350px;  /*rende il nav largo quanto il content */
+    max-width: 85vw; /* ma non più largo dell'85% della viewport */
     right: 0;
     top: 0;
     max-width: 100%;
@@ -94,6 +99,7 @@ nav:nth-of-type(2) {
     z-index: 1;
 
     /*effetto tenda*/
+    backface-visibility: hidden;
     pointer-events: none;
     transform:translateX(100%); /* trasla inizialmente tutta la tendina fuori a destra */
     opacity: 0; 
@@ -115,25 +121,25 @@ nav:nth-of-type(2) > ul > li > button {
     font-size: 1.2rem;
     font-weight: bold;
     cursor:pointer;
-    background-color: #059669;
+    background-color: var(--button-bg-color);
     color: white;
     border: none;
     border-radius: 8px;
     /* Ombra morbida verso il basso */
-    box-shadow: 0 4px 0px #047857; 
+    box-shadow: 0 4px 0px var(--button-hover-bg-color); 
     transition: all 0.2s ease;
 }
 
 nav:nth-of-type(2) > ul > li > button:hover {
     /* Si alza leggermente */
     transform: translateY(-2px);
-    box-shadow: 0 6px 0px #047857;
+    box-shadow: 0 6px 0px var(--button-hover-bg-color);
 }
 
 nav:nth-of-type(2) > ul > li > button:active {
     /* Quando clicchi, il bottone si "schiaccia" */
     transform: translateY(4px);
-    box-shadow: 0 0px 0px #047857;
+    box-shadow: 0 0px 0px var(--button-hover-bg-color);
 }
 
 nav:nth-of-type(n+2) > button {
@@ -154,6 +160,7 @@ nav:nth-of-type(3) {
     position: absolute;
     margin: 0;
     width: 350px;
+    max-width: 85vw; /* ma non più largo dell'85% della viewport */
     right: 0;
     top: 0;
     max-width: 100%;
@@ -164,6 +171,7 @@ nav:nth-of-type(3) {
     z-index: 20;
 
     /*effetto tenda*/
+    backface-visibility: hidden;
     pointer-events: none;
     transform:translateX(100%); /* trasla inizialmente tutta la tendina fuori a destra */
     opacity: 0; 
