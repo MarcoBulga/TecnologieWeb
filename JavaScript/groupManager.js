@@ -25,12 +25,21 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 // --- VISUALIZZAZIONE GRUPPI ---
-// Fa apparire il pop up di conferma quando si prova ad unirsi a un gruppo
-function askConfirmation(){
-    let groupName = document.getElementById("groupname").textContent;
-    let answer = confirm("ATTENZIONE! Sei sicuro di volerti unire a " + groupName + "?");
+function openPopup(groupName){
+    const popup = document.getElementById("popup");
+    const text = document.getElementById("popupText");
 
-    if(answer) {
+    text.textContent = "Sei sicuro di volerti unire a " + groupName + "?";
+
+    popup.style.display = "block";
+
+    document.getElementById("yes").onclick = function(){
         alert("Richiesta inviata");
-    }
+
+        popup.style.display = "none";
+    };
+
+    document.getElementById("no").onclick = function(){
+        popup.style.display = "none";
+    };
 }
