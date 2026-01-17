@@ -92,6 +92,7 @@ function openRequest(notification){
 
     document.getElementById("yesRequest").onclick = function(){
         alert("Richiesta inviata");
+        deleteNotification(notification);
 
         popup.style.display = "none";
     }
