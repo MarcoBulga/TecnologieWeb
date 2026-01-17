@@ -77,6 +77,11 @@ main > section > ul > li {
     padding: 10px 5px;
 }
 
+main > section > ul > li > button.delete-user {
+    margin-right: 1%;
+    cursor: pointer;
+}
+
 main > section > p {
     padding: 15px 10px 0 15px;
     font-weight: bold;
@@ -149,7 +154,7 @@ nav:nth-of-type(1) > ul > li > button:active {
 
 /*menu*/
 nav:nth-of-type(2) {
-    position: absolute;
+    position: fixed;
     margin: 0;
     width: 350px;  /*rende il nav largo quanto il content */
     max-width: 85vw; /* ma non più largo dell'85% della viewport */
@@ -222,7 +227,7 @@ nav:nth-of-type(n+2) > button:hover {
 
 /*notifiche*/
 nav:nth-of-type(3) {
-    position: absolute;
+    position: fixed;
     margin: 0;
     width: 350px;
     max-width: 85vw; /* ma non più largo dell'85% della viewport */
