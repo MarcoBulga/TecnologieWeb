@@ -35,3 +35,61 @@ notifiche.addEventListener('click', function(event) {
         }
     }
 })
+
+//popup notifica
+function openMessage(notification){
+    const popup = document.getElementById("notificationPopup");
+    const object = notification.querySelector("#object");
+    const text = "Lorem ipsum dolor sit amet";
+    const sender = notification.querySelector("#sender");
+    const popupObject = document.getElementById("popupObject");
+    const popupText = document.getElementById("popupText");
+    const popupSender = document.getElementById("popupSender");
+
+    popupObject.textContent = object.textContent;
+    popupText.textContent = text;
+    popupSender.textContent = sender.textContent;
+    
+
+    popup.style.display = "flex";
+
+    document.getElementById("no").onclick = function(){
+        // elimina notifica
+        alert("TODO: elimina la notifica");
+
+        popup.style.display = "none";
+    };
+}
+
+function openRequest(notification){
+    const popup = document.getElementById("notificationPopupRequest");
+    const object = notification.querySelector("#object");
+    const text = "Lorem ipsum dolor sit amet";
+    const sender = notification.querySelector("#sender");
+    const popupObject = document.getElementById("popupObjectRequest");
+    const popupText = document.getElementById("popupTextRequest");
+    const popupSender = document.getElementById("popupSenderRequest");
+
+    popupObject.textContent = object.textContent;
+    popupText.textContent = text;
+    popupSender.textContent = sender.textContent;
+    
+
+    popup.style.display = "flex";
+
+    const buttonNO = popup.querySelector("#noRequest");
+    const buttonYES = popup.querySelector("#yesRequest");
+
+    document.getElementById("noRequest").onclick = function(){
+        // elimina notifica
+        alert("TODO: elimina la notifica");
+
+        popup.style.display = "none";
+    };
+
+    document.getElementById("yesRequest").onclick = function(){
+        alert("Richiesta inviata");
+
+        popup.style.display = "none";
+    }
+}

@@ -345,10 +345,10 @@ nav.show {
     cursor: pointer;
 }
 
-.popup-buttons button[id="yes"]{
+.popup-buttons button[id="yes"], .popup-buttons button[id="yesRequest"]{
     background-color: green;
 }
 
-.popup-buttons button[id="no"]{
+.popup-buttons button[id="no"], .popup-buttons button[id="noRequest"]{
     background-color: red;
 }

@@ -34,17 +34,17 @@
         <button id="chiudi-menu">Chiudi</button>
     </nav>
     <nav id="notifiche">
-        <div class="notification">
+        <div class="notification" onclick="openMessage(this)">
             <div class="messaggio">
-                <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                <p>Mittente</p>
+                <p id="object">Questa è una notifica</p>
+                <p id="sender">Mittente</p>
             </div>
             <button class="elimina-notifica">X</button>
         </div>
-        <div class="notification">
+        <div class="notification" onclick="openRequest(this)">
             <div class="messaggio">
-                <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
-                <p>Mittente</p>
+                <p id="object">Questa è una richiesta</p>
+                <p id="sender">Mittente</p>
             </div>
             <button class="elimina-notifica">X</button>
         </div>
@@ -69,6 +69,32 @@
             </ul>
             <p class="materia-gruppo">Materia</p>
         </section>
+
+        <!--POPUP NOTIFICA NORMALE-->
+        <div id="notificationPopup" class="hidden-popup">
+            <div class="popup-elements">
+                <h2 id="popupObject"></h2>
+                <p id="popupText"></p>
+                <p id="popupSender"></p>
+                <div class="popup-buttons">
+                    <button id="no">Cancella</button>
+                </div>
+            </div>
+        </div>
+
+        <!--POPUP NOTIFICA RICHIESTA-->
+        <div id="notificationPopupRequest" class="hidden-popup">
+            <div class="popup-elements">
+                <h2 id="popupObjectRequest"></h2>
+                <p id="popupTextRequest"></p>
+                <p id="popupSenderRequest"></p>
+                <div class="popup-buttons">
+                    <button id="noRequest">Rifiuta</button>
+                    <button id="yesRequest">Accetta</button>
+                </div>
+            </div>
+        </div>
+
     </main>
     <footer>
         <p>Daniele Tramonti (daniele.tramonti2@studio.unibo.it) - Alessandro Ravaioli (alessandro.ravaioli8@studio.unibo.it) - Marco Bulgarelli (marco.bulgarelli6@studio.unibo.it)</p>
