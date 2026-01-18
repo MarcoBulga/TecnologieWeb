@@ -5,20 +5,32 @@
 <form action="#" method="post" class="search-bar">
     <input type="text" id="ricerca-mio-gruppo" name="ricerca-mio-gruppo" placeholder="barra di ricerca"/>
     <input type="submit" id="btn-search" name="btn-search" value="Cerca" />
-    <input type="submit" id="btn-reset" name="btn-reset" value="Tutti i gruppi" />
+    <input type="submit" id="btn-reset" name="btn-reset" value="Tutti i gruppi" formnovalidate/>
+    <?php if(isset($templateParams["value"])):?>
+        <select name="course" id="course" required>
+            <option value="" disabled selected hidden>seleziona corso</option>
+            <?php foreach($templateParams["courses"] as $course): ?>
+            <option value="<?php echo $course["nome"] ;?>"><?php echo $course["nome"] ;?></option>
+            <?php endforeach; ?>
+        </select>
+    <?php endif; ?>
 </form>
-<?php if(isset($templateParams["value"]) && isset($_POST["ricerca-mio-gruppo"])) {
+<?php if(isset($templateParams["value"]) && isset($_POST["ricerca-mio-gruppo"]) && isset($_POST["btn-search"])) {
         $templateParams["Gruppi"] = $dbh->searchName($_POST["ricerca-mio-gruppo"]);
+        unset($_POST["btn-reset"]);
         unset($_POST["ricerca-mio-gruppo"]);
     } else if(isset($templateParams["value"]) && isset($_POST["btn-reset"])) {
         $templateParams["Gruppi"] = $dbh->groupsWithNoUserInSession();
         unset($_POST["btn-reset"]);
+        unset($_POST["ricerca-mio-gruppo"]);
     } else if(isset($_POST["ricerca-mio-gruppo"])) {
         $templateParams["Gruppi"] = $dbh->searchNameWithUser($_POST["ricerca-mio-gruppo"]);
+        unset($_POST["btn-reset"]);
         unset($_POST["ricerca-mio-gruppo"]);
     } else if(isset($_POST["btn-reset"])) {
         $templateParams["Gruppi"] = $dbh->getGroups($_SESSION['email']);
         unset($_POST["btn-reset"]);
+        unset($_POST["ricerca-mio-gruppo"]);
     }?>
 <?php foreach($templateParams["Gruppi"] as $gruppo): ?>
     <section>

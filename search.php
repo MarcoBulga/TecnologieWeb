@@ -1,10 +1,15 @@
-<?php
+<?php 
 require_once 'bootstrap.php';
 
-$templateParams["page"] = "./search-page.php";
+$templateParams["Gruppi"] = $dbh->groupsWithNoUserInSession();
+
 $templateParams["courses"] = $dbh->getAllCourses();
+
 $templateParams["filters"] = $dbh->getAllFilters();
-$templateParams["Gruppi"] = $dbh->searchName("a");
+
+$templateParams["page"] = 'groups-main.php'; 
+
+$templateParams["value"] = 'Entra nel gruppo';
 
 require './template/base.php';
 ?>

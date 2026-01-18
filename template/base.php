@@ -26,7 +26,7 @@
     </nav>
     <nav id="menu">
         <ul>
-            <li><button onclick="window.location.href='./group-choice.php'">Ricerca nuovo gruppo</button></li>
+            <li><button onclick="window.location.href='./search.php'">Ricerca nuovo gruppo</button></li>
             <li><button onclick="window.location.href='./user-groups.php'">I tuoi gruppi</button></li>
             <li><button onclick="window.location.href='./group-creation.php'">Crea nuovo gruppo</button></li>
             <li><button>Segnala un problema</button></li>
