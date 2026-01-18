@@ -1,6 +1,6 @@
 <div>
     <h2> <?php if(isset($templateParams["value"])) echo "RICERCA GRUPPI"; else echo "I TUOI GRUPPI"; ?></h2>
-    <a href="./groupCreation.html"><button id="btn-new-group">Crea nuovo gruppo</button></a>
+    <a href="./group-creation.php"><button id="btn-new-group">Crea nuovo gruppo</button></a>
 </div>
 <input type="text" id="ricerca-mio-gruppo" placeholder="barra di ricerca"/>
 
@@ -8,7 +8,7 @@
     <section>
         <h3>
             <a href=
-            <?php if(isset($templateParams["value"])) echo "./specific-group-to-join.php"; else echo "./specific-group-to-see.php"; ?>
+            <?php if(isset($templateParams["value"])) echo "./specific-group-to-join.php?idGruppo=".$gruppo['idGruppo']; else echo "./specific-group-to-see.php?idGruppo=".$gruppo['idGruppo']; ?>
             class="link-header"><?php echo $gruppo['nome']; ?></a>
         </h3>
         <ul class="lista-componenti-gruppo">

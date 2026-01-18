@@ -49,7 +49,7 @@ class DatabaseHelper {
     public function createNewGroup($name, $course, $size, $isPrivate, $shortDesc, $longDesc) {
         $stmt = $this->db->prepare("INSERT INTO gruppo (nome, numero_partecipanti, descr_breve, descr_lunga, privato, corso_di_riferimento, creatore) 
                                     VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param('ssissss', $name, $size, $shortDesc, $longDesc, $isPrivate, $course, $_SESSION['email']);
+        $stmt->bind_param('sississ', $name, $size, $shortDesc, $longDesc, $isPrivate, $course, $_SESSION['email']);
         $result = $stmt->execute();
         return $result;
     }
@@ -95,6 +95,25 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getGroupId() {return $this->db->insert_id;}
+
+    public function removeUserFromGroup($email, $idGruppo) {
+        $stmt = $this->db->prepare("DELETE FROM fa_parte WHERE email = ? AND idGruppo = ?");
+        $stmt->bind_param('si', $email, $idGruppo);
+        $result = $stmt->execute();
+        return $result;
+    }
+
+    public function isGroupPrivate($idGruppo) {
+        $stmt = $this->db->prepare("SELECT privato FROM gruppo WHERE idGruppo = ?");
+        $stmt->bind_param('i', $idGruppo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $firstRow = $result->fetch_assoc();  /*prende solo la prima riga*/
+        return $firstRow['privato'];
     }
 
     public function searchName($name) {
