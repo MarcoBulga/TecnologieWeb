@@ -35,7 +35,7 @@ async function getLoginData() {
         const json = await response.text();
         console.log(json);
         if(json["logineseguito"]){
-            window.location.href = "./groups.html";
+            window.location.href = "./user-groups.php";
         } else {
             loginAttempt();
         }
@@ -79,7 +79,7 @@ async function login(email, password) {
         const json = await response.json();
         console.log(json);
         if(json["logineseguito"]){
-            window.location.href = "./groups.html";
+            window.location.href = "./user-groups.php";
         }
         else{
             document.querySelector("form > p").innerText = json["errorelogin"];

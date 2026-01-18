@@ -39,7 +39,7 @@ function openPopup(groupName){
         popup.style.display = "none";
     };
 
-    document.getElementById("no").onclick = function(){
+    document.getElementById("not").onclick = function(){
         popup.style.display = "none";
     };
 }
