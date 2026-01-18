@@ -88,5 +88,7 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getGroupId() {return $this->db->insert_id;}
 } 
 ?>

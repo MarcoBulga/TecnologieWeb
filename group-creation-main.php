@@ -23,7 +23,7 @@
             if(isset($_POST['confirmbutton']) && empty($_POST['undobutton'])) {
                 $valueGroup = $dbh -> createNewGroup($_POST['groupname'], $_POST['course'], $_POST['groupsize'], 
                                isset($_POST['private']) ? 1 : 0, $_POST['shortdescription'], $_POST['longdescription']);
-                $valueAdm = $dbh -> addAdministratorToGroup($_SESSION['email'], $valueGroup['idGruppo']);
+                $valueAdm = $dbh -> addAdministratorToGroup($_SESSION['email'], $dbh->getGroupId());
             }
             if($valueGroup && $valueAdm) {
                 echo "<p>Gruppo creato con successo!</p>";
