@@ -1,8 +1,8 @@
 <h2>CREA GRUPPO</h2>
     <form action="#" method="post">
         <ul>
-            <li><label for="course">Seleziona corso : <select name="course" >
-                <option value="NULL">seleziona corso</option>
+            <li><label for="course">Seleziona corso : <select name="course" id="course" required>
+                <option value="" disabled selected hidden>seleziona corso</option>
                 <option value="Tecnologie Web">Tecnologie Web</option>
             </select></label></li>
             <li><label for="groupname">Inserire nome gruppo : <input type="text" name="groupname" id="groupname" required /></label></li>

@@ -2,7 +2,8 @@
         <ul>
             <li>
                 <label for="course">seleziona il corso</label>
-                <select name="course" id="course" >
+                <select name="course" id="course" required>
+                    <option value="" disabled selected hidden>seleziona corso</option>
                     <?php foreach($templateParams["courses"] as $course): ?>
                     <option value="<?php echo $course["nome"] ;?>"><?php echo $course["nome"] ;?></option>
                     <?php endforeach; ?>
