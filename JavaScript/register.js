@@ -28,7 +28,7 @@ function generateFormandText() {
                 <input type="submit" name="submit" value="Conferma" />
             </form>
             <p>Hai già un account?</p>
-            <a href="./login.html"><input type="button" name="loginbutton" id="loginbutton" value="Login" /></a>`;
+            <a href="./login.php"><input type="button" name="loginbutton" id="loginbutton" value="Login" /></a>`;
     return form;
 }
 
