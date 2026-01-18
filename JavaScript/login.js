@@ -21,7 +21,7 @@ function createForm() {
 function createText() {
     let text = `
     <p>Non hai un account?</p>
-            <a href="./register.html"><input type="button" name="Registrati" id="register" value="Registrati" /></a>`;
+    <a href="./register.html"><input type="button" name="Registrati" id="register" value="Registrati" /></a>`;
     return text;
 }
 
@@ -50,7 +50,9 @@ getLoginData();
 
 function loginAttempt() {
     let form = createForm();
+    let text = createText();
     main.innerHTML = form;
+    main.innerHTML += text;
     // Gestisco tentativo di login
     document.querySelector("main form").addEventListener("submit", function (event) {
         event.preventDefault();
