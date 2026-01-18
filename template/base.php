@@ -18,14 +18,14 @@
     </header>
     <nav>
         <ul>
-            <li><p>nome utente</p></li>
+            <li><p><?php echo $_SESSION['name']." ".$_SESSION['surname']; ?></p></li>
             <li><button id="bottone-notifiche">notifica</button></li>
             <li><button id="bottone-menu">menu</button></li>
         </ul>
     </nav>
     <nav id="menu">
         <ul>
-            <li><button onclick="window.location.href='./search.html'">Ricerca nuovo gruppo</button></li>
+            <li><button onclick="window.location.href='./group-choice.php'">Ricerca nuovo gruppo</button></li>
             <li><button onclick="window.location.href='./user-groups.php'">I tuoi gruppi</button></li>
             <li><button onclick="window.location.href='./groupCreation.html'">Crea nuovo gruppo</button></li>
             <li><button>Segnala un problema</button></li>
