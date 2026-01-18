@@ -32,7 +32,7 @@ async function getLoginData() {
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
-        const json = await response.text();
+        const json = await response.json();
         console.log(json);
         if(json["logineseguito"]){
             window.location.href = "./user-groups.php";
