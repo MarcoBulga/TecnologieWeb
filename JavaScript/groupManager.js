@@ -46,7 +46,7 @@ function openPopupRequestToJoin(groupName){
     };
 }
 
-function openPopupToLeave(){
+function openPopupToLeave(idGruppo){
     const popup = document.getElementById("popup");
     const text = document.getElementById("popupText");
 
@@ -54,8 +54,24 @@ function openPopupToLeave(){
 
     popup.style.display = "flex";
 
-    document.getElementById("yes").onclick = function(){
+    document.getElementById("yes").onclick = async function(){
         alert("Richiesta inviata");
+        const url = "gestisci-richiesta.php?idGruppo=" + idGruppo + "&action=leave";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error("Errore nella richiesta" + response.status);
+            }
+            const data = await response.json();
+            // Gestisci la risposta se necessario
+            if(data["esito"]) {
+                alert("Uscito dal gruppo con successo");
+            } else {
+                alert("Errore nell'uscita dal gruppo");
+            }
+        } catch (error) {
+            console.error("Errore durante la richiesta:", error.message());
+        }
 
         popup.style.display = "none";
     };

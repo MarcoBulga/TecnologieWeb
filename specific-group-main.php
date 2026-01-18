@@ -1,10 +1,10 @@
 <div>
     <h2 id="groupname">NOME GRUPPO</h2>
     <button onclick=
-        <?php if($templateParams["toSee"] == true) {echo "openPopupToLeave($_GET["idGruppo"])";}
+        <?php if($templateParams["toSee"] == true) {echo "openPopupToLeave(".$_GET['idGruppo'].")";}
                 else {echo "openPopupRequestToJoin(document.getElementById('groupname').textContent)";} ?>
          id="btn-new-group">
-        <?php if($templateParams["toSee"] == true) { echo "Esci dal gruppo"; } else { echo "Unisciti / chiedi di unirti"; } ?>
+        <?php if($templateParams["toSee"] == true) { echo "Esci dal gruppo"; } else if($dbh->isGroupPrivate($_GET['idGruppo']) == 1) { echo "Chiedi di unirti"; } else { echo "Unisciti al gruppo"; }?>
     </button>
 </div>
 <section class="to-enter">
