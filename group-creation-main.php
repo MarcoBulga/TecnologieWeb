@@ -24,11 +24,11 @@
                 $valueGroup = $dbh -> createNewGroup($_POST['groupname'], $_POST['course'], $_POST['groupsize'], 
                                isset($_POST['private']) ? 1 : 0, $_POST['shortdescription'], $_POST['longdescription']);
                 $valueAdm = $dbh -> addAdministratorToGroup($_SESSION['email'], $dbh->getGroupId());
-            }
-            if($valueGroup && $valueAdm) {
-                echo "<p>Gruppo creato con successo!</p>";
-            } else {
-                echo "<p>Errore nella creazione del gruppo.</p>";
+                if($valueGroup && $valueAdm) {
+                    echo "<p>Gruppo creato con successo!</p>";
+                } else {
+                    echo "<p>Errore nella creazione del gruppo.</p>";
+                }
             }
         ?>
     </form>
