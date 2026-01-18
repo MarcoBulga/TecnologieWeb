@@ -96,5 +96,19 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function searchName($name) {
+        $name = "%".$name."%";
+        $stmt = $this->db->prepare("SELECT * FROM gruppo WHERE nome LIKE ?");
+        $stmt->bind_param('s',$name);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function searchByFilters($filters) {
+
+    }
 } 
 ?>
