@@ -26,6 +26,12 @@ function deleteNotification(notification){
         notification.classList.add('fade-out');
         setTimeout(() => {
             notification.remove();
+
+            const remaining = notifiche.querySelectorAll('.notification');
+            if(remaining.length === 0){
+                notifiche.classList.remove('show');
+            }
+            
         }, 500)
     }
 }
@@ -98,26 +104,44 @@ function openRequest(notification){
     }
 }
 
-/*Per chiudere il menù se clicchi fuori dallo schermo*/
 document.addEventListener('click', function(event){
-    if(!menu.classList.contains('show')) return;
+    //--- MENU ---
+    if(menu.classList.contains('show')){
+        const clickInsideMenu = menu.contains(event.target);
+        const clickInsideMenuButton = btnMenu.contains(event.target);
 
-    const clickInsideMenu = menu.contains(event.target);
-    const clickInsideButton = btnMenu.contains(event.target);
+        const popupNormal = document.getElementById("notificationPopup");
+        const popupRequest = document.getElementById("notificationPopupRequest");
 
-    if(!clickInsideMenu && !clickInsideButton){
-        menu.classList.remove('show');
+        let clickInsidePopup = false;
+        [popupNormal, popupRequest].forEach(popup => {
+            if(popup && popup.contains(event.target)) {
+                clickInsidePopup = true;
+            }
+        });
+
+        if(!clickInsideMenu && !clickInsideMenuButton && !clickInsidePopup){
+            menu.classList.remove('show');
+        }
     }
-});
 
-/*Per chiudere le notifiche se clicchi fuori dallo schermo*/
-document.addEventListener('click', function(event){
-    if(!notifiche.classList.contains('show')) return;
+    //--- NOTIFICHE ---
+    if(notifiche.classList.contains('show')){
+        const clickInsideNotification = notifiche.contains(event.target);
+        const clickInsideNotificationButton = btnNotifiche.contains(event.target);
 
-    const clickInsideNotification = notifiche.contains(event.target);
-    const clickInsideButton = btnNotifiche.contains(event.target);
+        const popupNormal = document.getElementById("notificationPopup");
+        const popupRequest = document.getElementById("notificationPopupRequest");
 
-    if(!clickInsideNotification && !clickInsideButton){
-        notifiche.classList.remove('show');
+        let clickInsidePopup = false;
+        [popupNormal, popupRequest].forEach(popup => {
+            if(popup && popup.contains(event.target)){
+                clickInsidePopup = true;
+            }
+        });
+
+        if(!clickInsideNotification && !clickInsideNotificationButton && !clickInsidePopup){
+            menu.classList.remove('show');
+        }
     }
-});
+})
