@@ -11,9 +11,16 @@ html {
 }
 
 body {
-    margin: 0 0 0 0;
+    margin: 0;
     max-width: 100%;
     overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
 }
 
 main > div{
@@ -103,10 +110,9 @@ footer {
     background-color: var(--header-footer-bg-color);
     text-align: center;
     color: var(--text-color);
-    /* position: fixed; */
-    bottom: 0;
     width: 100%;
-    padding: 2% 0;
+    padding: 20px 0;
+    flex-shrink: 0;
 }
 
 nav:nth-of-type(1) {
