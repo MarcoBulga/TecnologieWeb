@@ -31,7 +31,7 @@ function deleteNotification(notification){
             if(remaining.length === 0){
                 notifiche.classList.remove('show');
             }
-            
+
         }, 500)
     }
 }
@@ -42,11 +42,17 @@ notifiche.addEventListener('click', function(event) {
     if (bottoneCliccato) {
         const notificaDaEliminare = bottoneCliccato.closest('.notification');
         deleteNotification(notificaDaEliminare);
+        return;
     }
 });
 
 //popup notifica
 function openMessage(notification){
+    const bottoneCliccato = event.target.closest('.elimina-notifica');
+    //Previene l'apertura della notifica se si clicca la X
+    if(bottoneCliccato){
+        return;
+    }
     const popup = document.getElementById("notificationPopup");
     const object = notification.querySelector("#object");
     const text = "Lorem ipsum dolor sit amet";
@@ -71,6 +77,11 @@ function openMessage(notification){
 }
 
 function openRequest(notification){
+    const bottoneCliccato = event.target.closest('.elimina-notifica');
+    //Previene l'apertura della notifica se si clicca la X
+    if(bottoneCliccato){
+        return;
+    }
     const popup = document.getElementById("notificationPopupRequest");
     const object = notification.querySelector("#object");
     const text = "Lorem ipsum dolor sit amet";
