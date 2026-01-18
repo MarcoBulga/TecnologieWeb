@@ -52,8 +52,15 @@ class DatabaseHelper {
         $stmt->bind_param('ssissss', $name, $size, $shortDesc, $longDesc, $isPrivate, $course, $_SESSION['email']);
         $result = $stmt->execute();
         return $result;
-    } 
-    
+    }
+
+    public function addAdministratorToGroup($email, $idGruppo) {
+        $stmt = $this->db->prepare("INSERT INTO fa_parte (email, idGruppo) VALUES (?, ?)");
+        $stmt->bind_param('si', $email, $idGruppo);
+        $result = $stmt->execute();
+        return $result;
+    }
+
     public function doesUserExist($email) {
         $stmt = $this->db->prepare("SELECT * FROM utente 
                                     WHERE email = ?");

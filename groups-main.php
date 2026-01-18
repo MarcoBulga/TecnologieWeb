@@ -1,5 +1,5 @@
 <div>
-    <h2>I TUOI GRUPPI</h2>
+    <h2> <?php if(isset($templateParams["value"])) echo "RICERCA GRUPPI"; else echo "I TUOI GRUPPI"; ?></h2>
     <a href="./groupCreation.html"><button id="btn-new-group">Crea nuovo gruppo</button></a>
 </div>
 <input type="text" id="ricerca-mio-gruppo" placeholder="barra di ricerca"/>
@@ -7,7 +7,7 @@
 <?php foreach($templateParams["Gruppi"] as $gruppo): ?>
     <section>
         <h3>
-            <a href="./joinGroup.html" class="link-header"><?php echo $gruppo['nome']; ?></a>
+            <a href="./specific-group-to-join.php" class="link-header"><?php echo $gruppo['nome']; ?></a>
         </h3>
         <ul class="lista-componenti-gruppo">
             <?php $templateParams["Partecipants"] = $dbh->getPartecipants($gruppo['idGruppo']); ?>

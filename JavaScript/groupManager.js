@@ -3,25 +3,27 @@
 document.addEventListener("DOMContentLoaded", function(){
     const groupSize = document.getElementById("groupsize");
 
-    groupSize.addEventListener("input", function(){
-        let v = parseInt(this.value);
+    if (groupSize) {
+        groupSize.addEventListener("input", function(){
+            let v = parseInt(this.value);
 
-        if(v > 6) this.value = 6;
-        if(v < 1) this.value = 1;
-    });
+            if(v > 6) this.value = 6;
+            if(v < 1) this.value = 1;
+        });
 
-    // Cambio con le freccette
-    groupSize.addEventListener("change", function(){
-        let v = parseInt(this.value);
+        // Cambio con le freccette
+        groupSize.addEventListener("change", function(){
+            let v = parseInt(this.value);
 
-        if(isNaN(v)){
-            this.value = 1;
-        } else if(v > 6){
-            this.value = 6;
-        } else if(v < 1){
-            this.value = 1;
-        }
-    });
+            if(isNaN(v)){
+                this.value = 1;
+            } else if(v > 6){
+                this.value = 6;
+            } else if(v < 1){
+                this.value = 1;
+            }
+        });
+    }
 });
 
 // --- VISUALIZZAZIONE GRUPPI ---

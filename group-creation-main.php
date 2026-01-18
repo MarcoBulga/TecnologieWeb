@@ -18,12 +18,14 @@
         <input type="reset" id="undobutton" name="undobutton" value="Annulla" />
         <input type="submit" id="confirmbutton" name="confirmbutton" value="Conferma"/>
         <?php
-            $value = false;
+            $valueGroup = false;
+            $valueAdm = false;
             if(isset($_POST['confirmbutton']) && empty($_POST['undobutton'])) {
-                $value = $dbh -> createNewGroup($_POST['groupname'], $_POST['course'], $_POST['groupsize'], 
+                $valueGroup = $dbh -> createNewGroup($_POST['groupname'], $_POST['course'], $_POST['groupsize'], 
                                isset($_POST['private']) ? 1 : 0, $_POST['shortdescription'], $_POST['longdescription']);
+                $valueAdm = $dbh -> addAdministratorToGroup($_SESSION['email'], $valueGroup['idGruppo']);
             }
-            if($value) {
+            if($valueGroup && $valueAdm) {
                 echo "<p>Gruppo creato con successo!</p>";
             } else {
                 echo "<p>Errore nella creazione del gruppo.</p>";
