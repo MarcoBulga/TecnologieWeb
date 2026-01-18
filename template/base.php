@@ -30,7 +30,7 @@
             <li><button onclick="window.location.href='./user-groups.php'">I tuoi gruppi</button></li>
             <li><button onclick="window.location.href='./group-creation.php'">Crea nuovo gruppo</button></li>
             <li><button>Segnala un problema</button></li>
-            <li><button>Logout</button></li>
+            <li><button onclick="window.location.href='./logout.php'">Logout</button></li>
         </ul>
         <button id="chiudi-menu">Chiudi</button>
     </nav>

@@ -1,7 +1,7 @@
 <?php 
 require_once 'bootstrap.php';
 
-$templateParams["Gruppi"] = $dbh->getGroups($_SESSION['email']);
+$templateParams["Gruppi"] = $dbh->groupsWithNoUserInSession();
 
 $templateParams["page"] = 'groups-main.php'; 
 

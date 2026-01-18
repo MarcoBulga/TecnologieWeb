@@ -124,8 +124,27 @@ class DatabaseHelper {
 
     public function searchName($name) {
         $name = "%".$name."%";
-        $stmt = $this->db->prepare("SELECT * FROM gruppo WHERE nome LIKE ?");
-        $stmt->bind_param('s',$name);
+        $stmt = $this->db->prepare("SELECT * FROM gruppo WHERE nome LIKE ? AND idGruppo NOT IN (SELECT idGruppo FROM fa_parte WHERE email = ?)");
+        $stmt->bind_param('ss',$name,$_SESSION['email']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function searchNameWithUser($name) {
+        $name = "%".$name."%";
+        $stmt = $this->db->prepare("SELECT * FROM gruppo WHERE nome LIKE ? AND idGruppo IN (SELECT idGruppo FROM fa_parte WHERE email = ?)");
+        $stmt->bind_param('ss',$name,$_SESSION['email']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function groupsWithNoUserInSession() {
+        $stmt = $this->db->prepare("SELECT * FROM gruppo WHERE idGruppo NOT IN (SELECT idGruppo FROM fa_parte WHERE email = ?) LIMIT 10");
+        $stmt->bind_param('s', $_SESSION['email']);
         $stmt->execute();
         $result = $stmt->get_result();
 
