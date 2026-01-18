@@ -16,6 +16,8 @@
         <main>
             
         </main>
-        <script src="./JavaScript/login.js"></script>
+        <?php foreach($templateParams["js"] as $script): ?>
+        <script src="./JavaScript/<?php echo $script ?>"></script>
+        <?php endforeach; ?>
     </body>
 </html>

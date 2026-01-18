@@ -45,5 +45,25 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function doesUserExist($email) {
+        $stmt = $this->db->prepare("SELECT * FROM utente 
+                                    WHERE email = ?");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function insertNewUser($name, $surname, $email, $phone, $password) {
+        $stmt = $this->db->prepare("INSERT into utente(nome,cognome,email,telefono,password) 
+                                    values (?,?,?,?,?)");
+        $stmt->bind_param('sssis',$name,$surname,$email,$phone,$password);
+        $stmt->execute();
+        $result = $this->db->affected_rows;
+
+        return $result;
+    }
 } 
 ?>
