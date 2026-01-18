@@ -17,6 +17,8 @@
         </ul>
         <p>Descrizione: <?php echo $gruppo['descr_breve']; ?> </p>
         <p>Corso: <?php echo $gruppo['corso_di_riferimento']; ?> </p>
-        <!-- <button>Entra nel gruppo</button> -->
+        <?php if (isset($templateParams["value"])):?>
+            <button>Entra nel gruppo</button>
+        <?php endif; ?>
     </section>
 <?php endforeach; ?>
