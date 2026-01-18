@@ -5,5 +5,5 @@ $templateParams["title"] = "Login";
 
 $templateParams["js"] = array("login.js");
 
-require 'login-form.php'; 
+require './template/login-form.php'; 
 ?>
