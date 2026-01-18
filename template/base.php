@@ -27,7 +27,7 @@
         <ul>
             <li><button onclick="window.location.href='./group-choice.php'">Ricerca nuovo gruppo</button></li>
             <li><button onclick="window.location.href='./user-groups.php'">I tuoi gruppi</button></li>
-            <li><button onclick="window.location.href='./groupCreation.html'">Crea nuovo gruppo</button></li>
+            <li><button onclick="window.location.href='./group-creation.php'">Crea nuovo gruppo</button></li>
             <li><button>Segnala un problema</button></li>
             <li><button>Logout</button></li>
         </ul>
@@ -53,6 +53,31 @@
     <main>
         <?php require $templateParams["page"]; ?>
     </main>
+
+    <!--POPUP NOTIFICA NORMALE-->
+        <div id="notificationPopup" class="hidden-popup">
+            <div class="popup-elements">
+                <h2 id="popupObject"></h2>
+                <p id="popupText"></p>
+                <p id="popupSender"></p>
+                <div class="popup-buttons">
+                    <button id="no">Cancella</button>
+                </div>
+            </div>
+        </div>
+
+        <!--POPUP NOTIFICA RICHIESTA-->
+        <div id="notificationPopupRequest" class="hidden-popup">
+            <div class="popup-elements">
+                <h2 id="popupObjectRequest"></h2>
+                <p id="popupTextRequest"></p>
+                <p id="popupSenderRequest"></p>
+                <div class="popup-buttons">
+                    <button id="noRequest">Rifiuta</button>
+                    <button id="yesRequest">Accetta</button>
+                </div>
+            </div>
+        </div>
     <footer>
         <p>Daniele Tramonti (daniele.tramonti2@studio.unibo.it) - Alessandro Ravaioli (alessandro.ravaioli8@studio.unibo.it) - Marco Bulgarelli (marco.bulgarelli6@studio.unibo.it)</p>
     </footer>

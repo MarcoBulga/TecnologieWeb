@@ -45,5 +45,13 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-} 
+
+    public function createNewGroup($name, $course, $size, $isPrivate, $shortDesc, $longDesc) {
+        $stmt = $this->db->prepare("INSERT INTO gruppo (nome, numero_partecipanti, descr_breve, descr_lunga, privato, corso_di_riferimento, creatore) 
+                                    VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param('ssissss', $name, $size, $shortDesc, $longDesc, $isPrivate, $course, $_SESSION['email']);
+        $result = $stmt->execute();
+        return $result;
+    } 
+}
 ?>
