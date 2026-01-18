@@ -9,6 +9,8 @@ class DatabaseHelper {
         }
     }
 
+    public function getGroupId() {return $this->db->insert_id;}
+
     public function getUsers() {
         $stmt = $this->db->prepare("SELECT nome, cognome from utente");
         $stmt->execute();
@@ -51,6 +53,12 @@ class DatabaseHelper {
                                     VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param('sississ', $name, $size, $shortDesc, $longDesc, $isPrivate, $course, $_SESSION['email']);
         $result = $stmt->execute();
+
+        $id = $this->getGroupId();
+        $stmt = $this->db->prepare("INSERT INTO possiede(idGruppo,nome) VALUES (?,'ghost')");
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+
         return $result;
     }
 
@@ -82,7 +90,7 @@ class DatabaseHelper {
     }
 
     public function getAllFilters() {
-        $stmt = $this->db->prepare("SELECT * FROM tag");
+        $stmt = $this->db->prepare("SELECT * FROM tag where nome <> 'ghost'");
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -96,8 +104,6 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-
-    public function getGroupId() {return $this->db->insert_id;}
 
     public function removeUserFromGroup($email, $idGruppo) {
         $stmt = $this->db->prepare("DELETE FROM fa_parte WHERE email = ? AND idGruppo = ?");
@@ -126,8 +132,27 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function searchByFilters($filters) {
+    public function searchByFilters($filters, $name) {
+        $first = true;
+        $name = "%".$name."%";
+        $query = "SELECT gruppo.* FROM gruppo JOIN possiede ON gruppo.idGruppo = possiede.idGruppo WHERE ";
+        $query .= "gruppo.nome LIKE ? AND (";
+        foreach($filters as $filter) {
+            if($first) {
+                $query .= " possiede.nome = \"".$filter."\"";
+                $first = false;
+            } else {
+                $query.= " OR possiede.nome = \"".$filter."\"";
+            }
+        }
+        $query .= ") GROUP BY gruppo.idGruppo, possiede.idGruppo ORDER BY count(gruppo.idGruppo) DESC";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $name);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 } 
 ?>
