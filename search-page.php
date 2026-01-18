@@ -2,9 +2,10 @@
         <ul>
             <li>
                 <label for="course">seleziona il corso</label>
-                <select name="course" >
-                    <option value="NULL">seleziona corso</option>
-                    <option value="TW">Tecnologie Web</option>
+                <select name="course" id="course" >
+                    <?php foreach($templateParams["courses"] as $course): ?>
+                    <option value="<?php echo $course["nome"] ;?>"><?php echo $course["nome"] ;?></option>
+                    <?php endforeach; ?>
                 </select>
             </li>
             <li><button>filtri / tag</button></li>
