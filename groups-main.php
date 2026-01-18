@@ -35,8 +35,8 @@
 <?php foreach($templateParams["Gruppi"] as $gruppo): ?>
     <section>
         <h3>
-            <a href=
-            <?php if(isset($templateParams["value"])) echo "./specific-group-to-join.php?idGruppo=".$gruppo['idGruppo']; else echo "./specific-group-to-see.php?idGruppo=".$gruppo['idGruppo']; ?>
+            <a href="
+            <?php if(isset($templateParams["value"])) echo "./specific-group-to-join.php?idGruppo=".$gruppo['idGruppo']; else echo "./specific-group-to-see.php?idGruppo=".$gruppo['idGruppo']; ?>"
             class="link-header"><?php echo $gruppo['nome']; ?></a>
         </h3>
         <ul class="lista-componenti-gruppo">
