@@ -10,6 +10,10 @@ html {
     overflow-x: hidden;
 }
 
+body::-webkit-scrollbar {
+    display:none;   /*per Chrome, Safari e Opera*/
+}
+
 body {
     margin: 0;
     max-width: 100%;
@@ -17,6 +21,8 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    -ms-overflow-style:none;  /*per Internet Explorer e Edge*/
+    scrollbar-width:none;  /*per Firefox*/
 }
 
 main {
