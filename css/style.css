@@ -365,3 +365,9 @@ nav.show {
 .popup-buttons button[id="no"], .popup-buttons button[id="noRequest"]{
     background-color: red;
 }
+
+.search-bar{
+    display: flex;
+    gap: 0.5%;
+    margin-left: 5%;
+}

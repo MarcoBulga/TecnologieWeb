@@ -2,7 +2,10 @@
     <h2> <?php if(isset($templateParams["value"])) echo "RICERCA GRUPPI"; else echo "I TUOI GRUPPI"; ?></h2>
     <a href="./group-creation.php"><button id="btn-new-group">Crea nuovo gruppo</button></a>
 </div>
-<input type="text" id="ricerca-mio-gruppo" placeholder="barra di ricerca"/>
+<form action="#" method="post" class="search-bar">
+    <input type="text" id="ricerca-mio-gruppo" placeholder="barra di ricerca"/>
+    <input type="submit" id="btn-search" value="Cerca" />
+</form>
 
 <?php foreach($templateParams["Gruppi"] as $gruppo): ?>
     <section>
