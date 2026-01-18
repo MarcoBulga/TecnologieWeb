@@ -40,7 +40,7 @@ values (1,"alessandro.ravaioli@studio.unibo.it"), (1,"daniele.tramonti@studio.un
 
 -- commentare questa query qui sotto se si usa il database coi filtri, questa è solo per i tag
 insert into tag(nome)
-values ("online"),("in presenza"),("gioco"),("simulatore"),("accessibile"),("sufficiente");
+values ("online"),("in presenza"),("gioco"),("simulatore"),("accessibile"),("sufficiente"),("ghost");
 
 insert into notifica(testo,oggetto,tipo,mittente)
 values ("prima prova di messaggio chissa se funziona","test","messaggio","alessandro.ravaioli@studio.unibo.it");
