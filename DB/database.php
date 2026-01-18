@@ -49,7 +49,7 @@ class DatabaseHelper {
     public function createNewGroup($name, $course, $size, $isPrivate, $shortDesc, $longDesc) {
         $stmt = $this->db->prepare("INSERT INTO gruppo (nome, numero_partecipanti, descr_breve, descr_lunga, privato, corso_di_riferimento, creatore) 
                                     VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param('ssissss', $name, $size, $shortDesc, $longDesc, $isPrivate, $course, $_SESSION['email']);
+        $stmt->bind_param('sississ', $name, $size, $shortDesc, $longDesc, $isPrivate, $course, $_SESSION['email']);
         $result = $stmt->execute();
         return $result;
     }
@@ -112,7 +112,7 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
 
-        $firstRow = $result->fetch_assoc();
+        $firstRow = $result->fetch_assoc();  /*prende solo la prima riga*/
         return $firstRow['privato'];
     }
 } 
