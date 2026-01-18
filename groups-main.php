@@ -7,7 +7,9 @@
 <?php foreach($templateParams["Gruppi"] as $gruppo): ?>
     <section>
         <h3>
-            <a href="./specific-group-to-join.php" class="link-header"><?php echo $gruppo['nome']; ?></a>
+            <a href=
+            <?php if(isset($templateParams["value"])) echo "./specific-group-to-join.php"; else echo "./specific-group-to-see.php"; ?>
+            class="link-header"><?php echo $gruppo['nome']; ?></a>
         </h3>
         <ul class="lista-componenti-gruppo">
             <?php $templateParams["Partecipants"] = $dbh->getPartecipants($gruppo['idGruppo']); ?>

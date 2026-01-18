@@ -27,11 +27,30 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 // --- VISUALIZZAZIONE GRUPPI ---
-function openPopup(groupName){
+function openPopupRequestToJoin(groupName){
     const popup = document.getElementById("popup");
     const text = document.getElementById("popupText");
 
     text.textContent = "Sei sicuro di volerti unire a " + groupName + "?";
+
+    popup.style.display = "flex";
+
+    document.getElementById("yes").onclick = function(){
+        alert("Richiesta inviata");
+
+        popup.style.display = "none";
+    };
+
+    document.getElementById("not").onclick = function(){
+        popup.style.display = "none";
+    };
+}
+
+function openPopupToLeave(){
+    const popup = document.getElementById("popup");
+    const text = document.getElementById("popupText");
+
+    text.textContent = "Sei sicuro di voler uscire dal gruppo?";
 
     popup.style.display = "flex";
 
