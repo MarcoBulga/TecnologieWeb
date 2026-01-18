@@ -53,7 +53,7 @@ class DatabaseHelper {
         $result = $stmt->execute();
         return $result;
     } 
-}
+    
     public function doesUserExist($email) {
         $stmt = $this->db->prepare("SELECT * FROM utente 
                                     WHERE email = ?");
