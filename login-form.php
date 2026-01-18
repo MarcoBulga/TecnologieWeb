@@ -11,7 +11,7 @@
         <a href="./groups.html">i tuoi gruppi</a>
         <a href="./register.html">registrati</a>
         <header>
-            <h1>Login</h1>
+            <h1><?php echo $templateParams["title"] ?></h1>
         </header>
         <main>
             

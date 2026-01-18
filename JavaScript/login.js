@@ -1,4 +1,4 @@
-function creaForm() {
+function createForm() {
     let form = `
     <form action="#" method="POST">
                 <p></p>
@@ -14,10 +14,15 @@ function creaForm() {
                 </table>
                 <input type="reset" name="reset" value="Annulla" />
                 <input type="submit" name="submit" value="Conferma" />
-            </form>
-            <p>Non hai un account?</p>
-            <a href="./register.html"><input type="button" name="Registrati" id="register" value="Registrati" /></a>`;
+            </form>`;
     return form;
+}
+
+function createText() {
+    let text = `
+    <p>Non hai un account?</p>
+            <a href="./register.html"><input type="button" name="Registrati" id="register" value="Registrati" /></a>`;
+    return text;
 }
 
 async function getLoginData() {
@@ -44,7 +49,7 @@ const main = document.querySelector("main");
 getLoginData();
 
 function loginAttempt() {
-    let form = creaForm();
+    let form = createForm();
     main.innerHTML = form;
     // Gestisco tentativo di login
     document.querySelector("main form").addEventListener("submit", function (event) {
