@@ -80,5 +80,13 @@ class DatabaseHelper {
 
         return $result;
     }
+
+    public function getAllFilters() {
+        $stmt = $this->db->prepare("SELECT * FROM tag");
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 } 
 ?>
