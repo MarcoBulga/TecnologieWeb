@@ -9,11 +9,6 @@
     <title>Ricerca Gruppi</title>
 </head>
 <body>
-    <a href="./register.html">registrazione</a>
-    <a href="./login.html">login</a>
-    <a href="./index.html">PAGINA PRESENTAZIONE</a>
-    <a href="./search.html"> test ricerca</a>
-    <a href="./groupCreation.html"> test creazione gruppi</a>
     <header>
         <h1>Ricerca Gruppi</h1>
     </header>
