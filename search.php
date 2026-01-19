@@ -1,11 +1,27 @@
 <?php 
 require_once 'bootstrap.php';
 
-$templateParams["Gruppi"] = $dbh->groupsWithNoUserInSession();
 
 $templateParams["courses"] = $dbh->getAllCourses();
 
 $templateParams["filters"] = $dbh->getAllFilters();
+
+$selectedFilters = array();
+
+if(isset($_POST["btn-search"])) {
+    foreach($templateParams["filters"] as $filter) {
+        if(isset($_POST[$filter["nome"]])) {
+            $selectedFilters[] = $filter["nome"];
+        }
+    }
+    if(count($selectedFilters) > 0) {
+    $templateParams["Gruppi"] = $dbh->searchByFilters($selectedFilters, isset($_POST["ricerca-mio-gruppo"]) ? $_POST["ricerca-mio-gruppo"] : "", $_SESSION["email"], $_POST["course"]);
+    } else  {
+        $templateParams["Gruppi"] = $dbh->searchNameAndCourse($_POST["ricerca-mio-gruppo"],$_POST["course"]);
+    }
+} else {
+    $templateParams["Gruppi"] = $dbh->groupsWithNoUserInSession();
+}
 
 $templateParams["page"] = 'groups-main.php'; 
 

@@ -1,4 +1,5 @@
 <h2>GRUPPI DISPONIBILI</h2>
+    <form action="#" method="POST">
         <ul>
             <li>
                 <label for="course">seleziona il corso</label>
@@ -20,6 +21,7 @@
                 <?php endforeach; ?>
             </ul>
         </div>
+    </form>
         <?php foreach($templateParams["Gruppi"] as $gruppo): ?>
         <section>
             <h3>

@@ -48,6 +48,9 @@ values ("prima prova di messaggio chissa se funziona","test","messaggio","alessa
 insert into riceve(destinatario,idNotifica)
 values ("daniele.tramonti@studio.unibo.it",1);
 
+INSERT INTO possiede(idGruppo,nome) 
+values (1,"ghost"),(2,"ghost"),(3,"ghost"),(4,"ghost"),(5,"ghost"),(6,"ghost"),(7,"ghost"),(8,"ghost"),(9,"ghost"),(10,"ghost");
+
 insert into possiede(nome,idGruppo)
 values ("online",1),
 	   ("gioco",1);

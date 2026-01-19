@@ -132,7 +132,7 @@ class DatabaseHelper {
         return $firstRow['privato'];
     }
 
-    public function searchName($name) {
+   /*  public function searchName($name) {
         $name = "%".$name."%";
         $stmt = $this->db->prepare("SELECT * FROM gruppo WHERE nome LIKE ? AND idGruppo NOT IN (SELECT idGruppo FROM fa_parte WHERE email = ?)");
         $stmt->bind_param('ss',$name,$_SESSION['email']);
@@ -140,7 +140,7 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
+    } */
 
     public function searchNameWithUser($name) {
         $name = "%".$name."%";
@@ -161,11 +161,11 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function searchByFilters($filters, $name) {
+    public function searchByFilters($filters, $name, $email, $course) {
         $first = true;
         $name = "%".$name."%";
         $query = "SELECT gruppo.* FROM gruppo JOIN possiede ON gruppo.idGruppo = possiede.idGruppo WHERE ";
-        $query .= "gruppo.nome LIKE ? AND (";
+        $query .= "gruppo.nome LIKE ? AND gruppo.corso_di_riferimento = ? AND (";
         foreach($filters as $filter) {
             if($first) {
                 $query .= " possiede.nome = \"".$filter."\"";
@@ -174,10 +174,20 @@ class DatabaseHelper {
                 $query.= " OR possiede.nome = \"".$filter."\"";
             }
         }
-        $query .= ") GROUP BY gruppo.idGruppo, possiede.idGruppo ORDER BY count(gruppo.idGruppo) DESC";
-        
+        $query .= ") GROUP BY gruppo.idGruppo, possiede.idGruppo HAVING gruppo.idGruppo NOT IN (SELECT idGruppo from fa_parte where email = ? )ORDER BY count(gruppo.idGruppo) DESC";
+        var_dump($query);
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('s', $name);
+        $stmt->bind_param('sss', $name, $course, $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function searchNameAndCourse($name, $course) {
+        $name = "%".$name."%";
+        $stmt = $this->db->prepare("SELECT * FROM gruppo WHERE nome LIKE ? AND corso_di_riferimento = ? AND idGruppo NOT IN (SELECT idGruppo FROM fa_parte WHERE email = ?)");
+        $stmt->bind_param('sss',$name,$course,$_SESSION['email']);
         $stmt->execute();
         $result = $stmt->get_result();
 
