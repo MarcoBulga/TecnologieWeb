@@ -338,5 +338,18 @@ class DatabaseHelper {
 
         return $result->num_rows > 0;
     }
+
+    public function sendMessage($sender,$text,$object,$type,$receivers) {
+        $stmt = $this->db->prepare("INSERT INTO notifica(mittente,testo,oggetto,tipo) VALUES (?,?,?,?)");
+        $stmt->bind_param('ssss',$sender,$text,$object,$type);
+        $stmt->execute();
+        $id = $this->db->insert_id;
+
+        foreach($receivers as $receiver) {
+            $stmt = $this->db->prepare("INSERT INTO riceve(email,idNotifica) VALUES (?,?)");
+            $stmt->bind_param('si',$receiver,$id);
+            $stmt->execute();
+        }
+    }
 } 
 ?>
