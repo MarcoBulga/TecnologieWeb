@@ -9,6 +9,10 @@ $templateParams["toSee"] = false;
 
 $templateParams["old_description"] = $dbh->getGroupLongDescription($_GET['idGruppo']);
 
+if($_SERVER['REQUEST_METHOD'] === 'GET') {   /*serve per svuotare la lista dei rimossi se l'utente è appena entrato in modifica, così da non avere rimossi vecchi che non vogliamo */
+    unset($_SESSION['lista-rimossi']);
+}
+
 if(isset($_POST['btn-user'])) {
     if(!isset($_SESSION['lista-rimossi'])) {
         $_SESSION['lista-rimossi'] = array();

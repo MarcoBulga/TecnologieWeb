@@ -30,7 +30,7 @@
         <?php $templateParams["Partecipants"] = $dbh->getPartecipants($_GET["idGruppo"]); ?>
         <?php foreach($templateParams["Partecipants"] as $partecipant): ?>
         <li class="componente">
-            <?php if(isset($templateParams['modify'])): ?>
+            <?php if(isset($templateParams['modify']) && $partecipant['email'] != $_SESSION['email']): ?>
                 <form action="" method="POST" style="display: inline">
                     <button name="btn-user" form="form-generale" value="<?= $partecipant['email'] ?>">X</button>
                 </form>
