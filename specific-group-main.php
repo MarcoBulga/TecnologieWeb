@@ -22,6 +22,7 @@
     <?php endif; ?>
     <?php if(($dbh->checkAdministrator($_GET["idGruppo"]) && empty($templateParams['modify'])) || ($_SESSION['admin'] == true && empty($templateParams['modify']))): ?>
         <button onclick="window.location.href='./modify-group.php?idGruppo=<?php echo $_GET['idGruppo'] ?>'">Modifica</button>
+        <button type="submit" id="btn-elimina-gruppo" name="btn-elimina-gruppo" form="form-generale">Elimina gruppo</button>
     <?php endif; ?>
 </div>
 <section class="to-enter">
