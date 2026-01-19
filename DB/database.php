@@ -145,16 +145,6 @@ class DatabaseHelper {
         return $firstRow['privato'];
     }
 
-   /*  public function searchName($name) {
-        $name = "%".$name."%";
-        $stmt = $this->db->prepare("SELECT * FROM gruppo WHERE nome LIKE ? AND idGruppo NOT IN (SELECT idGruppo FROM fa_parte WHERE email = ?)");
-        $stmt->bind_param('ss',$name,$_SESSION['email']);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    } */
-
     public function searchNameWithUser($name) {
         $name = "%".$name."%";
         $stmt = $this->db->prepare("SELECT * FROM gruppo WHERE nome LIKE ? AND idGruppo IN (SELECT idGruppo FROM fa_parte WHERE email = ?)");
@@ -358,6 +348,7 @@ class DatabaseHelper {
         return $result->num_rows > 0;
     }
 
+    /*$receivers è un array di email, tutti quelli che devono ricevere il messaggio*/ 
     public function sendMessage($sender,$text,$object,$type,$receivers) {
         $stmt = $this->db->prepare("INSERT INTO notifica(mittente,testo,oggetto,tipo,data) VALUES (?,?,?,?,NOW())");
         $stmt->bind_param('ssss',$sender,$text,$object,$type);
@@ -369,6 +360,15 @@ class DatabaseHelper {
             $stmt->bind_param('si',$receiver,$id);
             $stmt->execute();
         }
+    }
+
+    public function markAsRead($notification,$email) {
+        $stmt = $this->db->prepare("UPDATE riceve SET visto = true WHERE idNotifica = ? AND destinatario = ?");
+        $stmt->bind_param("is",$notification,$email);
+        $stmt->execute();
+        $result = $this->db->affected_rows;
+
+        return $result;
     }
 } 
 ?>
