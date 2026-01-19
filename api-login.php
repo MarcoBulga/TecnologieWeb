@@ -11,7 +11,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
     }
     else{
         registerLoggedUser($login_result[0]);
-        $result['admin'] = $_SESSION['admin'];
+        $result['admin'] = $_SESSION['admin'] == 0 ? false : true;
     }
 }
 

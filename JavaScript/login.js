@@ -85,7 +85,7 @@ async function login(email, password) {
         const json = await response.json();
         console.log(json);
         if(json["logineseguito"]){
-            if(json['admin'] = false) {
+            if(json['admin'] == false) {
                 window.location.href = "./user-groups.php";
             } else {
                 window.location.href = "./search.php";
