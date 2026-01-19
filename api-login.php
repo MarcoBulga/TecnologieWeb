@@ -2,7 +2,7 @@
 require_once 'bootstrap.php';
 
 $result["logineseguito"] = false;
-$result['admin'] = false;
+$result['admin'] = isset($_SESSION["admin"]) ? $_SESSION["admin"] == 0 ? false : true : false;
 if(isset($_POST["email"]) && isset($_POST["password"])){
     $login_result = $dbh->checkLogin($_POST["email"], $_POST["password"]);
     if(count($login_result)==0){
