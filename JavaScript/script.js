@@ -36,39 +36,38 @@ function deleteNotification(notification){
     }
 }
 
-//per rimuovere le notifiche
-notifiche.addEventListener('click', function(event) {
+//popup notifica
+function openMessage(notification, type, text){
     const bottoneCliccato = event.target.closest('.elimina-notifica');
-    if (bottoneCliccato) {
+    if(bottoneCliccato){
         const notificaDaEliminare = bottoneCliccato.closest('.notification');
         deleteNotification(notificaDaEliminare);
         return;
     }
-});
 
-//popup notifica
-function openMessage(notification){
-    const bottoneCliccato = event.target.closest('.elimina-notifica');
-    //Previene l'apertura della notifica se si clicca la X
-    if(bottoneCliccato){
-        return;
-    }
+    if(type === "messaggio"){
+        const popup = document.getElementById("notificationPopup");
+    } else if(type === "richiesta"){
+        const popup = document.getElementById("notificationPopupRequest");
+    } else {
+        alert("Errore nell'apertura della notifica (type = null)");
+    } 
+    
     const popup = document.getElementById("notificationPopup");
     const object = notification.querySelector("p:nth-of-type(1)");
-    const text = "awdawdaet";
     const sender = notification.querySelector("p:nth-of-type(2)");
-    const popupObject = document.getElementById("popupObject");
-    const popupText = document.getElementById("popupText");
-    const popupSender = document.getElementById("popupSender");
+    const popupObject = popup.querySelector("h2:nth-of-type(1)");
+    const popupText = popup.querySelector("p:nth-of-type(1)");
+    const popupSender = popup.querySelector("p:nth-of-type(2)");
 
     popupObject.textContent = object.textContent;
-    popupText.textContent = text;
+    popupText.textContent = text.textContent;
     popupSender.textContent = sender.textContent;
     
 
     popup.style.display = "flex";
 
-    document.getElementById("no").onclick = function(){
+    popup.querySelector("button:nth-of-type(1)").onclick = function(){
 
         deleteNotification(notification);
 
