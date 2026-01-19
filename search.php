@@ -6,6 +6,8 @@ $templateParams["courses"] = $dbh->getAllCourses();
 
 $templateParams["filters"] = $dbh->getAllFilters();
 
+$templateParams["notifications"] = $dbh->getAllNotifications($_SESSION["email"]);
+
 $selectedFilters = array();
 
 if(isset($_POST["btn-search"])) {

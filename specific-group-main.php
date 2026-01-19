@@ -12,7 +12,7 @@
     <?php if(isset($templateParams['modify'])): ?>
         <button type="submit" form="form-generale" name="btn-confirm">Conferma</button>
         <button type="submit" form="form-generale" name="btn-annulla">Annulla</button>
-    <?php else: ?>
+    <?php elseif($_SESSION['admin'] == false): ?>
         <button onclick=
             <?php if($templateParams["toSee"] == true) {echo "openPopupToLeave(".$_GET['idGruppo'].")";}
                     else {echo "openPopupRequestToJoin(document.getElementById('groupname').textContent)";} ?>
@@ -20,7 +20,7 @@
             <?php if($templateParams["toSee"] == true) { echo "Esci dal gruppo"; } else if($dbh->isGroupPrivate($_GET['idGruppo']) == 1) { echo "Chiedi di unirti"; } else { echo "Unisciti al gruppo"; }?>
         </button>
     <?php endif; ?>
-    <?php if($dbh->checkAdministrator($_GET["idGruppo"]) && empty($templateParams['modify'])): ?>
+    <?php if(($dbh->checkAdministrator($_GET["idGruppo"]) && empty($templateParams['modify'])) || ($_SESSION['admin'] == true && empty($templateParams['modify']))): ?>
         <button onclick="window.location.href='./modify-group.php?idGruppo=<?php echo $_GET['idGruppo'] ?>'">Modifica</button>
     <?php endif; ?>
 </div>

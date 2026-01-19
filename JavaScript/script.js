@@ -76,45 +76,6 @@ function openMessage(notification, type, text){
     };
 }
 
-function openRequest(notification){
-    const bottoneCliccato = event.target.closest('.elimina-notifica');
-    //Previene l'apertura della notifica se si clicca la X
-    if(bottoneCliccato){
-        return;
-    }
-    const popup = document.getElementById("notificationPopupRequest");
-    const object = notification.querySelector("p:nth-of-type(1)");
-    const text = "awfjpofwapojfwoap";
-    const sender = notification.querySelector("p:nth-of-type(2)");
-    const popupObject = document.getElementById("popupObjectRequest");
-    const popupText = document.getElementById("popupTextRequest");
-    const popupSender = document.getElementById("popupSenderRequest");
-
-    popupObject.textContent = object.textContent;
-    popupText.textContent = text;
-    popupSender.textContent = sender.textContent;
-    
-
-    popup.style.display = "flex";
-
-    const buttonNO = popup.querySelector("#noRequest");
-    const buttonYES = popup.querySelector("#yesRequest");
-
-    document.getElementById("noRequest").onclick = function(){
-
-        deleteNotification(notification);
-
-        popup.style.display = "none";
-    };
-
-    document.getElementById("yesRequest").onclick = function(){
-        alert("Richiesta inviata");
-        deleteNotification(notification);
-
-        popup.style.display = "none";
-    }
-}
-
 document.addEventListener('click', function(event){
     //--- MENU ---
     if(menu.classList.contains('show')){
@@ -152,7 +113,7 @@ document.addEventListener('click', function(event){
         });
 
         if(!clickInsideNotification && !clickInsideNotificationButton && !clickInsidePopup){
-            menu.classList.remove('show');
+            notifiche.classList.remove('show');
         }
     }
 })

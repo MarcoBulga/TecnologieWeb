@@ -1,6 +1,8 @@
 <div>
     <h2> <?php if(isset($templateParams["value"])) echo "RICERCA GRUPPI"; else echo "I TUOI GRUPPI"; ?></h2>
-    <button id="btn-new-group" onclick="window.location.href='./group-creation.php'">Crea nuovo gruppo</button>
+    <?php if($_SESSION['admin'] == false): ?>
+        <button id="btn-new-group" onclick="window.location.href='./group-creation.php'">Crea nuovo gruppo</button>
+    <?php endif; ?>
 </div>
 <form action="#" method="post" class="search-bar">
     <label for="ricerca-mio-gruppo">Barra di ricerca<input type="text" id="ricerca-mio-gruppo" name="ricerca-mio-gruppo" placeholder="barra di ricerca"/></label>
@@ -36,6 +38,12 @@
             <li class="componente"><?php echo $partecipant['nome']." ".$partecipant['cognome']. " - ".$partecipant['email']; ?></li>
             <?php endforeach; ?>
         </ul>
+        <p>
+            <?php $templateParams["tags"] = $dbh->getGroupTags($gruppo['idGruppo']); 
+                $tags = array_column($templateParams["tags"], 'nome');
+                echo implode(" - ", $tags);
+            ?>    
+        </p>
         <p>Descrizione: <?php echo $gruppo['descr_breve']; ?> </p>
         <p>Corso: <?php echo $gruppo['corso_di_riferimento']; ?> </p>
         <?php if (isset($templateParams["value"])):?>

@@ -20,7 +20,7 @@ class DatabaseHelper {
     }
 
     public function checkLogin($email, $password) {
-        $stmt = $this->db->prepare("SELECT email, nome, cognome from utente where email = ? and password = ?");
+        $stmt = $this->db->prepare("SELECT email, nome, cognome, admin from utente where email = ? and password = ?");
         $stmt->bind_param('ss', $email, $password);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -243,6 +243,18 @@ class DatabaseHelper {
         return $row["descr_lunga"];
     }
 
+    public function getGroupTags($idGruppo) {
+        $stmt = $this->db->prepare("SELECT *
+                                    FROM possiede 
+                                    WHERE idGruppo = ?
+                                    AND nome <> 'ghost'");
+        $stmt->bind_param('i', $idGruppo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function deleteUserFromGroup($email, $idGruppo) {
         $stmt = $this->db->prepare("DELETE FROM fa_parte
                                     WHERE email = ? AND idGruppo = ?");
@@ -301,7 +313,9 @@ class DatabaseHelper {
 
         if ($result->num_rows <= 0) {
             $result = $this->deleteGroup($idGruppo);
-            return $result;
+            return 1;
+        } else {
+            return 0;
         }
     }
 
