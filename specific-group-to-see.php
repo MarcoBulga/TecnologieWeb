@@ -22,6 +22,10 @@ if(isset($_POST['btn-elimina-gruppo'])) {
     }
 }
 
+if(isset($_POST["send-btn"])) {
+    $dbh->newMessageInChat($_SESSION['email'],$_POST["chat-message"],$_GET['idGruppo']);
+}
+
 $templateParams["chat"] = $dbh->getGroupMessages($_GET['idGruppo']);
 
 require './template/base.php';

@@ -76,6 +76,10 @@
             <p><?php echo $message["testo"] ?></p>
         </div>
     <?php endforeach; ?>
+    <form id="chat-form" action="#" method="POST" >
+        <label for="chat-message">Scrivi un messaggio: <textarea name="chat-message" id="chat-message"></textarea></label>
+        <input type="submit" name="send-btn" id="send-btn" value="Invia"/>
+    </form>
 </section>
 
 <!--Popup di conferma-->

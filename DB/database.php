@@ -356,10 +356,13 @@ class DatabaseHelper {
         $id = $this->db->insert_id;
 
         foreach($receivers as $receiver) {
-            $stmt = $this->db->prepare("INSERT INTO riceve(destinatario,idNotifica) VALUES (?,?)");
-            $stmt->bind_param('si',$receiver,$id);
-            $stmt->execute();
+            if($receiver != $sender) {
+                $stmt = $this->db->prepare("INSERT INTO riceve(destinatario,idNotifica) VALUES (?,?)");
+                $stmt->bind_param('si',$receiver,$id);
+                $stmt->execute();
+            }
         }
+        return $id;
     }
 
     public function markAsRead($notification,$email) {
@@ -380,6 +383,26 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getGroupChatId($groupId) {
+        $stmt = $this->db->prepare("SELECT idChat from CHAT where idGruppo = ?");
+        $stmt->bind_param("i",$groupId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc(); 
+
+        return $row["idChat"];
+    }
+
+    public function newMessageInChat($sender,$text,$groupId) {
+        $emails = $this->getPartecipants($groupId);
+        var_dump($emails[]["email"]);
+        $id = $this->sendMessage($sender,$text,"New message","messaggio",$emails['email']);
+
+        $stmt = $this->db->prepare("INSERT INTO messaggio(idNotifica,idChat) VALUES (?,?)");
+        $stmt->bind_param("ii",$id,$groupId);
+        $stmt->execute(); 
     }
 } 
 ?>
