@@ -62,6 +62,16 @@ class DatabaseHelper {
         return $result;
     }
 
+    public function updateGroup($name, $size, $isPrivate, $shortDesc, $longDesc, $idGruppo) {
+        $stmt = $this->db->prepare("UPDATE gruppo
+                                    SET nome = ?, numero_partecipanti = ?, descr_breve = ?, descr_lunga = ?, privato = ?
+                                    WHERE idGruppo = ?");
+        $stmt->bind_param('sissisi', $name, $size, $shortDesc, $longDesc, $isPrivate, $course, $idGruppo);
+        $result = $stmt->execute();
+
+        return $result;
+    }
+
     public function addAdministratorToGroup($email, $idGruppo) {
         $stmt = $this->db->prepare("INSERT INTO fa_parte (email, idGruppo) VALUES (?, ?)");
         $stmt->bind_param('si', $email, $idGruppo);
@@ -172,6 +182,35 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function checkAdministrator($idGruppo) {
+        $stmt = $this->db->prepare("SELECT idGruppo FROM gruppo WHERE idGruppo = ? AND creatore = ?");
+        $stmt->bind_param('is', $idGruppo, $_SESSION['email']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->num_rows > 0;
+    }
+
+    public function getGroupName($idGruppo) {
+        $stmt = $this->db->prepare("SELECT nome FROM gruppo WHERE idGruppo = ?");
+        $stmt->bind_param('i', $idGruppo);
+        $stmt->execute();
+        $result = $stmt->get_result(); /*questo restituisce un oggetto mysqli non un tipo di oggetto scrivibile*/
+
+        $row = $result->fetch_assoc(); /*prende solo la prima riga del risultato*/
+
+        return $row["nome"];
+    }
+
+    public function deleteUserFromGroup($email, $idGruppo) {
+        $stmt = $this->db->prepare("DELETE FROM fa_parte
+                                    WHERE email = ? AND idGruppo = ?");
+        $stmt->bind_param('si', $email, $idGruppo);
+        $result = $stmt->execute();
+
+        return $result; 
     }
 } 
 ?>
