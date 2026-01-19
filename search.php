@@ -28,24 +28,4 @@ $templateParams["page"] = 'groups-main.php';
 $templateParams["value"] = 'Entra nel gruppo';
 
 require './template/base.php';
-
-
-
-/* if(isset($templateParams["value"]) && isset($_POST["ricerca-mio-gruppo"]) && isset($_POST["btn-search"])) {
-        $templateParams["Gruppi"] = $dbh->searchName($_POST["ricerca-mio-gruppo"]);
-        unset($_POST["btn-reset"]);
-        unset($_POST["ricerca-mio-gruppo"]);
-    } else if(isset($templateParams["value"]) && isset($_POST["btn-reset"])) {
-        $templateParams["Gruppi"] = $dbh->groupsWithNoUserInSession();
-        unset($_POST["btn-reset"]);
-        unset($_POST["ricerca-mio-gruppo"]);
-    } else if(isset($_POST["ricerca-mio-gruppo"])) {
-        $templateParams["Gruppi"] = $dbh->searchNameWithUser($_POST["ricerca-mio-gruppo"]);
-        unset($_POST["btn-reset"]);
-        unset($_POST["ricerca-mio-gruppo"]);
-    } else if(isset($_POST["btn-reset"])) {
-        $templateParams["Gruppi"] = $dbh->getGroups($_SESSION['email']);
-        unset($_POST["btn-reset"]);
-        unset($_POST["ricerca-mio-gruppo"]);
-    } */
 ?>
