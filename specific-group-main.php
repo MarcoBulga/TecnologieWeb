@@ -29,6 +29,7 @@
         <button onclick="window.location.href='./modify-group.php?idGruppo=<?php echo $_GET['idGruppo'] ?>'">Modifica</button>
         <button type="submit" id="btn-elimina-gruppo" name="btn-elimina-gruppo" form="form-generale">Elimina gruppo</button>
     <?php endif; ?>
+    <button type="button">Manda un messaggio</button>
 </div>
 <section class="to-enter">
     <h3>Partecipanti:
