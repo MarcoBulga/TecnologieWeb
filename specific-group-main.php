@@ -86,7 +86,7 @@
 <div id="popup" class="hidden-popup">
     <div class="popup-elements">
         <p id="popupText"></p>
-        <?php if($dbh->isGroupPrivate($_GET['idGruppo']) == 1): ?>
+        <?php if($dbh->isGroupPrivate($_GET['idGruppo']) == 1 && $templateParams["toSee"] == false): ?>
             <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
                 <p>Oggetto:</p>
                 <textarea name="oggetto" id="oggetto" placeholder="OGGETTO"></textarea>

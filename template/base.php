@@ -45,7 +45,11 @@
             data-mittente = "<?php echo $notification['mittente']; ?>"
             data-idnotifica="<?php echo $notification['idNotifica']; ?>" 
             data-idgruppo="<?php echo $notification['idGruppo']; ?>"
-            onclick="openMessage(this, '<?php echo $notification['tipo']; ?>', '<?php echo addslashes($notification['testo']); ?>')">
+            data-nomegruppo="<?php echo $notification['nomeGruppo']; ?>"
+            onclick="openMessage(this,
+            '<?php echo $notification['tipo']; ?>', 
+            '<?php echo addslashes($notification['testo']); ?>',
+            '<?php echo addslashes($notification['nomeGruppo']); ?>')">
             <div class="messaggio">
                 <p><?php echo $notification["oggetto"]; ?></p>
                 <p><?php echo $notification["mittente"]; ?></p>
@@ -65,9 +69,10 @@
             <div class="popup-elements">
                 <h2 id="popupObject">placeholder</h2>
                 <p id="popupText"></p>
+                <p><strong> riguardo al gruppo:</strong> <span id="popupGroupNameMessage"></span></p>
                 <p id="popupSender"></p>
                 <div class="popup-buttons">
-                    <button id="no">Cancella</button>
+                    <button id="no">Chiudi</button>
                 </div>
             </div>
         </div>
@@ -77,6 +82,7 @@
             <div class="popup-elements">
                 <h2 id="popupObjectRequest">placeholder</h2>
                 <p id="popupTextRequest"></p>
+                <p><strong> riguardo al gruppo:</strong> <span id="popupGroupNameRequest"></span></p>
                 <p id="popupSenderRequest"></p>
                 <div class="popup-buttons">
                     <button id="noRequest">Rifiuta</button>

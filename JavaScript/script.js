@@ -37,7 +37,7 @@ function deleteNotification(notification){
 }
 
 //popup notifica
-function openMessage(notification, type, text){
+function openMessage(notification, type, text, nomeGruppo){
     const bottoneCliccato = event.target.closest('.elimina-notifica');
     if(bottoneCliccato){
         const notificaDaEliminare = bottoneCliccato.closest('.notification');
@@ -47,52 +47,80 @@ function openMessage(notification, type, text){
     
     let popup;
     if(type === "messaggio"){
+        //LOGICA PER MESSAGGI NORMALI
         popup = document.getElementById("notificationPopup");
+        document.getElementById("popupObject").textContent = notification.querySelector("p:nth-of-type(1)").textContent;
+        document.getElementById("popupText").textContent = text;
+        document.getElementById("popupSender").textContent = notification.querySelector("p:nth-of-type(2)").textContent;
+        document.getElementById("popupGroupNameMessage").textContent = nomeGruppo;
+
+        //bottone chiudi messaggio
+        document.getElementById("no").onclick = async function() {
+            const idNotifica = notification.dataset.idnotifica;
+
+            const url = './close-delete-message.php?action=delete&idNotifica=' + idNotifica;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                if (data.esito) {
+                    deleteNotification(notification);
+                    popup.style.display="none";
+                    location.reload();
+                } else {
+                    alert("Errore: " + data.errore);
+                }
+            } catch (error) {
+                console.error("Errore durante la chiusura del messaggio", error);
+            }
+        }
     } else if(type === "richiesta"){
         popup = document.getElementById("notificationPopupRequest");
+        document.getElementById("popupObjectRequest").textContent = notification.querySelector("p:nth-of-type(1)").textContent;
+        document.getElementById("popupTextRequest").textContent = text;
+        document.getElementById("popupSenderRequest").textContent = notification.querySelector("p:nth-of-type(2)").textContent;
+        document.getElementById("popupGroupNameRequest").textContent = nomeGruppo;
+
+        //bottone accetta
+        document.getElementById("yesRequest").onclick = async function() {
+            const emailDaAggiungere = notification.dataset.mittente;
+            const idGruppo = notification.dataset.idgruppo;
+            const idNotificaOriginale = notification.dataset.idnotifica;
+
+            if (!idGruppo || idGruppo === "") {
+                console.error("Errore: ID Gruppo mancante nel dataset della notifica.");
+                alert("Impossibile procedere: dati del gruppo non trovati.");
+                return;
+            }
+
+            const url = 'accept-request.php?action=accept-request&email=' + emailDaAggiungere + '&idGruppo=' + idGruppo + '&idNotifica=' + idNotificaOriginale;
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.esito) {
+                    deleteNotification(notification);
+                    popup.style.display="none";
+                    location.reload();
+                } else {
+                    alert("Errore: " + data.errore);
+                }
+            } catch (error) {
+                console.error("Errore durante l'accettazione", error);
+            }
+        }
+
+        //bottone rifiuta
+        document.getElementById("noRequest").onclick = async function() {
+            deleteNotification(notification);
+
+            popup.style.display = "none";
+        }
     } else {
         alert("Errore nell'apertura della notifica (type = null)");
     } 
 
-    document.getElementById("popupObjectRequest").textContent = notification.querySelector("p:nth-of-type(1)").textContent;
-    document.getElementById("popupTextRequest").textContent = text;
-    document.getElementById("popupSenderRequest").textContent = notification.querySelector("p:nth-of-type(2)").textContent;
-
     popup.style.display = "flex";
 
-    document.getElementById("yesRequest").onclick = async function() {
-        const emailDaAggiungere = notification.dataset.mittente;
-        const idGruppo = notification.dataset.idgruppo;
-        const idNotificaOriginale = notification.dataset.idnotifica;
-
-        if (!idGruppo || idGruppo === "") {
-            console.error("Errore: ID Gruppo mancante nel dataset della notifica.");
-            alert("Impossibile procedere: dati del gruppo non trovati.");
-            return;
-        }
-
-        const url = 'accept-request.php?action=accept-request&email=' + emailDaAggiungere + '&idGruppo=' + idGruppo + '&idNotifica=' + idNotificaOriginale;
-        try {
-            const response = await fetch(url);
-            const data = await response.json();
-
-            if (data.esito) {
-                deleteNotification(notification);
-                popup.style.display="none";
-                location.reload();
-            } else {
-                alert("Errore: " + data.errore);
-            }
-        } catch (error) {
-            console.error("Errore durante l'accettazione", error);
-        }
-    }
-
-    document.getElementById("noRequest").onclick = async function() {
-        deleteNotification(notification);
-
-        popup.style.display = "none";
-    }
 }
 
 document.addEventListener('click', function(event){
