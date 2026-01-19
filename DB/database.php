@@ -402,9 +402,12 @@ class DatabaseHelper {
     }
 
     public function newMessageInChat($sender,$text,$groupId) {
-        $emails = $this->getPartecipants($groupId);
-        var_dump($emails[]["email"]);
-        $id = $this->sendMessage($sender,$text,"New message","messaggio",$emails['email']);
+        $persons = $this->getPartecipants($groupId);
+        $emails = array();
+        foreach($persons as $person) {
+            $emails[] = $person['email'];
+        }
+        $id = $this->sendMessage($sender,$text,"New message","messaggio",$emails);
 
         $stmt = $this->db->prepare("INSERT INTO messaggio(idNotifica,idChat) VALUES (?,?)");
         $stmt->bind_param("ii",$id,$groupId);

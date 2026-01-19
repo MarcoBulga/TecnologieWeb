@@ -23,10 +23,13 @@ if(isset($_POST['btn-elimina-gruppo'])) {
 }
 
 if(isset($_POST["send-btn"])) {
+    if($_POST["chat-message"] !== "" ) {
     $dbh->newMessageInChat($_SESSION['email'],$_POST["chat-message"],$_GET['idGruppo']);
+    }
 }
 
 $templateParams["chat"] = $dbh->getGroupMessages($_GET['idGruppo']);
+$templateParams["notifications"] = $dbh->getAllNotifications($_SESSION['email']);
 
 require './template/base.php';
 ?>

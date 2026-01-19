@@ -129,11 +129,13 @@ alter table possiede add constraint REF_possi_TAG
 
 alter table riceve add constraint EQU_ricev_NOTIF_FK
      foreign key (idNotifica)
-     references NOTIFICA(idNotifica);
+     references NOTIFICA(idNotifica)
+     on delete cascade;
 
 alter table riceve add constraint REF_ricev_UTENT
      foreign key (destinatario)
-     references UTENTE(email);
+     references UTENTE(email)
+     on delete cascade;
 
 alter table CHAT add constraint EQU_CHAT_GRUPP
      foreign key (idGruppo)
@@ -215,4 +217,6 @@ create index ID_mess_IND
 
 create index REF_mess_NOTIF_IND
      on messaggio (idNotifica);
+
+
 
