@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 
 // --- VISUALIZZAZIONE GRUPPI ---
-function openPopupRequestToJoin(groupName){
+function openPopupRequestToJoin(groupName,idGruppo){
     const popup = document.getElementById("popup");
     const text = document.getElementById("popupText");
 
@@ -35,8 +35,23 @@ function openPopupRequestToJoin(groupName){
 
     popup.style.display = "flex";
 
-    document.getElementById("yes").onclick = function(){
+    document.getElementById("yes").onclick = async function(){
         alert("Richiesta inviata");
+        const url = "gestisci-richiesta.php?idGruppo=" + idGruppo + "&action=join";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error("Errore nella richiesta" + response.status);
+            }
+            const data = await response.json();
+            if(data['esito']) {
+                window.location.href= "./specific-group-to-see.php?idGruppo=" + idGruppo + "&status=success_join";
+            } else {
+                alert("Errore nell'unirsi al gruppo")
+            }
+        } catch (error) {
+            console.error("Errore durante la richiesta: ", error.message);
+        }
 
         popup.style.display = "none";
     };
