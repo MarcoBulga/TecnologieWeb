@@ -46,10 +46,10 @@ values (1,"alessandro.ravaioli@studio.unibo.it"), (1,"daniele.tramonti@studio.un
 insert into tag(nome)
 values ("online"),("in presenza"),("gioco"),("simulatore"),("accessibile"),("sufficiente"),("ghost");
 
-insert into notifica(testo,oggetto,tipo,mittente)
-values ("prima prova di messaggio chissa se funziona","test","messaggio","alessandro.ravaioli@studio.unibo.it"),
-       ("Messaggio di prova non so cosa scrivere, ciao","prova","messaggio","alessandro.ravaioli@studio.unibo.it"),
-       ("Buongiorno, vorrei entrare nel gruppo","richiesta entrata","richiesta","gennaro.fabbri@studio.unibo.it");
+insert into notifica(testo,oggetto,tipo,mittente,data)
+values ("prima prova di messaggio chissa se funziona","test","messaggio","alessandro.ravaioli@studio.unibo.it",NOW()),
+       ("Messaggio di prova non so cosa scrivere, ciao","prova","messaggio","alessandro.ravaioli@studio.unibo.it",NOW()),
+       ("Buongiorno, vorrei entrare nel gruppo","richiesta entrata","richiesta","gennaro.fabbri@studio.unibo.it",NOW());
 
 insert into riceve(destinatario,idNotifica)
 values ("daniele.tramonti@studio.unibo.it",1),
