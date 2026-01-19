@@ -314,7 +314,7 @@ class DatabaseHelper {
     }
 
     public function getAllNotifications($email) {
-        $stmt = $this->db->prepare("Select notifica.* from notifica join riceve on notifica.idNotifica = riceve.idNotifica where riceve.destinatario = ? order by data desc");
+        $stmt = $this->db->prepare("SELECT notifica.* from notifica join riceve on notifica.idNotifica = riceve.idNotifica where riceve.destinatario = ? order by data desc");
         $stmt->bind_param('s',$email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -369,6 +369,12 @@ class DatabaseHelper {
             $stmt->bind_param('si',$receiver,$id);
             $stmt->execute();
         }
+    }
+
+    public function deleteNotification($idNotifica) {
+        $stmt->$this->db->prepare("DELETE FROM notifica WHERE idNotifica = ?");
+        $stmt->bind_param('i', $idNotifica);
+        return $stmt->execute();
     }
 } 
 ?>

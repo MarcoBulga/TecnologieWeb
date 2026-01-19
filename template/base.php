@@ -41,7 +41,10 @@
     </nav>
     <nav id="notifiche">
         <?php foreach($templateParams["notifications"] as $notification): ?>
-        <div class="notification" onclick="openMessage(this, '<?php echo $notification['tipo']; ?>', '<?php echo addslashes($notification['testo']); ?>')">
+        <div class="notification"
+            data-mittente = "<?php echo $notification['mittente']; ?>"
+            data-idgruppo="<?php echo $_GET['idGruppo'] ?>"
+            onclick="openMessage(this, '<?php echo $notification['tipo']; ?>', '<?php echo addslashes($notification['testo']); ?>')">
             <div class="messaggio">
                 <p><?php echo $notification["oggetto"]; ?></p>
                 <p><?php echo $notification["mittente"]; ?></p>

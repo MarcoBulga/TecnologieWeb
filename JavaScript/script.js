@@ -53,27 +53,39 @@ function openMessage(notification, type, text){
     } else {
         alert("Errore nell'apertura della notifica (type = null)");
     } 
-    
-    //const popup = document.getElementById("notificationPopup");
-    const object = notification.querySelector("p:nth-of-type(1)");
-    const sender = notification.querySelector("p:nth-of-type(2)");
-    const popupObject = popup.querySelector("h2:nth-of-type(1)");
-    const popupText = popup.querySelector("p:nth-of-type(1)");
-    const popupSender = popup.querySelector("p:nth-of-type(2)");
 
-    popupObject.textContent = object.textContent;
-    popupText.textContent = text;
-    popupSender.textContent = sender.textContent;
-    
+    document.getElementById("popupObjectRequest").textContent = notification.querySelector("p:nth-of-type(1)").textContent;
+    document.getElementById("popupTextRequest").textContent = text;
+    document.getElementById("popupSenderRequest").textContent = notification.querySelector("p:nth-of-type(2)").textContent;
 
     popup.style.display = "flex";
 
-    popup.querySelector("button:nth-of-type(1)").onclick = function(){
+    document.getElementById("yesRequest").onclick = async function() {
+        const emailDaAggiungere = notification.dataset.mittente;
+        const idGruppo = notification.dataset.idgruppo;
+        const idNotificaOriginale = notification.dataset.idNotifica;
 
+        const url = 'gestisci-richiesta.php?action=accept-request&email=' + emailDaAggiungere + '&idGruppo=' + idGruppo + '&idNotifica=' + idNotificaOriginale;
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.esito) {
+                deleteNotification(notification);
+                popup.style.display="none";
+            } else {
+                alert("Errore: " + data.errore);
+            }
+        } catch (error) {
+            console.errore("Errore durante l'accettazione", error);
+        }
+    }
+
+    document.getElementById("noRequest").onclick = async function() {
         deleteNotification(notification);
 
         popup.style.display = "none";
-    };
+    }
 }
 
 document.addEventListener('click', function(event){
