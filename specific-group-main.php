@@ -68,6 +68,16 @@
     <?php endif; ?>
 </section>
 
+<section id="chat">
+    <h3>CHAT</h3>
+    <?php foreach($templateParams["chat"] as $message): ?>
+        <div class="message">
+            <h5><?php echo $message["mittente"] ?></h5>
+            <p><?php echo $message["testo"] ?></p>
+        </div>
+    <?php endforeach; ?>
+</section>
+
 <!--Popup di conferma-->
 <div id="popup" class="hidden-popup">
     <div class="popup-elements">

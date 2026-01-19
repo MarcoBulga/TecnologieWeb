@@ -74,6 +74,7 @@ create table possiede (
 create table riceve (
      destinatario char(50) not null,
      idNotifica int not null,
+     visto boolean not null default false,
      constraint ID_riceve_ID primary key (destinatario, idNotifica));
 
 create table CHAT (
