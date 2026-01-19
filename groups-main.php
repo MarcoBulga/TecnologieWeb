@@ -1,9 +1,9 @@
 <div>
     <h2> <?php if(isset($templateParams["value"])) echo "RICERCA GRUPPI"; else echo "I TUOI GRUPPI"; ?></h2>
-    <a href="./group-creation.php"><button id="btn-new-group">Crea nuovo gruppo</button></a>
+    <button id="btn-new-group" onclick="window.location.href='./group-creation.php'">Crea nuovo gruppo</button>
 </div>
 <form action="#" method="post" class="search-bar">
-    <input type="text" id="ricerca-mio-gruppo" name="ricerca-mio-gruppo" placeholder="barra di ricerca"/>
+    <label for="ricerca-mio-gruppo">Barra di ricerca<input type="text" id="ricerca-mio-gruppo" name="ricerca-mio-gruppo" placeholder="barra di ricerca"/></label>
     <input type="submit" id="btn-search" name="btn-search" value="Cerca" />
     <input type="submit" id="btn-reset" name="btn-reset" value="Tutti i gruppi" formnovalidate/>
     <?php if(isset($templateParams["value"])):?>

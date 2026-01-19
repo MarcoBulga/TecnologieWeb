@@ -32,15 +32,15 @@
     <nav id="notifiche">
         <div class="notification" onclick="openMessage(this)">
             <div class="messaggio">
-                <p id="object">Questa è una notifica</p>
-                <p id="sender">Mittente</p>
+                <p>Questa è una notifica</p>
+                <p>Mittente</p>
             </div>
             <button class="elimina-notifica">X</button>
         </div>
         <div class="notification" onclick="openRequest(this)">
             <div class="messaggio">
-                <p id="object">Questa è una richiesta</p>
-                <p id="sender">Mittente</p>
+                <p>Questa è una richiesta</p>
+                <p>Mittente</p>
             </div>
             <button class="elimina-notifica">X</button>
         </div>

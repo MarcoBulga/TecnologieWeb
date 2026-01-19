@@ -54,9 +54,9 @@ function openMessage(notification){
         return;
     }
     const popup = document.getElementById("notificationPopup");
-    const object = notification.querySelector("#object");
-    const text = "Lorem ipsum dolor sit amet";
-    const sender = notification.querySelector("#sender");
+    const object = notification.querySelector("p:nth-of-type(1)");
+    const text = "awdawdaet";
+    const sender = notification.querySelector("p:nth-of-type(2)");
     const popupObject = document.getElementById("popupObject");
     const popupText = document.getElementById("popupText");
     const popupSender = document.getElementById("popupSender");
@@ -83,9 +83,9 @@ function openRequest(notification){
         return;
     }
     const popup = document.getElementById("notificationPopupRequest");
-    const object = notification.querySelector("#object");
-    const text = "Lorem ipsum dolor sit amet";
-    const sender = notification.querySelector("#sender");
+    const object = notification.querySelector("p:nth-of-type(1)");
+    const text = "awfjpofwapojfwoap";
+    const sender = notification.querySelector("p:nth-of-type(2)");
     const popupObject = document.getElementById("popupObjectRequest");
     const popupText = document.getElementById("popupTextRequest");
     const popupSender = document.getElementById("popupSenderRequest");

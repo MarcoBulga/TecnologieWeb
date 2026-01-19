@@ -281,5 +281,14 @@ class DatabaseHelper {
 
         return $result;
     }
+
+    public function getAllNotifications($email) {
+        $stmt = $this->db->prepare("Select notifica.* from notifica join riceve on notifica.idNotifica = riceve.idNotifica where riceve.destinatario = ?");
+        $stmt->bind_param('s',$email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 } 
 ?>
