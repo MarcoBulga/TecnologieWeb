@@ -13,25 +13,15 @@
             <option value="<?php echo $course["nome"] ;?>"><?php echo $course["nome"] ;?></option>
             <?php endforeach; ?>
         </select>
+        <div class="filters">
+            <ul>
+                <?php foreach($templateParams["filters"] as $filter): ?>
+                <li><label for=<?php echo $filter["nome"]; ?>><input type="checkbox" id=<?php echo $filter["nome"]; ?> name=<?php echo $filter["nome"]; ?>><?php echo $filter["nome"]; ?></label></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
     <?php endif; ?>
 </form>
-<?php if(isset($templateParams["value"]) && isset($_POST["ricerca-mio-gruppo"]) && isset($_POST["btn-search"])) {
-        $templateParams["Gruppi"] = $dbh->searchName($_POST["ricerca-mio-gruppo"]);
-        unset($_POST["btn-reset"]);
-        unset($_POST["ricerca-mio-gruppo"]);
-    } else if(isset($templateParams["value"]) && isset($_POST["btn-reset"])) {
-        $templateParams["Gruppi"] = $dbh->groupsWithNoUserInSession();
-        unset($_POST["btn-reset"]);
-        unset($_POST["ricerca-mio-gruppo"]);
-    } else if(isset($_POST["ricerca-mio-gruppo"])) {
-        $templateParams["Gruppi"] = $dbh->searchNameWithUser($_POST["ricerca-mio-gruppo"]);
-        unset($_POST["btn-reset"]);
-        unset($_POST["ricerca-mio-gruppo"]);
-    } else if(isset($_POST["btn-reset"])) {
-        $templateParams["Gruppi"] = $dbh->getGroups($_SESSION['email']);
-        unset($_POST["btn-reset"]);
-        unset($_POST["ricerca-mio-gruppo"]);
-    }?>
 <?php foreach($templateParams["Gruppi"] as $gruppo): ?>
     <section>
         <h3>
