@@ -1,3 +1,4 @@
+use tecnologieWeb;
 insert into corso(nome) 
 values ("Tecnologie Web"),("OOP"),("Programmazione"),("Basi di dati");
 
