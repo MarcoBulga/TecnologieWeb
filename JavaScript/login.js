@@ -35,7 +35,11 @@ async function getLoginData() {
         const json = await response.json();
         console.log(json);
         if(json["logineseguito"]){
-            window.location.href = "./user-groups.php";
+            if(json['admin'] == false) {
+                window.location.href = "./user-groups.php";
+            } else {
+                window.location.href = "./search.php";
+            }
         } else {
             loginAttempt();
         }
@@ -81,7 +85,11 @@ async function login(email, password) {
         const json = await response.json();
         console.log(json);
         if(json["logineseguito"]){
-            window.location.href = "./user-groups.php";
+            if(json['admin'] = false) {
+                window.location.href = "./user-groups.php";
+            } else {
+                window.location.href = "./search.php";
+            }
         }
         else{
             document.querySelector("form > p").innerText = json["errorelogin"];

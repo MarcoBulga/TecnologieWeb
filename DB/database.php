@@ -313,7 +313,9 @@ class DatabaseHelper {
 
         if ($result->num_rows <= 0) {
             $result = $this->deleteGroup($idGruppo);
-            return $result;
+            return 1;
+        } else {
+            return 0;
         }
     }
 

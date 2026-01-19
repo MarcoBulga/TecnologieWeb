@@ -2,6 +2,7 @@
 require_once 'bootstrap.php';
 
 $result["logineseguito"] = false;
+$result['admin'] = false;
 if(isset($_POST["email"]) && isset($_POST["password"])){
     $login_result = $dbh->checkLogin($_POST["email"], $_POST["password"]);
     if(count($login_result)==0){
@@ -10,6 +11,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
     }
     else{
         registerLoggedUser($login_result[0]);
+        $result['admin'] = $_SESSION['admin'];
     }
 }
 
