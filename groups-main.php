@@ -42,7 +42,7 @@
             <?php $templateParams["tags"] = $dbh->getGroupTags($gruppo['idGruppo']); 
                 $tags = array_column($templateParams["tags"], 'nome');
                 echo implode(" - ", $tags);
-            ?>    
+            ?>
         </p>
         <p>Descrizione: <?php echo $gruppo['descr_breve']; ?> </p>
         <p>Partecipanti: 

@@ -16,7 +16,12 @@
         <button onclick=
             '<?php if($templateParams["toSee"] == true) {echo "openPopupToLeave(".$_GET['idGruppo'].")";}
                     else {echo "openPopupRequestToJoin(document.getElementById(\"groupname\").textContent, ".$_GET['idGruppo'].")";} ?>'
-            id="btn-new-group">
+            id="btn-new-group" 
+            <?php if($templateParams["toSee"] == false): ?>
+                <?php if($dbh->getNumberOfPartecipants($_GET['idGruppo']) >= $dbh->getGroupMaxPartecipants($_GET['idGruppo'])): ?>
+                    <?php echo "disabled"?> 
+                <?php endif; ?>
+            <?php endif; ?> >
             <?php if($templateParams["toSee"] == true) { echo "Esci dal gruppo"; } else if($dbh->isGroupPrivate($_GET['idGruppo']) == 1) { echo "Chiedi di unirti"; } else { echo "Unisciti al gruppo"; }?>
         </button>
     <?php endif; ?>
@@ -26,7 +31,12 @@
     <?php endif; ?>
 </div>
 <section class="to-enter">
-    <h3>Partecipanti:</h3>
+    <h3>Partecipanti:
+        <?php echo $dbh->getNumberOfPartecipants($_GET['idGruppo'])."/".$dbh->getGroupMaxPartecipants($_GET['idGruppo']); ?>
+        <?php if($dbh->getNumberOfPartecipants($_GET['idGruppo']) >= $dbh->getGroupMaxPartecipants($_GET['idGruppo'])): ?>
+            <?php echo "- Gruppo al completo!"?>
+        <?php endif; ?>
+    </h3>
     <ul class="lista-componenti-gruppo">
         <?php $templateParams["Partecipants"] = $dbh->getPartecipants($_GET["idGruppo"]); ?>
         <?php foreach($templateParams["Partecipants"] as $partecipant): ?>
