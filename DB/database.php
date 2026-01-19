@@ -182,7 +182,7 @@ class DatabaseHelper {
             }
         }
         $query .= ") GROUP BY gruppo.idGruppo, possiede.idGruppo HAVING gruppo.idGruppo NOT IN (SELECT idGruppo from fa_parte where email = ? )ORDER BY count(gruppo.idGruppo) DESC";
-        var_dump($query);
+        
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sss', $name, $course, $email);
         $stmt->execute();
