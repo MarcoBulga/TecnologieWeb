@@ -122,7 +122,7 @@ class DatabaseHelper {
         return $firstRow['privato'];
     }
 
-    public function searchName($name) {
+   /*  public function searchName($name) {
         $name = "%".$name."%";
         $stmt = $this->db->prepare("SELECT * FROM gruppo WHERE nome LIKE ? AND idGruppo NOT IN (SELECT idGruppo FROM fa_parte WHERE email = ?)");
         $stmt->bind_param('ss',$name,$_SESSION['email']);
@@ -130,7 +130,7 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
+    } */
 
     public function searchNameWithUser($name) {
         $name = "%".$name."%";

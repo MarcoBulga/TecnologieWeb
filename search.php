@@ -23,10 +23,6 @@ if(isset($_POST["btn-search"])) {
     $templateParams["Gruppi"] = $dbh->groupsWithNoUserInSession();
 }
 
-
-var_dump($selectedFilters);
-var_dump($templateParams["Gruppi"]);
-
 $templateParams["page"] = 'groups-main.php'; 
 
 $templateParams["value"] = 'Entra nel gruppo';
