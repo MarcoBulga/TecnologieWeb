@@ -61,6 +61,43 @@ function openPopupRequestToJoin(groupName,idGruppo){
     };
 }
 
+function openPopupRequestToJoinPrivate(groupName,idGruppo){
+    const popup = document.getElementById("popup");
+    const text = document.getElementById("popupText");
+    const richiesta = document.getElementById("richiesta");
+    const oggetto = document.getElementById("oggetto");
+
+    text.textContent = "Il gruppo è privato! Sei sicuro di voler chiedere di unirti a " + groupName + "? Scrivi qualcosa:";
+
+    popup.style.display = "flex";
+
+    document.getElementById("yes").onclick = async function(){
+        alert("Richiesta inviata");
+        const url = "gestisci-richiesta.php?idGruppo=" + idGruppo +"&richiesta=" + richiesta.value.trim() + "&oggetto=" + oggetto.value.trim() + "&action=join-private";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error("Errore nella richiesta" + response.status);
+            }
+            const data = await response.json();
+            console.log(data);
+            if(data['esito']) {
+                window.location.href= "./specific-group-to-see.php?idGruppo=" + idGruppo + "&status=success_join";
+            } else {
+                alert("Errore nell'unirsi al gruppo")
+            }
+        } catch (error) {
+            console.error("Errore durante la richiesta: ", error.message);
+        }
+
+        popup.style.display = "none";
+    };
+
+    document.getElementById("not").onclick = function(){
+        popup.style.display = "none";
+    };
+}
+
 function openPopupToLeave(idGruppo){
     const popup = document.getElementById("popup");
     const text = document.getElementById("popupText");

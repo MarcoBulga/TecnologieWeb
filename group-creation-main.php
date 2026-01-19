@@ -19,12 +19,10 @@
         <input type="submit" id="confirmbutton" name="confirmbutton" value="Conferma" />
         <?php
             $valueGroup = false;
-            $valueAdm = false;
             if(isset($_POST['confirmbutton']) && empty($_POST['undobutton'])) {
                 $valueGroup = $dbh -> createNewGroup($_POST['groupname'], $_POST['course'], $_POST['groupsize'], 
                                isset($_POST['private']) ? 1 : 0, $_POST['shortdescription'], $_POST['longdescription']);
-                $valueAdm = $dbh -> addAdministratorToGroup($_SESSION['email'], $dbh->getGroupId());
-                if($valueGroup && $valueAdm) {
+                if($valueGroup) {
                     echo "<p>Gruppo creato con successo!</p>";
                 } else {
                     echo "<p>Errore nella creazione del gruppo.</p>";

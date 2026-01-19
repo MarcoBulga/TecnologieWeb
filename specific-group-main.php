@@ -15,7 +15,8 @@
     <?php elseif($_SESSION['admin'] == false): ?>
         <button onclick=
             '<?php if($templateParams["toSee"] == true) {echo "openPopupToLeave(".$_GET['idGruppo'].")";}
-                    else {echo "openPopupRequestToJoin(document.getElementById(\"groupname\").textContent, ".$_GET['idGruppo'].")";} ?>'
+                    else if ($dbh->isGroupPrivate($_GET['idGruppo']) == 0) {echo "openPopupRequestToJoin(document.getElementById(\"groupname\").textContent, ".$_GET['idGruppo'].")";} 
+                    else {echo "openPopupRequestToJoinPrivate(document.getElementById(\"groupname\").textContent, ".$_GET['idGruppo'].")";}?>'
             id="btn-new-group" 
             <?php if($templateParams["toSee"] == false): ?>
                 <?php if($dbh->getNumberOfPartecipants($_GET['idGruppo']) >= $dbh->getGroupMaxPartecipants($_GET['idGruppo'])): ?>
@@ -71,6 +72,17 @@
 <div id="popup" class="hidden-popup">
     <div class="popup-elements">
         <p id="popupText"></p>
+        <?php if($dbh->isGroupPrivate($_GET['idGruppo']) == 1): ?>
+            <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
+                <p>Oggetto:</p>
+                <textarea name="oggetto" id="oggetto" placeholder="OGGETTO"></textarea>
+            </div>
+            <br>
+            <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
+                <p>Testo:</p>
+                <textarea name="richiesta" id="richiesta" placeholder="Ciao, vorrei unirmi al vostro gruppo!"></textarea>
+            </div>
+        <?php endif; ?>
         <div class="popup-buttons">
             <button id="not">No</button>
             <button id="yes">Si</button>
