@@ -45,13 +45,7 @@
             <button class="elimina-notifica">X</button>
         </div>
         <?php endforeach; ?>
-        <!-- <div class="notification" onclick="openRequest(this)">
-            <div class="messaggio">
-                <p>Questa è una richiesta</p>
-                <p>Mittente</p>
-            </div> -->
-            <button class="elimina-notifica">X</button>
-        </div>
+        <button class="elimina-notifica">X</button>
         <button id="chiudi-notifiche">Chiudi</button>
     </nav>
     <main>
