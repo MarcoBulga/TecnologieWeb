@@ -35,6 +35,12 @@
             <li class="componente"><?php echo $partecipant['nome']." ".$partecipant['cognome']. " - ".$partecipant['email']; ?></li>
             <?php endforeach; ?>
         </ul>
+        <p>
+            <?php $templateParams["tags"] = $dbh->getGroupTags($gruppo['idGruppo']); 
+                $tags = array_column($templateParams["tags"], 'nome');
+                echo implode(" - ", $tags);
+            ?>    
+        </p>
         <p>Descrizione: <?php echo $gruppo['descr_breve']; ?> </p>
         <p>Corso: <?php echo $gruppo['corso_di_riferimento']; ?> </p>
         <?php if (isset($templateParams["value"])):?>
