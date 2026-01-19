@@ -45,9 +45,9 @@
             ?>    
         </p>
         <p>Descrizione: <?php echo $gruppo['descr_breve']; ?> </p>
+        <p>Partecipanti: 
+            <?php echo $dbh->getNumberOfPartecipants($gruppo['idGruppo'])."/".$dbh->getGroupMaxPartecipants($gruppo['idGruppo']); ?>
+        </p>
         <p>Corso: <?php echo $gruppo['corso_di_riferimento']; ?> </p>
-        <?php if (isset($templateParams["value"])):?>
-            <button>Entra nel gruppo</button>
-        <?php endif; ?>
     </section>
 <?php endforeach; ?>

@@ -48,6 +48,11 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getNumberOfPartecipants($idGruppo) {
+        $result = $this->getPartecipants($idGruppo);
+        return count($result);
+    }
+
     public function createNewGroup($name, $course, $size, $isPrivate, $shortDesc, $longDesc) {
         $stmt = $this->db->prepare("INSERT INTO gruppo (nome, numero_partecipanti, descr_breve, descr_lunga, privato, corso_di_riferimento, creatore) 
                                     VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -253,6 +258,19 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getGroupMaxPartecipants($idGruppo) {
+        $stmt = $this->db->prepare("SELECT numero_partecipanti
+                                    FROM gruppo
+                                    WHERE idGruppo = ?");
+        $stmt->bind_param('i', $idGruppo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $row = $result->fetch_assoc();
+
+        return $row['numero_partecipanti'];
     }
 
     public function deleteUserFromGroup($email, $idGruppo) {
