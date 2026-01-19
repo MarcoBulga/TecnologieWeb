@@ -122,6 +122,13 @@ class DatabaseHelper {
         return $result;
     }
 
+    public function addUserToGroup($email, $idGruppo) {
+        $stmt = $this->db->prepare("INSERT INTO fa_parte (email, idGruppo) VALUES (?, ?)");
+        $stmt->bind_param('si', $email, $idGruppo);
+        $result = $stmt->execute();
+        return $result;
+    }
+
     public function isGroupPrivate($idGruppo) {
         $stmt = $this->db->prepare("SELECT privato FROM gruppo WHERE idGruppo = ?");
         $stmt->bind_param('i', $idGruppo);
@@ -214,6 +221,28 @@ class DatabaseHelper {
         return $row["nome"];
     }
 
+    public function getGroupShortDescription($idGruppo) {
+        $stmt = $this->db->prepare("SELECT descr_breve FROM gruppo WHERE idGruppo = ?");
+        $stmt->bind_param('i', $idGruppo);
+        $stmt->execute();
+        $result = $stmt->get_result(); /*questo restituisce un oggetto mysqli non un tipo di oggetto scrivibile*/
+
+        $row = $result->fetch_assoc(); /*prende solo la prima riga del risultato*/
+
+        return $row["descr_breve"];
+    }
+
+    public function getGroupLongDescription($idGruppo) {
+        $stmt = $this->db->prepare("SELECT descr_lunga FROM gruppo WHERE idGruppo = ?");
+        $stmt->bind_param('i', $idGruppo);
+        $stmt->execute();
+        $result = $stmt->get_result(); /*questo restituisce un oggetto mysqli non un tipo di oggetto scrivibile*/
+
+        $row = $result->fetch_assoc(); /*prende solo la prima riga del risultato*/
+
+        return $row["descr_lunga"];
+    }
+
     public function deleteUserFromGroup($email, $idGruppo) {
         $stmt = $this->db->prepare("DELETE FROM fa_parte
                                     WHERE email = ? AND idGruppo = ?");
@@ -221,6 +250,36 @@ class DatabaseHelper {
         $result = $stmt->execute();
 
         return $result; 
+    }
+
+    public function updateGroupName($name, $idGruppo) {
+        $stmt = $this->db->prepare("UPDATE gruppo
+                                    SET nome = ?
+                                    WHERE idGruppo = ?");
+        $stmt->bind_param('si', $name, $idGruppo);
+        $result = $stmt->execute();
+
+        return $result;
+    }
+
+    public function updateGroupLongDescription($descr, $idGruppo) {
+        $stmt = $this->db->prepare("UPDATE gruppo
+                                    SET descr_lunga = ?
+                                    WHERE idGruppo = ?");
+        $stmt->bind_param('si', $descr, $idGruppo);
+        $result = $stmt->execute();
+
+        return $result;
+    }
+
+    public function updateGroupShortDescription($descr, $idGruppo) {
+        $stmt = $this->db->prepare("UPDATE gruppo
+                                    SET descr_breve = ?
+                                    WHERE idGruppo = ?");
+        $stmt->bind_param('si', $descr, $idGruppo);
+        $result = $stmt->execute();
+
+        return $result;
     }
 } 
 ?>
