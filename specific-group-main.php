@@ -14,8 +14,8 @@
         <button type="submit" form="form-generale" name="btn-annulla">Annulla</button>
     <?php elseif($_SESSION['admin'] == false): ?>
         <button onclick=
-            <?php if($templateParams["toSee"] == true) {echo "openPopupToLeave(".$_GET['idGruppo'].")";}
-                    else {echo "openPopupRequestToJoin(document.getElementById('groupname').textContent)";} ?>
+            '<?php if($templateParams["toSee"] == true) {echo "openPopupToLeave(".$_GET['idGruppo'].")";}
+                    else {echo "openPopupRequestToJoin(document.getElementById(\"groupname\").textContent, ".$_GET['idGruppo'].")";} ?>'
             id="btn-new-group">
             <?php if($templateParams["toSee"] == true) { echo "Esci dal gruppo"; } else if($dbh->isGroupPrivate($_GET['idGruppo']) == 1) { echo "Chiedi di unirti"; } else { echo "Unisciti al gruppo"; }?>
         </button>
