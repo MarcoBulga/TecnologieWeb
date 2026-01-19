@@ -9,5 +9,7 @@ if(isset($_POST["btn-search"])) {
 
 $templateParams["page"] = 'groups-main.php'; 
 
+$templateParams["notifications"] = $dbh->getAllNotifications($_SESSION["email"]);
+
 require './template/base.php';
 ?>

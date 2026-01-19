@@ -30,18 +30,20 @@
         <button id="chiudi-menu">Chiudi</button>
     </nav>
     <nav id="notifiche">
-        <div class="notification" onclick="openMessage(this)">
+        <?php foreach($templateParams["notifications"] as $notification): ?>
+        <div class="notification" onclick="openMessage(this, <?php echo $notification['tipo'].','.$notification['testo']; ?>)" >
             <div class="messaggio">
-                <p>Questa è una notifica</p>
-                <p>Mittente</p>
+                <p><?php echo $notification["oggetto"]; ?></p>
+                <p><?php echo $notification["mittente"]; ?></p>
             </div>
             <button class="elimina-notifica">X</button>
         </div>
-        <div class="notification" onclick="openRequest(this)">
+        <?php endforeach; ?>
+        <!-- <div class="notification" onclick="openRequest(this)">
             <div class="messaggio">
                 <p>Questa è una richiesta</p>
                 <p>Mittente</p>
-            </div>
+            </div> -->
             <button class="elimina-notifica">X</button>
         </div>
         <button id="chiudi-notifiche">Chiudi</button>
@@ -53,7 +55,7 @@
     <!--POPUP NOTIFICA NORMALE-->
         <div id="notificationPopup" class="hidden-popup">
             <div class="popup-elements">
-                <h2 id="popupObject"></h2>
+                <h2 id="popupObject">placeholder</h2>
                 <p id="popupText"></p>
                 <p id="popupSender"></p>
                 <div class="popup-buttons">
@@ -65,7 +67,7 @@
         <!--POPUP NOTIFICA RICHIESTA-->
         <div id="notificationPopupRequest" class="hidden-popup">
             <div class="popup-elements">
-                <h2 id="popupObjectRequest"></h2>
+                <h2 id="popupObjectRequest">placeholder</h2>
                 <p id="popupTextRequest"></p>
                 <p id="popupSenderRequest"></p>
                 <div class="popup-buttons">
