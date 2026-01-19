@@ -81,8 +81,8 @@ function openPopupRequestToJoinPrivate(groupName,idGruppo){
             }
             const data = await response.json();
             console.log(data);
-            if(data['esito']) {
-                window.location.href= "./specific-group-to-see.php?idGruppo=" + idGruppo + "&status=success_join";
+            if(data['esito'] == null) {
+                window.location.href= "./specific-group-to-join.php?idGruppo=" + idGruppo + "&status=request-sent";
             } else {
                 alert("Errore nell'unirsi al gruppo")
             }
