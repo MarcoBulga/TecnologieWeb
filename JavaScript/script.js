@@ -44,16 +44,17 @@ function openMessage(notification, type, text){
         deleteNotification(notificaDaEliminare);
         return;
     }
-
+    
+    let popup;
     if(type === "messaggio"){
-        const popup = document.getElementById("notificationPopup");
+        popup = document.getElementById("notificationPopup");
     } else if(type === "richiesta"){
-        const popup = document.getElementById("notificationPopupRequest");
+        popup = document.getElementById("notificationPopupRequest");
     } else {
         alert("Errore nell'apertura della notifica (type = null)");
     } 
     
-    const popup = document.getElementById("notificationPopup");
+    //const popup = document.getElementById("notificationPopup");
     const object = notification.querySelector("p:nth-of-type(1)");
     const sender = notification.querySelector("p:nth-of-type(2)");
     const popupObject = popup.querySelector("h2:nth-of-type(1)");
@@ -61,7 +62,7 @@ function openMessage(notification, type, text){
     const popupSender = popup.querySelector("p:nth-of-type(2)");
 
     popupObject.textContent = object.textContent;
-    popupText.textContent = text.textContent;
+    popupText.textContent = text;
     popupSender.textContent = sender.textContent;
     
 
