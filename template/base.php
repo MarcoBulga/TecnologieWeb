@@ -43,7 +43,8 @@
         <?php foreach($templateParams["notifications"] as $notification): ?>
         <div class="notification"
             data-mittente = "<?php echo $notification['mittente']; ?>"
-            data-idgruppo="<?php echo $_GET['idGruppo'] ?>"
+            data-idnotifica="<?php echo $notification['idNotifica']; ?>" 
+            data-idgruppo="<?php echo $notification['idGruppo']; ?>"
             onclick="openMessage(this, '<?php echo $notification['tipo']; ?>', '<?php echo addslashes($notification['testo']); ?>')">
             <div class="messaggio">
                 <p><?php echo $notification["oggetto"]; ?></p>

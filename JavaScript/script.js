@@ -63,9 +63,15 @@ function openMessage(notification, type, text){
     document.getElementById("yesRequest").onclick = async function() {
         const emailDaAggiungere = notification.dataset.mittente;
         const idGruppo = notification.dataset.idgruppo;
-        const idNotificaOriginale = notification.dataset.idNotifica;
+        const idNotificaOriginale = notification.dataset.idnotifica;
 
-        const url = 'gestisci-richiesta.php?action=accept-request&email=' + emailDaAggiungere + '&idGruppo=' + idGruppo + '&idNotifica=' + idNotificaOriginale;
+        if (!idGruppo || idGruppo === "") {
+            console.error("Errore: ID Gruppo mancante nel dataset della notifica.");
+            alert("Impossibile procedere: dati del gruppo non trovati.");
+            return;
+        }
+
+        const url = 'accept-request.php?action=accept-request&email=' + emailDaAggiungere + '&idGruppo=' + idGruppo + '&idNotifica=' + idNotificaOriginale;
         try {
             const response = await fetch(url);
             const data = await response.json();
@@ -73,11 +79,12 @@ function openMessage(notification, type, text){
             if (data.esito) {
                 deleteNotification(notification);
                 popup.style.display="none";
+                location.reload();
             } else {
                 alert("Errore: " + data.errore);
             }
         } catch (error) {
-            console.errore("Errore durante l'accettazione", error);
+            console.error("Errore durante l'accettazione", error);
         }
     }
 

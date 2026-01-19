@@ -70,6 +70,9 @@ values (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);
 insert into messaggio(idChat,idNotifica)
 values (1,1);
 
+insert into notifica_in_gruppo(idNotifica, idGruppo)
+values (3,1);
+
 /*
 delete from corso where nome = "TecnologieWeb";
 delete from utente;

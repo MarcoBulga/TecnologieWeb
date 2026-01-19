@@ -79,7 +79,7 @@ function openPopupRequestToJoinPrivate(groupName,idGruppo){
             if (!response.ok) {
                 throw new Error("Errore nella richiesta" + response.status);
             }
-            const data = await response.json();
+            const data = await response.text();
             console.log(data);
             if(data['esito'] == null) {
                 window.location.href= "./specific-group-to-join.php?idGruppo=" + idGruppo + "&status=request-sent";

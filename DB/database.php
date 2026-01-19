@@ -304,7 +304,12 @@ class DatabaseHelper {
     }
 
     public function getAllNotifications($email) {
-        $stmt = $this->db->prepare("SELECT notifica.* from notifica join riceve on notifica.idNotifica = riceve.idNotifica where riceve.destinatario = ? order by data desc");
+        $stmt = $this->db->prepare("SELECT n.*, nig.idGruppo
+                                    FROM notifica n
+                                    JOIN riceve r ON n.idNotifica = r.idNotifica 
+                                    LEFT JOIN notifica_in_gruppo nig ON n.idNotifica = nig.idNotifica
+                                    WHERE r.destinatario = ?
+                                    ORDER BY DATA DESC");
         $stmt->bind_param('s',$email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -365,6 +370,13 @@ class DatabaseHelper {
         return $id;
     }
 
+    public function sendRequest($sender,$text,$object,$type,$receivers,$idGruppo) {
+        $idNotifica = $this->sendMessage($sender,$text,$object,$type,$receivers);
+        $stmt = $this->db->prepare("INSERT INTO notifica_in_gruppo(idGruppo, idNotifica) VALUES (?,?)");
+        $stmt->bind_param('ii', $idGruppo, $idNotifica);
+        return $stmt->execute();
+    }
+
     public function markAsRead($notification,$email) {
         $stmt = $this->db->prepare("UPDATE riceve SET visto = true WHERE idNotifica = ? AND destinatario = ?");
         $stmt->bind_param("is",$notification,$email);
@@ -386,7 +398,7 @@ class DatabaseHelper {
     }
 
     public function deleteNotification($idNotifica) {
-        $stmt->$this->db->prepare("DELETE FROM notifica WHERE idNotifica = ?");
+        $stmt = $this->db->prepare("DELETE FROM notifica WHERE idNotifica = ?");
         $stmt->bind_param('i', $idNotifica);
         return $stmt->execute();
     }
@@ -403,7 +415,6 @@ class DatabaseHelper {
 
     public function newMessageInChat($sender,$text,$groupId) {
         $emails = $this->getPartecipants($groupId);
-        var_dump($emails[]["email"]);
         $id = $this->sendMessage($sender,$text,"New message","messaggio",$emails['email']);
 
         $stmt = $this->db->prepare("INSERT INTO messaggio(idNotifica,idChat) VALUES (?,?)");

@@ -87,6 +87,11 @@ create table messaggio (
      idNotifica int not null,
      constraint ID_messaggio_ID primary key (idChat,idNotifica));
 
+create table notifica_in_gruppo (
+     idGruppo int not null,
+     idNotifica int not null,
+     constraint ID_notifica_in_gruppo_ID primary key (idGruppo,idNotifica));
+
 
 -- Constraints Section
 -- ___________________ 
@@ -129,7 +134,8 @@ alter table possiede add constraint REF_possi_TAG
 
 alter table riceve add constraint EQU_ricev_NOTIF_FK
      foreign key (idNotifica)
-     references NOTIFICA(idNotifica);
+     references NOTIFICA(idNotifica)
+     on delete cascade;
 
 alter table riceve add constraint REF_ricev_UTENT
      foreign key (destinatario)
@@ -148,6 +154,16 @@ alter table messaggio add constraint REF_mess_CHAT_FK
 alter table messaggio add constraint REF_mess_NOTIF_FK
      foreign key (idNotifica)
      references NOTIFICA(idNotifica)
+     on delete cascade;
+
+alter table notifica_in_gruppo add constraint REF_NOT_GROUP
+     foreign key (idNotifica)
+     references NOTIFICA(idNotifica)
+     on delete cascade;
+
+alter table notifica_in_gruppo add constraint REF_GROUP_NOT
+     foreign key (idGruppo)
+     references GRUPPO(idGruppo)
      on delete cascade;
      
 
