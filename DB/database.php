@@ -370,5 +370,16 @@ class DatabaseHelper {
 
         return $result;
     }
+
+    public function getGroupMessages($groupId) {
+        $stmt = $this->db->prepare("SELECT notifica.* 
+                                    from notifica join messaggio join chat on notifica.idNotifica = messaggio.idNotifica and messaggio.idChat = chat.idChat
+                                    where chat.idGruppo = ?");
+        $stmt->bind_param('i',$groupId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 } 
 ?>

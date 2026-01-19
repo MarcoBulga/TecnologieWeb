@@ -22,5 +22,7 @@ if(isset($_POST['btn-elimina-gruppo'])) {
     }
 }
 
+$templateParams["chat"] = $dbh->getGroupMessages($_GET['idGruppo']);
+
 require './template/base.php';
 ?>
