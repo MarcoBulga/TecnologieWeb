@@ -53,6 +53,13 @@ class DatabaseHelper {
         return count($result);
     }
 
+    public function addAdministratorToGroup($email, $idGruppo) {
+        $stmt = $this->db->prepare("INSERT INTO fa_parte (email, idGruppo) VALUES (?, ?)");
+        $stmt->bind_param('si', $email, $idGruppo);
+        $result = $stmt->execute();
+        return $result;
+    }
+
     public function createNewGroup($name, $course, $size, $isPrivate, $shortDesc, $longDesc) {
         $stmt = $this->db->prepare("INSERT INTO gruppo (nome, numero_partecipanti, descr_breve, descr_lunga, privato, corso_di_riferimento, creatore) 
                                     VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -60,6 +67,7 @@ class DatabaseHelper {
         $result = $stmt->execute();
 
         $id = $this->getGroupId();
+        $this->addAdministratorToGroup($_SESSION['email'], $id);
         $stmt = $this->db->prepare("INSERT INTO possiede(idGruppo,nome) VALUES (?,'ghost')");
         $stmt->bind_param('i', $id);
         $stmt->execute();
@@ -74,13 +82,6 @@ class DatabaseHelper {
         $stmt->bind_param('sissisi', $name, $size, $shortDesc, $longDesc, $isPrivate, $course, $idGruppo);
         $result = $stmt->execute();
 
-        return $result;
-    }
-
-    public function addAdministratorToGroup($email, $idGruppo) {
-        $stmt = $this->db->prepare("INSERT INTO fa_parte (email, idGruppo) VALUES (?, ?)");
-        $stmt->bind_param('si', $email, $idGruppo);
-        $result = $stmt->execute();
         return $result;
     }
 
@@ -364,7 +365,7 @@ class DatabaseHelper {
         $id = $this->db->insert_id;
 
         foreach($receivers as $receiver) {
-            $stmt = $this->db->prepare("INSERT INTO riceve(email,idNotifica) VALUES (?,?)");
+            $stmt = $this->db->prepare("INSERT INTO riceve(destinatario,idNotifica) VALUES (?,?)");
             $stmt->bind_param('si',$receiver,$id);
             $stmt->execute();
         }
