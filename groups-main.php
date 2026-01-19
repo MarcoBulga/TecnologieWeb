@@ -9,6 +9,7 @@
     <input type="submit" id="btn-search" name="btn-search" value="Cerca" />
     <input type="submit" id="btn-reset" name="btn-reset" value="Tutti i gruppi" formnovalidate/>
     <?php if(isset($templateParams["value"])):?>
+        <label for="course" hidden>Seleziona corso:</label>
         <select name="course" id="course" required>
             <option value="" disabled selected hidden>seleziona corso</option>
             <?php foreach($templateParams["courses"] as $course): ?>
@@ -17,8 +18,10 @@
         </select>
         <div class="filters">
             <ul>
-                <?php foreach($templateParams["filters"] as $filter): ?>
-                <li><label for=<?php echo $filter["nome"]; ?>><input type="checkbox" id=<?php echo $filter["nome"]; ?> name=<?php echo $filter["nome"]; ?>><?php echo $filter["nome"]; ?></label></li>
+                <?php foreach($templateParams["filters"] as $filter): 
+                    $safeId = str_replace(" ", "_", $filter["nome"]);
+                    ?>
+                <li><label for="<?php echo $safeId; ?>"><input type="checkbox" id="<?php echo $safeId; ?>" name="<?php echo $safeId; ?>"><?php echo $safeId; ?></label></li>
                 <?php endforeach; ?>
             </ul>
         </div>
