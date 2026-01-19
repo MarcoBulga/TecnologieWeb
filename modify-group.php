@@ -21,8 +21,14 @@ if(isset($_POST['btn-confirm'])) {
     $dbh->updateGroupName($_POST['new-name'], $_GET['idGruppo']);
     $dbh->updateGroupLongDescription($_POST['new-long-descr'], $_GET['idGruppo']);
     $dbh->updateGroupShortDescription($_POST['new-short-descr'], $_GET['idGruppo']);
-    header("Location: ./specific-group-to-see.php?idGruppo=".$_GET['idGruppo']);
-    exit();
+    $dbh->checkGroupPartecipants($_GET['idGruppo']);
+    if($dbh->isUserInGroup($_SESSION['email'], $_GET['idGruppo'])) {
+        header("Location: ./specific-group-to-see.php?idGruppo=".$_GET['idGruppo']);
+        exit();
+    } else {
+        header("Location: ./user-groups.php");
+        exit();
+    }
 }
 
 if(isset($_POST['btn-annulla'])) {

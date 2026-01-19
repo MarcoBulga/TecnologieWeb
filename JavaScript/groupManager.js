@@ -65,12 +65,12 @@ function openPopupToLeave(idGruppo){
             const data = await response.json();
             // Gestisci la risposta se necessario
             if(data["esito"]) {
-                alert("Uscito dal gruppo con successo");
+                window.location.href = "./specific-group-to-see.php?idGruppo=" + idGruppo + "&status=success_leave";
             } else {
                 alert("Errore nell'uscita dal gruppo");
             }
         } catch (error) {
-            console.error("Errore durante la richiesta:", error.message());
+            console.error("Errore durante la richiesta:", error.message);
         }
 
         popup.style.display = "none";

@@ -290,5 +290,39 @@ class DatabaseHelper {
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function checkGroupPartecipants($idGruppo) {
+        $stmt = $this->db->prepare("SELECT *
+                                    FROM fa_parte
+                                    WHERE idGruppo = ?");
+        $stmt->bind_param('i', $idGruppo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows <= 0) {
+            $result = $this->deleteGroup($idGruppo);
+            return $result;
+        }
+    }
+
+    public function deleteGroup($idGruppo) {
+        $stmt = $this->db->prepare("DELETE FROM gruppo
+                                    WHERE idGruppo = ?");
+        $stmt->bind_param('i', $idGruppo);
+        $result = $stmt->execute();
+
+        return $result;
+    }
+
+    public function isUserInGroup($email, $idGruppo) {
+        $stmt = $this->db->prepare("SELECT *
+                                    FROM fa_parte
+                                    WHERE email = ? AND idGruppo = ?");
+        $stmt->bind_param('si', $email, $idGruppo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->num_rows > 0;
+    }
 } 
 ?>
