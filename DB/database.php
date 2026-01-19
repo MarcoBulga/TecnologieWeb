@@ -313,7 +313,7 @@ class DatabaseHelper {
     }
 
     public function getAllNotifications($email) {
-        $stmt = $this->db->prepare("Select notifica.* from notifica join riceve on notifica.idNotifica = riceve.idNotifica where riceve.destinatario = ?");
+        $stmt = $this->db->prepare("Select notifica.* from notifica join riceve on notifica.idNotifica = riceve.idNotifica where riceve.destinatario = ? order by data desc");
         $stmt->bind_param('s',$email);
         $stmt->execute();
         $result = $stmt->get_result();

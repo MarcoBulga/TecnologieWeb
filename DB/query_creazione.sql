@@ -52,8 +52,7 @@ values ("prima prova di messaggio chissa se funziona","test","messaggio","alessa
        ("Buongiorno, vorrei entrare nel gruppo","richiesta entrata","richiesta","gennaro.fabbri@studio.unibo.it",NOW());
 
 insert into riceve(destinatario,idNotifica)
-values ("daniele.tramonti@studio.unibo.it",1),
-       ("marco.bulgarelli@studio.unibo.it",2),
+values ("marco.bulgarelli@studio.unibo.it",2),
        ("marco.bulgarelli@studio.unibo.it",3);
 
 INSERT INTO possiede(idGruppo,nome) 
@@ -64,6 +63,13 @@ values ("online",1),("online",3),
 	("gioco",1),
        ("accessibile",1),("accessibile",4),("accessibile",7),("accessibile",5),
        ("in presenza",9);
+
+insert into CHAT(idChat,idGruppo) 
+values (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);
+
+insert into messaggio(idChat,idNotifica)
+values (1,1);
+
 /*
 delete from corso where nome = "TecnologieWeb";
 delete from utente;

@@ -76,6 +76,16 @@ create table riceve (
      idNotifica int not null,
      constraint ID_riceve_ID primary key (destinatario, idNotifica));
 
+create table CHAT (
+     idChat int not null auto_increment,
+     idGruppo int not null,
+     constraint ID_CHAT_ID primary key (idChat));
+
+create table messaggio (
+     idChat int not null,
+     idNotifica int not null,
+     constraint ID_messaggio_ID primary key (idChat,idNotifica));
+
 
 -- Constraints Section
 -- ___________________ 
@@ -123,6 +133,21 @@ alter table riceve add constraint EQU_ricev_NOTIF_FK
 alter table riceve add constraint REF_ricev_UTENT
      foreign key (destinatario)
      references UTENTE(email);
+
+alter table CHAT add constraint EQU_CHAT_GRUPP
+     foreign key (idGruppo)
+     references GRUPPO(idGruppo)
+     on delete cascade;
+
+alter table messaggio add constraint REF_mess_CHAT_FK
+     foreign key (idChat)
+     references CHAT(idChat)
+     on delete cascade;
+
+alter table messaggio add constraint REF_mess_NOTIF_FK
+     foreign key (idNotifica)
+     references NOTIFICA(idNotifica)
+     on delete cascade;
      
 
 /*alter table GRUPPO add constraint ID_GRUPPO_CHK
@@ -177,4 +202,16 @@ create unique index ID_riceve_IND
 
 create index EQU_ricev_NOTIF_IND
      on riceve (idNotifica);
+
+create unique index ID_CHAT_IND
+     on CHAT (idChat);
+
+create index EQU_CHAT_GRUPP_IND
+     on CHAT (idGruppo);
+
+create index ID_mess_IND
+     on messaggio (idChat,idNotifica);
+
+create index REF_mess_NOTIF_IND
+     on messaggio (idNotifica);
 
