@@ -307,12 +307,15 @@ nav.show {
 }
 
 /*Filter window*/
-/* form button {
+button.tag-button {
     transition: all 0.2s ease;
-} */
+}
 
-/* form div ul {
+form div ul {
     list-style: none;
+}
+
+form div {
     display: flex;
     flex-direction: column;
 
@@ -326,13 +329,13 @@ nav.show {
     transform:translateX(100%);
     opacity: 0; 
     transition: transform 0.4s ease-in-out, opacity 0.3s;
-} */
-/* 
+}
+ 
 form div.show {
     transform: translateX(0);
     pointer-events: auto;
     opacity: 1;
-} */
+}
 
 .notification.fade-out {
     opacity: 0;

@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./JavaScript/script.js" defer></script>
     <script src="./JavaScript/groupManager.js" defer></script>
+    <?php if(isset($templateParams["js"])): ?>
+    <script src="./JavaScript/<?php echo $templateParams["js"]; ?>" defer></script>
+    <?php endif; ?>
     <title>Ricerca Gruppi</title>
 </head>
 <body>

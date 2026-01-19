@@ -15,7 +15,6 @@
             <option value="<?php echo $course["nome"] ;?>"><?php echo $course["nome"] ;?></option>
             <?php endforeach; ?>
         </select>
-    <button id="tag-button">Scegli tag</button> 
         <div class="filters">
             <ul>
                 <?php foreach($templateParams["filters"] as $filter): ?>
@@ -25,6 +24,7 @@
         </div>
     <?php endif; ?>
 </form>
+<button id="tag-button">Scegli tag</button> 
 <?php foreach($templateParams["Gruppi"] as $gruppo): ?>
     <section>
         <h3>
