@@ -24,14 +24,15 @@
     </nav>
     <nav id="menu">
         <ul>
-            <li><button onclick="window.location.href='./search.php'">Tutti i gruppi</button></li>
             <?php if($_SESSION['admin'] == false): ?>
+                <li><button onclick="window.location.href='./search.php'">Cerca gruppi</button></li>
                 <li><button onclick="window.location.href='./user-groups.php'">I tuoi gruppi</button></li>
                 <li><button onclick="window.location.href='./group-creation.php'">Crea nuovo gruppo</button></li>
             <?php endif; ?>
             <?php if($_SESSION['admin'] == false): ?>
                 <li><button>Segnala un problema</button></li>
             <?php else: ?>
+                <li><button onclick="window.location.href='./search.php'">Tutti i gruppi</button></li>
                 <li><button>Segnalazioni</button></li>
             <?php endif; ?>
             <li><button onclick="window.location.href='./logout.php'">Logout</button></li>

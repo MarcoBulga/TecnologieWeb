@@ -12,11 +12,11 @@
                 <button id="tagbutton" name="tagbutton">Scegli tag</button>
             </li>
             <li><label for="private">Privato <input type="checkbox" name="private" id="private" /></label></li>
-            <li><label for="shortdescription">Descrizione breve : <br/><textarea name="shortdescription" id="shortdescription" required></textarea></li>
-            <li><label for="longdescription">Descrizione estesa : <br/><textarea name="longdescription" id="longdescription" required></textarea></li>
+            <li><label for="shortdescription">Descrizione breve : </label><br/><textarea name="shortdescription" id="shortdescription" required></textarea></li>
+            <li><label for="longdescription">Descrizione estesa : </label><br/><textarea name="longdescription" id="longdescription" required></textarea></li>
         </ul>
         <input type="reset" id="undobutton" name="undobutton" value="Annulla" />
-        <input type="submit" id="confirmbutton" name="confirmbutton" value="Conferma"/>
+        <input type="submit" id="confirmbutton" name="confirmbutton" value="Conferma" />
         <?php
             $valueGroup = false;
             $valueAdm = false;
