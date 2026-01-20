@@ -144,7 +144,6 @@ function openPopupToLeave(idGruppo){
     popup.style.display = "flex";
 
     document.getElementById("yes").onclick = async function(){
-        alert("Richiesta inviata");
         const url = "gestisci-richiesta.php?idGruppo=" + idGruppo + "&action=leave";
         try {
             const response = await fetch(url);
@@ -160,6 +159,44 @@ function openPopupToLeave(idGruppo){
             }
         } catch (error) {
             console.error("Errore durante la richiesta:", error.message);
+        }
+
+        popup.style.display = "none";
+    };
+
+    document.getElementById("not").onclick = function(){
+        popup.style.display = "none";
+    };
+}
+
+function openPopupToDeleteGroup(idGruppo,admin){
+    const popup = document.getElementById("popup");
+    const text = document.getElementById("popupText");
+
+    text.textContent = "Sei sicuro di voler eliminare il gruppo?";
+
+    popup.style.display = "flex";
+
+    document.getElementById("yes").onclick = async function(){
+        const url = "gestisci-richiesta.php?idGruppo=" + idGruppo + "&action=delete_group";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error("Errore nell'eliminazione del gruppo" + response.status);
+            }
+            const data = await response.json();
+            // Gestisci la risposta se necessario
+            if(data["esito"]) {
+                if(admin == true) {
+                    window.location.href = "./search.php?&status=success_leave";
+                }else {
+                    window.location.href = "./user-groups.php?&status=success_leave";
+                }
+            } else {
+                alert("Errore nell'eliminazione del gruppo");
+            }
+        } catch (error) {
+            console.error("Errore durante l'eliminazione del gruppo:", error.message);
         }
 
         popup.style.display = "none";
@@ -203,5 +240,79 @@ function openPopupToDeleteReport(button) {
 
     document.getElementById("not").onclick = function(){
         popup.style.display = "none";
+    };
+}
+
+async function openPopupToAddCourse(event) {
+    if (event) event.preventDefault();
+    const popup = document.getElementById("coursePopup");
+    const text = document.getElementById("coursePopupText");
+    const object = document.getElementById("coursePopupObject");
+    const name = document.getElementById("name-new-course").value;
+
+    const url = "gestisci-group-change.php?nomeCorso=" + name + "&action=add_course";
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error("Errore nella creazione del corso" + response.status);
+        }
+        const data = await response.json();
+        // Gestisci la risposta se necessario
+        if(data["esito"]) {
+            object.textContent = "Corso aggiunto";
+            text.textContent = "Il corso da te aggiunto è ora visibile a tutti gli utenti";
+
+            popup.style.display= "flex";
+
+        } else {
+            object.textContent = "Aggiunta corso fallita!"
+            text.textContent = "Probabilmente esiste già un corso con quel nome, non possono essercene due uguali!"
+
+            popup.style.display = "flex";
+        }
+    } catch (error) {
+        console.error("Errore durante l'aggiunta del corso:", error.message);
+    }
+
+    document.getElementById("chiudi").onclick = function(){
+        popup.style.display = "none";
+        location.reload();
+    };
+}
+
+async function openPopupToDeleteCourse(event) {
+    if (event) event.preventDefault();
+    const popup = document.getElementById("coursePopup");
+    const text = document.getElementById("coursePopupText");
+    const object = document.getElementById("coursePopupObject");
+    const name = document.getElementById("course-to-delete").value;
+
+    const url = "gestisci-course-change.php?nomeCorso=" + name + "&action=remove_course";
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error("Errore nella cancellazione del corso" + response.status);
+        }
+        const data = await response.json();
+        // Gestisci la risposta se necessario
+        if(data["esito"]) {
+            object.textContent = "Corso eliminato";
+            text.textContent = "Il corso è stato eliminato con successo! Tutti i gruppi che facevano riferimento di quel corso sono stati rimossi!";
+
+            popup.style.display= "flex";
+
+        } else {
+            object.textContent = "Eliminazione corso fallita!"
+            text.textContent = "Purtroppo qualcosa sembra essere andato storto..."
+
+            popup.style.display = "flex";
+        }
+    } catch (error) {
+        console.error("Errore durante l'eliminazione del corso:", error.message);
+    }
+
+    document.getElementById("chiudi").onclick = function(){
+        popup.style.display = "none";
+        location.reload();
     };
 }
