@@ -72,7 +72,6 @@ function openPopupRequestToJoinPrivate(groupName,idGruppo){
     popup.style.display = "flex";
 
     document.getElementById("yes").onclick = async function(){
-        alert("Richiesta inviata");
         const url = "gestisci-richiesta.php?idGruppo=" + idGruppo +"&richiesta=" + richiesta.value.trim() + "&oggetto=" + oggetto.value.trim() + "&action=join-private";
         try {
             const response = await fetch(url);
@@ -80,11 +79,7 @@ function openPopupRequestToJoinPrivate(groupName,idGruppo){
                 throw new Error("Errore nella richiesta" + response.status);
             }
             const data = await response.json();
-            if(data['esito'] == null) {
-                window.location.href= "./specific-group-to-join.php?idGruppo=" + idGruppo + "&status=request-sent";
-            } else {
-                alert("Errore nell'unirsi al gruppo")
-            }
+            window.location.href= "./specific-group-to-join.php?idGruppo=" + idGruppo + "&status=request-sent";
         } catch (error) {
             console.error("Errore durante la richiesta: ", error.message);
         }
