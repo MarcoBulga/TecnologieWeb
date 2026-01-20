@@ -68,9 +68,9 @@ class DatabaseHelper {
     }
 
     public function insertGroupFilters($idGruppo,$filters) {
+        $stmt = $this->db->prepare("INSERT INTO possiede(idGruppo,nome) VALUE (?,?)");
+        $stmt->bind_param('is', $idGruppo,$filter);
         foreach($filters as $filter) {
-            $stmt = $this->db->prepare("INSERT INTO possiede(idGruppo,nome) VALUE (?,?)");
-            $stmt->bind_param('is', $idGruppo,$filter);
             $stmt->execute();
         }
     }
@@ -407,10 +407,11 @@ class DatabaseHelper {
         $stmt->execute();
         $id = $this->db->insert_id;
 
+        $stmt = $this->db->prepare("INSERT INTO riceve(destinatario,idNotifica) VALUES (?,?)");
+        $stmt->bind_param('si',$receiver,$id);
         foreach($receivers as $receiver) {
             if($receiver != $sender) {
-                $stmt = $this->db->prepare("INSERT INTO riceve(destinatario,idNotifica) VALUES (?,?)");
-                $stmt->bind_param('si',$receiver,$id);
+                
                 $stmt->execute();
             }
         }
