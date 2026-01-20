@@ -574,5 +574,17 @@ class DatabaseHelper {
 
         return array_column($result->fetch_all(MYSQLI_ASSOC), 'mittente');
     }
+
+    public function getUserLastMessage($groupId) {
+        $stmt = $this->db->prepare("SELECT notifica.testo 
+                                    from notifica join messaggio join chat on notifica.idNotifica = messaggio.idNotifica and messaggio.idChat = chat.idChat
+                                    where chat.idGruppo = ? and notifica.mittente = ? ORDER BY data desc LIMIT 1");
+        $stmt->bind_param('is',$groupId,$_SESSION['email']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        return $row['testo'];
+    }
 } 
 ?>

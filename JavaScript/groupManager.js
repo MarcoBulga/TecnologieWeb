@@ -245,7 +245,7 @@ async function openPopupToAddCourse(event) {
     const object = document.getElementById("coursePopupObject");
     const name = document.getElementById("name-new-course").value;
 
-    const url = "gestisci-group-change.php?nomeCorso=" + name + "&action=add_course";
+    const url = "gestisci-course-change.php?nomeCorso=" + name + "&action=add_course";
     try {
         const response = await fetch(url);
         if (!response.ok) {

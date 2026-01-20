@@ -16,5 +16,8 @@
         <?php foreach($templateParams["js"] as $script): ?>
         <script src="./JavaScript/<?php echo $script ?>"></script>
         <?php endforeach; ?>
+        <footer>
+        <p>Daniele Tramonti (daniele.tramonti2@studio.unibo.it) - Alessandro Ravaioli (alessandro.ravaioli8@studio.unibo.it) - Marco Bulgarelli (marco.bulgarelli6@studio.unibo.it)</p>
+        </footer>
     </body>
 </html>
