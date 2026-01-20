@@ -70,9 +70,9 @@
 <?php endif; ?>
 
 <?php if($pageNumber > 0): ?> 
-    <button type="button" name="back-button" id="back-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber-1 ?>'">indietro</button>
+    <button type="button" name="back-button" id="back-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber-1 ?>&ricerca=<?php echo $ricerca ?>&researchString=<?php echo $researchString ?>&number=<?php echo $number ?>'">indietro</button>
 <?php endif; ?>
 <p><?php echo $pageNumber + 1 ?><p>
 <?php if( $forward ): ?> 
-    <button type="button" name="forward-button" id="forward-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber+1 ?>'">avanti</button>
+    <button type="button" name="forward-button" id="forward-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber+1 ?>&ricerca=<?php echo $ricerca ?>&researchString=<?php echo $researchString ?>&number=<?php echo $number ?>'">avanti</button>
 <?php endif; ?>

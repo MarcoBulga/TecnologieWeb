@@ -163,10 +163,15 @@ class DatabaseHelper {
         return $firstRow['privato'];
     }
 
-    public function searchNameWithUser($name) {
+    public function searchNameWithUser($name,$limit = null) {
         $name = "%".$name."%";
-        $stmt = $this->db->prepare("SELECT * FROM gruppo WHERE nome LIKE ? AND idGruppo IN (SELECT idGruppo FROM fa_parte WHERE email = ?)");
-        $stmt->bind_param('ss',$name,$_SESSION['email']);
+        if($limit === null) {
+            $stmt = $this->db->prepare("SELECT * FROM gruppo WHERE nome LIKE ? AND idGruppo IN (SELECT idGruppo FROM fa_parte WHERE email = ?)");
+            $stmt->bind_param('ss',$name,$_SESSION['email']);
+        } else {
+           $stmt = $this->db->prepare("SELECT * FROM gruppo WHERE nome LIKE ? AND idGruppo IN (SELECT idGruppo FROM fa_parte WHERE email = ?) ORDER BY nome LIMIT ?,2");
+            $stmt->bind_param('ssi',$name,$_SESSION['email'],$limit); 
+        }
         $stmt->execute();
         $result = $stmt->get_result();
 
