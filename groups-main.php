@@ -1,13 +1,13 @@
 <div>
     <h2> <?php if(isset($templateParams['report'])) echo "SEGNALAZIONI"; elseif(isset($templateParams["value"])) echo "RICERCA GRUPPI"; else echo "I TUOI GRUPPI"; ?></h2>
     <?php if($_SESSION['admin'] == false): ?>
-        <button id="btn-new-group" onclick="window.location.href='./group-creation.php'">Crea nuovo gruppo</button>
+        <button id="btn-new-group" onclick="window.location.href='./group-creation.php'">+</button>
     <?php endif; ?>
 </div>
 <form action="#" method="post" class="search-bar">
-    <label for="ricerca-mio-gruppo">Barra di ricerca<input type="text" id="ricerca-mio-gruppo" name="ricerca-mio-gruppo" placeholder="barra di ricerca"/></label>
+    <label for="ricerca-mio-gruppo" hidden>Barra di ricerca</label><input type="text" id="ricerca-mio-gruppo" name="ricerca-mio-gruppo" placeholder="barra di ricerca"/>
     <input type="submit" id="btn-search" name="btn-search" value="Cerca" />
-    <input type="submit" id="btn-reset" name="btn-reset" value="<?php if(isset($templateParams['report'])) {echo 'Tutte le segnalazioni';} else {echo 'Tutti i gruppi';} ?>" formnovalidate/>
+    <input type="submit" id="btn-reset" name="btn-reset" value="<?php if(isset($templateParams['report'])) {echo 'Tutte le segnalazioni';} else {echo 'Tutti i gruppi';} ?>" formnovalidate />
     <?php if(isset($templateParams["value"]) && empty($templateParams['report'])):?>
         <label for="course" hidden>Seleziona corso:</label>
         <select name="course" id="course" required>
@@ -45,16 +45,17 @@
             <?php endforeach; ?>
         </ul>
         <p>
-            <?php $templateParams["tags"] = $dbh->getGroupTags($gruppo['idGruppo']); 
+            <strong><?php $templateParams["tags"] = $dbh->getGroupTags($gruppo['idGruppo']); 
                 $tags = array_column($templateParams["tags"], 'nome');
                 echo implode(" - ", $tags);
             ?>
+            </strong>
         </p>
-        <p>Descrizione: <?php echo $gruppo['descr_breve']; ?> </p>
-        <p>Partecipanti: 
+        <p><strong>Descrizione:</strong> <?php echo $gruppo['descr_breve']; ?> </p>
+        <p><strong>Partecipanti:</strong> 
             <?php echo $dbh->getNumberOfPartecipants($gruppo['idGruppo'])."/".$dbh->getGroupMaxPartecipants($gruppo['idGruppo']); ?>
         </p>
-        <p>Corso: <?php echo $gruppo['corso_di_riferimento']; ?> </p>
+        <p><strong>Corso:</strong> <?php echo $gruppo['corso_di_riferimento']; ?> </p>
     </section>
     <?php endforeach; ?>
 <?php else: ?>
