@@ -25,7 +25,10 @@ if(isset($_POST['btn-confirm'])) {
     $dbh->updateGroupName($_POST['new-name'], $_GET['idGruppo']);
     $dbh->updateGroupLongDescription($_POST['new-long-descr'], $_GET['idGruppo']);
     $dbh->updateGroupShortDescription($_POST['new-short-descr'], $_GET['idGruppo']);
-    if ($dbh->checkGroupPartecipants($_GET['idGruppo']) == 1) {
+    if($_SESSION['admin'] == true && $dbh->checkGroupPartecipants($_GET['idGruppo']) == 1) {
+        header("Location: ./search.php");
+    }
+    else if ($dbh->checkGroupPartecipants($_GET['idGruppo']) == 1) {
         header("Location: ./user-groups.php");
         exit();
     } else {

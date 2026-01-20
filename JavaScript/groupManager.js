@@ -102,7 +102,6 @@ function openPopupReport(){
     popup.style.display = "flex";
 
     document.getElementById("conferma").onclick = async function(){
-        alert("Richiesta inviata");
         const url = "gestisci-segnalazione.php?&testo=" + testo.value.trim() + "&oggetto=" + oggetto.value.trim() + "&action=report";
         try {
             const response = await fetch(url);
@@ -294,7 +293,7 @@ async function openPopupToDeleteCourse(event) {
             // Gestisci la risposta se necessario
             if(data["esito"]) {
                 object.textContent = "Corso eliminato";
-                text.textContent = "Il corso è stato eliminato con successo! Tutti i gruppi che facevano riferimento di quel corso sono stati rimossi!";
+                text.textContent = "Il corso è stato eliminato con successo! Tutti i gruppi che facevano riferimento a quel corso sono stati rimossi!";
 
                 popup.style.display= "flex";
 
