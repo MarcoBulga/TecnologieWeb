@@ -72,6 +72,10 @@ class DatabaseHelper {
         $stmt->bind_param('i', $id);
         $stmt->execute();
 
+        $stmt = $this->db->prepare("INSERT INTO chat(idGruppo) value (?)");
+        $stmt->bind_param('i', $id);
+        $stmt->execute();
+
         return $result;
     }
 
