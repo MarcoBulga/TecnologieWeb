@@ -72,7 +72,7 @@
 <?php if($pageNumber > 0): ?> 
     <button type="button" name="back-button" id="back-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber-1 ?>'">indietro</button>
 <?php endif; ?>
-<p><?php echo $pageNumber ?><p>
-<?php if($dbh->getNumberOfUserGroups($_SESSION["email"]) > ($pageNumber+1)*2): ?> 
+<p><?php echo $pageNumber + 1 ?><p>
+<?php if( $forward ): ?> 
     <button type="button" name="forward-button" id="forward-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber+1 ?>'">avanti</button>
 <?php endif; ?>
