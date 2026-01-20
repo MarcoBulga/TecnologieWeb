@@ -5,7 +5,7 @@ if($_GET['action'] == 'report') {
     $result['esito'] = $dbh->sendMessage($_SESSION['email'],
                                 $_GET['testo'],
                                 $_GET['oggetto'],
-                                'messaggio',
+                                'segnalazione',
                                 $dbh->getAdmins());
 }
 

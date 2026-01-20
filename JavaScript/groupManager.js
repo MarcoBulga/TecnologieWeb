@@ -115,8 +115,7 @@ function openPopupReport(){
             if (!response.ok) {
                 throw new Error("Errore nella richiesta" + response.status);
             }
-            const data = await response.text();
-            console.log(data);
+            const data = await response.json();
             if(data['esito'] == null) {
                 location.reload();
             } else {
