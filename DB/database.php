@@ -453,5 +453,13 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getAllReports() {
+        $stmt -> $this->db->prepare("SELECT * from notifica where tipo = 'segnalazione'");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 } 
 ?>
