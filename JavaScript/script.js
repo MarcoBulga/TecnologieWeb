@@ -44,7 +44,7 @@ function openMessage(notification, type, text, nomeGruppo){
         deleteNotification(notificaDaEliminare);
         return;
     }
-    
+
     let popup;
     if(type === "messaggio"){
         //LOGICA PER MESSAGGI NORMALI

@@ -45,5 +45,7 @@ if(isset($_POST['btn-annulla'])) {
     exit();
 }
 
+$templateParams['notifications'] = $dbh->getAllNotifications($_SESSION["email"]);
+
 require './template/base.php';
 ?>

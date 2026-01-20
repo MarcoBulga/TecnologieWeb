@@ -80,7 +80,7 @@
         </div>
     <?php endforeach; ?>
     <form id="chat-form" action="#" method="POST" >
-        <label for="chat-message">Scrivi un messaggio: <textarea name="chat-message" id="chat-message"></textarea></label>
+        <label for="chat-message">Scrivi un messaggio: <input type="text" name="chat-message" id="chat-message" /></label>
         <input type="submit" name="send-btn" id="send-btn" value="Invia"/>
     </form>
 </section>
@@ -89,7 +89,7 @@
 <div id="popup" class="hidden-popup">
     <div class="popup-elements">
         <p id="popupText"></p>
-        <?php if($dbh->isGroupPrivate($_GET['idGruppo']) == 1 && $templateParams["toSee"] == false): ?>
+        <?php if($dbh->isGroupPrivate($_GET['idGruppo']) == 1 && $templateParams["toSee"] == false && $_SESSION["admin"] == false): ?>
             <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
                 <p>Oggetto:</p>
                 <textarea name="oggetto" id="oggetto" placeholder="OGGETTO"></textarea>
