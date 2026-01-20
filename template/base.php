@@ -112,6 +112,16 @@
                 </div>
             </div>
         </div>
+
+        <!--Popup di conferma-->
+        <div id="popupConfirm" class="hidden-popup">
+            <div class="popup-elements">
+                <p id="popupTextConfirm"></p>
+                <div class="popup-buttons">
+                    <button id="chiudiConfirm">Chiudi</button>
+                </div>
+            </div>
+        </div>
     <footer>
         <p>Daniele Tramonti (daniele.tramonti2@studio.unibo.it) - Alessandro Ravaioli (alessandro.ravaioli8@studio.unibo.it) - Marco Bulgarelli (marco.bulgarelli6@studio.unibo.it)</p>
     </footer>

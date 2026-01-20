@@ -111,7 +111,7 @@ function openPopupReport(){
             const data = await response.json();
             console.log(data);
             if(data['esito']) {
-                location.reload();
+                openPopupConfirm();
             } else {
                 alert("Errore nell'unirsi al gruppo")
             }
@@ -323,8 +323,8 @@ async function openSafetyPopup(event) {
 
     if (name !== "") {
         // Gestisci la risposta se necessario
-        object.textContent = "Sei sicuro di procedere con l'eliminazione?"
-        text.textContent = "Una volta che procedi con l'eliminazione del corso" + name + "tutti i gruppi che ne facevano riferimento saranno eliminati, sei sicuro/a di voler procedere?";
+        object.textContent = "Sei sicuro di procedere con l'eliminazione?";
+        text.textContent = "Una volta che procedi con l'eliminazione del corso " + name + " tutti i gruppi che ne facevano riferimento saranno eliminati, sei sicuro/a di voler procedere?";
 
         popup.style.display = "flex";
 
@@ -337,5 +337,19 @@ async function openSafetyPopup(event) {
             popup.style.display = "none";
             openPopupToDeleteCourse(event);
         }
+    }
+}
+
+function openPopupConfirm(){
+    const popup = document.getElementById("popupConfirm");
+    const text = document.getElementById("popupTextConfirm");
+
+    text.textContent = "La segnalazione è stata inviata con successo!"
+
+    popup.style.display = "flex";
+
+    document.getElementById("chiudiConfirm").onclick = function() {
+        popup.style.display = "none";
+        location.reload();
     }
 }
