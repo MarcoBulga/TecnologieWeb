@@ -458,11 +458,12 @@ class DatabaseHelper {
                                     WHERE admin = true");
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $rows = $result->fetch_all(MYSQLI_ASSOC);
+        return array_column($rows, 'email');
     }
 
     public function getAllReports() {
-        $stmt -> $this->db->prepare("SELECT * from notifica where tipo = 'segnalazione'");
+        $stmt = $this->db->prepare("SELECT * from notifica where tipo = 'segnalazione'");
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -471,12 +472,36 @@ class DatabaseHelper {
 
     public function searchReports($string) {
         $string = "%".$string."%";
-        $stmt -> $this->db->prepare("SELECT * from notifica where tipo = 'segnalazione' and oggetto like ?");
+        $stmt = $this->db->prepare("SELECT * from notifica where tipo = 'segnalazione' and oggetto like ?");
         $stmt->bind_param('s',$string);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getNotificationObject($idNotifica) {
+        $stmt = $this->db->prepare("SELECT oggetto
+                                    FROM notifica 
+                                    WHERE idNotifica = ?");
+        $stmt->bind_param("i", $idNotifica);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        return $row['oggetto'];
+    }
+
+    public function getNotificationText($idNotifica) {
+        $stmt = $this->db->prepare("SELECT testo
+                                    FROM notifica 
+                                    WHERE idNotifica = ?");
+        $stmt->bind_param("i", $idNotifica);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        return $row['testo'];
     }
 
     public function getNumberOfUserGroups($email) {
