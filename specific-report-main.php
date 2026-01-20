@@ -3,9 +3,9 @@
     <h2 id="reportId">
         Segnalazione n.<?php echo $_GET['idNotifica']; ?>  
     </h2>
-    <button onclick=
-        '<?php echo "openPopupToDeleteReport(".$_GET['idNotifica'].")"; ?>'
-        id="btn-delete-report" >
+    <button class="btn-delete-report"
+            data-idnotifica = "<?php echo $_GET['idNotifica']; ?>"
+            onclick="openPopupToDeleteReport(this)">
         Elimina Segnalazione
     </button>
 </div>
@@ -13,3 +13,14 @@
     <h3 id="reportObject" name="reportObject"> <?php echo $dbh->getNotificationObject($_GET['idNotifica']); ?> </h3>
     <p id="reportText" name="reportText"> <?php echo $dbh->getNotificationText($_GET['idNotifica'])?> </p>
 </section>
+
+<!--Popup di conferma-->
+<div id="popup" class="hidden-popup">
+    <div class="popup-elements">
+        <p id="popupTextReport"></p>
+        <div class="popup-buttons">
+            <button id="not">No</button>
+            <button id="yes">Si</button>
+        </div>
+    </div>
+</div>

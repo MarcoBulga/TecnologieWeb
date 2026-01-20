@@ -169,3 +169,39 @@ function openPopupToLeave(idGruppo){
         popup.style.display = "none";
     };
 }
+
+function openPopupToDeleteReport(button) {
+    const popup = document.getElementById("popup");
+    const text = document.getElementById("popupTextReport");
+
+    const idNotifica = button.dataset.idnotifica;
+
+    text.textContent = "Sei sicuro di voler eliminare la segnalazione n." + idNotifica + " ?";
+
+    popup.style.display = "flex";
+
+    document.getElementById("yes").onclick = async function(){
+        const url = "gestisci-segnalazione.php?idNotifica=" + idNotifica + "&action=delete";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error("Errore nella richiesta" + response.status);
+            }
+            const data = await response.json();
+            // Gestisci la risposta se necessario
+            if(data["esito"]) {
+                window.location.href = "./reports.php?status=success_leave";
+            } else {
+                alert("Errore nella cancellazione della segnalazione");
+            }
+        } catch (error) {
+            console.error("Errore durante la cancellazione della segnalazione:", error.message);
+        }
+
+        popup.style.display = "none";
+    };
+
+    document.getElementById("not").onclick = function(){
+        popup.style.display = "none";
+    };
+}
