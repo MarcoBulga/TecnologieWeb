@@ -584,7 +584,7 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
 
-        return $row['testo'];
+        return $row === null ? "" : $row["testo"];
     }
 } 
 ?>
