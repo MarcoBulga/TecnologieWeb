@@ -12,7 +12,7 @@ $selectedFilters = array();
 
 if(isset($_POST["btn-search"])) {
     foreach($templateParams["filters"] as $filter) {
-        if(isset($_POST[$filter["nome"]])) {
+        if(isset($_POST[stringToId($filter["nome"])])) {
             $selectedFilters[] = $filter["nome"];
         }
     }

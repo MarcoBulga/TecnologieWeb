@@ -19,9 +19,9 @@
         <div class="filters">
             <ul>
                 <?php foreach($templateParams["filters"] as $filter): 
-                    $safeId = str_replace(" ", "_", $filter["nome"]);
+                    $safeId = stringToId($filter["nome"])
                     ?>
-                <li><label for="<?php echo $safeId; ?>"><input type="checkbox" id="<?php echo $safeId; ?>" name="<?php echo $safeId; ?>"><?php echo $safeId; ?></label></li>
+                <li><label for="<?php echo $safeId; ?>"><input type="checkbox" id="<?php echo $safeId; ?>" name="<?php echo $safeId; ?>"><?php echo $filter["nome"]; ?></label></li>
                 <?php endforeach; ?>
             </ul>
         </div>

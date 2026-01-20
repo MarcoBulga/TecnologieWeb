@@ -11,4 +11,8 @@ function isUserLoggedIn(){
     return !empty($_SESSION['email']);
 }
 
+function stringToId($string) {
+    return str_replace(" ", "_", $string);
+}
+
 ?>
