@@ -518,5 +518,11 @@ class DatabaseHelper {
         $stmt->bind_param('s', $nome);
         return $stmt->execute();
     }
+
+    public function deleteCourse($nome) {
+        $stmt = $this->db->prepare("DELETE FROM corso WHERE nome = ?");
+        $stmt->bind_param('s', $nome);
+        return $stmt->execute();
+    }
 } 
 ?>

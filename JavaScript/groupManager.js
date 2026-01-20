@@ -208,12 +208,12 @@ function openPopupToDeleteReport(button) {
 
 async function openPopupToAddCourse(event) {
     if (event) event.preventDefault();
-    const popup = document.getElementById("addPopup");
-    const text = document.getElementById("addPopupText");
-    const object = document.getElementById("addPopupObject");
+    const popup = document.getElementById("coursePopup");
+    const text = document.getElementById("coursePopupText");
+    const object = document.getElementById("coursePopupObject");
     const name = document.getElementById("name-new-course").value;
 
-    const url = "gestisci-group-add.php?nomeCorso=" + name + "&action=add_course";
+    const url = "gestisci-group-change.php?nomeCorso=" + name + "&action=add_course";
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -235,6 +235,43 @@ async function openPopupToAddCourse(event) {
         }
     } catch (error) {
         console.error("Errore durante l'aggiunta del corso:", error.message);
+    }
+
+    document.getElementById("chiudi").onclick = function(){
+        popup.style.display = "none";
+        location.reload();
+    };
+}
+
+async function openPopupToDeleteCourse(event) {
+    if (event) event.preventDefault();
+    const popup = document.getElementById("coursePopup");
+    const text = document.getElementById("coursePopupText");
+    const object = document.getElementById("coursePopupObject");
+    const name = document.getElementById("course-to-delete").value;
+
+    const url = "gestisci-group-change.php?nomeCorso=" + name + "&action=remove_course";
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error("Errore nella cancellazione del corso" + response.status);
+        }
+        const data = await response.json();
+        // Gestisci la risposta se necessario
+        if(data["esito"]) {
+            object.textContent = "Corso eliminato";
+            text.textContent = "Il corso è stato eliminato con successo! Tutti i gruppi che facevano riferimento di quel corso sono stati rimossi!";
+
+            popup.style.display= "flex";
+
+        } else {
+            object.textContent = "Eliminazione corso fallita!"
+            text.textContent = "Purtroppo qualcosa sembra essere andato storto..."
+
+            popup.style.display = "flex";
+        }
+    } catch (error) {
+        console.error("Errore durante l'eliminazione del corso:", error.message);
     }
 
     document.getElementById("chiudi").onclick = function(){
