@@ -79,8 +79,7 @@ function openPopupRequestToJoinPrivate(groupName,idGruppo){
             if (!response.ok) {
                 throw new Error("Errore nella richiesta" + response.status);
             }
-            const data = await response.text();
-            console.log(data);
+            const data = await response.json();
             if(data['esito'] == null) {
                 window.location.href= "./specific-group-to-join.php?idGruppo=" + idGruppo + "&status=request-sent";
             } else {
@@ -95,6 +94,44 @@ function openPopupRequestToJoinPrivate(groupName,idGruppo){
 
     document.getElementById("not").onclick = function(){
         popup.style.display = "none";
+    };
+}
+
+function openPopupReport(){
+    const popup = document.getElementById("popupReport");
+    const header = document.getElementById("popupHeaderReport");
+    const testo = document.getElementById("popupTextReport");
+    const oggetto = document.getElementById("popupObjectReport");
+
+    header.textContent = "SEGNALAZIONE:";
+
+    popup.style.display = "flex";
+
+    document.getElementById("conferma").onclick = async function(){
+        alert("Richiesta inviata");
+        const url = "gestisci-segnalazione.php?&testo=" + testo.value.trim() + "&oggetto=" + oggetto.value.trim() + "&action=report";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error("Errore nella richiesta" + response.status);
+            }
+            const data = await response.text();
+            console.log(data);
+            if(data['esito'] == null) {
+                location.reload();
+            } else {
+                alert("Errore nell'unirsi al gruppo")
+            }
+        } catch (error) {
+            console.error("Errore durante la richiesta: ", error.message);
+        }
+
+        popup.style.display = "none";
+    };
+
+    document.getElementById("annulla").onclick = function(){
+        popup.style.display = "none";
+        location.reload();
     };
 }
 

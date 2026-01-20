@@ -437,5 +437,14 @@ class DatabaseHelper {
         $stmt->bind_param("ii",$id,$groupId);
         $stmt->execute(); 
     }
+
+    public function getAdmins() {
+        $stmt = $this->db->prepare("SELECT email
+                                    FROM utente
+                                    WHERE admin = true");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 } 
 ?>

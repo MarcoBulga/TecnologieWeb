@@ -27,8 +27,10 @@
         </div>
     <?php endif; ?>
 </form>
-<button id="tag-button">Scegli tag</button> 
-<?php foreach($templateParams["Gruppi"] as $gruppo): ?>
+<?php if(isset($templateParams['value'])): ?>
+    <button id="tag-button">Scegli tag</button> 
+<?php endif; ?>
+    <?php foreach($templateParams["Gruppi"] as $gruppo): ?>
     <section>
         <h3>
             <a href="

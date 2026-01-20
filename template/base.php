@@ -30,7 +30,8 @@
                 <li><button onclick="window.location.href='./group-creation.php'">Crea nuovo gruppo</button></li>
             <?php endif; ?>
             <?php if($_SESSION['admin'] == false): ?>
-                <li><button>Segnala un problema</button></li>
+                <li><button
+                        onclick="openPopupReport()">Segnala un problema</button></li>
             <?php else: ?>
                 <li><button onclick="window.location.href='./search.php'">Tutti i gruppi</button></li>
                 <li><button>Segnalazioni</button></li>
@@ -49,7 +50,7 @@
             onclick="openMessage(this,
             '<?php echo $notification['tipo']; ?>', 
             '<?php echo addslashes($notification['testo']); ?>',
-            '<?php echo addslashes($notification['nomeGruppo']); ?>')">
+            '<?php echo addslashes($notification['nomeGruppo'] ?? '') ; ?>')">
             <div class="messaggio">
                 <p><?php echo $notification["oggetto"]; ?></p>
                 <p><?php echo $notification["mittente"]; ?></p>
@@ -87,6 +88,26 @@
                 <div class="popup-buttons">
                     <button id="noRequest">Rifiuta</button>
                     <button id="yesRequest">Accetta</button>
+                </div>
+            </div>
+        </div>
+
+        <!--Popup di conferma-->
+        <div id="popupReport" class="hidden-popup">
+            <div class="popup-elements">
+                <p id="popupHeaderReport"></p>
+                <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
+                    <p>Oggetto:</p>
+                    <textarea name="popupObjectReport" id="popupObjectReport" placeholder="OGGETTO"></textarea>
+                </div>
+                <br>
+                <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
+                    <p>Testo:</p>
+                    <textarea name="popupTextReport" id="popupTextReport" placeholder="Questo sito fa schifo!"></textarea>
+                </div>
+                <div class="popup-buttons">
+                    <button id="annulla">Annulla</button>
+                    <button id="conferma">Conferma</button>
                 </div>
             </div>
         </div>
