@@ -315,3 +315,29 @@ async function openPopupToDeleteCourse(event) {
         };
     }
 }
+
+async function openSafetyPopup(event) {
+    if (event) event.preventDefault();
+    const popup = document.getElementById("safetyPopup");
+    const text = document.getElementById("safetyPopupText");
+    const object = document.getElementById("safetyPopupObject");
+    const name = document.getElementById("course-to-delete").value;
+
+    if (name !== "") {
+        // Gestisci la risposta se necessario
+        object.textContent = "Sei sicuro di procedere con l'eliminazione?"
+        text.textContent = "Una volta che procedi con l'eliminazione del corso" + name + "tutti i gruppi che ne facevano riferimento saranno eliminati, sei sicuro/a di voler procedere?";
+
+        popup.style.display = "flex";
+
+        document.getElementById("undo").onclick = function(){
+            popup.style.display = "none";
+            location.reload();
+        };
+
+        document.getElementById("confirm").onclick = function() {
+            popup.style.display = "none";
+            openPopupToDeleteCourse(event);
+        }
+    }
+}

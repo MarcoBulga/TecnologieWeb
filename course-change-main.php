@@ -14,7 +14,7 @@
             <option value="<?php echo $course["nome"] ?>"><?php echo $course["nome"] ?></option>
             <?php endforeach; ?>
     </select></label>
-    <button onclick="openPopupToDeleteCourse(event); return false;"
+    <button onclick="openSafetyPopup(event); return false;"
     type="submit" id="btn-delete-course" name="btn-delete-course">Elimina</button>
 </form>
 
@@ -27,3 +27,14 @@
         </div>
     </div>
 </div>
+
+<div id="safetyPopup" class="hidden-popup">
+            <div class="popup-elements">
+                <h2 id="safetyPopupObject">placeholder</h2>
+                <p id="safetyPopupText"></p>
+                <div class="popup-buttons">
+                    <button id="undo">Annulla</button>
+                    <button id="confirm">Procedi</button>
+                </div>
+            </div>
+        </div>
