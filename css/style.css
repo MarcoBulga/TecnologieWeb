@@ -197,7 +197,8 @@ nav:nth-of-type(2) > ul {
     padding: 0 5%;
 }
 
-nav:nth-of-type(2) > ul > li > button {
+nav:nth-of-type(2) > ul > li > button, a.btn {
+    text-decoration: none;
     width:100%;
     padding: 20px;
     font-size: 1.2rem;
@@ -401,4 +402,43 @@ form div.show {
     display: flex;
     gap: 0.5%;
     margin-left: 5%;
+}
+
+/*login and register buttons*/
+a.btn {
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: var(--button-bg-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 0px var(--button-hover-bg-color);
+    transition: all 0.2s ease;
+    align-content: center;
+}
+
+a.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px var(--button-hover-bg-color);
+}
+
+a.btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0px 0px var(--button-hover-bg-color);
+}
+
+/*Spazio fra i bottoni in alto a destra di qualsiasi pagina*/
+nav > ul {
+    gap: 8%;
+    list-style: none;
+    margin-right: 2% !important;
+}
+
+/*Impedisce al bottone registrati di uscire a destra della pagina*/
+nav > ul.registerLoginBtns {
+    padding: 0 3%;
 }

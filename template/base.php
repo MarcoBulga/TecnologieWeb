@@ -98,12 +98,12 @@
                 <p id="popupHeaderReport"></p>
                 <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
                     <p>Oggetto:</p>
-                    <textarea name="popupObjectReport" id="popupObjectReport" placeholder="OGGETTO"></textarea>
+                    <label for="popupObjectReport" hidden>oggetto della segnalazione</label><textarea name="popupObjectReport" id="popupObjectReport" placeholder="OGGETTO"></textarea> <!--aggiunta hidden label per AA-->
                 </div>
                 <br>
                 <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
                     <p>Testo:</p>
-                    <textarea name="popupTextReport" id="popupTextReport" placeholder="Questo sito fa schifo!"></textarea>
+                    <label for="popupTextReport" hidden>testo della segnalazione</label><textarea name="popupTextReport" id="popupTextReport" placeholder="Questo sito fa schifo!"></textarea><!--aggiunta hidden label per AA-->
                 </div>
                 <div class="popup-buttons">
                     <button id="annulla">Annulla</button>
