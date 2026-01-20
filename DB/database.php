@@ -586,5 +586,15 @@ class DatabaseHelper {
 
         return $row === null ? "" : $row["testo"];
     }
+
+    public function getUtente($email) {
+        $stmt = $this->db->prepare("SELECT *
+                                    FROM utente
+                                    WHERE email = ?");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
 } 
 ?>

@@ -36,7 +36,6 @@ function openPopupRequestToJoin(groupName,idGruppo){
     popup.style.display = "flex";
 
     document.getElementById("yes").onclick = async function(){
-        alert("Richiesta inviata");
         const url = "gestisci-richiesta.php?idGruppo=" + idGruppo + "&action=join";
         try {
             const response = await fetch(url);

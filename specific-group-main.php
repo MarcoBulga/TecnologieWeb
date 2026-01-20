@@ -77,7 +77,7 @@
         <h3>CHAT</h3>
         <?php foreach($templateParams["chat"] as $message): ?>
             <div class="message">
-                <h5><?php echo $message["mittente"] ?></h5>
+                <h5><?php {echo $dbh->getUtente($message["mittente"])['nome']; echo " ".$dbh->getUtente($message["mittente"])['cognome'];} ?></h5>
                 <p><?php echo $message["testo"] ?></p>
             </div>
         <?php endforeach; ?>
