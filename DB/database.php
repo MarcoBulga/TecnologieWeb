@@ -482,18 +482,28 @@ class DatabaseHelper {
         return array_column($rows, 'email');
     }
 
-    public function getAllReports() {
-        $stmt = $this->db->prepare("SELECT * from notifica where tipo = 'segnalazione'");
+    public function getAllReports($limit = null) {
+        if($limit === null) {
+            $stmt = $this->db->prepare("SELECT * from notifica where tipo = 'segnalazione'");
+        } else {
+            $stmt = $this->db->prepare("SELECT * from notifica where tipo = 'segnalazione' ORDER BY data LIMIT ?,2");
+            $stmt->bind_param('i',$limit);
+        }
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function searchReports($string) {
+    public function searchReports($string, $limit = null) {
         $string = "%".$string."%";
-        $stmt = $this->db->prepare("SELECT * from notifica where tipo = 'segnalazione' and oggetto like ?");
-        $stmt->bind_param('s',$string);
+        if($limit === null) {
+            $stmt = $this->db->prepare("SELECT * from notifica where tipo = 'segnalazione' and oggetto like ?");
+            $stmt->bind_param('s',$string);
+        } else {
+            $stmt = $this->db->prepare("SELECT * from notifica where tipo = 'segnalazione' and oggetto like ? ORDER BY data LIMIT ?,2");
+            $stmt->bind_param('si',$string,$limit);
+        }
         $stmt->execute();
         $result = $stmt->get_result();
 
