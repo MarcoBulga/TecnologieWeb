@@ -354,7 +354,8 @@ class DatabaseHelper {
                                             LEFT JOIN chat on chat.idChat = m.idChat
                                             LEFT join gruppo g on chat.idGruppo = g.idGruppo
                                             LEFT join riceve r ON n.idNotifica = r.idNotifica 
-                                            WHERE r.destinatario = ?)
+                                            WHERE r.destinatario = ?
+                                            AND visto = false)
                                     ORDER BY DATA DESC");
         $stmt->bind_param('ss',$email,$email);
         $stmt->execute();
@@ -444,7 +445,8 @@ class DatabaseHelper {
     }
 
     public function deleteNotification($idNotifica) {
-        $stmt = $this->db->prepare("DELETE FROM notifica WHERE idNotifica = ?");
+        $this->markAsRead($idNotifica,$_SESSION['email']);
+        $stmt = $this->db->prepare("DELETE FROM notifica WHERE idNotifica = ? and tipo <> 'messaggio'");
         $stmt->bind_param('i', $idNotifica);
         return $stmt->execute();
     }

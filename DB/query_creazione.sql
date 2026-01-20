@@ -19,7 +19,7 @@ values ("Gianni","Rossi","gianni.rossi@studio.unibo.it",1234567890,"admin",true)
        
 insert into gruppo(nome,numero_partecipanti,descr_breve,descr_lunga,privato,corso_di_riferimento,creatore)
 values ("test",3,"breve","luuuuuunga",false,"Tecnologie Web","alessandro.ravaioli@studio.unibo.it"),
-	   ("test",3,"breve","luuuuuunga",false,"Tecnologie Web","carlo.verdi@studio.unibo.it"),
+	("test",3,"breve","luuuuuunga",false,"Tecnologie Web","carlo.verdi@studio.unibo.it"),
        ("test",3,"breve","luuuuuunga",false,"Tecnologie Web","gennaro.fabbri@studio.unibo.it"),
        ("test",4,"breve","luuuuuunga",false,"OOP","alessandro.ravaioli@studio.unibo.it"),
        ("test",4,"breve","luuuuuunga",false,"OOP","mario.rossi@studio.unibo.it"),
@@ -52,23 +52,26 @@ values ("prima prova di messaggio chissa se funziona","test","messaggio","alessa
        ("Buongiorno, vorrei entrare nel gruppo","richiesta entrata","richiesta","gennaro.fabbri@studio.unibo.it",NOW());
 
 insert into riceve(destinatario,idNotifica)
-values ("marco.bulgarelli@studio.unibo.it",2),
+values ("daniele.tramonti@studio.unibo.it",1),("marco.bulgarelli@studio.unibo.it",1),
+       ("marco.bulgarelli@studio.unibo.it",2),("daniele.tramonti@studio.unibo.it",2),("carlo.verdi@studio.unibo.it",2),
        ("marco.bulgarelli@studio.unibo.it",3);
 
 INSERT INTO possiede(idGruppo,nome) 
 values (1,"ghost"),(2,"ghost"),(3,"ghost"),(4,"ghost"),(5,"ghost"),(6,"ghost"),(7,"ghost"),(8,"ghost"),(9,"ghost"),(10,"ghost");
 
 insert into possiede(nome,idGruppo)
-values ("online",1),("online",3),
-	("gioco",1),
-       ("accessibile",1),("accessibile",4),("accessibile",7),("accessibile",5),
-       ("in presenza",9);
+values ("online",1),("online",3),("online",4),("online",10),("online",7),
+	("gioco",4),("gioco",5),
+       ("accessibile",1),("accessibile",2),("accessibile",3),("accessibile",5),("accessibile",10),
+       ("in presenza",9),("in presenza",2),("in presenza",6),
+       ("simulatore",6),("simulatore",8),
+       ("sufficiente",3);
 
 insert into CHAT(idChat,idGruppo) 
 values (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);
 
 insert into messaggio(idChat,idNotifica)
-values (1,1);
+values (1,1),(4,2);
 
 insert into notifica_in_gruppo(idNotifica, idGruppo)
 values (3,1);

@@ -29,12 +29,12 @@
 </div>
 
 <div id="safetyPopup" class="hidden-popup">
-            <div class="popup-elements">
-                <h2 id="safetyPopupObject">placeholder</h2>
-                <p id="safetyPopupText"></p>
-                <div class="popup-buttons">
-                    <button id="undo">Annulla</button>
-                    <button id="confirm">Procedi</button>
-                </div>
-            </div>
+    <div class="popup-elements">
+        <h2 id="safetyPopupObject">placeholder</h2>
+        <p id="safetyPopupText"></p>
+        <div class="popup-buttons">
+            <button id="undo">Annulla</button>
+            <button id="confirm">Procedi</button>
         </div>
+    </div>
+</div>
