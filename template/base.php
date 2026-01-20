@@ -34,7 +34,7 @@
                         onclick="openPopupReport()">Segnala un problema</button></li>
             <?php else: ?>
                 <li><button onclick="window.location.href='./search.php'">Tutti i gruppi</button></li>
-                <li><button>Segnalazioni</button></li>
+                <li><button onclick="window.location.href='./reports.php'">Segnalazioni</button></li>
             <?php endif; ?>
             <li><button onclick="window.location.href='./logout.php'">Logout</button></li>
         </ul>

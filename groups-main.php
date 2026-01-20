@@ -1,5 +1,5 @@
 <div>
-    <h2> <?php if(isset($templateParams["value"])) echo "RICERCA GRUPPI"; else echo "I TUOI GRUPPI"; ?></h2>
+    <h2> <?php if(isset($templateParams['report'])) echo "SEGNALAZIONI"; elseif(isset($templateParams["value"])) echo "RICERCA GRUPPI"; else echo "I TUOI GRUPPI"; ?></h2>
     <?php if($_SESSION['admin'] == false): ?>
         <button id="btn-new-group" onclick="window.location.href='./group-creation.php'">Crea nuovo gruppo</button>
     <?php endif; ?>
@@ -7,8 +7,8 @@
 <form action="#" method="post" class="search-bar">
     <label for="ricerca-mio-gruppo">Barra di ricerca<input type="text" id="ricerca-mio-gruppo" name="ricerca-mio-gruppo" placeholder="barra di ricerca"/></label>
     <input type="submit" id="btn-search" name="btn-search" value="Cerca" />
-    <input type="submit" id="btn-reset" name="btn-reset" value="Tutti i gruppi" formnovalidate/>
-    <?php if(isset($templateParams["value"])):?>
+    <input type="submit" id="btn-reset" name="btn-reset" value="<?php if(isset($templateParams['report'])) {echo 'Tutte le segnalazioni';} else {echo 'Tutti i gruppi';} ?>" formnovalidate/>
+    <?php if(isset($templateParams["value"]) && empty($templateParams['report'])):?>
         <label for="course" hidden>Seleziona corso:</label>
         <select name="course" id="course" required>
             <option value="" disabled selected hidden>seleziona corso</option>
@@ -27,9 +27,10 @@
         </div>
     <?php endif; ?>
 </form>
-<?php if(isset($templateParams['value'])): ?>
+<?php if(isset($templateParams['value']) && empty($templateParams['report'])): ?>
     <button id="tag-button">Scegli tag</button> 
 <?php endif; ?>
+<?php if(empty($templateParams['report'])): ?>
     <?php foreach($templateParams["Gruppi"] as $gruppo): ?>
     <section>
         <h3>
@@ -55,4 +56,15 @@
         </p>
         <p>Corso: <?php echo $gruppo['corso_di_riferimento']; ?> </p>
     </section>
-<?php endforeach; ?>
+    <?php endforeach; ?>
+<?php else: ?>
+    <?php foreach($templateParams["Segnalazioni"] as $segnalazione): ?>
+    <section>
+        <h3>
+            <a href="<?php echo './specific-report.php?idNotifica='.$segnalazione['idNotifica']; ?>" class="link-header"><?php echo $segnalazione['oggetto']; ?></a>
+        </h3>
+        <p class="text-report"><?php echo $segnalazione['testo']; ?></p>
+        <p><strong>Mittente: </strong><?php echo $segnalazione['mittente']; ?> </p>
+    </section>
+    <?php endforeach; ?>
+<?php endif; ?>

@@ -116,7 +116,8 @@ function openPopupReport(){
                 throw new Error("Errore nella richiesta" + response.status);
             }
             const data = await response.json();
-            if(data['esito'] == null) {
+            console.log(data);
+            if(data['esito']) {
                 location.reload();
             } else {
                 alert("Errore nell'unirsi al gruppo")
