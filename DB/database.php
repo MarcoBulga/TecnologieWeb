@@ -60,7 +60,15 @@ class DatabaseHelper {
         return $result;
     }
 
-    public function createNewGroup($name, $course, $size, $isPrivate, $shortDesc, $longDesc) {
+    public function insertGroupFilters($idGruppo,$filters) {
+        foreach($filters as $filter) {
+            $stmt = $this->db->prepare("INSERT INTO possiede(idGruppo,nome) VALUE (?,?)");
+            $stmt->bind_param('is', $idGruppo,$filter);
+            $stmt->execute();
+        }
+    }
+
+    public function createNewGroup($name, $course, $size, $isPrivate, $shortDesc, $longDesc,$filters) {
         $stmt = $this->db->prepare("INSERT INTO gruppo (nome, numero_partecipanti, descr_breve, descr_lunga, privato, corso_di_riferimento, creatore) 
                                     VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param('sississ', $name, $size, $shortDesc, $longDesc, $isPrivate, $course, $_SESSION['email']);
@@ -68,9 +76,9 @@ class DatabaseHelper {
 
         $id = $this->getGroupId();
         $this->addAdministratorToGroup($_SESSION['email'], $id);
-        $stmt = $this->db->prepare("INSERT INTO possiede(idGruppo,nome) VALUES (?,'ghost')");
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
+        $filters[] = "ghost";
+        var_dump($filters);
+        $this->insertGroupFilters($id,$filters);
 
         $stmt = $this->db->prepare("INSERT INTO chat(idGruppo) value (?)");
         $stmt->bind_param('i', $id);

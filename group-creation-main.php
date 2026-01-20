@@ -20,9 +20,9 @@
         <div class="filters">
             <ul>
                 <?php foreach($templateParams["filters"] as $filter): 
-                    $safeId = str_replace(" ", "_", $filter["nome"]);
+                    $safeId = stringToId($filter["nome"])
                     ?>
-                <li><label for="<?php echo $safeId; ?>"><input type="checkbox" id="<?php echo $safeId; ?>" name="<?php echo $safeId; ?>"><?php echo $safeId; ?></label></li>
+                <li><label for="<?php echo $safeId; ?>"><input type="checkbox" id="<?php echo $safeId; ?>" name="<?php echo $safeId; ?>"><?php echo $filter["nome"]; ?></label></li>
                 <?php endforeach; ?>
             </ul>
         </div>
@@ -31,8 +31,14 @@
         <?php
             $valueGroup = false;
             if(isset($_POST['confirmbutton']) && empty($_POST['undobutton'])) {
+                $selectedFilters = array();
+                foreach($templateParams["filters"] as $filter) {
+                    if(isset($_POST[stringToId($filter["nome"])])) {
+                        $selectedFilters[] = $filter["nome"];
+                    }
+                }
                 $valueGroup = $dbh -> createNewGroup($_POST['groupname'], $_POST['course'], $_POST['groupsize'], 
-                               isset($_POST['private']) ? 1 : 0, $_POST['shortdescription'], $_POST['longdescription']);
+                               isset($_POST['private']) ? 1 : 0, $_POST['shortdescription'], $_POST['longdescription'],$selectedFilters);
                 if($valueGroup) {
                     echo "<p>Gruppo creato con successo!</p>";
                 } else {
