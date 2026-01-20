@@ -70,9 +70,9 @@
 <?php endif; ?>
 
 <?php if($pageNumber > 0): ?> 
-    <button type="button" name="back-button" id="back-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber-1 ?>&ricerca=<?php echo $ricerca ?>&researchString=<?php echo $researchString ?>&number=<?php echo $number ?>'">indietro</button>
+    <button type="button" name="back-button" id="back-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber-1; ?>&ricerca=<?php echo $ricerca; ?>&researchString=<?php echo $researchString; ?>&number=<?php echo $number; ?><?php if(isset($selectedFilters)): ?>&<?php echo http_build_query(array('selectedFilters' => $selectedFilters)); endif; ?><?php if(isset($corso)): ?>&corso=<?php echo $corso; endif;?>'">indietro</button>
 <?php endif; ?>
-<p><?php echo $pageNumber + 1 ?><p>
+<p><?php echo $pageNumber + 1; ?><p>
 <?php if( $forward ): ?> 
-    <button type="button" name="forward-button" id="forward-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber+1 ?>&ricerca=<?php echo $ricerca ?>&researchString=<?php echo $researchString ?>&number=<?php echo $number ?>'">avanti</button>
+    <button type="button" name="forward-button" id="forward-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber+1; ?>&ricerca=<?php echo $ricerca; ?>&researchString=<?php echo $researchString; ?>&number=<?php echo $number; ?><?php if(isset($selectedFilters)): ?>&<?php echo http_build_query(array('selectedFilters' => $selectedFilters)); endif; ?><?php if(isset($corso)): ?>&corso=<?php echo $corso; endif;?>'">avanti</button>
 <?php endif; ?>
