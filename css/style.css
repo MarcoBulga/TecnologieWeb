@@ -27,7 +27,19 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family:Arial, Helvetica, sans-serif
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-size: 2.2rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+p {
+    font-size: 1.2rem;
 }
 
 article {
@@ -56,6 +68,7 @@ main > input {
 main > div > h2{
     width: fit-content;
     text-align: left;
+    white-space: nowrap;
 }
 
 main > section {
@@ -160,7 +173,7 @@ nav:nth-of-type(1) > ul > li > button {
     background-color: var(--button-bg-color);
     color: white;
     border-radius:10px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     cursor: pointer;
     border: none;
     border-radius: 8px;
@@ -217,7 +230,7 @@ nav:nth-of-type(2) > ul > li > button, a.btn {
     text-decoration: none;
     width:100%;
     padding: 20px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     cursor:pointer;
     background-color: var(--button-bg-color);
@@ -425,7 +438,7 @@ a.btn {
     display: block;
     text-decoration: none;
     padding: 10px;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     cursor: pointer;
     background-color: var(--button-bg-color);
@@ -457,4 +470,16 @@ nav > ul {
 /*Impedisce al bottone registrati di uscire a destra della pagina*/
 nav > ul.registerLoginBtns {
     padding: 0 3%;
+}
+
+/*Nome utente in alto a sinistra*/
+nav > ul.registerLoginBtns > li > p {
+    font-size: 1.5rem;
+}
+
+/*Allinea il nome utente ai bottoni in alto*/
+.registerLoginBtns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
