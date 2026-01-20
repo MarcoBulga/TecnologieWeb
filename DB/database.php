@@ -458,7 +458,17 @@ class DatabaseHelper {
         $stmt -> $this->db->prepare("SELECT * from notifica where tipo = 'segnalazione'");
         $stmt->execute();
         $result = $stmt->get_result();
-        
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function searchReports($string) {
+        $string = "%".$string."%";
+        $stmt -> $this->db->prepare("SELECT * from notifica where tipo = 'segnalazione' and oggetto like ?");
+        $stmt->bind_param('s',$string);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 } 
