@@ -13,8 +13,8 @@
         <nav>
             <ul>
                 <li><p><?php echo $templateParams["user"] ?></p></li>
-                <li><a href="./login.php"><button>login</button></a></li>
-                <li><a href="./register.php"><button>registrati</button></a></li>
+                <li><a href="./login.php" class="btn">login</a></li>
+                <li><a href="./register.php" class="btn">registrati</a></li>
             </ul>           
         </nav>
         <main>

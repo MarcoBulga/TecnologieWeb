@@ -9,7 +9,7 @@
     <input type="submit" id="btn-search" name="btn-search" value="Cerca" />
     <input type="submit" id="btn-reset" name="btn-reset" value="Tutti i gruppi" formnovalidate/>
     <?php if(isset($templateParams["value"])):?>
-        <label for="course" hidden>Seleziona corso:</label>
+        <label for="course" hidden>Seleziona corso:</label> 
         <select name="course" id="course" required>
             <option value="" disabled selected hidden>seleziona corso</option>
             <?php foreach($templateParams["courses"] as $course): ?>
