@@ -1,0 +1,336 @@
+/* ============================= */
+/* BASE.CSS - STILE COMUNE A TUTTE LE PAGINE */
+/* ============================= */
+
+/*--- Variabili globali ---*/
+:root {
+    --header-footer-bg-color: #F0F4F2;
+    --nav-lateral-bg-color: #D1DBD7;
+    --text-color: #2F3E38;
+    --button-bg-color: #059669;
+    --button-hover-bg-color: #047857;
+}
+
+/*--- Stile generico di ogni pagina ---*/
+html {
+    overflow-x: hidden;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body::-webkit-scrollbar {
+    display:none;   /*per Chrome, Safari e Opera*/
+}
+
+body {
+    margin: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -ms-overflow-style:none;  /*per Internet Explorer e Edge*/
+    scrollbar-width:none;  /*per Firefox*/
+}
+
+/*--- Font e dimensione delle scritte ---*/
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {font-size: 2.2rem;}
+h2 {font-size: 2rem;}
+p {font-size: 1.2rem;}
+
+/*--- header e footer ---*/
+header {
+    background-color: var(--header-footer-bg-color);
+    text-align: center;
+    color: var(--text-color);
+    padding: 5px 0;
+    border-bottom-width: 1px !important;
+    border-bottom-color: rgba(172, 172, 172, 0.65) !important;
+    border-bottom-style: solid !important;
+    box-sizing: border-box;
+}
+
+footer {
+    background-color: var(--header-footer-bg-color);
+    text-align: center;
+    color: var(--text-color);
+    width: 100%;
+    padding: 20px 0;
+    flex-shrink: 0;
+    border-top-width: 1px !important;
+    border-top-color: rgba(172, 172, 172, 0.65) !important;
+    border-top-style: solid !important;
+    box-sizing: border-box;
+}
+
+/*--- Posizionamento article e main nella pagina ---*/
+article {margin: 2%;}
+main {flex: 1 0 auto;}
+
+/*--- Spazio fra i bottoni in alto a destra di qualsiasi pagina ---*/
+nav > ul {
+    gap: 8%;
+    list-style: none;
+    margin-right: 2% !important;
+}
+
+/*--- Nome utente in alto a sinistra ---*/
+nav > ul.registerLoginBtns > li > p {
+    font-size: 1.5rem;
+}
+
+/*--- Bottoni notifiche e menu ---*/
+
+nav:nth-of-type(1) > ul > li > button {
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    background-color: var(--button-bg-color);
+    color: white;
+    border-radius:10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    /* Ombra morbida verso il basso */
+    box-shadow: 0 4px 0px #047857; 
+    transition: all 0.2s ease;
+}
+
+nav:nth-of-type(1) > ul > li > button:hover {
+    /* Si alza leggermente */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px var(--button-hover-bg-color);
+}
+
+nav:nth-of-type(1) > ul > li > button:active {
+    /* Quando clicchi, il bottone si "schiaccia" */
+    transform: translateY(4px);
+    box-shadow: 0 0px 0px var(--button-hover-bg-color);
+}
+
+/*Allinea il nome utente ai bottoni in alto*/
+.normalButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*--- menu ---*/
+nav:nth-of-type(2) {
+    position: fixed;
+    margin: 0;
+    width: 350px;  /*rende il nav largo quanto il content */
+    max-width: 85vw; /* ma non più largo dell'85% della viewport */
+    right: 0;
+    top: 0;
+    max-width: 100%;
+    background-color: var(--nav-lateral-bg-color);
+    text-align: center;
+    height: 90vh;
+    padding: 5vh 0;
+    z-index: 1;
+
+    /*effetto tenda*/
+    backface-visibility: hidden;
+    pointer-events: auto;
+    transform:translateX(100%); /* trasla inizialmente tutta la tendina fuori a destra */
+    opacity: 0; 
+    transition: transform 0.4s ease-in-out, opacity 0.3s;
+}
+
+nav:nth-of-type(2) > ul {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 13vh;
+    list-style: none;
+    padding: 0 5%;
+}
+
+nav:nth-of-type(2) > ul > li > button, a.btn {
+    text-decoration: none;
+    width:100%;
+    padding: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor:pointer;
+    background-color: var(--button-bg-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    /* Ombra morbida verso il basso */
+    box-shadow: 0 4px 0px var(--button-hover-bg-color); 
+    transition: all 0.2s ease;
+}
+
+nav:nth-of-type(2) > ul > li > button:hover {
+    /* Si alza leggermente */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px var(--button-hover-bg-color);
+}
+
+nav:nth-of-type(2) > ul > li > button:active {
+    /* Quando clicchi, il bottone si "schiaccia" */
+    transform: translateY(4px);
+    box-shadow: 0 0px 0px var(--button-hover-bg-color);
+}
+
+nav:nth-of-type(n+2) > button {
+    position:absolute;
+    right:2px;
+    top:2px;
+    border-radius: 5px;
+    border:1px solid transparent;
+    cursor:pointer;
+    font-weight: bold;
+}
+
+nav:nth-of-type(n+2) > button:hover {
+    border: 2px solid black;
+}
+
+/*--- notifiche ---*/
+nav:nth-of-type(3) {
+    position: fixed;
+    margin: 0;
+    width: 350px;
+    max-width: 85vw; /* ma non più largo dell'85% della viewport */
+    right: 0;
+    top: 0;
+    max-width: 100%;
+    height: 90vh;
+    padding: 5vh 0;
+    list-style: none;
+    background-color: var(--nav-lateral-bg-color);
+    z-index: 20;
+
+    /*effetto tenda*/
+    backface-visibility: hidden;
+    pointer-events: none;
+    transform:translateX(100%); /* trasla inizialmente tutta la tendina fuori a destra */
+    opacity: 0; 
+    transition: transform 0.4s ease-in-out, opacity 0.3s;
+}
+
+nav:nth-of-type(3)> div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid grey;
+    padding: 10px 15px;
+    gap: 15px;
+    background-color:#FDFCF0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+
+    /* per transizione */
+    transition: transform 0.5s ease, opacity 0.5s ease, max-height 0.5s ease, padding 0.5s ease, margin 0.5s ease;
+    max-height: 500px; /* Un valore alto per permettere l'animazione */
+    overflow: hidden;  /* Necessario per far sparire il contenuto quando max-height va a 0 */
+}
+
+nav:nth-of-type(3) > div > button {
+    flex: 0 0 auto;
+    margin: 0 0 20% 0;
+    display: block;
+    flex-shrink: 0;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+nav:nth-of-type(3) > div > button:hover {
+    border: 2px solid black;
+}
+
+nav:nth-of-type(3) > div > div {
+    display: flex;
+    flex-direction: column;
+    overflow-wrap: break-word;
+    width: 90%;
+}
+
+nav.show {
+    transform: translateX(0);
+    pointer-events: auto;
+    opacity: 1;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2); /* ombra sul lato sinistro */
+}
+
+/*--- Popup ---*/
+.hidden-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-elements {
+    background: white;
+    width: 60%;
+    padding: 7%;
+    border-radius: 2%;
+    text-align: center;
+    font-size: large;
+}
+
+.popup-buttons {
+    margin: 2%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}
+
+.popup-buttons button {
+    padding: 1% 2%;
+    font-size: 1.1rem;
+    color: white;
+    border-radius: 0.5%;
+    cursor: pointer;
+}
+
+.popup-buttons button[id="yes"], .popup-buttons button[id="yesRequest"]{
+    background-color: green;
+}
+
+.popup-buttons button[id="no"], .popup-buttons button[id="noRequest"]{
+    background-color: red;
+}
+
+
+/*--- Generic ---*/
+main > div{
+    display: flex;
+    flex-direction: row;
+    z-index: 0;
+    text-align: center;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20%;
+    padding: 0 5% 1% 5%;
+}
+
+main > input {
+    display: block;
+    margin-left: 5%;
+}
+
+main > section {
+    margin: 20px 5%;
+    border: 1px solid grey;
+    border-radius: 15px;
+}
+
+main > section.to-enter {
+    border: none;
+}

@@ -16,7 +16,7 @@
         <h1>Ricerca Gruppi</h1>
     </header>
     <nav>
-        <ul>
+        <ul class="normalButtons">
             <li><p><?php echo $_SESSION['name']." ".$_SESSION['surname']; ?></p></li>
             <li><button id="bottone-notifiche">notifica</button></li>
             <li><button id="bottone-menu">menu</button></li>
