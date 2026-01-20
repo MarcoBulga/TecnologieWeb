@@ -32,7 +32,7 @@
         type="submit" id="btn-elimina-gruppo" name="btn-elimina-gruppo" form="form-generale">Elimina gruppo</button>
     <?php endif; ?>
     <?php if($templateParams['toSee'] == true && empty($templateParams['modify']) && $_SESSION['admin'] == false): ?>
-        <button type="button">Manda un messaggio</button>
+        <button type="button">Apri chat</button>
     <?php endif; ?>
 </div>
 <section class="to-enter">
