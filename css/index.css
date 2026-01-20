@@ -38,23 +38,6 @@ nav > ul.registerLoginBtns > li > p {
 /*Allinea il nome utente ai bottoni in alto*/
 .registerLoginBtns {
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
-/*Specific buttons login and register*/
-nav:nth-of-type(2) > ul > li > button, a.btn {
-    text-decoration: none;
-    width:100%;
-    padding: 20px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor:pointer;
-    background-color: var(--button-bg-color);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    /* Ombra morbida verso il basso */
-    box-shadow: 0 4px 0px var(--button-hover-bg-color); 
-    transition: all 0.2s ease;
-}

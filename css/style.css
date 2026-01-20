@@ -59,51 +59,6 @@ main > section > p.descrizione-gruppo {
     font-weight: normal;
 }
 
-nav:nth-of-type(1) {
-    text-align: center;
-    max-width: 100%;
-}
-
-nav:nth-of-type(1) > ul {
-    display: flex;
-    flex-direction: row;
-    padding-left: 3%;
-    list-style: none;
-}
-
-nav:nth-of-type(1) > ul > li:nth-child(2){
-    margin-left: auto;
-}
-
-nav:nth-of-type(1) > ul > li > button {
-    width: 100%;
-    height: 100%;
-    font-weight: bold;
-    background-color: var(--button-bg-color);
-    color: white;
-    border-radius:10px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    border: none;
-    border-radius: 8px;
-    /* Ombra morbida verso il basso */
-    box-shadow: 0 4px 0px #047857; 
-    transition: all 0.2s ease;
-}
-
-nav:nth-of-type(1) > ul > li > button:hover {
-    /* Si alza leggermente */
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0px var(--button-hover-bg-color);
-}
-
-nav:nth-of-type(1) > ul > li > button:active {
-    /* Quando clicchi, il bottone si "schiaccia" */
-    transform: translateY(4px);
-    box-shadow: 0 0px 0px var(--button-hover-bg-color);
-}
-
-
 /*Filter window*/
 button.tag-button {
     transition: all 0.2s ease;
@@ -156,45 +111,6 @@ form div.show {
     gap: 2%;
     margin: 0 5%;
     flex-wrap: wrap;
-}
-
-/*login and register buttons*/
-a.btn {
-    display: block;
-    text-decoration: none;
-    padding: 10px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    background-color: var(--button-bg-color);
-    color: white;
-    border: none;
-    border-radius: 8px;
-    box-shadow: 0 4px 0px var(--button-hover-bg-color);
-    transition: all 0.2s ease;
-    align-content: center;
-}
-
-a.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0px var(--button-hover-bg-color);
-}
-
-a.btn:active {
-    transform: translateY(4px);
-    box-shadow: 0 0px 0px var(--button-hover-bg-color);
-}
-
-/*Impedisce al bottone registrati di uscire a destra della pagina*/
-nav > ul.registerLoginBtns {
-    padding: 0 3%;
-}
-
-/*Allinea il nome utente ai bottoni in alto specifico per index.css*/
-.registerLoginBtns {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 /*Bottone nuovo gruppo*/
