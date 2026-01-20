@@ -233,5 +233,3 @@ create index ID_mess_IND
 create index REF_mess_NOTIF_IND
      on messaggio (idNotifica);
 
-
-

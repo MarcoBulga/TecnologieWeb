@@ -28,10 +28,17 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getGroups($email) {
-       $stmt = $this->db->prepare("SELECT distinct gruppo.* FROM fa_parte JOIN gruppo ON gruppo.idGruppo = fa_parte.idGruppo 
-                                    WHERE fa_parte.email = ?");
-        $stmt->bind_param('s', $email);
+    public function getGroups($email, $limit = null) {
+        if($limit === null) {
+            $stmt = $this->db->prepare("SELECT distinct gruppo.* FROM fa_parte JOIN gruppo ON gruppo.idGruppo = fa_parte.idGruppo 
+                                        WHERE fa_parte.email = ?");
+            $stmt->bind_param('s', $email);
+        } else {
+            $stmt = $this->db->prepare("SELECT distinct gruppo.* FROM fa_parte JOIN gruppo ON gruppo.idGruppo = fa_parte.idGruppo 
+                                        WHERE fa_parte.email = ?
+                                        ORDER BY gruppo.nome LIMIT ?,2");
+            $stmt->bind_param('si', $email,$limit);
+        }
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -470,6 +477,10 @@ class DatabaseHelper {
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getNumberOfUserGroups($email) {
+        return count($this->getGroups($email));
     }
 } 
 ?>

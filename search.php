@@ -1,6 +1,7 @@
 <?php 
 require_once 'bootstrap.php';
 
+$pageNumber = isset($_GET["pageNumber"]) ? $_GET["pageNumber"] : 0;
 
 $templateParams["courses"] = $dbh->getAllCourses();
 

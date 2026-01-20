@@ -56,3 +56,10 @@
         <p>Corso: <?php echo $gruppo['corso_di_riferimento']; ?> </p>
     </section>
 <?php endforeach; ?>
+<?php if($pageNumber > 0): ?> 
+    <button type="button" name="back-button" id="back-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber-1 ?>'">indietro</button>
+<?php endif; ?>
+<p><?php echo $pageNumber ?><p>
+<?php if($dbh->getNumberOfUserGroups($_SESSION["email"]) > ($pageNumber+1)*2): ?> 
+    <button type="button" name="forward-button" id="forward-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber+1 ?>'">avanti</button>
+<?php endif; ?>
