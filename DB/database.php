@@ -304,14 +304,21 @@ class DatabaseHelper {
     }
 
     public function getAllNotifications($email) {
-        $stmt = $this->db->prepare("SELECT n.*, nig.idGruppo, g.nome AS nomeGruppo
-                                    FROM notifica n
-                                    JOIN riceve r ON n.idNotifica = r.idNotifica 
-                                    LEFT JOIN notifica_in_gruppo nig ON n.idNotifica = nig.idNotifica
-                                    LEFT JOIN gruppo g ON nig.idGruppo = g.idGruppo
-                                    WHERE r.destinatario = ?
+        $stmt = $this->db->prepare("(SELECT n.*, g.idGruppo, g.nome AS nomeGruppo
+                                        FROM notifica n
+                                        JOIN riceve r ON n.idNotifica = r.idNotifica 
+                                        LEFT JOIN notifica_in_gruppo nig ON n.idNotifica = nig.idNotifica
+                                        LEFT JOIN gruppo g ON nig.idGruppo = g.idGruppo
+                                        WHERE r.destinatario = ?
+									    and nig.idGruppo is not null)
+                                    UNION (SELECT n.*, g.idGruppo, g.nome AS nomeGruppo
+                                            from notifica n join messaggio m on n.idNotifica = m.idNotifica
+                                            LEFT JOIN chat on chat.idChat = m.idChat
+                                            LEFT join gruppo g on chat.idGruppo = g.idGruppo
+                                            LEFT join riceve r ON n.idNotifica = r.idNotifica 
+                                            WHERE r.destinatario = ?)
                                     ORDER BY DATA DESC");
-        $stmt->bind_param('s',$email);
+        $stmt->bind_param('ss',$email,$email);
         $stmt->execute();
         $result = $stmt->get_result();
 
