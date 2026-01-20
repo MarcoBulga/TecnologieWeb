@@ -507,5 +507,11 @@ class DatabaseHelper {
     public function getNumberOfUserGroups($email) {
         return count($this->getGroups($email));
     }
+
+    public function addCourse($nome) {
+        $stmt = $this->db->prepare("INSERT INTO corso(nome) VALUES (?)");
+        $stmt->bind_param('s', $nome);
+        return $stmt->execute();
+    }
 } 
 ?>

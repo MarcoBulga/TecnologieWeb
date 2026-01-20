@@ -205,3 +205,40 @@ function openPopupToDeleteReport(button) {
         popup.style.display = "none";
     };
 }
+
+async function openPopupToAddCourse(event) {
+    if (event) event.preventDefault();
+    const popup = document.getElementById("addPopup");
+    const text = document.getElementById("addPopupText");
+    const object = document.getElementById("addPopupObject");
+    const name = document.getElementById("name-new-course").value;
+
+    const url = "gestisci-group-add.php?nomeCorso=" + name + "&action=add_course";
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error("Errore nella creazione del corso" + response.status);
+        }
+        const data = await response.json();
+        // Gestisci la risposta se necessario
+        if(data["esito"]) {
+            object.textContent = "Corso aggiunto";
+            text.textContent = "Il corso da te aggiunto è ora visibile a tutti gli utenti";
+
+            popup.style.display= "flex";
+
+        } else {
+            object.textContent = "Aggiunta corso fallita!"
+            text.textContent = "Probabilmente esiste già un corso con quel nome, non possono essercene due uguali!"
+
+            popup.style.display = "flex";
+        }
+    } catch (error) {
+        console.error("Errore durante l'aggiunta del corso:", error.message);
+    }
+
+    document.getElementById("chiudi").onclick = function(){
+        popup.style.display = "none";
+        location.reload();
+    };
+}
