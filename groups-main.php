@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="./css/groups.css" />
 <div>
     <h2> <?php if(isset($templateParams['report'])) echo "SEGNALAZIONI"; elseif(isset($templateParams["value"])) echo "RICERCA GRUPPI"; else echo "I TUOI GRUPPI"; ?></h2>
     <?php if($_SESSION['admin'] == false): ?>
@@ -71,10 +70,21 @@
     <?php endforeach; ?>
 <?php endif; ?>
 
-<?php if($pageNumber > 0): ?> 
-    <button type="button" name="back-button" id="back-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber-1; ?>&ricerca=<?php echo $ricerca; ?>&researchString=<?php echo $researchString; ?>&number=<?php echo $number; ?><?php if(isset($selectedFilters)): ?>&<?php echo http_build_query(array('selectedFilters' => $selectedFilters)); endif; ?><?php if(isset($corso)): ?>&corso=<?php echo $corso; endif;?>'">indietro</button>
-<?php endif; ?>
-<p><?php echo $pageNumber + 1; ?><p>
-<?php if( $forward ): ?> 
-    <button type="button" name="forward-button" id="forward-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber+1; ?>&ricerca=<?php echo $ricerca; ?>&researchString=<?php echo $researchString; ?>&number=<?php echo $number; ?><?php if(isset($selectedFilters)): ?>&<?php echo http_build_query(array('selectedFilters' => $selectedFilters)); endif; ?><?php if(isset($corso)): ?>&corso=<?php echo $corso; endif;?>'">avanti</button>
+<div class="parent">
+    <div class="impagination">
+        <div class="left">
+            <?php if($pageNumber > 0): ?> 
+            <button type="button" name="back-button" id="back-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber-1; ?>&ricerca=<?php echo $ricerca; ?>&researchString=<?php echo $researchString; ?>&number=<?php echo $number; ?><?php if(isset($selectedFilters)): ?>&<?php echo http_build_query(array('selectedFilters' => $selectedFilters)); endif; ?><?php if(isset($corso)): ?>&corso=<?php echo $corso; endif;?>'"><</button>
+        <?php endif; ?>
+        </div>
+        
+        <p class="center"><?php echo $pageNumber + 1; ?></p>
+
+        <div class="right">
+            <?php if( $forward ): ?> 
+            <button type="button" name="forward-button" id="forward-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber+1; ?>&ricerca=<?php echo $ricerca; ?>&researchString=<?php echo $researchString; ?>&number=<?php echo $number; ?><?php if(isset($selectedFilters)): ?>&<?php echo http_build_query(array('selectedFilters' => $selectedFilters)); endif; ?><?php if(isset($corso)):   ?>&corso=<?php echo $corso; endif;?>'">></button>
+        </div>
+        
+    </div>
+</div>
 <?php endif; ?>
