@@ -18,10 +18,9 @@
                     else if ($dbh->isGroupPrivate($_GET['idGruppo']) == 0) {echo "openPopupRequestToJoin(document.getElementById(\"groupname\").textContent, ".$_GET['idGruppo'].")";} 
                     else {echo "openPopupRequestToJoinPrivate(document.getElementById(\"groupname\").textContent, ".$_GET['idGruppo'].")";}?>'
             id="btn-new-group" 
-            <?php if($templateParams["toSee"] == false): ?>
-                <?php if($dbh->getNumberOfPartecipants($_GET['idGruppo']) >= $dbh->getGroupMaxPartecipants($_GET['idGruppo'])): ?>
+            <?php if(($templateParams["toSee"] == false && $dbh->getNumberOfPartecipants($_GET['idGruppo']) >= $dbh->getGroupMaxPartecipants($_GET['idGruppo']))
+                || (in_array($_SESSION['email'], $dbh->getAllRequests($dbh->getAdministratorOfGroup($_GET['idGruppo']))) && $templateParams['toSee'] == false)): ?>
                     <?php echo "disabled"?> 
-                <?php endif; ?>
             <?php endif; ?> >
             <?php if($templateParams["toSee"] == true) { echo "Esci dal gruppo"; } else if($dbh->isGroupPrivate($_GET['idGruppo']) == 1) { echo "Chiedi di unirti"; } else { echo "Unisciti al gruppo"; }?>
         </button>
@@ -40,6 +39,8 @@
         <?php echo $dbh->getNumberOfPartecipants($_GET['idGruppo'])."/".$dbh->getGroupMaxPartecipants($_GET['idGruppo']); ?>
         <?php if($dbh->getNumberOfPartecipants($_GET['idGruppo']) >= $dbh->getGroupMaxPartecipants($_GET['idGruppo'])): ?>
             <?php echo "- Gruppo al completo!"?>
+        <?php elseif (in_array($_SESSION['email'], $dbh->getAllRequests($dbh->getAdministratorOfGroup($_GET['idGruppo']))) && $templateParams['toSee'] == false): ?>
+            <?php echo "- In attesa della risposta..."?>
         <?php endif; ?>
     </h3>
     <ul class="lista-componenti-gruppo">
@@ -71,19 +72,21 @@
     <?php endif; ?>
 </section>
 
-<section id="chat">
-    <h3>CHAT</h3>
-    <?php foreach($templateParams["chat"] as $message): ?>
-        <div class="message">
-            <h5><?php echo $message["mittente"] ?></h5>
-            <p><?php echo $message["testo"] ?></p>
-        </div>
-    <?php endforeach; ?>
-    <form id="chat-form" action="#" method="POST" >
-        <label for="chat-message">Scrivi un messaggio: <textarea name="chat-message" id="chat-message"></textarea></label>
-        <input type="submit" name="send-btn" id="send-btn" value="Invia"/>
-    </form>
-</section>
+<?php if($templateParams['toSee'] == true) : ?>
+    <section id="chat">
+        <h3>CHAT</h3>
+        <?php foreach($templateParams["chat"] as $message): ?>
+            <div class="message">
+                <h5><?php echo $message["mittente"] ?></h5>
+                <p><?php echo $message["testo"] ?></p>
+            </div>
+        <?php endforeach; ?>
+        <form id="chat-form" action="#" method="POST" >
+            <label for="chat-message">Scrivi un messaggio: <textarea name="chat-message" id="chat-message"></textarea></label>
+            <input type="submit" name="send-btn" id="send-btn" value="Invia"/>
+        </form>
+    </section>
+<?php endif; ?>
 
 <!--Popup di conferma-->
 <div id="popup" class="hidden-popup">

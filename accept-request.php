@@ -15,6 +15,8 @@ try {
             $dbh->deleteNotification($_GET['idNotifica']);
         }
         $result['esito'] = $success;
+    } else if ($_GET['action'] == "deny-request") {
+        $result['esito'] = $dbh->deleteNotification($_GET['idNotifica']);
     }
 } catch (Exception $e) {
     $result['errore'] = $e -> getMessage();

@@ -549,5 +549,30 @@ class DatabaseHelper {
         $stmt->bind_param('s', $nome);
         return $stmt->execute();
     }
+
+    public function getAdministratorOfGroup($idGruppo) {
+        $stmt = $this->db->prepare("SELECT creatore
+                                    FROM gruppo
+                                    WHERE idGruppo = ?");
+        $stmt->bind_param('i', $idGruppo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        return $row['creatore'];
+    }
+
+    public function getAllRequests($email) {
+        $stmt = $this->db->prepare("SELECT n.*
+                                    FROM notifica n
+                                    LEFT JOIN riceve r ON r.idNotifica = n.idNotifica
+                                    WHERE n.tipo = 'richiesta'
+                                    AND r.destinatario = ?");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return array_column($result->fetch_all(MYSQLI_ASSOC), 'mittente');
+    }
 } 
 ?>

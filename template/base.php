@@ -50,8 +50,8 @@
             data-nomegruppo="<?php echo $notification['nomeGruppo']; ?>"
             onclick="openMessage(this,
             '<?php echo $notification['tipo']; ?>', 
-            '<?php echo addslashes($notification['testo']); ?>',
-            '<?php echo addslashes($notification['nomeGruppo'] ?? '') ; ?>')">
+            '<?php echo htmlspecialchars($notification['testo']); ?>',
+            '<?php echo htmlspecialchars($notification['nomeGruppo'] ?? '') ; ?>')">
             <div class="messaggio">
                 <p><?php echo $notification["oggetto"]; ?></p>
                 <p><?php echo $notification["mittente"]; ?></p>

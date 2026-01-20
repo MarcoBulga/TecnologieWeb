@@ -111,8 +111,24 @@ function openMessage(notification, type, text, nomeGruppo){
 
         //bottone rifiuta
         document.getElementById("noRequest").onclick = async function() {
-            deleteNotification(notification);
+            const idNotificaDaEliminare = notification.dataset.idnotifica;
 
+            const url = 'accept-request.php?action=deny-request&idNotifica=' + idNotificaDaEliminare;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.esito) {
+                    deleteNotification(notification);
+                    popup.style.display="none";
+                    location.reload();
+                } else {
+                    alert("Errore: " + data.errore);
+                }
+            } catch (error) {
+                console.error("Errore durante l'accettazione", error);
+            }
             popup.style.display = "none";
         }
     } else {
