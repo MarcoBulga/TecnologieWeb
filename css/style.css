@@ -433,7 +433,12 @@ a.btn:active {
 
 /*Spazio fra i bottoni in alto a destra di qualsiasi pagina*/
 nav > ul {
-    gap: 10%;
+    gap: 8%;
     list-style: none;
     margin-right: 2% !important;
+}
+
+/*Impedisce al bottone registrati di uscire a destra della pagina*/
+nav > ul.registerLoginBtns {
+    padding: 0 3%;
 }
