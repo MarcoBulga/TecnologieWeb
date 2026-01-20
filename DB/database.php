@@ -77,7 +77,6 @@ class DatabaseHelper {
         $id = $this->getGroupId();
         $this->addAdministratorToGroup($_SESSION['email'], $id);
         $filters[] = "ghost";
-        var_dump($filters);
         $this->insertGroupFilters($id,$filters);
 
         $stmt = $this->db->prepare("INSERT INTO chat(idGruppo) value (?)");
