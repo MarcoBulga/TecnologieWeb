@@ -1,15 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/groups.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./JavaScript/script.js" defer></script>
     <script src="./JavaScript/groupManager.js" defer></script>
-    <?php if(isset($templateParams["js"])): ?>
-    <script src="./JavaScript/<?php echo $templateParams["js"]; ?>" defer></script>
-    <?php endif; ?>
-    <title>Ricerca Gruppi</title>
+        <title>Ricerca Gruppi</title>
 </head>
 <body>
     <header>
@@ -17,53 +16,95 @@
     </header>
     <nav>
         <ul class="normalButtons">
-            <li><p><?php echo $_SESSION['name']." ".$_SESSION['surname']; ?></p></li>
+            <li><p>Marco Bulgarelli</p></li>
             <li><button id="bottone-notifiche">notifica</button></li>
             <li><button id="bottone-menu">menu</button></li>
         </ul>
     </nav>
     <nav id="menu">
         <ul>
-            <?php if($_SESSION['admin'] == false): ?>
-                <li><button onclick="window.location.href='./search.php'">Cerca gruppi</button></li>
+                            <li><button onclick="window.location.href='./search.php'">Cerca gruppi</button></li>
                 <li><button onclick="window.location.href='./user-groups.php'">I tuoi gruppi</button></li>
                 <li><button onclick="window.location.href='./group-creation.php'">Crea nuovo gruppo</button></li>
-            <?php endif; ?>
-            <?php if($_SESSION['admin'] == false): ?>
-                <li><button
+                                        <li><button
                         onclick="openPopupReport()">Segnala un problema</button></li>
-            <?php else: ?>
-                <li><button onclick="window.location.href='./search.php'">Tutti i gruppi</button></li>
-                <li><button onclick="window.location.href='./reports.php'">Segnalazioni</button></li>
-                <li><button onclick="window.location.href='./course-change.php'">Corsi</button></li>
-            <?php endif; ?>
-            <li><button onclick="window.location.href='./logout.php'">Logout</button></li>
+                        <li><button onclick="window.location.href='./logout.php'">Logout</button></li>
         </ul>
         <button id="chiudi-menu">Chiudi</button>
     </nav>
     <nav id="notifiche">
-        <?php foreach($templateParams["notifications"] as $notification): ?>
-        <div class="notification"
-            data-mittente = "<?php echo $notification['mittente']; ?>"
-            data-idnotifica="<?php echo $notification['idNotifica']; ?>" 
-            data-idgruppo="<?php echo $notification['idGruppo']; ?>"
-            data-nomegruppo="<?php echo $notification['nomeGruppo']; ?>"
+                <div class="notification"
+            data-mittente = "gennaro.fabbri@studio.unibo.it"
+            data-idnotifica="3" 
+            data-idgruppo="1"
+            data-nomegruppo="test"
             onclick="openMessage(this,
-            '<?php echo $notification['tipo']; ?>', 
-            '<?php echo htmlspecialchars($notification['testo']); ?>',
-            '<?php echo htmlspecialchars($notification['nomeGruppo'] ?? '') ; ?>')">
+            'richiesta', 
+            'Buongiorno, vorrei entrare nel gruppo',
+            'test')">
             <div class="messaggio">
-                <p><?php echo $notification["oggetto"]; ?></p>
-                <p><?php echo $notification["mittente"]; ?></p>
+                <p>richiesta entrata</p>
+                <p>gennaro.fabbri@studio.unibo.it</p>
             </div>
             <button class="elimina-notifica">X</button>
         </div>
-        <?php endforeach; ?>
-        <button class="elimina-notifica">X</button>
+                <button class="elimina-notifica">X</button>
         <button id="chiudi-notifiche">Chiudi</button>
     </nav>
     <main>
-        <?php require $templateParams["page"]; ?>
+        <link rel="stylesheet" href="./css/groups.css" />
+<div>
+    <h2> I TUOI GRUPPI</h2>
+            <button id="btn-new-group" onclick="window.location.href='./group-creation.php'">+</button>
+    </div>
+<form action="#" method="post" class="search-bar">
+    <label for="ricerca-mio-gruppo" hidden>Barra di ricerca</label><input type="text" id="ricerca-mio-gruppo" name="ricerca-mio-gruppo" placeholder="barra di ricerca"/>
+    <input type="submit" id="btn-search" name="btn-search" value="Cerca" />
+    <input type="submit" id="btn-reset" name="btn-reset" value="Tutti i gruppi" formnovalidate />
+    </form>
+        <section>
+        <h3>
+            <a href="
+            ./specific-group-to-see.php?idGruppo=1"
+            class="link-header">test</a>
+        </h3>
+        <ul class="lista-componenti-gruppo">
+                                    <li class="componente">Alessandro Ravaioli - alessandro.ravaioli@studio.unibo.it</li>
+                        <li class="componente">Daniele Tramonti - daniele.tramonti@studio.unibo.it</li>
+                        <li class="componente">Marco Bulgarelli - marco.bulgarelli@studio.unibo.it</li>
+                    </ul>
+        <p>
+            <strong>accessibile - gioco - online            </strong>
+        </p>
+        <p><strong>Descrizione:</strong> breve </p>
+        <p><strong>Partecipanti:</strong> 
+            3/3        </p>
+        <p><strong>Corso:</strong> Tecnologie Web </p>
+    </section>
+        <section>
+        <h3>
+            <a href="
+            ./specific-group-to-see.php?idGruppo=4"
+            class="link-header">test</a>
+        </h3>
+        <ul class="lista-componenti-gruppo">
+                                    <li class="componente">Alessandro Ravaioli - alessandro.ravaioli@studio.unibo.it</li>
+                        <li class="componente">Carlo Verdi - carlo.verdi@studio.unibo.it</li>
+                        <li class="componente">Daniele Tramonti - daniele.tramonti@studio.unibo.it</li>
+                        <li class="componente">Marco Bulgarelli - marco.bulgarelli@studio.unibo.it</li>
+                    </ul>
+        <p>
+            <strong>accessibile            </strong>
+        </p>
+        <p><strong>Descrizione:</strong> breve </p>
+        <p><strong>Partecipanti:</strong> 
+            4/4        </p>
+        <p><strong>Corso:</strong> OOP </p>
+    </section>
+    
+<p>1<p>
+ 
+    <button type="button" name="forward-button" id="forward-button" onclick="window.location.href='?pageNumber=1&ricerca=&researchString=&number=4'">avanti</button>
     </main>
 
     <!--POPUP NOTIFICA NORMALE-->
@@ -109,16 +150,6 @@
                 <div class="popup-buttons">
                     <button id="annulla">Annulla</button>
                     <button id="conferma">Conferma</button>
-                </div>
-            </div>
-        </div>
-
-        <!--Popup di conferma-->
-        <div id="popupConfirm" class="hidden-popup">
-            <div class="popup-elements">
-                <p id="popupTextConfirm"></p>
-                <div class="popup-buttons">
-                    <button id="chiudiConfirm">Chiudi</button>
                 </div>
             </div>
         </div>

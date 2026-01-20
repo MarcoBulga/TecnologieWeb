@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="./css/groups.css" />
 <div>
     <h2> <?php if(isset($templateParams['report'])) echo "SEGNALAZIONI"; elseif(isset($templateParams["value"])) echo "RICERCA GRUPPI"; else echo "I TUOI GRUPPI"; ?></h2>
     <?php if($_SESSION['admin'] == false): ?>
