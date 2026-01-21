@@ -32,7 +32,7 @@ if(isset($_POST['confirmbutton']) && empty($_POST['undobutton'])) {
     }
 }
 
-$templateParams["css"] = array();
+$templateParams["css"] = array('group-creation');
 
 require './template/base.php';
 ?>
