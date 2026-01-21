@@ -135,6 +135,7 @@ nav:nth-of-type(1) > ul > li > button:active {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 10%;
 }
 
 /*Aiutano il piazzamento dei bottoni e l'allineamento delle loro etichette e scritte*/

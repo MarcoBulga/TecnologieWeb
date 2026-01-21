@@ -59,23 +59,4 @@ nav > ul.registerLoginBtns > li > p {
     margin: 0;
 }
 
-/* @media (max-width: 600px) {
-    /* Il nome utente occupa tutta la larghezza per spingere i bottoni sotto */
- /*   nav > ul.registerLoginBtns > li:first-child {
-        flex-basis: 100%; 
-        text-align: center;
-    }
-
-    nav > ul.registerLoginBtns > li > p {
-        font-size: 1.2rem;
-        margin-bottom: 5px;
-    }
-
-    /* I bottoni ora staranno affiancati tra loro sotto il nome */
- /*   a.btn {
-        font-size: 1.1rem;
-        padding: 8px 12px;
-        white-space: nowrap; /* Impedisce al testo del bottone di andare a capo */
- /*   }
-} */
 
