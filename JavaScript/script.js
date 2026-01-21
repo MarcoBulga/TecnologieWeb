@@ -4,6 +4,8 @@ const btnChiudiNotifiche = document.getElementById('chiudi-notifiche');
 const btnChiudiMenu = document.getElementById('chiudi-menu');
 const btnMenu = document.getElementById('bottone-menu');
 const btnNotifiche = document.getElementById('bottone-notifiche');
+const btnTag = document.getElementById("tag-button");
+const filtersContainer = document.querySelector('.filters');
 
 btnChiudiMenu.addEventListener('click', function() {
     menu.classList.remove('show');
@@ -20,6 +22,21 @@ btnMenu.addEventListener('click', function() {
 btnNotifiche.addEventListener('click', function() {
     notifiche.classList.add('show');
 });
+
+if(btnTag && filtersContainer) {
+    btnTag.addEventListener('click', function(e) {
+        e.preventDefault();
+        console.log("Bottone cliccato correttamente");
+        if (filtersContainer) {
+            filtersContainer.classList.toggle('show');
+            btnTag.classList.toggle('active');
+            console.log("Classe 'show' aggiunta/rimossa");
+        } else {
+            console.error("Il contenitore .filters non è stato trovato");
+        }
+
+    })
+}
 
 function deleteNotification(notification){
     if(notification){

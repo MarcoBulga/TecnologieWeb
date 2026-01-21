@@ -41,7 +41,41 @@ nav > ul.registerLoginBtns > li > p {
 
 /*Allinea il nome utente ai bottoni in alto*/
 .registerLoginBtns {
-    display: flex;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;      /* Permette ai bottoni di scendere sotto il nome */
+    justify-content: center;         /* Centra gli elementi se vanno a capo */
     align-items: center;
+    gap: 15px;
+    list-style: none;
+    margin: 0 !important;
+    padding: 10px 3% !important;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.registerLoginBtns > li {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+@media (max-width: 600px) {
+    /* Il nome utente occupa tutta la larghezza per spingere i bottoni sotto */
+    nav > ul.registerLoginBtns > li:first-child {
+        flex-basis: 100%; 
+        text-align: center;
+    }
+
+    nav > ul.registerLoginBtns > li > p {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+    }
+
+    /* I bottoni ora staranno affiancati tra loro sotto il nome */
+    a.btn {
+        font-size: 1.1rem;
+        padding: 8px 12px;
+        white-space: nowrap; /* Impedisce al testo del bottone di andare a capo */
+    }
 }
 

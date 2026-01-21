@@ -1,0 +1,174 @@
+main {
+    display:flex;
+    flex-direction:column;
+    align-items: stretch; /* Occupa tutta la larghezza */
+}
+
+main > div > h2{
+    width: fit-content;
+    text-align: left;
+    white-space: nowrap;
+}
+
+main > section {
+    display: block;  /* forza il ritorno a capo*/
+    margin: 20px 5%;
+    clear: both;
+}
+
+/*--- Gestisce i titoli dei gruppi ---*/
+main > section > h3 {
+    padding-left: 1%;
+    padding-bottom: 10px;
+    border-bottom: 2px solid grey;
+    margin-bottom: 2px;
+    box-sizing: border-box;
+}
+
+main > section > h3.header-descrizione {
+    border:none;
+    padding-top: 5%;
+}
+
+main > section > h3 > a {
+    text-decoration: none;
+    color: var(--text-color);
+    display: block;
+    cursor:pointer;
+    font-size: 1.5rem;
+}
+
+main > section > h3 > a:hover {
+    opacity: 0.8;
+}
+
+/*--- Gestisce l'elenco dei partecipanti al gruppo ---*/
+main > section > ul {
+    list-style:none;
+    text-align: left;
+    padding: 1%;
+    margin-top: 1%;
+}
+
+main > section > ul > li {
+    padding: 5px;
+}
+
+.search-bar {
+    display: flex;
+    flex-direction:column;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 30px;
+    float: none;
+}
+
+/*--- Testo dentro al gruppo ---*/
+main > section > p {
+    padding: 15px 10px 0 15px;
+    font-size: 1rem;
+}
+
+main > section > p:first-of-type{
+    color:#047857b6;
+    font-style: italic;
+}
+
+main > section > p.descrizione-gruppo {
+    font-weight: normal;
+}
+
+/*--- Barra di ricerca ---*/
+.search-main-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2%;
+    padding: 0 5%;
+}
+
+.search-controls-row {
+    display: flex;
+    flex-direction: row; /* Affianca gli elementi */
+    justify-content: space-between; /* space-between distribuisce gli elementi occupando tutto lo spazio orizzontale disponibile */
+    align-items: flex-start;
+    gap: 10px; /* Spazio tra i bottoni */
+    flex-wrap: wrap; /* Utile per dispositivi piccoli */
+    flex-basis: 100%;
+    
+    width: 90%;
+    margin: 15px auto;
+    gap: 20px;
+}
+
+/* Facciamo in modo che i bottoni e la select abbiano un peso visivo simile */
+#btn-reset, #course {
+    flex: 1;             /* I tre elementi provano a dividersi lo spazio equamente */
+    min-width: 150px;    /* Impedisce che diventino troppo piccoli */
+    max-width: 30%;      /* Impedisce che diventino troppo larghi su schermi enormi */
+    height: 45px;
+    text-align: center;
+}
+
+
+#ricerca-mio-gruppo {
+    font-size: 1.3rem;
+    box-shadow: 1px 1px 0 0 rgb(40, 40, 40);
+    width: 80%;
+}
+
+/*--- Bottone ricerca ---*/
+#btn-search{
+    all: unset;
+
+    background-color: #f0f0f0;
+    background-image: url(../upload/search.png);
+    background-size: 65%;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    text-indent: -9999999px;
+    width: 8vw;
+    height: 8vw;
+    box-shadow: 1px 1px 0 0 rgb(40, 40, 40);
+    margin: 2%;
+    border-radius: 20%;
+}
+
+#btn-search:hover {
+    box-shadow: unset;
+}
+
+#btn-search:active {
+    background-color: #2F3E38;
+}
+
+/*--- Bottone tutti i gruppi ---*/
+#btn-reset {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    font-size: 1.2rem;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    box-shadow: 1px 1px 0 0 rgb(40, 40, 40);
+    border-radius: 10%;
+}
+
+
+#btn-reset:hover {
+    box-shadow: unset;
+}
+
+#btn-reset:active {
+    background-color: #2F3E38;
+}
+
+#course {
+    height: 45px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}

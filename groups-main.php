@@ -1,21 +1,35 @@
+<link rel="stylesheet" href="./css/common-search-userGroups.css" />
+<?php if(isset($templateParams['value'])): ?>
+    <link rel="stylesheet" href="./css/search.css" />
+<?php else: ?>
+    <link rel="stylesheet" href="./css/groups.css" />
+<?php endif; ?>
 <div>
     <h2> <?php if(isset($templateParams['report'])) echo "SEGNALAZIONI"; elseif(isset($templateParams["value"])) echo "RICERCA GRUPPI"; else echo "I TUOI GRUPPI"; ?></h2>
-    <?php if($_SESSION['admin'] == false): ?>
+    <?php if($_SESSION['admin'] == false && empty($templateParams['value'])): ?>
         <button id="btn-new-group" onclick="window.location.href='./group-creation.php'">+</button>
     <?php endif; ?>
 </div>
 <form action="#" method="post" class="search-bar">
-    <label for="ricerca-mio-gruppo" hidden>Barra di ricerca</label><input type="text" id="ricerca-mio-gruppo" name="ricerca-mio-gruppo" placeholder="barra di ricerca"/>
-    <input type="submit" id="btn-search" name="btn-search" value="Cerca" />
-    <input type="submit" id="btn-reset" name="btn-reset" value="<?php if(isset($templateParams['report'])) {echo 'Tutte le segnalazioni';} else {echo 'Tutti i gruppi';} ?>" formnovalidate />
+    <div class="search-main-row">
+        <label for="ricerca-mio-gruppo" hidden>Barra di ricerca</label><input type="text" id="ricerca-mio-gruppo" name="ricerca-mio-gruppo" placeholder="barra di ricerca"/>
+        <input type="submit" id="btn-search" name="btn-search" value="Cerca" />
+    </div>
+
+    <div class="search-controls-row">
+        <input type="submit" id="btn-reset" name="btn-reset" value="<?php if(isset($templateParams['report'])) {echo 'Tutte le segnalazioni';} else {echo 'Tutti i gruppi';} ?>" formnovalidate />
+        <?php if(isset($templateParams["value"]) && empty($templateParams['report'])):?>
+            <label for="course" hidden>Seleziona corso:</label>
+            <select name="course" id="course" required>
+                <option value="" disabled selected hidden>seleziona corso</option>
+                    <?php foreach($templateParams["courses"] as $course): ?>
+                        <option value="<?php echo $course["nome"] ;?>"><?php echo $course["nome"] ;?></option>
+                    <?php endforeach; ?>
+            </select>
+            <button type="button" id="tag-button" name="tag-button">Scegli tag</button> 
+        <?php endif; ?>
+    </div>
     <?php if(isset($templateParams["value"]) && empty($templateParams['report'])):?>
-        <label for="course" hidden>Seleziona corso:</label>
-        <select name="course" id="course" required>
-            <option value="" disabled selected hidden>seleziona corso</option>
-            <?php foreach($templateParams["courses"] as $course): ?>
-            <option value="<?php echo $course["nome"] ;?>"><?php echo $course["nome"] ;?></option>
-            <?php endforeach; ?>
-        </select>
         <div class="filters">
             <ul>
                 <?php foreach($templateParams["filters"] as $filter): 
@@ -27,9 +41,7 @@
         </div>
     <?php endif; ?>
 </form>
-<?php if(isset($templateParams['value']) && empty($templateParams['report'])): ?>
-    <button id="tag-button">Scegli tag</button> 
-<?php endif; ?>
+
 <?php if(empty($templateParams['report'])): ?>
     <?php foreach($templateParams["Gruppi"] as $gruppo): ?>
     <section>
@@ -74,8 +86,8 @@
     <div class="impagination">
         <div class="left">
             <?php if($pageNumber > 0): ?> 
-            <button type="button" name="back-button" id="back-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber-1; ?>&ricerca=<?php echo $ricerca; ?>&researchString=<?php echo $researchString; ?>&number=<?php echo $number; ?><?php if(isset($selectedFilters)): ?>&<?php echo http_build_query(array('selectedFilters' => $selectedFilters)); endif; ?><?php if(isset($corso)): ?>&corso=<?php echo $corso; endif;?>'"><</button>
-        <?php endif; ?>
+                <button type="button" name="back-button" id="back-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber-1; ?>&ricerca=<?php echo $ricerca; ?>&researchString=<?php echo $researchString; ?>&number=<?php echo $number; ?><?php if(isset($selectedFilters)): ?>&<?php echo http_build_query(array('selectedFilters' => $selectedFilters)); endif; ?><?php if(isset($corso)): ?>&corso=<?php echo $corso; endif;?>'"><</button>
+            <?php endif; ?>
         </div>
         
         <p class="center"><?php echo $pageNumber + 1; ?></p>
@@ -83,8 +95,8 @@
         <div class="right">
             <?php if( $forward ): ?> 
             <button type="button" name="forward-button" id="forward-button" onclick="window.location.href='?pageNumber=<?php echo $pageNumber+1; ?>&ricerca=<?php echo $ricerca; ?>&researchString=<?php echo $researchString; ?>&number=<?php echo $number; ?><?php if(isset($selectedFilters)): ?>&<?php echo http_build_query(array('selectedFilters' => $selectedFilters)); endif; ?><?php if(isset($corso)):   ?>&corso=<?php echo $corso; endif;?>'">></button>
+            <?php endif; ?>        
         </div>
         
     </div>
 </div>
-<?php endif; ?>

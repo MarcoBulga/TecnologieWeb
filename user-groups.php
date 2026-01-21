@@ -1,6 +1,8 @@
 <?php 
 require_once 'bootstrap.php';
 
+$templateParams['userGroups'] = 'ciao';
+
 $pageNumber = isset($_GET["pageNumber"]) ? $_GET["pageNumber"] : 0;
 $ricerca = isset($_GET["ricerca"]) ? $_GET["ricerca"] : false;
 $researchString = isset($_GET["researchString"]) ? $_GET["researchString"] : "";

@@ -7,28 +7,152 @@ button.tag-button {
     transition: all 0.2s ease;
 }
 
-form div ul {
+/* Facciamo in modo che i bottoni e la select abbiano un peso visivo simile */
+#btn-reset, #course, #tag-button {
+    flex: 1;             /* I tre elementi provano a dividersi lo spazio equamente */
+    min-width: 150px;    /* Impedisce che diventino troppo piccoli */
+    max-width: 30%;      /* Impedisce che diventino troppo larghi su schermi enormi */
+    height: 45px;
+    text-align: center;
+}
+
+#course, #tag-button {
+    height: 45px;
+    padding: 5px 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f0f0f0;
+}
+
+#tag-button {
+    cursor: pointer;
+    background-color: var(--button-bg-color);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 0px var(--button-hover-bg-color);
+}
+
+#tag-button.active {
+    background-color: var(--button-hover-bg-color);
+    transform: translateY(2px);
+    box-shadow: none;
+}
+
+
+
+/*PER I FILTRI */
+
+/* Contenitore */
+form .filters {
+    display: block !important;
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0 !important; /* Forza la chiusura */
+    margin: 0 auto;
+    padding: 0 15px !important; /* Rimuove padding che creano i "2 pixel" */
+    overflow: hidden;
+    border: 0 solid transparent; /* Rimuove il bordo che può occupare spazio */
+    transition: max-height 0.4s ease-in-out, opacity 0.3s ease;
+}
+
+/* --- Quando i filtri sono attivi --- */
+form .filters.show {
+    visibility: visible !important;
+    opacity: 1 !important;
+    max-height: 1000px !important; /* Sovrascrive lo 0 precedente */
+    padding: 15px !important;
+    margin: 15px auto 25px auto;
+    border: 1px solid #e2e8f0 !important;
+}
+
+/* La lista diventa un contenitore flessibile orizzontale */
+form div.filters ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Permette di andare a capo se sono tanti */
+    gap: 12px;       /* Spazio tra un filtro e l'altro */
+    justify-content: center;
+    padding: 0;
+    margin: 0;
     list-style: none;
 }
 
-form div {
-    display: flex;
-    flex-direction: column;
-
-
-    transition: transform 0.5s ease, opacity 0.5s ease, max-height 0.5s ease, padding 0.5s ease, margin 0.5s ease;
-    max-height: 500px; 
-    overflow: hidden;  
-
-    backface-visibility: hidden;
-    pointer-events: none;
-    transform:translateX(100%);
-    opacity: 0; 
-    transition: transform 0.4s ease-in-out, opacity 0.3s;
+/* Ogni singolo filtro (chip) */
+form div.filters ul li label {
+    display: inline-flex;
+    align-items: center;
+    background-color: white;
+    border: 2px solid #cbd5e1;
+    border-radius: 20px; /* Effetto pillola */
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    user-select: none;
 }
- 
-form div.show {
-    transform: translateX(0);
-    pointer-events: auto;
-    opacity: 1;
+
+/* Nascondiamo l'input checkbox originale ma lo teniamo funzionale */
+form div.filters ul li input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: var(--button-bg-color);
+}
+
+/* Effetto al passaggio del mouse */
+form div.filters ul li label:hover {
+    border-color: var(--button-bg-color);
+    background-color: #f0fdf4;
+}
+
+/* Effetto quando il filtro è selezionato (opzionale se vuoi cambiare sfondo) */
+form div.filters ul li label:has(input:checked) {
+    background-color: var(--button-bg-color);
+    color: white;
+    border-color: var(--button-bg-color);
+}
+
+/*FINE FILTRI*/
+
+/*--- Navigazione tra pagine ---*/
+.parent {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.impagination{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 70%;
+    min-width: 30%;
+}
+
+.impagination p {
+    margin: 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+#forward-button, #back-button {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background-color: var(--button-bg-color);
+    box-shadow: 0 4px 0px var(--button-hover-bg-color); 
+    transition: all 0.2s ease;
+    border-style: none;
+
+}
+
+#forward-button:hover, #back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px var(--button-hover-bg-color);
+}
+
+#forward-button:active, #back-button:active {
+    transform: translateY(4px);
+    box-shadow: 0 0px 0px var(--button-hover-bg-color);
 }
