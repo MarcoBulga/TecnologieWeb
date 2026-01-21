@@ -172,3 +172,47 @@ main > section > p.descrizione-gruppo {
     border-radius: 8px;
     background-color: #f0f0f0;
 }
+
+/*--- Navigazione tra pagine ---*/
+.parent {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.impagination{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 70%;
+    min-width: 30%;
+}
+
+.impagination p {
+    margin: 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+#forward-button, #back-button {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background-color: var(--button-bg-color);
+    box-shadow: 0 4px 0px var(--button-hover-bg-color); 
+    transition: all 0.2s ease;
+    border-style: none;
+    cursor: pointer;
+}
+
+#forward-button:hover, #back-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px var(--button-hover-bg-color);
+}
+
+#forward-button:active, #back-button:active {
+    transform: translateY(4px);
+    box-shadow: 0 0px 0px var(--button-hover-bg-color);
+}
