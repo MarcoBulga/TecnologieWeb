@@ -17,7 +17,7 @@
             '<?php if($templateParams["toSee"] == true) {echo "openPopupToLeave(".$_GET['idGruppo'].")";}
                     else if ($dbh->isGroupPrivate($_GET['idGruppo']) == 0) {echo "openPopupRequestToJoin(document.getElementById(\"groupname\").textContent, ".$_GET['idGruppo'].")";} 
                     else {echo "openPopupRequestToJoinPrivate(document.getElementById(\"groupname\").textContent, ".$_GET['idGruppo'].")";}?>'
-            id="btn-new-group" 
+            id="btn-new-group"
             <?php if(($templateParams["toSee"] == false && $dbh->getNumberOfPartecipants($_GET['idGruppo']) >= $dbh->getGroupMaxPartecipants($_GET['idGruppo']))
                 || (in_array($_SESSION['email'], $dbh->getAllRequests($dbh->getAdministratorOfGroup($_GET['idGruppo']))) && $templateParams['toSee'] == false)): ?>
                     <?php echo "disabled"?> 

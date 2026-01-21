@@ -11,6 +11,8 @@ $templateParams["notifications"] = $dbh->getAllNotifications($_SESSION["email"])
 
 /* $templateParams["js"] = "tag.js"; */
 
+$templateParams['css'] = array('group-creation');
+
 $valueGroup = false;
 if(isset($_POST['confirmbutton']) && empty($_POST['undobutton'])) {
     $selectedFilters = array();

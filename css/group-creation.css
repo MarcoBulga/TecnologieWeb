@@ -1,0 +1,144 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 80vh;
+}
+
+#formCreaGruppo {
+    background-color: var(--header-footer-bg-color);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: 1px solid rgba(172, 172, 172, 0.4);
+    width: 100%;
+    max-width: 550px; /* Un po' più largo per le descrizioni */
+}
+
+h2 {
+    text-align: center;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+/* Pulizia delle liste */
+#formCreaGruppo ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#formCreaGruppo li {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+/* Stile per Label e Input testuali/Select/Textarea */
+label {
+    display: block;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 8px;
+}
+
+select, 
+input[type="text"], 
+input[type="number"], 
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Gestione particolare per Checkbox (Privato e Filtri) */
+input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    vertical-align: middle;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+/* Box dei filtri (Tag) */
+.filters {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    margin: 20px 0;
+    max-height: 200px;
+    overflow-y: auto; /* Scroll se ci sono troppi filtri */
+}
+
+.filters ul {
+    display: flex;
+    flex-wrap: wrap; /* Filtri affiancati */
+    gap: 15px;
+}
+
+.filters li {
+    margin-bottom: 0;
+}
+
+/* Bottoni stile "Gommoso" */
+#confirmbutton, 
+#tag-button,
+#yes {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--button-bg-color);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 0px var(--button-hover-bg-color);
+    transition: all 0.2s ease;
+    margin-top: 10px;
+}
+
+#undobutton, 
+#not {
+    width: 100%;
+    padding: 10px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 0px #495057;
+    margin-top: 15px;
+}
+
+/* Effetti Hover e Active */
+#confirmbutton:hover, #tag-button:hover, #undobutton:hover {
+    transform: translateY(-2px);
+}
+
+#confirmbutton:active, #tag-button:active, #undobutton:active {
+    transform: translateY(3px);
+    box-shadow: 0 0px 0px transparent;
+}
+
+/* Responsive per Mobile */
+@media (max-width: 480px) {
+    #formCreaGruppo {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .filters ul {
+        flex-direction: column; /* Filtri uno sotto l'altro su mobile */
+    }
+}
