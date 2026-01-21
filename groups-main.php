@@ -1,9 +1,3 @@
-<link rel="stylesheet" href="./css/common-search-userGroups.css" />
-<?php if(isset($templateParams['value'])): ?>
-    <link rel="stylesheet" href="./css/search.css" />
-<?php else: ?>
-    <link rel="stylesheet" href="./css/groups.css" />
-<?php endif; ?>
 <div>
     <h2> <?php if(isset($templateParams['report'])) echo "SEGNALAZIONI"; elseif(isset($templateParams["value"])) echo "RICERCA GRUPPI"; else echo "I TUOI GRUPPI"; ?></h2>
     <?php if($_SESSION['admin'] == false && empty($templateParams['value'])): ?>

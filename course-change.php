@@ -7,5 +7,7 @@ $templateParams['courses'] = $dbh->getAllCourses();
 
 $templateParams['notifications'] = $dbh->getAllNotifications($_SESSION["email"]);
 
+$templateParams["css"] = array();
+
 require './template/base.php';
 ?>

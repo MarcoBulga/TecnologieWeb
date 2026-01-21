@@ -9,7 +9,7 @@ $templateParams["filters"] = $dbh->getAllFilters();
 
 $templateParams["notifications"] = $dbh->getAllNotifications($_SESSION["email"]);
 
-$templateParams["js"] = "tag.js";
+/* $templateParams["js"] = "tag.js"; */
 
 $valueGroup = false;
 if(isset($_POST['confirmbutton']) && empty($_POST['undobutton'])) {
@@ -29,6 +29,8 @@ if(isset($_POST['confirmbutton']) && empty($_POST['undobutton'])) {
         echo "<p>Errore nella creazione del gruppo.</p>";
     }
 }
+
+$templateParams["css"] = array();
 
 require './template/base.php';
 ?>
