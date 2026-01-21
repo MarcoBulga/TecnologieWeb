@@ -19,6 +19,7 @@ function constructMessage(text,name,surname) {
 
 async function sendMessage() {
     let text = message.value;
+    if(text.trim() != "") {
         const id = window.location.href.split('?')[1].replace(/\D/g, "");
 
         const url = 'gestisci-chat.php?text='+ encodeURIComponent(text) + '&id='+id;
@@ -39,6 +40,7 @@ async function sendMessage() {
         } catch (error) {
             console.log(error.message);
         }
+    }
 }
 
 message.addEventListener('keydown',function(event) {

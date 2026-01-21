@@ -66,8 +66,8 @@
         <h2 id="safetyPopupCourseObject">placeholder</h2>
         <p id="safetyPopupCourseText"></p>
         <div class="popup-buttons">
-            <button id="undo">Annulla</button>
             <button id="confirm">Procedi</button>
+            <button id="undo">Annulla</button>
         </div>
     </div>
 </div>
@@ -77,8 +77,8 @@
         <h2 id="safetyPopupTagObject">placeholder</h2>
         <p id="safetyPopupTagText"></p>
         <div class="popup-buttons">
-            <button id="undoTag">Annulla</button>
             <button id="confirmTag">Procedi</button>
+            <button id="undoTag">Annulla</button>
         </div>
     </div>
 </div>

@@ -90,8 +90,8 @@
                 <p><strong> riguardo al gruppo:</strong> <span id="popupGroupNameRequest"></span></p>
                 <p id="popupSenderRequest"></p>
                 <div class="popup-buttons">
-                    <button id="noRequest">Rifiuta</button>
                     <button id="yesRequest">Accetta</button>
+                    <button id="noRequest">Rifiuta</button>
                 </div>
             </div>
         </div>
@@ -110,8 +110,8 @@
                     <label for="popupTextReport" hidden>testo della segnalazione</label><textarea name="popupTextReport" id="popupTextReport" placeholder="Questo sito fa schifo!"></textarea><!--aggiunta hidden label per AA-->
                 </div>
                 <div class="popup-buttons">
-                    <button id="annulla">Annulla</button>
                     <button id="conferma">Conferma</button>
+                    <button id="annulla">Annulla</button>
                 </div>
             </div>
         </div>
