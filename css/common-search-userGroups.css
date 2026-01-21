@@ -102,7 +102,7 @@ main > section > p.descrizione-gruppo {
 }
 
 /* Facciamo in modo che i bottoni e la select abbiano un peso visivo simile */
-#btn-reset, #course {
+#course {
     flex: 1;             /* I tre elementi provano a dividersi lo spazio equamente */
     min-width: 150px;    /* Impedisce che diventino troppo piccoli */
     max-width: 30%;      /* Impedisce che diventino troppo larghi su schermi enormi */
@@ -145,32 +145,92 @@ main > section > p.descrizione-gruppo {
 
 /*--- Bottone tutti i gruppi ---*/
 #btn-reset {
-    display: inline-block;
-    width: auto;
-    margin: 0;
-    font-size: 1.2rem;
-    background-color: #f0f0f0;
+    all: unset; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    flex: 1;
+    min-width: 150px;
+    height: 45px;
+    
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    
+    background-color: #4b5563; 
+    border-radius: 10px;
     cursor: pointer;
-    box-shadow: 1px 1px 0 0 rgb(40, 40, 40);
-    border-radius: 10%;
+    
+    box-shadow: 0 4px 0px #1f2937; 
+    transition: all 0.2s ease;
+    text-align: center;
 }
 
 
 #btn-reset:hover {
-    box-shadow: unset;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px #1f2937;
+    filter: brightness(1.1);
 }
 
 #btn-reset:active {
-    background-color: #2F3E38;
+    transform: translateY(4px);
+    box-shadow: 0 0px 0px #1f2937;
 }
 
 #course {
+    flex: 1;
+    min-width: 150px;
     height: 45px;
-    padding: 5px 10px;
+    padding: 0 15px;
     font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f0f0f0;
+    font-weight: bold;
+    font-family: inherit;
+
+    color: var(--text-color);
+    background-color: var(--button-bg-color); 
+    border: none; 
+    border-radius: 10px;
+    cursor: pointer;
+    
+    /* Effetto gommoso come il resto */
+    box-shadow: 0 4px 0px var(--button-hover-bg-color);
+    transition: all 0.2s ease;
+    appearance: none; 
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+}
+
+#tag-button {
+    flex: 1;
+    min-width: 120px;
+    height: 45px;
+    background-color: var(--button-bg-color);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 0px var(--button-hover-bg-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#course:hover, #tag-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px var(--button-hover-bg-color);
+}
+
+#course:active, #tag-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0px var(--button-hover-bg-color);
+}
+
+/* Rimuove l'outline quando si clicca */
+#course:focus {
+    outline: none;
+    border-color: var(--button-hover-bg-color);
 }
 
 /*--- Navigazione tra pagine ---*/
