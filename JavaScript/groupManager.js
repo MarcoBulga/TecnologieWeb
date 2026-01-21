@@ -314,11 +314,89 @@ async function openPopupToDeleteCourse(event) {
     }
 }
 
-async function openSafetyPopup(event) {
+async function openPopupToAddTag(event) {
     if (event) event.preventDefault();
-    const popup = document.getElementById("safetyPopup");
-    const text = document.getElementById("safetyPopupText");
-    const object = document.getElementById("safetyPopupObject");
+    const popup = document.getElementById("tagPopup");
+    const text = document.getElementById("tagPopupText");
+    const object = document.getElementById("tagPopupObject");
+    const name = document.getElementById("name-new-tag").value;
+
+    if(name !== "") {
+        const url = "gestisci-tag-change.php?nomeTag=" + name + "&action=add_tag";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error("Errore nella creazione del tag" + response.status);
+            }
+            const data = await response.json();
+            // Gestisci la risposta se necessario
+            if(data["esito"]) {
+                object.textContent = "Tag aggiunto";
+                text.textContent = "Il tag da te aggiunto è ora visibile a tutti gli utenti";
+
+                popup.style.display= "flex";
+
+            } else {
+                object.textContent = "Aggiunta tag fallita!"
+                text.textContent = "Probabilmente esiste già un tag con quel nome, non possono essercene due uguali!"
+
+                popup.style.display = "flex";
+            }
+        } catch (error) {
+            console.error("Errore durante l'aggiunta del tag:", error.message);
+        }
+
+        document.getElementById("chiudiTag").onclick = function(){
+            popup.style.display = "none";
+            location.reload();
+        };
+    }
+}
+
+async function openPopupToDeleteTag(event) {
+    if (event) event.preventDefault();
+    const popup = document.getElementById("tagPopup");
+    const text = document.getElementById("tagPopupText");
+    const object = document.getElementById("tagPopupObject");
+    const name = document.getElementById("tag-to-delete").value;
+
+    if (name !== "") {
+        const url = "gestisci-tag-change.php?nomeTag=" + name + "&action=remove_tag";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error("Errore nella cancellazione del tag" + response.status);
+            }
+            const data = await response.json();
+            // Gestisci la risposta se necessario
+            if(data["esito"]) {
+                object.textContent = "Tag eliminato";
+                text.textContent = "Il tag è stato eliminato con successo!";
+
+                popup.style.display= "flex";
+
+            } else {
+                object.textContent = "Eliminazione tag fallita!"
+                text.textContent = "Purtroppo qualcosa sembra essere andato storto..."
+
+                popup.style.display = "flex";
+            }
+        } catch (error) {
+            console.error("Errore durante l'eliminazione del tag:", error.message);
+        }
+
+        document.getElementById("chiudiTag").onclick = function(){
+            popup.style.display = "none";
+            location.reload();
+        };
+    }
+}
+
+async function openSafetyPopupCourse(event) {
+    if (event) event.preventDefault();
+    const popup = document.getElementById("safetyPopupCourse");
+    const text = document.getElementById("safetyPopupCourseText");
+    const object = document.getElementById("safetyPopupCourseObject");
     const name = document.getElementById("course-to-delete").value;
 
     if (name !== "") {
@@ -336,6 +414,32 @@ async function openSafetyPopup(event) {
         document.getElementById("confirm").onclick = function() {
             popup.style.display = "none";
             openPopupToDeleteCourse(event);
+        }
+    }
+}
+
+async function openSafetyPopupTag(event) {
+    if (event) event.preventDefault();
+    const popup = document.getElementById("safetyPopupTag");
+    const text = document.getElementById("safetyPopupTagText");
+    const object = document.getElementById("safetyPopupTagObject");
+    const name = document.getElementById("tag-to-delete").value;
+
+    if (name !== "") {
+        // Gestisci la risposta se necessario
+        object.textContent = "Sei sicuro di procedere con l'eliminazione?";
+        text.textContent = "Una volta che procedi con l'eliminazione del tag " + name + " non sarà più possibile utilizzarlo";
+
+        popup.style.display = "flex";
+
+        document.getElementById("undoTag").onclick = function(){
+            popup.style.display = "none";
+            location.reload();
+        };
+
+        document.getElementById("confirmTag").onclick = function() {
+            popup.style.display = "none";
+            openPopupToDeleteTag(event);
         }
     }
 }

@@ -10,15 +10,28 @@ main {
     box-sizing: border-box;
 }
 
-.new-course, .delete-course {
+.forms-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.new-course, .delete-course, .new-tag, .delete-tag {
     background-color: white;
     padding: 25px;
     border-radius: 15px;
     border: 1px solid #eee;
     width: 100%;
     max-width: 800px;
-    margin: 0 auto 20px auto; 
+    margin: 0; 
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
     
     display: flex;
     flex-direction: column;
@@ -28,13 +41,25 @@ main {
     text-align: center; 
 }
 
+@media (max-width: 768px) {
+    .forms-row {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .new-course, .delete-course, .new-tag, .delete-tag {
+        width: 100%;
+        max-width: 800px;
+    }
+}
+
 main > div:first-of-type h2 {
     text-align: center;
     width: 100%;
 }
 
 /* Allineamento Label e Input */
-.new-course label, .delete-course label {
+.new-course label, .delete-course label, .new-tag label, .delete-tag label {
     display: flex;
     flex-direction: column;
     align-items: center; 
@@ -45,7 +70,9 @@ main > div:first-of-type h2 {
 
 /* Stile specifico per Select e Input Text */
 .new-course input[type="text"], 
-.delete-course select {
+.delete-course select,
+.new-tag input[type="text"], 
+.delete-tag select {
     width: 100%;
     padding: 12px;
     border-radius: 8px;
@@ -57,7 +84,8 @@ main > div:first-of-type h2 {
 }
 
 /* Pulsanti dei Form (allineati a destra) */
-#btn-new-course, #btn-delete-course {
+#btn-new-course, #btn-delete-course,
+#btn-new-tag, #btn-delete-tag {
     width: 100%;             
     max-width: 500px;        
     padding: 12px;
@@ -71,26 +99,22 @@ main > div:first-of-type h2 {
     align-self: center;
 }
 
-#btn-delete-course {
+#btn-delete-course, #btn-delete-tag {
     background-color: #dc3545;
     color: white;
     box-shadow: 0 4px 0px #a71d2a;
 }
 
-#btn-new-course:hover, #btn-delete-course:hover {
+#btn-new-course:hover, #btn-delete-course:hover,
+#btn-new-tag:hover, #btn-delete-tag:hover {
     transform: translateY(-2px);
     filter: brightness(1.1);
 }
 
-#btn-new-course:active, #btn-delete-course:active {
+#btn-new-course:active, #btn-delete-course:active,
+#btn-new-tag:active, #btn-delete-tag:active {
     transform: translateY(2px);
     box-shadow: 0 0px 0px transparent;
-}
-
-/* Colore specifico per il tasto Elimina (per coerenza con btn-elimina-gruppo) */
-#btn-delete-course {
-    background-color: #dc3545;
-    box-shadow: 0 4px 0px #a71d2a;
 }
 
 /* Stile dei Popup */
@@ -143,17 +167,17 @@ main > div:first-of-type h2 {
     filter: brightness(1.1);
 }
 
-#undo {
+#undo, #undoTag {
     background-color: #6c757d;
     box-shadow: 0 4px 0px #495057;
 }
 
-#confirm {
+#confirm, #confirmTag {
     background-color: #dc3545;
     box-shadow: 0 4px 0px #a71d2a;
 }
 
-#chiudi {
+#chiudi, #chiudiTag {
     background-color: var(--button-bg-color);
     box-shadow: 0 4px 0px var(--button-hover-bg-color);
 }

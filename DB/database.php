@@ -599,5 +599,17 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_assoc();
     }
+
+    public function addTag($nome) {
+        $stmt = $this->db->prepare("INSERT INTO tag(nome) VALUES (?)");
+        $stmt->bind_param('s', $nome);
+        return $stmt->execute();
+    }
+
+    public function removeTag($nome) {
+        $stmt = $this->db->prepare("DELETE FROM tag WHERE nome = ?");
+        $stmt->bind_param('s', $nome);
+        return $stmt->execute();
+    }
 } 
 ?>
