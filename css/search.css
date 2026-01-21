@@ -44,7 +44,7 @@ button.tag-button {
 /*PER I FILTRI */
 
 /* Contenitore */
-form .filters {
+form div.filters {
     display: block !important;
     visibility: hidden;
     opacity: 0;
@@ -57,7 +57,7 @@ form .filters {
 }
 
 /* --- Quando i filtri sono attivi --- */
-form .filters.show {
+form div.filters.show {
     visibility: visible !important;
     opacity: 1 !important;
     max-height: 1000px !important; /* Sovrascrive lo 0 precedente */

@@ -58,7 +58,7 @@ $templateParams["page"] = 'groups-main.php';
 
 $templateParams["value"] = 'Entra nel gruppo';
 
-$templateParams["js"] = "tag.js";
+/* $templateParams["js"] = "tag.js"; */
 
 require './template/base.php';
 ?>

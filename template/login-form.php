@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="./css/base.css" />
-        <?php if($templateParams['title'] == 'login'): ?>
+        <?php if($templateParams['title'] == 'Login'): ?>
             <link rel="stylesheet" href="./css/login.css" />
         <?php else: ?>
             <link rel="stylesheet" href="./css/register.css" />

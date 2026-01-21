@@ -5,7 +5,7 @@ const btnChiudiMenu = document.getElementById('chiudi-menu');
 const btnMenu = document.getElementById('bottone-menu');
 const btnNotifiche = document.getElementById('bottone-notifiche');
 const btnTag = document.getElementById("tag-button");
-const filtersContainer = document.querySelector('.filters');
+const filtersContainer = document.querySelector('form div.filters');
 
 btnChiudiMenu.addEventListener('click', function() {
     menu.classList.remove('show');
