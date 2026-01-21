@@ -198,6 +198,31 @@ textarea {
     resize: vertical;
 }
 
+/* visibilità invisibilità della chat */
+section#chat {
+    display: none;
+    visibility: hidden;
+
+    backface-visibility: hidden;
+    pointer-events: none;
+    transform:translateX(100%); /* trasla inizialmente tutta la tendina fuori a destra */
+    opacity: 0; 
+    transition: transform 0.4s ease-in-out, opacity 0.3s;
+}
+
+section#chat.show {
+    position: fixed;
+    top: 0;
+    right: 0;
+    margin: 0;
+    width: 350px;
+    display: block;
+    visibility: visible;
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
 /* --- Responsive mobile --- */
 @media (max-width: 600px) {
     main > div:first-of-type, .to-enter, #chat {
