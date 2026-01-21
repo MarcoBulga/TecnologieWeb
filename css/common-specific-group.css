@@ -1,0 +1,212 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Contenitore principale (Header del gruppo e Bottoni) */
+main > div:first-of-type {
+    background-color: var(--header-footer-bg-color);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: 1px solid rgba(172, 172, 172, 0.4);
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column; /* Il titolo sta sopra... */
+    align-items: center;
+    gap: 15px;
+}
+
+main > div:first-of-type > button,
+main > div:first-of-type > form,
+main > div:first-of-type > a {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+main > div:first-of-type {
+    /* Permette ai bottoni di andare a capo se lo schermo è troppo stretto 
+       ma di stare affiancati se c'è spazio */
+    flex-wrap: wrap; 
+    flex-direction: row; /* Cambiamo a row per mettere tutto affiancato */
+    justify-content: center;
+}
+
+/* Titolo Gruppo */
+#groupname {
+    flex: 0 0 100%; /* Occupa il 100% della larghezza flex */
+    color: var(--text-color);
+    margin-bottom: 15px;
+    word-wrap: break-word;
+    font-size: 1.8rem;
+}
+
+#groupname input[type="text"] {
+    font-size: 1.5rem; /* Rende l'input grande come il titolo h2 */
+    text-align: center;
+    border: 1px dashed var(--button-bg-color);
+}
+
+/* --- Bottoni (stile gommoso uniforme) --- */
+button, 
+input[type="submit"], 
+input[type="button"] {
+    padding: 12px 20px;
+    margin: 5px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+
+    flex: 0 1 auto; /* Larghezza basata sul contenuto */
+    min-width: 120px; /* Evita che siano troppo piccoli */
+    white-space: nowrap; /* Impedisce al testo del bottone di andare a capo */
+}
+
+/* Bottoni principali (Unisciti, Modifica, Conferma, Invia) */
+#btn-new-group, 
+button[name="btn-confirm"], 
+input[name="send-btn"],
+button:not([id="btn-elimina-gruppo"]):not([id="not"]):not([id="undobutton"]) {
+    background-color: var(--button-bg-color);
+    color: white;
+    box-shadow: 0 4px 0px var(--button-hover-bg-color);
+}
+
+/* Bottone Elimina / Annulla / No */
+#btn-elimina-gruppo, 
+button[name="btn-annulla"], 
+#not {
+    background-color: #dc3545; /* Rosso per azioni distruttive */
+    color: white;
+    box-shadow: 0 4px 0px #a71d2a;
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+button:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 0px 0px transparent;
+}
+
+button:disabled {
+    background-color: #ccc;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* --- Sezioni Partecipanti e Descrizione --- */
+.to-enter {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #eee;
+    width: 100%;
+    max-width: 800px;
+}
+
+.lista-componenti-gruppo {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.componente {
+    background: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Bottone X per rimuovere utenti in modifica */
+.componente button {
+    padding: 2px 8px;
+    background: #ff4d4d;
+    color: white;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+/* --- Chat --- */
+#chat {
+    width: 100%;
+    max-width: 800px;
+    background: #f0f4f2;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid #d1dbd7;
+}
+
+.message {
+    background: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.message h5 {
+    margin: 0;
+    color: var(--button-bg-color);
+}
+
+.message p {
+    margin: 5px 0 0 0;
+    font-size: 1rem;
+}
+
+#chat-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#chat-message {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* --- Input e Textarea (Modifica e Popup) --- */
+input[type="text"], textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+}
+
+textarea {
+    width: 100%;
+    min-height: 60px;
+    resize: vertical;
+}
+
+/* --- Responsive mobile --- */
+@media (max-width: 600px) {
+    main > div:first-of-type, .to-enter, #chat {
+        padding: 15px;
+        width: 95%;
+    }
+
+    button {
+        width: 100%; /* Bottoni a tutta larghezza su mobile */
+        margin: 5px 0;
+    }
+}

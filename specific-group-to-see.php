@@ -32,7 +32,7 @@ $templateParams["chat"] = $dbh->getGroupMessages($_GET['idGruppo']);
 
 $templateParams["notifications"] = $dbh->getAllNotifications($_SESSION['email']);
 
-$templateParams["css"] = array();
+$templateParams["css"] = array('common-specific-group');
 
 require './template/base.php';
 ?>
