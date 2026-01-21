@@ -34,5 +34,7 @@ $templateParams["notifications"] = $dbh->getAllNotifications($_SESSION['email'])
 
 $templateParams["css"] = array();
 
+$templateParams["js"] = "chat.js";
+
 require './template/base.php';
 ?>

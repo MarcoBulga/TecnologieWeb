@@ -30,9 +30,7 @@
         <button onclick="openPopupToDeleteGroup('<?php echo $_GET['idGruppo']; ?>','<?php echo $_SESSION['admin']; ?>'); return false;"
         type="submit" id="btn-elimina-gruppo" name="btn-elimina-gruppo" form="form-generale">Elimina gruppo</button>
     <?php endif; ?>
-    <?php if($templateParams['toSee'] == true && empty($templateParams['modify']) && $_SESSION['admin'] == false): ?>
-        <button type="button">Apri chat</button>
-    <?php endif; ?>
+    
 </div>
 <section class="to-enter">
     <h3>Partecipanti:
@@ -71,6 +69,10 @@
         <p class="descrizione-gruppo"><?php echo $dbh->getGroupLongDescription($_GET['idGruppo']) ?></p>
     <?php endif; ?>
 </section>
+
+<?php if($templateParams['toSee'] == true && empty($templateParams['modify']) && $_SESSION['admin'] == false): ?>
+        <button type="button" id="chat-btn" name="chat-btn">Apri chat</button>
+    <?php endif; ?>
 
 <?php if($templateParams['toSee'] == true) : ?>
     <section id="chat">
