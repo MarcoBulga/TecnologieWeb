@@ -210,7 +210,7 @@ function openPopupToDeleteReport(button) {
 
     popup.style.display = "flex";
 
-    document.getElementById("yes").onclick = async function(){
+    document.getElementById("yesReport").onclick = async function(){
         const url = "gestisci-segnalazione.php?idNotifica=" + idNotifica + "&action=delete";
         try {
             const response = await fetch(url);
@@ -231,7 +231,7 @@ function openPopupToDeleteReport(button) {
         popup.style.display = "none";
     };
 
-    document.getElementById("not").onclick = function(){
+    document.getElementById("noReport").onclick = function(){
         popup.style.display = "none";
     };
 }

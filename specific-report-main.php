@@ -3,7 +3,7 @@
     <h2 id="reportId">
         Segnalazione n.<?php echo $_GET['idNotifica']; ?>  
     </h2>
-    <button class="btn-delete-report"
+    <button class="btn-delete-report" id="btn-delete-report" name="btn-delete-report"
             data-idnotifica = "<?php echo $_GET['idNotifica']; ?>"
             onclick="openPopupToDeleteReport(this)">
         Elimina Segnalazione
@@ -19,8 +19,8 @@
     <div class="popup-elements">
         <p id="popupTextReport"></p>
         <div class="popup-buttons">
-            <button id="not">No</button>
-            <button id="yes">Si</button>
+            <button id="yesReport">Si</button>
+            <button id="noReport">No</button>
         </div>
     </div>
 </div>

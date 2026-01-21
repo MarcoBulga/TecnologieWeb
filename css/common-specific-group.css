@@ -75,7 +75,7 @@ input[type="button"] {
 #btn-new-group, 
 button[name="btn-confirm"], 
 input[name="send-btn"],
-button:not([id="btn-elimina-gruppo"]):not([id="not"]):not([id="undobutton"]):not([id="btn-annulla"]):not([id="btn-user"]) {
+button:not([id="btn-elimina-gruppo"]):not([id="not"]):not([id="undobutton"]):not([id="btn-annulla"]):not([id="btn-user"]):not([id="btn-delete-report"]) {
     background-color: var(--button-bg-color);
     color: white;
     box-shadow: 0 4px 0px var(--button-hover-bg-color);
@@ -84,7 +84,8 @@ button:not([id="btn-elimina-gruppo"]):not([id="not"]):not([id="undobutton"]):not
 /* Bottone Elimina / Annulla / No */
 #btn-elimina-gruppo, 
 button[name="btn-annulla"],
-button[name="btn-user"], 
+button[name="btn-user"],
+button[name="btn-delete-report"], 
 #not {
     background-color: #dc3545; /* Rosso per azioni distruttive */
     color: white;
@@ -278,6 +279,99 @@ section#chat.show {
     transform: translateX(0);
     opacity: 1;
     pointer-events: auto;
+}
+
+.hidden-popup {
+    display: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+/* Contenitore Bianco (stile #formCreaGruppo) */
+.popup-elements {
+    background-color: var(--header-footer-bg-color); /* Per coerenza col form */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: 1px solid rgba(172, 172, 172, 0.4);
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+}
+
+/* Testo nel popup */
+#popupText, #popupTextReport {
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    display: block;
+}
+
+/* Stile per eventuali input/textarea nel popup */
+.popup-elements textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    font-family: inherit;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+/* Container Bottoni (Affiancati) */
+.popup-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Bottoni stile "Gommoso" */
+#yes, #confirm, #yesReport, #noReport {
+    flex: 1;
+    padding: 12px;
+    background-color: var(--button-bg-color);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 0px var(--button-hover-bg-color);
+    transition: all 0.2s ease;
+}
+
+#not, #undo, #annulla, #noReport {
+    flex: 1;
+    padding: 12px;
+    background-color: #dc3545; /* Usiamo il rosso per le azioni "No/Annulla" */
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 0px #a71d2a; /* Ombra rossa più scura */
+    transition: all 0.2s ease;
+}
+
+/* Effetti Interattivi */
+.popup-buttons button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.popup-buttons button:active {
+    transform: translateY(3px);
+    box-shadow: 0 0px 0px transparent;
 }
 
 /* --- Responsive mobile --- */

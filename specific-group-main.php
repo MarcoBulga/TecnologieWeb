@@ -105,8 +105,8 @@
             </div>
         <?php endif; ?>
         <div class="popup-buttons">
-            <button id="not">No</button>
             <button id="yes">Si</button>
+            <button id="not">No</button>
         </div>
     </div>
 </div>
