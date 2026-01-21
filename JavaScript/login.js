@@ -14,16 +14,18 @@ function createForm() {
                 </table>
                 <input type="reset" name="reset" value="Annulla" />
                 <input type="submit" name="submit" value="Conferma" />
-            </form>`;
+            </form>
+            <p>Non hai un account?</p>
+            <a href="./register.php"><input type="button" name="register" id="register" value="Registrati" /></a>`
     return form;
 }
 
-function createText() {
+/* function createText() {
     let text = `
     <p>Non hai un account?</p>
     <a href="./register.php"><input type="button" name="Registrati" id="register" value="Registrati" /></a>`;
     return text;
-}
+} */
 
 async function getLoginData() {
     const url = 'api-login.php';
@@ -54,9 +56,9 @@ getLoginData();
 
 function loginAttempt() {
     let form = createForm();
-    let text = createText();
+    /* let text = createText(); */
     main.innerHTML = form;
-    main.innerHTML += text;
+    /* main.innerHTML += text; */
     // Gestisco tentativo di login
     document.querySelector("main form").addEventListener("submit", function (event) {
         event.preventDefault();
