@@ -1,0 +1,169 @@
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: flex-start; 
+    padding: 40px 20px;
+    gap: 30px;
+    min-height: 100vh; 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.new-course, .delete-course {
+    background-color: white;
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid #eee;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 20px auto; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 20px;
+    box-sizing: border-box;
+    text-align: center; 
+}
+
+main > div:first-of-type h2 {
+    text-align: center;
+    width: 100%;
+}
+
+/* Allineamento Label e Input */
+.new-course label, .delete-course label {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    gap: 10px;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Stile specifico per Select e Input Text */
+.new-course input[type="text"], 
+.delete-course select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+/* Pulsanti dei Form (allineati a destra) */
+#btn-new-course, #btn-delete-course {
+    width: 100%;             
+    max-width: 500px;        
+    padding: 12px;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s ease;
+    align-self: center;
+}
+
+#btn-delete-course {
+    background-color: #dc3545;
+    color: white;
+    box-shadow: 0 4px 0px #a71d2a;
+}
+
+#btn-new-course:hover, #btn-delete-course:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+#btn-new-course:active, #btn-delete-course:active {
+    transform: translateY(2px);
+    box-shadow: 0 0px 0px transparent;
+}
+
+/* Colore specifico per il tasto Elimina (per coerenza con btn-elimina-gruppo) */
+#btn-delete-course {
+    background-color: #dc3545;
+    box-shadow: 0 4px 0px #a71d2a;
+}
+
+/* Stile dei Popup */
+.hidden-popup {
+    display: none; /* Verrà cambiato in 'flex' via JS */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-elements {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+}
+
+.popup-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+.popup-buttons button {
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.popup-buttons button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+#undo {
+    background-color: #6c757d;
+    box-shadow: 0 4px 0px #495057;
+}
+
+#confirm {
+    background-color: #dc3545;
+    box-shadow: 0 4px 0px #a71d2a;
+}
+
+#chiudi {
+    background-color: var(--button-bg-color);
+    box-shadow: 0 4px 0px var(--button-hover-bg-color);
+}
+
+#btn-new-group, 
+button[name="btn-confirm"], 
+input[name="send-btn"],
+#btn-new-course,
+button:not([id="btn-elimina-gruppo"]):not([id="not"]):not([id="undobutton"]):not([name="btn-annulla"]):not([name="btn-user"]):not([id="btn-delete-course"]):not([id="undo"]):not([id="confirm"]) {
+    background-color: var(--button-bg-color);
+    color: white;
+    box-shadow: 0 4px 0px var(--button-hover-bg-color);
+}
