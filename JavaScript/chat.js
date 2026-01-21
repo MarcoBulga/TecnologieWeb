@@ -2,7 +2,7 @@ const btn = document.getElementById("chat-btn");
 const chat = document.querySelector("section#chat");
 const send = document.getElementById("send-btn");
 const message = document.getElementById("chat-message");
-const messageZone = document.getElementById("chat-message-zone")
+const messageZone = document.getElementById("messages-container");
 
 btn.addEventListener('click', function(){
     chat.classList.toggle('show');

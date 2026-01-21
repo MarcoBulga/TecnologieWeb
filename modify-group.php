@@ -50,7 +50,7 @@ if(isset($_POST['btn-annulla'])) {
 
 $templateParams['notifications'] = $dbh->getAllNotifications($_SESSION["email"]);
 
-$templateParams['css'] = array();
+$templateParams['css'] = array('common-specific-group');
 
 require './template/base.php';
 ?>

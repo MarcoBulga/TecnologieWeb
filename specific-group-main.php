@@ -10,8 +10,8 @@
         <?php endif; ?>  
     </h2>
     <?php if(isset($templateParams['modify'])): ?>
-        <button type="submit" form="form-generale" name="btn-confirm">Conferma</button>
-        <button type="submit" form="form-generale" name="btn-annulla">Annulla</button>
+        <button type="submit" form="form-generale" name="btn-confirm" id="btn-confirm">Conferma</button>
+        <button type="submit" form="form-generale" name="btn-annulla" id="btn-annulla" >Annulla</button>
     <?php elseif($_SESSION['admin'] == false): ?>
         <button onclick=
             '<?php if($templateParams["toSee"] == true) {echo "openPopupToLeave(".$_GET['idGruppo'].")";}
@@ -22,7 +22,9 @@
                 || (in_array($_SESSION['email'], $dbh->getAllRequests($dbh->getAdministratorOfGroup($_GET['idGruppo']))) && $templateParams['toSee'] == false)): ?>
                     <?php echo "disabled"?> 
             <?php endif; ?> >
-            <?php if($templateParams["toSee"] == true) { echo "Esci dal gruppo"; } else if($dbh->isGroupPrivate($_GET['idGruppo']) == 1) { echo "Chiedi di unirti"; } else { echo "Unisciti al gruppo"; }?>
+            <?php if($templateParams["toSee"] == false && $dbh->getNumberOfPartecipants($_GET['idGruppo']) >= $dbh->getGroupMaxPartecipants($_GET['idGruppo'])) {echo "Gruppo al completo";} 
+            else if ($templateParams["toSee"] == false && in_array($_SESSION['email'], $dbh->getAllRequests($dbh->getAdministratorOfGroup($_GET['idGruppo'])))) {echo "In attesa di risposta...";}
+            else if ($templateParams["toSee"] == true) { echo "Esci dal gruppo"; } else if($dbh->isGroupPrivate($_GET['idGruppo']) == 1) { echo "Chiedi di unirti"; } else { echo "Unisciti al gruppo"; }?>
         </button>
     <?php endif; ?>
     <?php if(($dbh->checkAdministrator($_GET["idGruppo"]) && empty($templateParams['modify'])) || ($_SESSION['admin'] == true && empty($templateParams['modify']))): ?>
@@ -35,11 +37,6 @@
 <section class="to-enter">
     <h3>Partecipanti:
         <?php echo $dbh->getNumberOfPartecipants($_GET['idGruppo'])."/".$dbh->getGroupMaxPartecipants($_GET['idGruppo']); ?>
-        <?php if($dbh->getNumberOfPartecipants($_GET['idGruppo']) >= $dbh->getGroupMaxPartecipants($_GET['idGruppo'])): ?>
-            <?php echo "- Gruppo al completo!"?>
-        <?php elseif (in_array($_SESSION['email'], $dbh->getAllRequests($dbh->getAdministratorOfGroup($_GET['idGruppo']))) && $templateParams['toSee'] == false): ?>
-            <?php echo "- In attesa della risposta..."?>
-        <?php endif; ?>
     </h3>
     <ul class="lista-componenti-gruppo">
         <?php $templateParams["Partecipants"] = $dbh->getPartecipants($_GET["idGruppo"]); ?>
@@ -47,7 +44,7 @@
         <li class="componente">
             <?php if(isset($templateParams['modify']) && $partecipant['email'] != $_SESSION['email']): ?>
                 <form action="" method="POST" style="display: inline">
-                    <button name="btn-user" form="form-generale" value="<?= $partecipant['email'] ?>">X</button>
+                    <button name="btn-user" id="btn-user" form="form-generale" value="<?= $partecipant['email'] ?>">X</button>
                 </form>
             <?php endif; ?>
             <?php echo $partecipant['nome']." ".$partecipant['cognome']. " - ".$partecipant['email']; ?>
@@ -77,13 +74,13 @@
 <?php if($templateParams['toSee'] == true) : ?>
     <section id="chat">
         <h3>CHAT</h3>
-        <div id="chat-message-zone" >
-        <?php foreach($templateParams["chat"] as $message): ?>
-            <div class="message">
-                <h5><?php {echo $dbh->getUtente($message["mittente"])['nome']; echo " ".$dbh->getUtente($message["mittente"])['cognome'];} ?></h5>
-                <p><?php echo $message["testo"] ?></p>
-            </div>
-        <?php endforeach; ?>
+        <div class="messages-container" id="messages-container">
+            <?php foreach($templateParams["chat"] as $message): ?>
+                <div class="message">
+                    <h5><?php {echo $dbh->getUtente($message["mittente"])['nome']; echo " ".$dbh->getUtente($message["mittente"])['cognome'];} ?></h5>
+                    <p><?php echo $message["testo"] ?></p>
+                </div>
+            <?php endforeach; ?>
         </div>
         <form id="chat-form" action="#" method="POST" >
             <label for="chat-message">Scrivi un messaggio: <input type="text" name="chat-message" id="chat-message" /></label>
