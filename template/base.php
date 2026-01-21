@@ -62,7 +62,6 @@
             <button class="elimina-notifica">X</button>
         </div>
         <?php endforeach; ?>
-        <button class="elimina-notifica">X</button>
         <button id="chiudi-notifiche">Chiudi</button>
     </nav>
     <main>

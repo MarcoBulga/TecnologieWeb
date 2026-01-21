@@ -473,7 +473,7 @@ function openPopupConfirm(){
     popup.style.display = "flex";
 
     document.getElementById("chiudiConfirm").onclick = function() {
+        event.stopPropagation(); //in questo modo il click non fa chiudere il nav laterale
         popup.style.display = "none";
-        location.reload();
     }
 }

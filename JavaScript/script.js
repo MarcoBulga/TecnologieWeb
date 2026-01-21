@@ -82,7 +82,6 @@ function openMessage(notification, type, text, nomeGruppo){
                 if (data.esito) {
                     deleteNotification(notification);
                     popup.style.display="none";
-                    location.reload();
                 } else {
                     alert("Errore: " + data.errore);
                 }
@@ -117,7 +116,6 @@ function openMessage(notification, type, text, nomeGruppo){
                 if (data.esito) {
                     deleteNotification(notification);
                     popup.style.display="none";
-                    location.reload();
                 } else {
                     alert("Errore: " + data.errore);
                 }
@@ -139,7 +137,6 @@ function openMessage(notification, type, text, nomeGruppo){
                 if (data.esito) {
                     deleteNotification(notification);
                     popup.style.display="none";
-                    location.reload();
                 } else {
                     alert("Errore: " + data.errore);
                 }
@@ -157,42 +154,40 @@ function openMessage(notification, type, text, nomeGruppo){
 }
 
 document.addEventListener('click', function(event){
+
+    const menu = document.getElementById('menu');
+    const btnMenu = document.getElementById('bottone-menu');
+    const notifiche = document.getElementById('notifiche');
+    const btnNotifiche = document.getElementById('bottone-notifiche');
+
+    const popupNormal = document.getElementById("notificationPopup");
+    const popupRequest = document.getElementById("notificationPopupRequest");
+    const popupReport = document.getElementById("popupReport");
+    const popupConfirm = document.getElementById("popupConfirm");
+
+    const isClickInsideAnyPopup = [popupNormal, popupRequest, popupReport, popupConfirm].some(
+        popup => {
+            return popup && popup.contains(event.target) && getComputedStyle(popup).display !== "none";
+        }
+    )
     //--- MENU ---
     if(menu.classList.contains('show')){
+
         const clickInsideMenu = menu.contains(event.target);
         const clickInsideMenuButton = btnMenu.contains(event.target);
 
-        const popupNormal = document.getElementById("notificationPopup");
-        const popupRequest = document.getElementById("notificationPopupRequest");
-
-        let clickInsidePopup = false;
-        [popupNormal, popupRequest].forEach(popup => {
-            if(popup && popup.contains(event.target)) {
-                clickInsidePopup = true;
-            }
-        });
-
-        if(!clickInsideMenu && !clickInsideMenuButton && !clickInsidePopup){
+        if(!clickInsideMenu && !clickInsideMenuButton && !isClickInsideAnyPopup) {
             menu.classList.remove('show');
         }
     }
 
     //--- NOTIFICHE ---
     if(notifiche.classList.contains('show')){
-        const clickInsideNotification = notifiche.contains(event.target);
-        const clickInsideNotificationButton = btnNotifiche.contains(event.target);
 
-        const popupNormal = document.getElementById("notificationPopup");
-        const popupRequest = document.getElementById("notificationPopupRequest");
+        const clickInsideNotifiche = notifiche.contains(event.target);
+        const clickInsideNotificheButton = btnNotifiche.contains(event.target);
 
-        let clickInsidePopup = false;
-        [popupNormal, popupRequest].forEach(popup => {
-            if(popup && popup.contains(event.target)){
-                clickInsidePopup = true;
-            }
-        });
-
-        if(!clickInsideNotification && !clickInsideNotificationButton && !clickInsidePopup){
+        if(!clickInsideNotifiche && !clickInsideNotificheButton && !isClickInsideAnyPopup) {
             notifiche.classList.remove('show');
         }
     }

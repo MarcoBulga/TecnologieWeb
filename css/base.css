@@ -180,49 +180,81 @@ nav:nth-of-type(1) > ul {
 /*--- menu ---*/
 nav:nth-of-type(2) {
     position: fixed;
-    margin: 0;
-    width: 350px;  /*rende il nav largo quanto il content */
-    max-width: 85vw; /* ma non più largo dell'85% della viewport */
+    width: 350px;
+    max-width: 85vw;
     right: 0;
     top: 0;
-    max-width: 100%;
+    height: 100vh; /* Usa tutta l'altezza dello schermo */
     background-color: var(--nav-lateral-bg-color);
-    text-align: center;
-    height: 90vh;
-    padding: 5vh 0;
-    z-index: 1;
+    z-index: 100;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Distribuisce i bottoni equamente nello spazio */
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    overflow: hidden; /* IMPEDISCE LO SCROLL */
 
-    /*effetto tenda*/
+    /* Effetto tenda */
     backface-visibility: hidden;
-    pointer-events: auto;
-    transform:translateX(100%); /* trasla inizialmente tutta la tendina fuori a destra */
-    opacity: 0; 
+    transform: translateX(100%);
+    opacity: 0;
     transition: transform 0.4s ease-in-out, opacity 0.3s;
 }
 
 nav:nth-of-type(2) > ul {
     width: 90%;
+    height: calc(100% - 80px); /* Prende tutta l'altezza meno lo spazio occupato dal tasto chiudi */
     display: flex;
     flex-direction: column;
-    gap: 13vh;
+    justify-content: space-evenly; /* Forza i bottoni a distanziarsi al massimo */
     list-style: none;
-    padding: 0 5%;
+    padding: 0;
+    margin: 0;
 }
 
-nav:nth-of-type(2) > ul > li > button, a.btn {
-    text-decoration: none;
-    width:100%;
-    padding: 20px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor:pointer;
+nav:nth-of-type(2) > ul > li {
+    flex: 1; /* Forza ogni riga a prendersi una fetta uguale dell'altezza */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px 0; /* Piccolo margine per non farli incollare */
+}
+
+nav:nth-of-type(2) > ul > li > button {
+    width: 100%;
+    height: 80%; /* Il bottone si espande in altezza per riempire la sua fetta */
+    max-height: 80px; /* Evita che diventino giganti su schermi alti */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1rem, 2vh, 1.5rem); /* Testo che si rimpicciolisce in base all'altezza (vh) */
+    
+    /* Stile gommoso */
     background-color: var(--button-bg-color);
     color: white;
+    font-weight: bold;
     border: none;
     border-radius: 8px;
-    /* Ombra morbida verso il basso */
-    box-shadow: 0 4px 0px var(--button-hover-bg-color); 
+    box-shadow: 0 4px 0px var(--button-hover-bg-color);
     transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+#chiudi-menu, #chiudi-notifiche {
+    position: absolute; /* Fondamentale per muoverlo liberamente */
+    top: 15px;
+    right: 15px;
+    width: auto; /* Non deve occupare tutta la larghezza */
+    min-width: 80px;
+    padding: 8px 12px;
+    margin: 0;
+    font-size: 0.9rem;
+    background-color: #444; 
+    color: white;
+    z-index: 10;
 }
 
 nav:nth-of-type(2) > ul > li > button:hover {
@@ -260,11 +292,16 @@ nav:nth-of-type(3) {
     right: 0;
     top: 0;
     max-width: 100%;
-    height: 90vh;
+    height: 100vh;
     padding: 5vh 0;
     list-style: none;
     background-color: var(--nav-lateral-bg-color);
     z-index: 20;
+
+    padding: 70px 0 20px 0; 
+    box-sizing: border-box;
+
+    overflow-y: auto;
 
     /*effetto tenda*/
     backface-visibility: hidden;
@@ -310,6 +347,17 @@ nav:nth-of-type(3) > div > div {
     flex-direction: column;
     overflow-wrap: break-word;
     width: 90%;
+}
+
+.elimina-notifica {
+    flex-shrink: 0;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 nav.show {
