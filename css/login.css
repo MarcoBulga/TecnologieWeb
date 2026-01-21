@@ -98,3 +98,35 @@ main > p {
     font-weight: bold;
     color: var(--text-color);
 }
+
+#register, #loginbutton {
+    /* non eredita stili strani dai link */
+    -webkit-appearance: none; 
+    appearance: none;
+}
+
+@media (max-width: 480px) {
+    /* Trasformiamo la tabella in un layout a blocchi verticali */
+    table, tr, th, td {
+        display: block;
+        width: 100%;
+    }
+
+    th {
+        padding-bottom: 5px;
+        font-size: 1rem;
+    }
+
+    td {
+        padding-bottom: 15px; /* Spazio tra un campo e l'altro */
+    }
+
+    form {
+        padding: 20px; /* Riduciamo il padding interno per guadagnare spazio */
+        width: 90%;    /* Lasciamo un po' di margine ai lati dello schermo */
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Titolo dell'header leggermente più piccolo */
+    }
+}
