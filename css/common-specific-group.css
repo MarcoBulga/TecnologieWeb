@@ -54,9 +54,9 @@ main > div:first-of-type {
 }
 
 /* --- Bottoni (stile gommoso uniforme) --- */
-button, 
-input[type="submit"], 
-input[type="button"] {
+main button, 
+main input[type="submit"], 
+main input[type="button"] {
     padding: 12px 20px;
     margin: 5px;
     font-weight: bold;
@@ -75,7 +75,7 @@ input[type="button"] {
 #btn-new-group, 
 button[name="btn-confirm"], 
 input[name="send-btn"],
-button:not([id="btn-elimina-gruppo"]):not([id="not"]):not([id="undobutton"]):not([id="btn-annulla"]):not([id="btn-user"]):not([id="btn-delete-report"]) {
+main button:not([id="btn-elimina-gruppo"]):not([id="not"]):not([id="undobutton"]):not([id="btn-annulla"]):not([id="btn-user"]):not([id="btn-delete-report"]) {
     background-color: var(--button-bg-color);
     color: white;
     box-shadow: 0 4px 0px var(--button-hover-bg-color);
