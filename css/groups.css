@@ -43,3 +43,28 @@ main > section > ul > li > button.delete-user {
     transform: translateY(4px);
     box-shadow: 0 0px 0px var(--button-hover-bg-color);
 }
+
+#btn-reset {
+    all: unset; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* CAMBIO QUI: togliamo flex: 1 */
+    width: fit-content; 
+    padding: 0 25px; /* Aggiungiamo spazio ai lati del testo */
+    min-width: 150px;
+    height: 45px;
+    
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    
+    background-color: #4b5563; 
+    border-radius: 10px;
+    cursor: pointer;
+    
+    box-shadow: 0 4px 0px #1f2937; 
+    transition: all 0.2s ease;
+    text-align: center;
+}

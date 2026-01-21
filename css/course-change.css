@@ -186,7 +186,10 @@ main > div:first-of-type h2 {
 button[name="btn-confirm"], 
 input[name="send-btn"],
 #btn-new-course,
-button:not([id="btn-elimina-gruppo"]):not([id="not"]):not([id="undobutton"]):not([name="btn-annulla"]):not([name="btn-user"]):not([id="btn-delete-course"]):not([id="undo"]):not([id="confirm"]) {
+#btn-new-tag,
+button:not([id="btn-elimina-gruppo"]):not([id="not"]):not([id="undobutton"]):not([name="btn-annulla"])
+:not([name="btn-user"]):not([id="btn-delete-course"]):not([id="undo"]):not([id="confirm"])
+:not([id="bottone-menu"]):not([id="bottone-notifiche"]) {
     background-color: var(--button-bg-color);
     color: white;
     box-shadow: 0 4px 0px var(--button-hover-bg-color);

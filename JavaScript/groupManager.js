@@ -144,7 +144,6 @@ function openPopupReport(){
 
     document.getElementById("annulla").onclick = function(){
         popup.style.display = "none";
-        location.reload();
     };
 }
 
