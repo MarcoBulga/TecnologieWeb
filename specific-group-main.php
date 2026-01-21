@@ -10,8 +10,8 @@
         <?php endif; ?>  
     </h2>
     <?php if(isset($templateParams['modify'])): ?>
-        <button type="submit" form="form-generale" name="btn-confirm">Conferma</button>
-        <button type="submit" form="form-generale" name="btn-annulla">Annulla</button>
+        <button type="submit" form="form-generale" name="btn-confirm" id="btn-confirm">Conferma</button>
+        <button type="submit" form="form-generale" name="btn-annulla" id="btn-annulla" >Annulla</button>
     <?php elseif($_SESSION['admin'] == false): ?>
         <button onclick=
             '<?php if($templateParams["toSee"] == true) {echo "openPopupToLeave(".$_GET['idGruppo'].")";}
@@ -47,7 +47,7 @@
         <li class="componente">
             <?php if(isset($templateParams['modify']) && $partecipant['email'] != $_SESSION['email']): ?>
                 <form action="" method="POST" style="display: inline">
-                    <button name="btn-user" form="form-generale" value="<?= $partecipant['email'] ?>">X</button>
+                    <button name="btn-user" id="btn-user" form="form-generale" value="<?= $partecipant['email'] ?>">X</button>
                 </form>
             <?php endif; ?>
             <?php echo $partecipant['nome']." ".$partecipant['cognome']. " - ".$partecipant['email']; ?>
