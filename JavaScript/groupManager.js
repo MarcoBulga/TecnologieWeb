@@ -26,6 +26,21 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 });
 
+//Popup per successo
+function successPopup(string,event) {
+    if (event) event.preventDefault();
+    const popup = document.getElementById("popupConfirm");
+    const text = document.getElementById("popupTextConfirm");
+
+    text.textContent = string;
+
+    popup.style.display = "flex";
+
+    document.getElementById("chiudiConfirm").onclick = function(){
+        popup.style.display = "none";
+    };
+}
+
 // --- VISUALIZZAZIONE GRUPPI ---
 function openPopupRequestToJoin(groupName,idGruppo){
     const popup = document.getElementById("popup");
@@ -70,7 +85,9 @@ function openPopupRequestToJoinPrivate(groupName,idGruppo){
 
     popup.style.display = "flex";
 
-    document.getElementById("yes").onclick = async function(){
+    
+
+    document.getElementById("yes").onclick = async function(event){
         const url = "gestisci-richiesta.php?idGruppo=" + idGruppo +"&richiesta=" + richiesta.value.trim() + "&oggetto=" + oggetto.value.trim() + "&action=join-private";
         try {
             const response = await fetch(url);
@@ -84,7 +101,9 @@ function openPopupRequestToJoinPrivate(groupName,idGruppo){
         }
 
         popup.style.display = "none";
+        successPopup("richiesta inviata",event);
     };
+
 
     document.getElementById("not").onclick = function(){
         popup.style.display = "none";
