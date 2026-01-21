@@ -259,6 +259,23 @@ textarea {
     resize: vertical;
 }
 
+.descrizione-gruppo {
+    /* Permette al testo di andare a capo normalmente */
+    white-space: pre-wrap;      
+    
+    /* Forza la rottura delle parole */
+    overflow-wrap: break-word;  
+    word-wrap: break-word;      
+    word-break: break-word;
+    
+    /* Assicura che il paragrafo non superi mai la larghezza del padre */
+    max-width: 100%;            
+    display: block;
+    
+    text-align: left;           
+    line-height: 1.5;
+}
+
 /* visibilità invisibilità della chat */
 section#chat {
     display: none;

@@ -57,7 +57,7 @@
             '<?php echo htmlspecialchars($notification['nomeGruppo'] ?? '') ; ?>')">
             <div class="messaggio">
                 <p><?php echo $notification["oggetto"]; ?></p>
-                <p><?php echo $notification["mittente"]; ?></p>
+                <p><?php echo $dbh->getUtente($notification["mittente"])['nome']; echo " "; echo $dbh->getUtente($notification["mittente"])['cognome'];?></p>
             </div>
             <button class="elimina-notifica">X</button>
         </div>

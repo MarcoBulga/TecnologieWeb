@@ -71,7 +71,7 @@
             <a href="<?php echo './specific-report.php?idNotifica='.$segnalazione['idNotifica']; ?>" class="link-header"><?php echo $segnalazione['oggetto']; ?></a>
         </h3>
         <p class="text-report"><?php echo $segnalazione['testo']; ?></p>
-        <p><strong>Mittente: </strong><?php echo $segnalazione['mittente']; ?> </p>
+        <p><strong>Mittente: </strong><?php echo $dbh->getUtente($segnalazione["mittente"])['nome']; echo " "; echo $dbh->getUtente($segnalazione["mittente"])['cognome']; ?> </p>
     </section>
     <?php endforeach; ?>
 <?php endif; ?>
