@@ -77,12 +77,14 @@
 <?php if($templateParams['toSee'] == true) : ?>
     <section id="chat">
         <h3>CHAT</h3>
-        <?php foreach($templateParams["chat"] as $message): ?>
-            <div class="message">
-                <h5><?php {echo $dbh->getUtente($message["mittente"])['nome']; echo " ".$dbh->getUtente($message["mittente"])['cognome'];} ?></h5>
-                <p><?php echo $message["testo"] ?></p>
-            </div>
-        <?php endforeach; ?>
+        <div class="messages-container" id="messages-container">
+            <?php foreach($templateParams["chat"] as $message): ?>
+                <div class="message">
+                    <h5><?php {echo $dbh->getUtente($message["mittente"])['nome']; echo " ".$dbh->getUtente($message["mittente"])['cognome'];} ?></h5>
+                    <p><?php echo $message["testo"] ?></p>
+                </div>
+            <?php endforeach; ?>
+        </div>
         <form id="chat-form" action="#" method="POST" >
             <label for="chat-message">Scrivi un messaggio: <input type="text" name="chat-message" id="chat-message" /></label>
             <input type="submit" name="send-btn" id="send-btn" value="Invia"/>
