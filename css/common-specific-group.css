@@ -164,10 +164,12 @@ button:disabled {
 
 .messages-container {
     flex-grow: 1; 
-    overflow-y: auto;
+    overflow-y: scroll;
     padding-right: 10px;
     margin-bottom: 10px;
     min-height: 200px; 
+    max-height: 35vh;
+    position: relative;
 }
 
 /* Personalizzazione della barra di scorrimento (opzionale, per stile moderno) */
@@ -191,6 +193,7 @@ button:disabled {
     border-radius: 10px;
     margin-bottom: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    overflow: hidden;
 }
 
 .message h5 {
@@ -272,7 +275,8 @@ section#chat.show {
     top: 0;
     right: 0;
     margin: 0;
-    width: 350px;
+    max-width: 350px;
+    height: fit-content;
     display: block;
     visibility: visible;
     transform: translateX(0);
@@ -290,5 +294,9 @@ section#chat.show {
     button {
         width: 100%; /* Bottoni a tutta larghezza su mobile */
         margin: 5px 0;
+    }
+
+    section#chat.show {
+        max-width: 85%;
     }
 }

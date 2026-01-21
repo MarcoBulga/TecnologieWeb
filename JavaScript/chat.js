@@ -6,6 +6,7 @@ const messageZone = document.getElementById("messages-container");
 
 btn.addEventListener('click', function(){
     chat.classList.toggle('show');
+    messageZone.scrollTop = messageZone.scrollHeight;
 } );
 
 function constructMessage(text,name,surname) {
@@ -30,6 +31,7 @@ async function sendMessage() {
             console.log(json);
             if(json["esito"]){
                 messageZone.innerHTML += constructMessage(text,json["name"],json["surname"]);
+                messageZone.scrollTop = messageZone.scrollHeight;
             } else {
                 console.log("Errore cabbio");
             }
@@ -43,11 +45,13 @@ message.addEventListener('keydown',function(event) {
     if(event.key === 'Enter') {
         event.preventDefault();
         sendMessage();
+        message.value = "";
     }
 });
 
 send.addEventListener('click',function (event) {
     event.preventDefault();
     sendMessage();
+    message.value = "";
 })
 
