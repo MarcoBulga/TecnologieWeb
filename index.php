@@ -1,7 +1,7 @@
 <?php
 require_once 'bootstrap.php';
 
-$templateParams["title"] = "Ricerca Gruppi - Schermata Introduttiva";
+$templateParams["title"] = "Trova il tuo team";
 
 if(isset($_SESSION["name"]) && isset($_SESSION["surname"])){
     $templateParams["user"] = $_SESSION["name"] . " " . $_SESSION["surname"];
