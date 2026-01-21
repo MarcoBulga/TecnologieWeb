@@ -33,5 +33,7 @@ if(isset($_POST["btn-search"]) && isset($_POST['ricerca-mio-gruppo'])) {
 
 $forward = $number > ($pageNumber+1)*2;
 
+$templateParams["css"] = array("common-search-userGroups");
+
 require './template/base.php';
 ?>

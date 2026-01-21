@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./css/base.css" />
+    <?php foreach($templateParams["css"] as $sheet): ?>
+    <link rel="stylesheet" href="./css/<?php echo $sheet; ?>.css"/>
+    <?php endforeach; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./JavaScript/script.js" defer></script>
     <script src="./JavaScript/groupManager.js" defer></script>

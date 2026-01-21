@@ -33,5 +33,7 @@ $templateParams["page"] = 'groups-main.php';
 
 $templateParams["notifications"] = $dbh->getAllNotifications($_SESSION["email"]);
 
+$templateParams["css"] = array('common-search-userGroups','groups');
+
 require './template/base.php';
 ?>
