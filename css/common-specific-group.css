@@ -300,7 +300,7 @@ section#chat.show {
 
 /* Contenitore Bianco (stile #formCreaGruppo) */
 .popup-elements {
-    background-color: var(--header-footer-bg-color); /* Per coerenza col form */
+    background-color: var(--header-footer-bg-color);
     padding: 30px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);

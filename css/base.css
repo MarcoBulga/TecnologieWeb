@@ -319,32 +319,34 @@ nav.show {
 
 /*--- Popup ---*/
 .hidden-popup {
-    display: none;
+    display: none; 
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 1000;
+    background: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
+    z-index: 2000;
 }
 
 .popup-elements {
-    background: white;
-    width: 60%;
-    padding: 7%;
-    border-radius: 2%;
+    background-color: var(--header-footer-bg-color);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border: 1px solid rgba(172, 172, 172, 0.4);
+    width: 90%;
+    max-width: 450px;
     text-align: center;
-    font-size: large;
 }
 
 .popup-buttons {
-    margin: 2%;
     display: flex;
-    justify-content: space-between;
-    font-size: 1.2rem;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .popup-buttons button {
@@ -353,6 +355,62 @@ nav.show {
     color: white;
     border-radius: 0.5%;
     cursor: pointer;
+}
+
+.popup-elements textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    font-family: inherit;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+#popupHeaderReport {
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    display: block;
+}
+
+#annulla, #conferma, #chiudiConfirm {
+    flex: 1;
+    padding: 12px;
+    background-color: var(--button-bg-color);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 0px var(--button-hover-bg-color);
+    transition: all 0.2s ease;
+}
+
+#annulla {
+    flex: 1;
+    padding: 12px;
+    background-color: #dc3545; /* Usiamo il rosso per le azioni "No/Annulla" */
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 0px #a71d2a; /* Ombra rossa più scura */
+    transition: all 0.2s ease;
+}
+
+.popup-buttons button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.popup-buttons button:active {
+    transform: translateY(3px);
+    box-shadow: 0 0px 0px transparent;
 }
 
 .popup-buttons button[id="yes"], .popup-buttons button[id="yesRequest"]{
