@@ -27,6 +27,9 @@
             else if ($templateParams["toSee"] == true) { echo "Esci dal gruppo"; } else if($dbh->isGroupPrivate($_GET['idGruppo']) == 1) { echo "Chiedi di unirti"; } else { echo "Unisciti al gruppo"; }?>
         </button>
     <?php endif; ?>
+    <?php if($templateParams['toSee'] == true && empty($templateParams['modify']) && $_SESSION['admin'] == false): ?>
+        <button type="button" id="chat-btn" name="chat-btn">Chat</button>
+    <?php endif; ?>
     <?php if(($dbh->checkAdministrator($_GET["idGruppo"]) && empty($templateParams['modify'])) || ($_SESSION['admin'] == true && empty($templateParams['modify']))): ?>
         <button onclick="window.location.href='./modify-group.php?idGruppo=<?php echo $_GET['idGruppo'] ?>'">Modifica</button>
         <button onclick="openPopupToDeleteGroup('<?php echo $_GET['idGruppo']; ?>','<?php echo $_SESSION['admin']; ?>'); return false;"
@@ -66,10 +69,6 @@
         <p class="descrizione-gruppo"><?php echo $dbh->getGroupLongDescription($_GET['idGruppo']) ?></p>
     <?php endif; ?>
 </section>
-
-<?php if($templateParams['toSee'] == true && empty($templateParams['modify']) && $_SESSION['admin'] == false): ?>
-        <button type="button" id="chat-btn" name="chat-btn">Apri chat</button>
-    <?php endif; ?>
 
 <?php if($templateParams['toSee'] == true) : ?>
     <section id="chat">
