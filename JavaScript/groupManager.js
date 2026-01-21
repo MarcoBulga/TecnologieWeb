@@ -38,6 +38,7 @@ function successPopup(string,event) {
 
     document.getElementById("chiudiConfirm").onclick = function(){
         popup.style.display = "none";
+        location.reload();
     };
 }
 
@@ -95,13 +96,13 @@ function openPopupRequestToJoinPrivate(groupName,idGruppo){
                 throw new Error("Errore nella richiesta" + response.status);
             }
             const data = await response.json();
-            window.location.href= "./specific-group-to-join.php?idGruppo=" + idGruppo + "&status=request-sent";
+            if(data['esito']) {
+                popup.style.display = "none";
+                successPopup("Richiesta inviata con successo!",event);
+            }
         } catch (error) {
             console.error("Errore durante la richiesta: ", error.message);
         }
-
-        popup.style.display = "none";
-        successPopup("richiesta inviata",event);
     };
 
 
