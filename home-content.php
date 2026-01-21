@@ -14,6 +14,7 @@
             Cerca gruppi per progetto utilizzando tag e parole chiave, così da trovare persone con interessi e competenze simili alle tue.
         </p>
         <!-- Screenshot pagina ricerca gruppi -->
+         <img src="./upload/placeholder(275x183).png" alt="placeholder" />
     </section>
 
     <section>
@@ -23,6 +24,7 @@
             Ogni membro può vedere le email degli altri partecipanti per facilitare la comunicazione e il coordinamento.
         </p>
         <!-- Screenshot pagina di creazione o modifica dei gruppi -->
+         <img src="./upload/placeholder(275x183).png" alt="placeholder" />
     </section>
 
     <section>
@@ -31,6 +33,7 @@
             Ogni gruppo dispone di una chat dedicata per comunicare, confrontarsi e coordinare il lavoro senza usare app esterne.
         </p>
         <!-- Screenshot chat di gruppo -->
+         <img src="./upload/placeholder(275x183).png" alt="placeholder" />
     </section>
 
     <p>
