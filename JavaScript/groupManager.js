@@ -122,24 +122,32 @@ function openPopupReport(){
     popup.style.display = "flex";
 
     document.getElementById("conferma").onclick = async function(){
-        const url = "gestisci-segnalazione.php?&testo=" + testo.value.trim() + "&oggetto=" + oggetto.value.trim() + "&action=report";
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error("Errore nella richiesta" + response.status);
+        const text = testo.value.trim();
+        const object = oggetto.value.trim();
+        if(text !== "" && object !== "") {
+            const url = "gestisci-segnalazione.php?&testo=" + text + "&oggetto=" + object + "&action=report";
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error("Errore nella richiesta" + response.status);
+                }
+                const data = await response.json();
+                console.log(data);
+                if(data['esito']) {
+                    openPopupConfirm();
+                } else {
+                    alert("Errore nell'unirsi al gruppo")
+                }
+            } catch (error) {
+                console.error("Errore durante la richiesta: ", error.message);
             }
-            const data = await response.json();
-            console.log(data);
-            if(data['esito']) {
-                openPopupConfirm();
-            } else {
-                alert("Errore nell'unirsi al gruppo")
-            }
-        } catch (error) {
-            console.error("Errore durante la richiesta: ", error.message);
-        }
 
-        popup.style.display = "none";
+            popup.style.display = "none";
+        } else {
+            header.innerText = "SEGNALAZIONE:\n"
+            header.innerText += text === "" && object === "" ? "Inserisci testo e oggetto per inviare" : 
+                                text === "" ? "Inserisci un testo per inviare" : "Inserisci un oggetto per inviare";
+        }
     };
 
     document.getElementById("annulla").onclick = function(){
