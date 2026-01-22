@@ -7,6 +7,13 @@ main {
     padding: 20px;
 }
 
+main > p {
+    text-align: center;
+    margin-top: 25px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
 form {
     background-color: var(--header-footer-bg-color);
     padding: 30px;
@@ -53,7 +60,7 @@ form > p {
 }
 
 /* Conferma (Submit) e Registrati */
-input[type="submit"], #register {
+input[type="submit"] {
     width: 100%;
     padding: 12px;
     margin-top: 10px;
@@ -83,11 +90,11 @@ input[type="reset"] {
 }
 
 /* Effetti hover/active */
-input[type="submit"]:hover, #register:hover, input[type="reset"]:hover {
+input[type="submit"]:hover, input[type="reset"]:hover {
     transform: translateY(-2px);
 }
 
-input[type="submit"]:active, #register:active, input[type="reset"]:active {
+input[type="submit"]:active, input[type="reset"]:active {
     transform: translateY(2px);
     box-shadow: 0 0px 0px transparent;
 }
@@ -99,34 +106,60 @@ main > p {
     color: var(--text-color);
 }
 
-#register, #loginbutton {
+#loginbutton {
     /* non eredita stili strani dai link */
     -webkit-appearance: none; 
     appearance: none;
 }
 
+#register {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    width: auto;
+    min-width: 150px;
+    max-width: 400px; /* Come il form */
+    padding: 10px 25px;
+    margin: 10px auto;
+    background-color: var(--button-bg-color);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 0px var(--button-hover-bg-color);
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
 @media (max-width: 480px) {
-    /* Trasformiamo la tabella in un layout a blocchi verticali */
     table, tr, th, td {
-        display: block;
-        width: 100%;
+        display: block !important;
+        width: 100% !important;
     }
 
-    th {
-        padding-bottom: 5px;
+    form table th {
+        text-align: left;
+        padding: 5px 0 0 0;
         font-size: 1rem;
+        width: 100% !important;
     }
 
-    td {
-        padding-bottom: 15px; /* Spazio tra un campo e l'altro */
+    form table td {
+        padding: 5px 0 15px 0;
+        width: 100% !important;
+    }
+
+    input[type="email"], input[type="password"] {
+        font-size: 1rem; 
+        padding: 12px; 
     }
 
     form {
-        padding: 20px; /* Riduciamo il padding interno per guadagnare spazio */
-        width: 90%;    /* Lasciamo un po' di margine ai lati dello schermo */
+        padding: 20px;
+        width: 92%;
     }
 
     h1 {
-        font-size: 1.8rem; /* Titolo dell'header leggermente più piccolo */
+        font-size: 1.8rem;
     }
 }

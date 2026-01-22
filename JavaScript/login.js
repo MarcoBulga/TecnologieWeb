@@ -1,22 +1,22 @@
 function createForm() {
     let form = `
     <form action="#" method="POST">
-                <p></p>
-                <table>
-                    <tr>
-                        <th id="useremail"><label for="email">E-mail: </label></th>
-                        <td headers="useremail"><input type="email" name="email" id="email" /></td>
-                    </tr>
-                    <tr>
-                        <th id="userpassword"><label for="password">Password: </label></th>
-                        <td headers="userpassword"><input type="password" name="password" id="password" /></td>
-                    </tr>
-                </table>
-                <input type="reset" name="reset" value="Annulla" />
-                <input type="submit" name="submit" value="Conferma" />
-            </form>
-            <p>Non hai un account?</p>
-            <a href="./register.php"><input type="button" name="register" id="register" value="Registrati" /></a>`
+        <p></p>
+        <table>
+            <tr>
+                <th id="useremail"><label for="email">E-mail: </label></th>
+                <td headers="useremail"><input type="email" name="email" id="email" /></td>
+            </tr>
+            <tr>
+                <th id="userpassword"><label for="password">Password: </label></th>
+                <td headers="userpassword"><input type="password" name="password" id="password" /></td>
+            </tr>
+        </table>
+        <input type="reset" name="reset" value="Annulla" />
+        <input type="submit" name="submit" value="Conferma" />
+    </form>
+    <p>Non hai un account?</p>
+    <a href="./register.php" id="register">Registrati</a>`
     return form;
 }
 
