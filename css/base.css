@@ -112,9 +112,9 @@ nav > ul.registerLoginBtns > li > p {
     cursor: pointer;
     border: none;
     border-radius: 8px;
-    /* Ombra morbida verso il basso */
     box-shadow: 0 4px 0px #047857; 
     transition: all 0.2s ease;
+    margin-right: 15px;
 }
 
 #sub-header > ul > li > button:hover {
@@ -481,11 +481,27 @@ nav > ul.registerLoginBtns > li > p {
 }
 
 .popup-buttons button[id="yes"], .popup-buttons button[id="yesRequest"]{
-    background-color: green;
+    font-weight: bold;
+    background-color: var(--button-bg-color);
+    color: white;
+    border-radius:10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 0px #047857;
 }
 
 .popup-buttons button[id="no"], .popup-buttons button[id="noRequest"]{
     background-color: red;
+    font-weight: bold;
+    color: white;
+    border-radius:10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 0px #b10404;
 }
 
 
@@ -555,6 +571,18 @@ main > section.to-enter {
 #return-button:active {
     transform: scale(0.9);
     /* box-shadow: 0 0px 0px transparent; */
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
 }
 
 @media (max-width: 767px) {

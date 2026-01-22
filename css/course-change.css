@@ -134,10 +134,6 @@ main > div:first-of-type h2 {
     padding: 0 ;
 }
 
-.hidden-popup.active {
-    display: flex !important;
-}
-
 .popup-elements {
     background: white;
     padding: 30px;

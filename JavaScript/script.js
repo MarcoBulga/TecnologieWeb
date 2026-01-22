@@ -115,6 +115,7 @@ function openMessage(notification, type, text, nomeGruppo){
 
                 if (data.esito) {
                     deleteNotification(notification);
+                    location.reload();
                     popup.style.display="none";
                 } else {
                     alert("Errore: " + data.errore);

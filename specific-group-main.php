@@ -2,9 +2,7 @@
     <form action="#" id="form-generale" method="POST"></form>
     <h2 id="groupname">
         <?php if(isset($templateParams['modify'])): ?>
-            <form action="" method="POST" style="display: inline;">
-                <label for="new-name" class="visually-hidden">Nuovo Titolo</label><input type="text" name="new-name" id="new-name" form="form-generale" value="<?php echo $dbh->getGroupName($_GET['idGruppo']); ?>" />
-            </form>
+                <label for="new-name" class="visually-hidden">Nuovo Titolo</label><input type="text" name="new-name" id="new-name" form="form-generale" value="<?php echo $dbh->getGroupName($_GET['idGruppo']); ?>" required />
         <?php else: ?>
             <?php echo $dbh->getGroupName($_GET['idGruppo']); ?>
         <?php endif; ?>
@@ -46,7 +44,7 @@
         <?php foreach($templateParams["Partecipants"] as $partecipant): ?>
         <li class="componente">
             <?php if(isset($templateParams['modify']) && $partecipant['email'] != $_SESSION['email']): ?>
-                <form action="" method="POST" style="display: inline">
+                <form action="#" method="POST" style="display: inline">
                     <button name="btn-user" form="form-generale" value="<?= $partecipant['email'] ?>">X</button>
                 </form>
             <?php endif; ?>
@@ -56,14 +54,14 @@
     </ul>
     <?php if(isset($templateParams['modify'])): ?>
         <h3 class="header-descrizione-corta">Descrizione corta:</h3>
-        <form action="" method="POST" style="display: inline">
-            <label for="new-short-descr" class="visually-hidden">Nuova Descrizione Corta</label><input type="text" form="form-generale" id="new-short-descr" name="new-short-descr" value="<?php echo $dbh->getGroupShortDescription($_GET['idGruppo']); ?>" />
+        <form action="#" method="POST" style="display: inline">
+            <label for="new-short-descr" class="visually-hidden">Nuova Descrizione Corta</label><input type="text" form="form-generale" id="new-short-descr" name="new-short-descr" value="<?php echo $dbh->getGroupShortDescription($_GET['idGruppo']); ?>" required />
         </form>
     <?php endif; ?>
     <h3 class="header-descrizione-lunga">Descrizione estesa:</h3>
     <?php if(isset($templateParams['modify'])): ?>
-        <form action="" method="POST" style="display: inline;">
-            <label for="new-long-descr" class="visually-hidden">Nuova Descrizione Lunga</label><input type="text" form="form-generale" id="new-long-descr" name="new-long-descr" value="<?php echo $dbh->getGroupLongDescription($_GET['idGruppo']); ?>" />
+        <form action="#" method="POST" style="display: inline;">
+            <label for="new-long-descr" class="visually-hidden">Nuova Descrizione Lunga</label><input type="text" form="form-generale" id="new-long-descr" name="new-long-descr" value="<?php echo $dbh->getGroupLongDescription($_GET['idGruppo']); ?>" required/>
         </form>
     <?php else: ?>
         <p class="descrizione-gruppo"><?php echo $dbh->getGroupLongDescription($_GET['idGruppo']) ?></p>
@@ -95,12 +93,12 @@
         <?php if($dbh->isGroupPrivate($_GET['idGruppo']) == 1 && $templateParams["toSee"] == false && $_SESSION["admin"] == false): ?>
             <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
                 <p>Oggetto:</p>
-                <textarea name="oggetto" id="oggetto" placeholder="OGGETTO"></textarea>
+                <label for="oggetto" class="visually-hidden"> oggetto richiesta</label><textarea name="oggetto" id="oggetto" placeholder="OGGETTO"></textarea>
             </div>
             <br>
             <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
                 <p>Testo:</p>
-                <textarea name="richiesta" id="richiesta" placeholder="Ciao, vorrei unirmi al vostro gruppo!"></textarea>
+                <label for="richiesta" class="visually-hidden"> testo richiesta</label><textarea name="richiesta" id="richiesta" placeholder="Ciao, vorrei unirmi al vostro gruppo!"></textarea>
             </div>
         <?php endif; ?>
         <div class="popup-buttons">

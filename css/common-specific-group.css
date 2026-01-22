@@ -435,6 +435,10 @@ section#chat.show {
     border: 0 !important;
 }
 
+.hidden-popup.active {
+    display: flex !important;
+}
+
 /* --- Responsive mobile --- */
 @media (max-width: 600px) {
     main > div:first-of-type, .to-enter, #chat {

@@ -106,12 +106,12 @@
                 <p id="popupHeaderReportSend"></p>
                 <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
                     <p>Oggetto:</p>
-                    <label for="popupObjectReportSend" hidden>oggetto della segnalazione</label><textarea name="popupObjectReportSend" id="popupObjectReportSend" placeholder="OGGETTO"></textarea> <!--aggiunta hidden label per AA-->
+                    <label for="popupObjectReportSend" class="visually-hidden"> oggetto della segnalazione</label><textarea name="popupObjectReportSend" id="popupObjectReportSend" placeholder="OGGETTO"></textarea> 
                 </div>
                 <br>
                 <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
                     <p>Testo:</p>
-                    <label for="popupTextReportSend" hidden>testo della segnalazione</label><textarea name="popupTextReportSend" id="popupTextReportSend" placeholder="Questo sito fa schifo!"></textarea><!--aggiunta hidden label per AA-->
+                    <label for="popupTextReportSend" class="visually-hidden">testo della segnalazione</label><textarea name="popupTextReportSend" id="popupTextReportSend" placeholder="Questo sito fa schifo!"></textarea>
                 </div>
                 <div class="popup-buttons">
                     <button id="conferma">Conferma</button>

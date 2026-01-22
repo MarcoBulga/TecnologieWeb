@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function(){
 function successPopup(string,event) {
     if (event) event.preventDefault();
     const popup = document.getElementById("popupConfirm");
-    const text = document.getElementById("popupTextConfirm");
+    const text = document.getElementById("popupTextSuccess");
 
     text.textContent = string;
 
@@ -45,7 +45,7 @@ function successPopup(string,event) {
 // --- VISUALIZZAZIONE GRUPPI ---
 function openPopupRequestToJoin(groupName,idGruppo){
     const popup = document.getElementById("popup");
-    const text = document.getElementById("popupText");
+    const text = document.getElementById("popupTextConfirm");
 
     text.textContent = "Sei sicuro di volerti unire a " + groupName + "?";
 
@@ -78,7 +78,7 @@ function openPopupRequestToJoin(groupName,idGruppo){
 
 function openPopupRequestToJoinPrivate(groupName,idGruppo){
     const popup = document.getElementById("popup");
-    const text = document.getElementById("popupText");
+    const text = document.getElementById("popupTextConfirm");
     const richiesta = document.getElementById("richiesta");
     const oggetto = document.getElementById("oggetto");
 
@@ -430,7 +430,7 @@ async function openSafetyPopupCourse(event) {
     if (name !== "") {
         // Gestisci la risposta se necessario
         object.textContent = "Sei sicuro di procedere con l'eliminazione?";
-        text.textContent = "Una volta che procedi con l'eliminazione del corso " + name + " tutti i gruppi che ne facevano riferimento saranno eliminati, sei sicuro/a di voler procedere?";
+        text.textContent = "Una volta che procedi con l'eliminazione del corso " + '"' + name + '"' + " tutti i gruppi che ne facevano riferimento saranno eliminati, sei sicuro/a di voler procedere?";
 
         popup.style.display = "flex";
 
@@ -456,7 +456,7 @@ async function openSafetyPopupTag(event) {
     if (name !== "") {
         // Gestisci la risposta se necessario
         object.textContent = "Sei sicuro di procedere con l'eliminazione?";
-        text.textContent = "Una volta che procedi con l'eliminazione del tag " + name + " non sarà più possibile utilizzarlo";
+        text.textContent = "Una volta che procedi con l'eliminazione del tag " + '"' + name + '"' + " non sarà più possibile utilizzarlo";
 
         popup.style.display = "flex";
 
