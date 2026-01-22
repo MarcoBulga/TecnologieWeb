@@ -196,7 +196,7 @@ function openPopupToDeleteGroup(idGruppo,admin){
 
     text.textContent = "Sei sicuro di voler eliminare il gruppo?";
 
-    popup.style.display = "flex";
+    popup.classList.toggle("active");
 
     document.getElementById("yes").onclick = async function(){
         const url = "gestisci-richiesta.php?idGruppo=" + idGruppo + "&action=delete_group";
@@ -220,11 +220,11 @@ function openPopupToDeleteGroup(idGruppo,admin){
             console.error("Errore durante l'eliminazione del gruppo:", error.message);
         }
 
-        popup.style.display = "none";
+        popup.classList.toggle("active");
     };
 
     document.getElementById("not").onclick = function(){
-        popup.style.display = "none";
+        popup.classList.toggle("active");
     };
 }
 
