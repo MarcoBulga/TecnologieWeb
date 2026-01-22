@@ -16,7 +16,7 @@
         <!-- Screenshot pagina ricerca gruppi -->
         <picture class="phone-mockup">
             <source media="(max-width: 768px)" srcset="./upload/placeholder(275x183).png" />
-            <img src="" alt="placeholder" />
+            <img src="./upload/placeholder(275x183).png" alt="placeholder" />
         </picture>
     </section>
 
@@ -29,11 +29,11 @@
         <!-- Screenshot pagina di creazione o modifica dei gruppi -->
         <picture class="phone-mockup">
             <source media="(max-width: 768px)" srcset="./upload/Creazione-Gruppo-screenshot.png" />
-            <img src="" alt="immagine creazione gruppo" />
+            <img src="./upload/Creazione-Gruppo.png" alt="immagine creazione gruppo" />
         </picture>
         <picture class="phone-mockup">
             <source media="(max-width: 768px)" srcset="./upload/Modifica-Gruppo-screenshot.png" />
-            <img src="" alt="immagine modifica gruppo" />
+            <img src="./upload/Modifica-Gruppo.png" alt="immagine modifica gruppo" />
         </picture>
          
     </section>
@@ -46,7 +46,7 @@
         <!-- Screenshot chat di gruppo -->
         <picture class="phone-mockup">
             <source media="(max-width: 768px)" srcset="./upload/Chat-screenshot.png" />
-            <img src="" alt="immagine chat" />
+            <img src="./upload/Chat.png" alt="immagine chat" />
         </picture>
     </section>
 
