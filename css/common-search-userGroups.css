@@ -276,3 +276,8 @@ main > section > p.descrizione-gruppo {
     transform: translateY(4px);
     box-shadow: 0 0px 0px var(--button-hover-bg-color);
 }
+
+#no-result, #no-report {
+    text-align: center;
+    font-weight: bold;
+}

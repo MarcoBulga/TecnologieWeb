@@ -37,43 +37,51 @@
 </form>
 
 <?php if(empty($templateParams['report'])): ?>
-    <?php foreach($templateParams["Gruppi"] as $gruppo): ?>
-    <section>
-        <h3>
-            <a href="
-            <?php if(isset($templateParams["value"])) echo "./specific-group-to-join.php?idGruppo=".$gruppo['idGruppo']; else echo "./specific-group-to-see.php?idGruppo=".$gruppo['idGruppo']; ?>"
-            class="link-header"><?php echo $gruppo['nome']; ?></a>
-        </h3>
-        <ul class="lista-componenti-gruppo">
-            <?php $templateParams["Partecipants"] = $dbh->getPartecipants($gruppo['idGruppo']); ?>
-            <?php foreach($templateParams["Partecipants"] as $partecipant): ?>
-            <li class="componente"><?php echo $partecipant['nome']." ".$partecipant['cognome']. " - ".$partecipant['email']; ?></li>
-            <?php endforeach; ?>
-        </ul>
-        <p>
-            <strong><?php $templateParams["tags"] = $dbh->getGroupTags($gruppo['idGruppo']); 
-                $tags = array_column($templateParams["tags"], 'nome');
-                echo implode(" - ", $tags);
-            ?>
-            </strong>
-        </p>
-        <p><strong>Descrizione:</strong> <?php echo $gruppo['descr_breve']; ?> </p>
-        <p><strong>Partecipanti:</strong> 
-            <?php echo $dbh->getNumberOfPartecipants($gruppo['idGruppo'])."/".$dbh->getGroupMaxPartecipants($gruppo['idGruppo']); ?>
-        </p>
-        <p><strong>Corso:</strong> <?php echo $gruppo['corso_di_riferimento']; ?> </p>
-    </section>
-    <?php endforeach; ?>
+    <?php if(empty($templateParams['Gruppi'])): ?>
+        <p id="no-result">Nessun risultato...</p>
+    <?php else: ?>
+        <?php foreach($templateParams["Gruppi"] as $gruppo): ?>
+        <section>
+            <h3>
+                <a href="
+                <?php if(isset($templateParams["value"])) echo "./specific-group-to-join.php?idGruppo=".$gruppo['idGruppo']; else echo "./specific-group-to-see.php?idGruppo=".$gruppo['idGruppo']; ?>"
+                class="link-header"><?php echo $gruppo['nome']; ?></a>
+            </h3>
+            <ul class="lista-componenti-gruppo">
+                <?php $templateParams["Partecipants"] = $dbh->getPartecipants($gruppo['idGruppo']); ?>
+                <?php foreach($templateParams["Partecipants"] as $partecipant): ?>
+                <li class="componente"><?php echo $partecipant['nome']." ".$partecipant['cognome']. " - ".$partecipant['email']; ?></li>
+                <?php endforeach; ?>
+            </ul>
+            <p>
+                <strong><?php $templateParams["tags"] = $dbh->getGroupTags($gruppo['idGruppo']); 
+                    $tags = array_column($templateParams["tags"], 'nome');
+                    echo implode(" - ", $tags);
+                ?>
+                </strong>
+            </p>
+            <p><strong>Descrizione:</strong> <?php echo $gruppo['descr_breve']; ?> </p>
+            <p><strong>Partecipanti:</strong> 
+                <?php echo $dbh->getNumberOfPartecipants($gruppo['idGruppo'])."/".$dbh->getGroupMaxPartecipants($gruppo['idGruppo']); ?>
+            </p>
+            <p><strong>Corso:</strong> <?php echo $gruppo['corso_di_riferimento']; ?> </p>
+        </section>
+        <?php endforeach; ?>
+    <?php endif; ?>
 <?php else: ?>
-    <?php foreach($templateParams["Segnalazioni"] as $segnalazione): ?>
-    <section>
-        <h3>
-            <a href="<?php echo './specific-report.php?idNotifica='.$segnalazione['idNotifica']; ?>" class="link-header"><?php echo $segnalazione['oggetto']; ?></a>
-        </h3>
-        <p class="text-report"><?php echo $segnalazione['testo']; ?></p>
-        <p><strong>Mittente: </strong><?php echo $dbh->getUtente($segnalazione["mittente"])['nome']; echo " "; echo $dbh->getUtente($segnalazione["mittente"])['cognome']; ?> </p>
-    </section>
-    <?php endforeach; ?>
+    <?php if(empty($templateParams['report'])): ?>
+        <p id="no-report">Nessuna segnalazione...</p>
+    <?php else: ?>
+        <?php foreach($templateParams["Segnalazioni"] as $segnalazione): ?>
+        <section>
+            <h3>
+                <a href="<?php echo './specific-report.php?idNotifica='.$segnalazione['idNotifica']; ?>" class="link-header"><?php echo $segnalazione['oggetto']; ?></a>
+            </h3>
+            <p class="text-report"><?php echo $segnalazione['testo']; ?></p>
+            <p><strong>Mittente: </strong><?php echo $dbh->getUtente($segnalazione["mittente"])['nome']; echo " "; echo $dbh->getUtente($segnalazione["mittente"])['cognome']; ?> </p>
+        </section>
+        <?php endforeach; ?>
+    <?php endif; ?>
 <?php endif; ?>
 
 <div class="parent">
