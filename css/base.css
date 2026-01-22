@@ -585,6 +585,10 @@ main > section.to-enter {
     border: 0 !important;
 }
 
+.hidden-popup.active {
+    display: flex !important;
+}
+
 @media (max-width: 767px) {
     #return-button {
         display: none;

@@ -71,6 +71,8 @@ function openMessage(notification, type, text, nomeGruppo){
         document.getElementById("popupSender").textContent = notification.querySelector("p:nth-of-type(2)").textContent;
         document.getElementById("popupGroupNameMessage").textContent = nomeGruppo;
 
+        popup.classList.toggle('active');
+
         //bottone chiudi messaggio
         document.getElementById("no").onclick = async function() {
             const idNotifica = notification.dataset.idnotifica;
@@ -81,8 +83,9 @@ function openMessage(notification, type, text, nomeGruppo){
                 const data = await response.json();
                 if (data.esito) {
                     deleteNotification(notification);
-                    popup.style.display="none";
+                    popup.classList.toggle('active');
                 } else {
+                    popup.classList.toggle('active');
                     alert("Errore: " + data.errore);
                 }
             } catch (error) {
@@ -96,11 +99,14 @@ function openMessage(notification, type, text, nomeGruppo){
         document.getElementById("popupSenderRequest").textContent = notification.querySelector("p:nth-of-type(2)").textContent;
         document.getElementById("popupGroupNameRequest").textContent = nomeGruppo;
 
+        popup.classList.toggle('active');
+
         //bottone accetta
         document.getElementById("yesRequest").onclick = async function() {
             const emailDaAggiungere = notification.dataset.mittente;
             const idGruppo = notification.dataset.idgruppo;
             const idNotificaOriginale = notification.dataset.idnotifica;
+
 
             if (!idGruppo || idGruppo === "") {
                 console.error("Errore: ID Gruppo mancante nel dataset della notifica.");
@@ -115,10 +121,10 @@ function openMessage(notification, type, text, nomeGruppo){
 
                 if (data.esito) {
                     deleteNotification(notification);
-                    location.reload();
-                    popup.style.display="none";
+                    popup.classList.toggle('active');
                 } else {
                     alert("Errore: " + data.errore);
+                    popup.classList.toggle('active');
                 }
             } catch (error) {
                 console.error("Errore durante l'accettazione", error);
@@ -137,20 +143,18 @@ function openMessage(notification, type, text, nomeGruppo){
 
                 if (data.esito) {
                     deleteNotification(notification);
-                    popup.style.display="none";
+                    popup.classList.toggle('active');
                 } else {
                     alert("Errore: " + data.errore);
+                    popup.classList.toggle('active');
                 }
             } catch (error) {
                 console.error("Errore durante l'accettazione", error);
             }
-            popup.style.display = "none";
         }
     } else {
         alert("Errore nell'apertura della notifica (type = null)");
     } 
-
-    popup.style.display = "flex";
 
 }
 
