@@ -76,7 +76,7 @@ async function login(email, password) {
     try {
 
         const response = await fetch(url, {
-            method: "POST",                   
+            method: "POST",              
             body: formData
         });
 

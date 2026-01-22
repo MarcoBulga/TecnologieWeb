@@ -3,7 +3,7 @@ require_once 'bootstrap.php';
 
 $result["logineseguito"] = false;
 $result['admin'] = isset($_SESSION["admin"]) ? $_SESSION["admin"] == 0 ? false : true : false;
-if(isset($_POST["email"]) && isset($_POST["password"])){
+if(!empty($_POST["email"]) && !empty($_POST["password"])){
     $login_result = $dbh->checkLogin($_POST["email"], $_POST["password"]);
     if(count($login_result)==0){
         //Login fallito
@@ -13,6 +13,8 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
         registerLoggedUser($login_result[0]);
         $result['admin'] = $_SESSION['admin'] == 0 ? false : true;
     }
+} else {
+    $result["errorelogin"] = "Inserire E-mail e/o password";
 }
 
 if(isUserLoggedIn()) {

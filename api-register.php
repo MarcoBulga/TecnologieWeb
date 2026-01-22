@@ -2,7 +2,7 @@
 require_once 'bootstrap.php';
 
 $result["registersuccess"] = false;
-if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["name"]) && isset($_POST["surname"])){
+if(!empty($_POST["email"]) && !empty($_POST["password"]) && !empty($_POST["name"]) && !empty($_POST["surname"])){
     $register_result = $dbh->doesUserExist($_POST["email"]);
     if(count($register_result)==0){
         //registration success
@@ -19,6 +19,8 @@ if(isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["name"]) 
         //registration failed
         $result["registererror"] = "Utente già esistente";
     }
+} else {
+    $result['registererror'] = "Inserisci tutti i campi!";
 }
 
 if(isUserLoggedIn()) {
