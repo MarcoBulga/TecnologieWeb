@@ -89,20 +89,30 @@ function openPopupRequestToJoinPrivate(groupName,idGruppo){
     
 
     document.getElementById("yes").onclick = async function(event){
-        const url = "gestisci-richiesta.php?idGruppo=" + idGruppo +"&richiesta=" + richiesta.value.trim() + "&oggetto=" + oggetto.value.trim() + "&action=join-private";
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error("Errore nella richiesta" + response.status);
+        const testo = richiesta.value.trim();
+        const object =  oggetto.value.trim();
+
+        if (testo !== "" && object !== "") {
+            const url = "gestisci-richiesta.php?idGruppo=" + idGruppo +"&richiesta=" + testo + "&oggetto=" + object + "&action=join-private";
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error("Errore nella richiesta" + response.status);
+                }
+                const data = await response.json();
+                if(data['esito']) {
+                    popup.style.display = "none";
+                    successPopup("Richiesta inviata con successo!",event);
+                }
+            } catch (error) {
+                console.error("Errore durante la richiesta: ", error.message);
             }
-            const data = await response.json();
-            if(data['esito']) {
-                popup.style.display = "none";
-                successPopup("Richiesta inviata con successo!",event);
-            }
-        } catch (error) {
-            console.error("Errore durante la richiesta: ", error.message);
+        } else {
+            text.textContent = "Il gruppo è privato! Sei sicuro di voler chiedere di unirti a " + groupName + "? Scrivi qualcosa:";
+            text.innerText += testo === "" && object === "" ? "\nInserisci testo e oggetto per inviare" : 
+                                testo === "" ? "\nInserisci un testo per inviare" : "\nInserisci un oggetto per inviare";
         }
+        
     };
 
 

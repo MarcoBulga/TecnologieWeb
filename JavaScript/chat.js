@@ -29,13 +29,11 @@ async function sendMessage() {
                 throw new Error(`Response status: ${response.status}`);
             }
             const json = await response.json();
-            console.log(json);
+
             if(json["esito"]){
                 messageZone.innerHTML += constructMessage(text,json["name"],json["surname"]);
                 messageZone.scrollTop = messageZone.scrollHeight;
-            } else {
-                console.log("Errore cabbio");
-            }
+            } 
 
         } catch (error) {
             console.log(error.message);
