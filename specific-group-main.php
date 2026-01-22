@@ -3,7 +3,7 @@
     <h2 id="groupname">
         <?php if(isset($templateParams['modify'])): ?>
             <form action="" method="POST" style="display: inline;">
-                <input type="text" name="new-name" form="form-generale" value="<?php echo $dbh->getGroupName($_GET['idGruppo']); ?>" />
+                <label for="new-name" class="visually-hidden">Nuovo Titolo</label><input type="text" name="new-name" id="new-name" form="form-generale" value="<?php echo $dbh->getGroupName($_GET['idGruppo']); ?>" />
             </form>
         <?php else: ?>
             <?php echo $dbh->getGroupName($_GET['idGruppo']); ?>
@@ -47,7 +47,7 @@
         <li class="componente">
             <?php if(isset($templateParams['modify']) && $partecipant['email'] != $_SESSION['email']): ?>
                 <form action="" method="POST" style="display: inline">
-                    <button name="btn-user" id="btn-user" form="form-generale" value="<?= $partecipant['email'] ?>">X</button>
+                    <button name="btn-user" form="form-generale" value="<?= $partecipant['email'] ?>">X</button>
                 </form>
             <?php endif; ?>
             <?php echo $partecipant['nome']." ".$partecipant['cognome'] ?> <?php if($dbh->isUserInGroup($_SESSION['email'], $_GET['idGruppo']) || $_SESSION['admin'] == true) echo " - ".$partecipant['email']; ?>
@@ -57,13 +57,13 @@
     <?php if(isset($templateParams['modify'])): ?>
         <h3 class="header-descrizione-corta">Descrizione corta:</h3>
         <form action="" method="POST" style="display: inline">
-            <input type="text" form="form-generale" name="new-short-descr" value="<?php echo $dbh->getGroupShortDescription($_GET['idGruppo']); ?>" />
+            <label for="new-short-descr" class="visually-hidden">Nuova Descrizione Corta</label><input type="text" form="form-generale" id="new-short-descr" name="new-short-descr" value="<?php echo $dbh->getGroupShortDescription($_GET['idGruppo']); ?>" />
         </form>
     <?php endif; ?>
     <h3 class="header-descrizione-lunga">Descrizione estesa:</h3>
     <?php if(isset($templateParams['modify'])): ?>
         <form action="" method="POST" style="display: inline;">
-            <input type="text" form="form-generale" name="new-long-descr" value="<?php echo $dbh->getGroupLongDescription($_GET['idGruppo']); ?>" />
+            <label for="new-long-descr" class="visually-hidden">Nuova Descrizione Lunga</label><input type="text" form="form-generale" id="new-long-descr" name="new-long-descr" value="<?php echo $dbh->getGroupLongDescription($_GET['idGruppo']); ?>" />
         </form>
     <?php else: ?>
         <p class="descrizione-gruppo"><?php echo $dbh->getGroupLongDescription($_GET['idGruppo']) ?></p>

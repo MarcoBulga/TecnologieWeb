@@ -75,7 +75,7 @@ main input[type="button"] {
 #btn-new-group, 
 button[name="btn-confirm"], 
 input[name="send-btn"],
-main button:not([id="btn-elimina-gruppo"]):not([id="not"]):not([id="undobutton"]):not([id="btn-annulla"]):not([id="btn-user"]):not([id="btn-delete-report"]) {
+main button:not([id="btn-elimina-gruppo"]):not([id="not"]):not([id="undobutton"]):not([id="btn-annulla"]):not([name="btn-user"]):not([id="btn-delete-report"]) {
     background-color: var(--button-bg-color);
     color: white;
     box-shadow: 0 4px 0px var(--button-hover-bg-color);
@@ -87,9 +87,13 @@ button[name="btn-annulla"],
 button[name="btn-user"],
 button[name="btn-delete-report"], 
 #not {
-    background-color: #dc3545; /* Rosso per azioni distruttive */
+    background-color: #dc3545;
     color: white;
     box-shadow: 0 4px 0px #a71d2a;
+}
+
+button[name="btn-user"] {
+    background-color: #EB0000 !important;
 }
 
 button:hover:not(:disabled) {
@@ -417,6 +421,18 @@ section#chat.show {
 .popup-buttons button:active {
     transform: translateY(3px);
     box-shadow: 0 0px 0px transparent;
+}
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
 }
 
 /* --- Responsive mobile --- */
