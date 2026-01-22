@@ -13,7 +13,7 @@
     <div class="search-controls-row">
         <input type="submit" id="btn-reset" name="btn-reset" value="<?php if(isset($templateParams['report'])) {echo 'Tutte le segnalazioni';} else {echo 'Tutti i gruppi';} ?>" formnovalidate />
         <?php if(isset($templateParams["value"]) && empty($templateParams['report'])):?>
-            <label for="course" hidden>Seleziona corso:</label>
+            <label for="course" class="visually-hidden">Seleziona corso:</label>
             <select name="course" id="course" required>
                 <option value="" disabled selected hidden>seleziona corso</option>
                     <?php foreach($templateParams["courses"] as $course): ?>

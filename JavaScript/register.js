@@ -24,10 +24,10 @@ function generateFormandText() {
                 <input type="submit" name="submit" value="Conferma" />
             </form>
             <p>Hai già un account?</p>
-            <a href="./login.php"><input type="button" name="loginbutton" id="loginbutton" value="Login" /></a>`;
+            <a href="./login.php" id="login">Login</a>`;
     return form;
 }
-
+/*<input type="button" name="loginbutton" id="loginbutton" value="Login" />*/
 async function getRegisterData() {
     const url = 'api-register.php';
     try {
