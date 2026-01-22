@@ -11,9 +11,30 @@ main > div > h2{
 }
 
 main > section {
+    position: relative;
     display: block;  /* forza il ritorno a capo*/
     margin: 20px 5%;
+
+    background-color: #FFFFFF;
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(172, 172, 172, 0.2);
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+    padding: 20px;
+
     clear: both;
+
+    transition: transform 0.2s ease;
+}
+
+main > section:hover {
+    background-color: #FBFBFB;
+    cursor: pointer;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 /*--- Gestisce i titoli dei gruppi ---*/
@@ -38,9 +59,19 @@ main > section > h3 > a {
     font-size: 1.5rem;
 }
 
-main > section > h3 > a:hover {
-    opacity: 0.8;
+main > section > h3 > a.link-header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
 }
+
+/* main > section > h3 > a:hover {
+    opacity: 0.8;
+} */
 
 /*--- Gestisce l'elenco dei partecipanti al gruppo ---*/
 main > section > ul {
@@ -70,7 +101,7 @@ main > section > p {
 }
 
 main > section > p:first-of-type{
-    color:#047857b6;
+    color:#047857;
     font-style: italic;
 }
 
@@ -133,7 +164,7 @@ main > section > p.descrizione-gruppo {
 #btn-search{
     all: unset;
 
-    background-color: #f0f0f0;
+    background-color: transparent;
     background-image: url(../upload/search.png);
     background-size: 65%;
     background-repeat: no-repeat;
@@ -142,7 +173,7 @@ main > section > p.descrizione-gruppo {
     text-indent: -9999999px;
     width: 8vw;
     height: 8vw;
-    box-shadow: 1px 1px 0 0 rgb(40, 40, 40);
+    /* box-shadow: 1px 1px 0 0 rgb(40, 40, 40); */
     margin: 2%;
     border-radius: 20%;
     max-height: 40px;

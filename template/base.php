@@ -12,11 +12,15 @@
     <?php if(isset($templateParams["js"])): ?>
     <script src="./JavaScript/<?php echo $templateParams["js"]; ?>" defer></script>
     <?php endif; ?>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <title>Ricerca Gruppi</title>
 </head>
 <body>
     <header>
-        <button type="button" id="return-button" name="return button" onclick="history.back()">back</button>
+        <button type="button" id="return-button" name="return button" onclick="history.back()"></button>
         <h1>Ricerca Gruppi</h1>
     </header>
     <nav>
