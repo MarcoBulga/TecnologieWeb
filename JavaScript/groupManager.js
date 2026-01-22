@@ -143,6 +143,7 @@ function openPopupReport(){
     };
 
     document.getElementById("annulla").onclick = function(){
+        event.stopPropagation();
         popup.style.display = "none";
     };
 }
