@@ -130,3 +130,11 @@ main > p {
     box-sizing: border-box;
     cursor: pointer;
 }
+
+caption {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+    min-height: 1.2rem;
+    color: var(--text-color);
+}
