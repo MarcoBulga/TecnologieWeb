@@ -16,6 +16,7 @@
 </head>
 <body>
     <header>
+        <button type="button" id="return-button" name="return button" onclick="history.back()">back</button>
         <h1>Ricerca Gruppi</h1>
     </header>
     <nav>
@@ -64,7 +65,6 @@
         <?php endforeach; ?>
         <button id="chiudi-notifiche">Chiudi</button>
     </nav>
-    <button type="button" id="return-button" name="return button" onclick="history.back()">back</button>
     <main>
         <?php require $templateParams["page"]; ?>
     </main>

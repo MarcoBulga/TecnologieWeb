@@ -43,6 +43,7 @@ p {font-size: 1.2rem;}
 
 /*--- header e footer ---*/
 header {
+    position: relative;
     background-color: var(--header-footer-bg-color);
     text-align: center;
     color: var(--text-color);
@@ -497,4 +498,45 @@ main > section {
 
 main > section.to-enter {
     border: none;
+}
+
+/* Stile per il bottone indietro */
+#return-button {
+    position: absolute;
+    top: 10px; 
+    left: 15px;
+    padding: 4px 10px;
+    background-color: #666; 
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 3px 0px #333;
+    transition: all 0.2s ease;
+    z-index: 10; 
+    margin-right: 15px;
+}
+
+#return-button:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0px #222;
+}
+
+#return-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 0px 0px transparent;
+}
+
+@media (max-width: 767px) {
+    #return-button {
+        display: none;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+        padding: 0 50px;
+    }
 }
