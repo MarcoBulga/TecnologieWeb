@@ -199,7 +199,8 @@ button:disabled {
     overflow: hidden;
 }
 
-.message h5 {
+.message h4 {
+    font-size: 0.8rem;
     margin: 0;
     color: var(--button-bg-color);
 }

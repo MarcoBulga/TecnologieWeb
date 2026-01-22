@@ -1,5 +1,5 @@
 <div>
-    <form action="" id="form-generale" method="POST"></form>
+    <form action="#" id="form-generale" method="POST"></form>
     <h2 id="groupname">
         <?php if(isset($templateParams['modify'])): ?>
             <form action="" method="POST" style="display: inline;">
@@ -7,7 +7,7 @@
             </form>
         <?php else: ?>
             <?php echo $dbh->getGroupName($_GET['idGruppo']); ?>
-        <?php endif; ?>  
+        <?php endif; ?>
     </h2>
     <?php if(isset($templateParams['modify'])): ?>
         <button type="submit" form="form-generale" name="btn-confirm" id="btn-confirm">Conferma</button>
@@ -76,7 +76,7 @@
         <div class="messages-container" id="messages-container">
             <?php foreach($templateParams["chat"] as $message): ?>
                 <div class="message">
-                    <h5><?php {echo $dbh->getUtente($message["mittente"])['nome']; echo " ".$dbh->getUtente($message["mittente"])['cognome'];} ?></h5>
+                    <h4><?php {echo $dbh->getUtente($message["mittente"])['nome']; echo " ".$dbh->getUtente($message["mittente"])['cognome'];} ?></h4>
                     <p><?php echo $message["testo"] ?></p>
                 </div>
             <?php endforeach; ?>
@@ -91,7 +91,7 @@
 <!--Popup di conferma-->
 <div id="popup" class="hidden-popup">
     <div class="popup-elements">
-        <p id="popupText"></p>
+        <p id="popupTextConfirm"></p>
         <?php if($dbh->isGroupPrivate($_GET['idGruppo']) == 1 && $templateParams["toSee"] == false && $_SESSION["admin"] == false): ?>
             <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
                 <p>Oggetto:</p>

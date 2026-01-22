@@ -2,7 +2,7 @@
     <h2>CORSI E TAG</h2>
 </div>
 <div class="forms-row">
-    <form action="#" method="POST" class="new-course" id="courseForm">
+    <form action="#" method="POST" class="new-course" id="courseCreation">
         <label for="name-new-course">Corso: 
             <input type="text" id="name-new-course" name="name-new-course" placeholder="Nome Corso"></label>
         <button onclick="openPopupToAddCourse(event); return false;"
@@ -18,8 +18,8 @@
 </div>
 
 <div class="forms-row">
-    <form action="#" method="POST" class="delete-course" id="courseForm">
-        <label for="course">Seleziona corso da eliminare: <select name="course-to-delete" id="course-to-delete">
+    <form action="#" method="POST" class="delete-course" id="courseDelete">
+        <label for="course">Seleziona corso da eliminare: <select name="course" id="course">
             <option value="" disabled selected hidden>seleziona corso</option>
                 <?php foreach($templateParams["courses"] as $course): ?>
                 <option value="<?php echo $course["nome"] ?>"><?php echo $course["nome"] ?></option>
@@ -29,8 +29,8 @@
         type="submit" id="btn-delete-course" name="btn-delete-course">Elimina</button>
     </form>
 
-    <form action="#" method="POST" class="delete-tag" id="courseForm">
-        <label for="course">Seleziona tag da eliminare: <select name="tag-to-delete" id="tag-to-delete">
+    <form action="#" method="POST" class="delete-tag" id="tagDelete">
+        <label for="tag">Seleziona tag da eliminare: <select name="tag" id="tag">
             <option value="" disabled selected hidden>seleziona tag</option>
                 <?php foreach($templateParams["tags"] as $tag): ?>
                 <option value="<?php echo $tag["nome"] ?>"><?php echo $tag["nome"] ?></option>

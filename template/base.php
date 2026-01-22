@@ -97,17 +97,17 @@
         </div>
 
         <!--Popup di conferma-->
-        <div id="popupReport" class="hidden-popup">
+        <div id="popupReportSend" class="hidden-popup">
             <div class="popup-elements">
-                <p id="popupHeaderReport"></p>
+                <p id="popupHeaderReportSend"></p>
                 <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
                     <p>Oggetto:</p>
-                    <label for="popupObjectReport" hidden>oggetto della segnalazione</label><textarea name="popupObjectReport" id="popupObjectReport" placeholder="OGGETTO"></textarea> <!--aggiunta hidden label per AA-->
+                    <label for="popupObjectReportSend" hidden>oggetto della segnalazione</label><textarea name="popupObjectReportSend" id="popupObjectReportSend" placeholder="OGGETTO"></textarea> <!--aggiunta hidden label per AA-->
                 </div>
                 <br>
                 <div style="display: flex; justify-content:center; align-items: center; gap: 10px">
                     <p>Testo:</p>
-                    <label for="popupTextReport" hidden>testo della segnalazione</label><textarea name="popupTextReport" id="popupTextReport" placeholder="Questo sito fa schifo!"></textarea><!--aggiunta hidden label per AA-->
+                    <label for="popupTextReportSend" hidden>testo della segnalazione</label><textarea name="popupTextReportSend" id="popupTextReportSend" placeholder="Questo sito fa schifo!"></textarea><!--aggiunta hidden label per AA-->
                 </div>
                 <div class="popup-buttons">
                     <button id="conferma">Conferma</button>
@@ -119,7 +119,7 @@
         <!--Popup di conferma-->
         <div id="popupConfirm" class="hidden-popup">
             <div class="popup-elements">
-                <p id="popupTextConfirm"></p>
+                <p id="popupTextSuccess"></p>
                 <div class="popup-buttons">
                     <button id="chiudiConfirm">Chiudi</button>
                 </div>

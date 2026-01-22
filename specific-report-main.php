@@ -1,5 +1,5 @@
 <div>
-    <form action="" id="form-generale" method="POST"></form>
+    <form action="#" id="form-generale" method="POST"></form>
     <h2 id="reportId">
         Segnalazione n.<?php echo $_GET['idNotifica']; ?>  
     </h2>
@@ -10,8 +10,8 @@
     </button>
 </div>
 <section class="to-enter">
-    <h3 id="reportObject" name="reportObject"> <?php echo $dbh->getNotificationObject($_GET['idNotifica']); ?> </h3>
-    <p id="reportText" name="reportText"> <?php echo $dbh->getNotificationText($_GET['idNotifica'])?> </p>
+    <h3 id="reportObject"> <?php echo $dbh->getNotificationObject($_GET['idNotifica']); ?> </h3>
+    <p id="reportText"> <?php echo $dbh->getNotificationText($_GET['idNotifica'])?> </p>
 </section>
 
 <!--Popup di conferma-->

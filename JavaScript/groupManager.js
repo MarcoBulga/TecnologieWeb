@@ -112,10 +112,10 @@ function openPopupRequestToJoinPrivate(groupName,idGruppo){
 }
 
 function openPopupReport(){
-    const popup = document.getElementById("popupReport");
-    const header = document.getElementById("popupHeaderReport");
-    const testo = document.getElementById("popupTextReport");
-    const oggetto = document.getElementById("popupObjectReport");
+    const popup = document.getElementById("popupReportSend");
+    const header = document.getElementById("popupHeaderReportSend");
+    const testo = document.getElementById("popupTextReportSend");
+    const oggetto = document.getElementById("popupObjectReportSend");
 
     header.textContent = "SEGNALAZIONE:";
 
@@ -158,7 +158,7 @@ function openPopupReport(){
 
 function openPopupToLeave(idGruppo){
     const popup = document.getElementById("popup");
-    const text = document.getElementById("popupText");
+    const text = document.getElementById("popupTextConfirm");
 
     text.textContent = "Sei sicuro di voler uscire dal gruppo?";
 
@@ -192,7 +192,7 @@ function openPopupToLeave(idGruppo){
 
 function openPopupToDeleteGroup(idGruppo,admin){
     const popup = document.getElementById("popup");
-    const text = document.getElementById("popupText");
+    const text = document.getElementById("popupTextConfirm");
 
     text.textContent = "Sei sicuro di voler eliminare il gruppo?";
 
@@ -308,7 +308,7 @@ async function openPopupToDeleteCourse(event) {
     const popup = document.getElementById("coursePopup");
     const text = document.getElementById("coursePopupText");
     const object = document.getElementById("coursePopupObject");
-    const name = document.getElementById("course-to-delete").value;
+    const name = document.getElementById("course").value;
 
     if (name !== "") {
         const url = "gestisci-course-change.php?nomeCorso=" + name + "&action=remove_course";
@@ -386,7 +386,7 @@ async function openPopupToDeleteTag(event) {
     const popup = document.getElementById("tagPopup");
     const text = document.getElementById("tagPopupText");
     const object = document.getElementById("tagPopupObject");
-    const name = document.getElementById("tag-to-delete").value;
+    const name = document.getElementById("tag").value;
 
     if (name !== "") {
         const url = "gestisci-tag-change.php?nomeTag=" + name + "&action=remove_tag";
@@ -425,7 +425,7 @@ async function openSafetyPopupCourse(event) {
     const popup = document.getElementById("safetyPopupCourse");
     const text = document.getElementById("safetyPopupCourseText");
     const object = document.getElementById("safetyPopupCourseObject");
-    const name = document.getElementById("course-to-delete").value;
+    const name = document.getElementById("course").value;
 
     if (name !== "") {
         // Gestisci la risposta se necessario
@@ -451,7 +451,7 @@ async function openSafetyPopupTag(event) {
     const popup = document.getElementById("safetyPopupTag");
     const text = document.getElementById("safetyPopupTagText");
     const object = document.getElementById("safetyPopupTagObject");
-    const name = document.getElementById("tag-to-delete").value;
+    const name = document.getElementById("tag").value;
 
     if (name !== "") {
         // Gestisci la risposta se necessario
@@ -474,7 +474,7 @@ async function openSafetyPopupTag(event) {
 
 function openPopupConfirm(){
     const popup = document.getElementById("popupConfirm");
-    const text = document.getElementById("popupTextConfirm");
+    const text = document.getElementById("popupTextSuccess");
 
     text.textContent = "La segnalazione è stata inviata con successo!"
 
