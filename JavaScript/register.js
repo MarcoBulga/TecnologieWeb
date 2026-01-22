@@ -3,6 +3,7 @@ function generateFormandText() {
     <form action="#" method="post">
             <p></p>
                 <table>
+                    <caption>Registrati</caption>
                     <tr>
                         <th id="username"><label for="name">Nome: </label></th>
                         <td headers="username"><input type="text" name="name" id="name" /></td>

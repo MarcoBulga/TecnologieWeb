@@ -3,6 +3,7 @@ function createForm() {
     <form action="#" method="POST">
         <p></p>
         <table>
+            <caption>Login</caption>
             <tr>
                 <th id="useremail"><label for="email">E-mail: </label></th>
                 <td headers="useremail"><input type="email" name="email" id="email" /></td>
