@@ -194,7 +194,7 @@ document.addEventListener('click', function(event){
         }
     }
 
-    if (chat.classList.contains('show')) {
+    if (chat && chat.classList.contains('show')) {
         const clickInsideChat = chat.contains(event.target);
         const clickInsideButtonChat = btnChat.contains(event.target);
 
