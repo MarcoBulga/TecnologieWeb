@@ -284,20 +284,20 @@ async function openPopupToAddCourse(event) {
                 object.textContent = "Corso aggiunto";
                 text.textContent = "Il corso da te aggiunto è ora visibile a tutti gli utenti";
 
-                popup.style.display= "flex";
+                popup.classList.toggle('active');
 
             } else {
                 object.textContent = "Aggiunta corso fallita!"
                 text.textContent = "Probabilmente esiste già un corso con quel nome, non possono essercene due uguali!"
 
-                popup.style.display = "flex";
+                popup.classList.toggle('active');
             }
         } catch (error) {
             console.error("Errore durante l'aggiunta del corso:", error.message);
         }
 
         document.getElementById("chiudi").onclick = function(){
-            popup.style.display = "none";
+            popup.classList.toggle('active');
             location.reload();
         };
     }
@@ -323,20 +323,20 @@ async function openPopupToDeleteCourse(event) {
                 object.textContent = "Corso eliminato";
                 text.textContent = "Il corso è stato eliminato con successo! Tutti i gruppi che facevano riferimento a quel corso sono stati rimossi!";
 
-                popup.style.display= "flex";
+                popup.classList.toggle('active');
 
             } else {
                 object.textContent = "Eliminazione corso fallita!"
                 text.textContent = "Purtroppo qualcosa sembra essere andato storto..."
 
-                popup.style.display = "flex";
+                popup.classList.toggle('active');
             }
         } catch (error) {
             console.error("Errore durante l'eliminazione del corso:", error.message);
         }
 
         document.getElementById("chiudi").onclick = function(){
-            popup.style.display = "none";
+            popup.classList.toggle('active');
             location.reload();
         };
     }
@@ -362,20 +362,20 @@ async function openPopupToAddTag(event) {
                 object.textContent = "Tag aggiunto";
                 text.textContent = "Il tag da te aggiunto è ora visibile a tutti gli utenti";
 
-                popup.style.display= "flex";
+                popup.classList.toggle('active');
 
             } else {
                 object.textContent = "Aggiunta tag fallita!"
                 text.textContent = "Probabilmente esiste già un tag con quel nome, non possono essercene due uguali!"
 
-                popup.style.display = "flex";
+                popup.classList.toggle('active');
             }
         } catch (error) {
             console.error("Errore durante l'aggiunta del tag:", error.message);
         }
 
         document.getElementById("chiudiTag").onclick = function(){
-            popup.style.display = "none";
+            popup.classList.toggle('active');
             location.reload();
         };
     }
@@ -401,20 +401,20 @@ async function openPopupToDeleteTag(event) {
                 object.textContent = "Tag eliminato";
                 text.textContent = "Il tag è stato eliminato con successo!";
 
-                popup.style.display= "flex";
+                popup.classList.toggle('active');
 
             } else {
                 object.textContent = "Eliminazione tag fallita!"
                 text.textContent = "Purtroppo qualcosa sembra essere andato storto..."
 
-                popup.style.display = "flex";
+                popup.classList.toggle('active');
             }
         } catch (error) {
             console.error("Errore durante l'eliminazione del tag:", error.message);
         }
 
         document.getElementById("chiudiTag").onclick = function(){
-            popup.style.display = "none";
+            popup.classList.toggle('active');
             location.reload();
         };
     }

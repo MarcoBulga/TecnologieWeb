@@ -129,6 +129,13 @@ main > div:first-of-type h2 {
     justify-content: center;
     align-items: center;
     z-index: 1000;
+
+    margin: 0 ;
+    padding: 0 ;
+}
+
+.hidden-popup.active {
+    display: flex !important;
 }
 
 .popup-elements {
