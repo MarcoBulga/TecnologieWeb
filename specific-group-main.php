@@ -50,7 +50,7 @@
                     <button name="btn-user" id="btn-user" form="form-generale" value="<?= $partecipant['email'] ?>">X</button>
                 </form>
             <?php endif; ?>
-            <?php echo $partecipant['nome']." ".$partecipant['cognome']. " - ".$partecipant['email']; ?>
+            <?php echo $partecipant['nome']." ".$partecipant['cognome'] ?> <?php if($dbh->isUserInGroup($_SESSION['email'], $_GET['idGruppo']) || $_SESSION['admin'] == true) echo " - ".$partecipant['email']; ?>
         </li>
         <?php endforeach; ?>
     </ul>

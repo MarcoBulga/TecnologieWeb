@@ -50,7 +50,7 @@
             <ul class="lista-componenti-gruppo">
                 <?php $templateParams["Partecipants"] = $dbh->getPartecipants($gruppo['idGruppo']); ?>
                 <?php foreach($templateParams["Partecipants"] as $partecipant): ?>
-                <li class="componente"><?php echo $partecipant['nome']." ".$partecipant['cognome']. " - ".$partecipant['email']; ?></li>
+                <li class="componente"><?php echo $partecipant['nome']." ".$partecipant['cognome']?> <?php if($dbh->isUserInGroup($_SESSION['email'], $gruppo['idGruppo']) || $_SESSION['admin'] == true) echo " - ".$partecipant['email']; ?> </li>
                 <?php endforeach; ?>
             </ul>
             <p>
