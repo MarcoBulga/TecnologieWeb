@@ -13,6 +13,7 @@
     <body>
         <article class="landing-page">
             <header class="hero">
+                <h1>GRUPPIAMO</h1>
                 <h1>Trova il gruppo giusto per i tuoi progetti universitari</h1>
                 <p class="hero-subtitle">La piattaforma che semplifica la collaborazione accademica. Cerca, crea e gestisci i tuoi gruppi di lavoro in un unico posto.</p>
                 <div class="cta-header">

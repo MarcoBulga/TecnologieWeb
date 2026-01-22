@@ -21,7 +21,7 @@
 <body>
     <header>
         <button type="button" id="return-button" name="return button" onclick="history.back()">indietro</button>
-        <h1>Ricerca Gruppi</h1>
+        <h1>Gruppiamo</h1>
     </header>
     <section id="sub-header">
         <ul class="normalButtons">
