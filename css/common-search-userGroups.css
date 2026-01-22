@@ -130,7 +130,6 @@ main > section > p.descrizione-gruppo {
 }
 
 /*--- Bottone ricerca ---*/
-@media (max-width:768px){
     #btn-search{
         all: unset;
 
@@ -146,10 +145,9 @@ main > section > p.descrizione-gruppo {
         box-shadow: 1px 1px 0 0 rgb(40, 40, 40);
         margin: 2%;
         border-radius: 20%;
-    max-height: 40px;
-    max-width: 40px;
+        max-height: 40px;
+        max-width: 40px;
     }
-} 
 
 #btn-search:hover {
     box-shadow: unset;
