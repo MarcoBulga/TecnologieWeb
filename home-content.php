@@ -77,6 +77,22 @@
                 </div>
             </section>
 
+            <section class="feature-row reverse">
+                <div class="content-wrapper">
+                    <div class="text-block">
+                        <span class="badge">Segnala</span>
+                        <h2>Comunica tutto ciò che non va</h2>
+                        <p>Grazie alla possibilità di segnalazioni immediate, i nostri admin potranno al più presto mettersi al lavoro per risolvere i vostri problemi.</p>
+                    </div>
+                    <div class="visual-block">
+                        <picture class="phone-mockup">
+                            <source media="(max-width: 768px)" srcset="./upload/report-PHONE.png" />
+                            <img src="./upload/report-PC.png" alt="Segnalazione disponibile" />
+                        </picture>
+                    </div>
+                </div>
+            </section>
+
             <footer class="final-cta">
                 <h2>Pronto a migliorare il tuo modo di studiare?</h2>
                 <p>Accedi o registrati per iniziare subito.</p>

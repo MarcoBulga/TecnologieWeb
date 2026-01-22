@@ -34,7 +34,9 @@ $templateParams["notifications"] = $dbh->getAllNotifications($_SESSION['email'])
 
 $templateParams["css"] = array('common-specific-group');
 
-$templateParams["js"] = "chat.js";
+if($_SESSION['admin'] == false) {
+    $templateParams["js"] = "chat.js";
+}
 
 require './template/base.php';
 ?>
