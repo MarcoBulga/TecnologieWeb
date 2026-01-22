@@ -110,7 +110,7 @@ values (1,"progetto"),
 (11,"in presenza"),
 (12,"principiante"),
 (12,"studio"),
-(12,"primo anno"),
+(12,"primo anno");
 
 insert into CHAT(idChat,idGruppo)
 values (1,1),
