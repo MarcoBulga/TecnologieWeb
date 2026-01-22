@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="./JavaScript/index.js" defer></script>
         <link rel="stylesheet" href="./css/index.css" />
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +14,7 @@
     <body>
         <article class="landing-page">
             <header class="hero">
-                <h1>GRUPPIAMO</h1>
+                <span class="logo-text">GRUPPIAMO</span>
                 <h1>Trova il gruppo giusto per i tuoi progetti universitari</h1>
                 <p class="hero-subtitle">La piattaforma che semplifica la collaborazione accademica. Cerca, crea e gestisci i tuoi gruppi di lavoro in un unico posto.</p>
                 <div class="cta-header">
@@ -47,9 +48,11 @@
                     <div class="visual-block">
                         <div class="images-slider">
                             <picture class="phone-mockup">
+                                <source media="(max-width: 768px)" srcset="./upload/crea-gruppo-PHONE.png" />
                                 <img src="./upload/crea-gruppo-PC.png" alt="Creazione gruppo" />
                             </picture>
                             <picture class="phone-mockup">
+                                <source media="(max-width: 768px)" srcset="./upload/modifica-gruppo-PHONE.png" />
                                 <img src="./upload/modifica-gruppo-PC.png" alt="Modifica gruppo" />
                             </picture>
                         </div>
@@ -87,27 +90,5 @@
             <span style="position: absolute; top: 20px; right: 30px; color: white; font-size: 40px; font-weight: bold;">&times;</span>
             <img id="lightbox-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Ingrandimento" style="max-width: 90%; max-height: 90%; border-radius: 10px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
         </div>
-
-        <!-- script per far ingrandire le immagini -->
-        <script>
-            const overlay = document.getElementById('lightbox-overlay');
-            const lightboxImg = document.getElementById('lightbox-img');
-
-            // Seleziona tutte le immagini dentro i mockup
-            document.querySelectorAll('.phone-mockup img').forEach(img => {
-                img.style.cursor = 'zoom-in';
-                img.addEventListener('click', () => {
-                    lightboxImg.src = img.src;
-                    overlay.style.display = 'flex';
-                    overlay.classList.add('show');
-                });
-            });
-
-            // Chiudi immagine quando clicchi sull'overlay
-            overlay.addEventListener('click', () => {
-                overlay.style.display = 'none';
-                lightboxImg.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
-            });
-        </script>
     </body>
 </html>
