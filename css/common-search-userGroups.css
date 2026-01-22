@@ -115,6 +115,18 @@ main > section > p.descrizione-gruppo {
     font-size: 1.3rem;
     box-shadow: 1px 1px 0 0 rgb(40, 40, 40);
     width: 80%;
+
+    flex: 1;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease;
+    outline: none;
+}
+
+#ricerca-mio-gruppo:focus {
+    border-color: var(--button-bg-color);
 }
 
 /*--- Bottone ricerca ---*/
@@ -231,7 +243,6 @@ main > section > p.descrizione-gruppo {
     box-shadow: 0 2px 0px var(--button-hover-bg-color);
 }
 
-/* Rimuove l'outline quando si clicca */
 #course:focus {
     outline: none;
     border-color: var(--button-hover-bg-color);
