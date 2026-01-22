@@ -14,6 +14,8 @@ if ($_GET['action'] == 'leave') {
                                         $_GET['idGruppo']);
 } else if ($_GET['action'] == 'delete_group') {
     $result['esito'] = $dbh->deleteGroup($_GET['idGruppo']);
+} else if ($_GET['action'] == 'leaveAsAdm') {
+    $result["esito"] = $dbh->deleteGroup($_GET['idGruppo']);
 }
 
 header("Content-Type: application/json");

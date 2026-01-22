@@ -12,7 +12,8 @@
         <button type="submit" form="form-generale" name="btn-annulla" id="btn-annulla" >Annulla</button>
     <?php elseif($_SESSION['admin'] == false): ?>
         <button onclick=
-            '<?php if($templateParams["toSee"] == true) {echo "openPopupToLeave(".$_GET['idGruppo'].")";}
+            '<?php if($templateParams["toSee"] == true && $dbh->checkAdministrator($_GET['idGruppo'])) {echo "openPopupToLeaveAsAdm(".$_GET['idGruppo'].")";}
+                    else if($templateParams["toSee"] == true) {echo "openPopupToLeave(".$_GET['idGruppo'].")";}
                     else if ($dbh->isGroupPrivate($_GET['idGruppo']) == 0) {echo "openPopupRequestToJoin(document.getElementById(\"groupname\").textContent, ".$_GET['idGruppo'].")";} 
                     else {echo "openPopupRequestToJoinPrivate(document.getElementById(\"groupname\").textContent, ".$_GET['idGruppo'].")";}?>'
             id="btn-new-group"
@@ -43,7 +44,7 @@
         <?php $templateParams["Partecipants"] = $dbh->getPartecipants($_GET["idGruppo"]); ?>
         <?php foreach($templateParams["Partecipants"] as $partecipant): ?>
         <li class="componente">
-            <?php if(isset($templateParams['modify']) && $partecipant['email'] != $_SESSION['email']): ?>
+            <?php if(isset($templateParams['modify']) && $partecipant['email'] != $_SESSION['email'] && !$dbh->checkAdministratorSpecific($_GET['idGruppo'], $partecipant['email'])): ?>
                 <form action="#" method="POST" style="display: inline">
                     <button name="btn-user" form="form-generale" value="<?= $partecipant['email'] ?>">X</button>
                 </form>

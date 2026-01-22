@@ -244,6 +244,15 @@ class DatabaseHelper {
         return $result->num_rows > 0;
     }
 
+    public function checkAdministratorSpecific($idGruppo, $email) {
+        $stmt = $this->db->prepare("SELECT idGruppo FROM gruppo WHERE idGruppo = ? AND creatore = ?");
+        $stmt->bind_param('is', $idGruppo, $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->num_rows > 0;
+    }
+
     public function getGroupName($idGruppo) {
         $stmt = $this->db->prepare("SELECT nome FROM gruppo WHERE idGruppo = ?");
         $stmt->bind_param('i', $idGruppo);

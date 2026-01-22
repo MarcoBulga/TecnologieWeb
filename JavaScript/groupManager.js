@@ -190,6 +190,40 @@ function openPopupToLeave(idGruppo){
     };
 }
 
+function openPopupToLeaveAsAdm(idGruppo){
+    const popup = document.getElementById("popup");
+    const text = document.getElementById("popupTextConfirm");
+
+    text.textContent = "Sei sicuro di voler uscire dal gruppo? Ricordati che sei l'Amministratore, se esci il gruppo verrà eliminato!";
+
+    popup.style.display = "flex";
+
+    document.getElementById("yes").onclick = async function(){
+        const url = "gestisci-richiesta.php?idGruppo=" + idGruppo + "&action=leaveAsAdm";
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error("Errore nella richiesta" + response.status);
+            }
+            const data = await response.json();
+            // Gestisci la risposta se necessario
+            if(data["esito"]) {
+                window.location.href = "./user-groups.php?idGruppo=" + idGruppo + "&status=success_leaveAsAdm";
+            } else {
+                alert("Errore nell'uscita dal gruppo");
+            }
+        } catch (error) {
+            console.error("Errore durante la richiesta:", error.message);
+        }
+
+        popup.style.display = "none";
+    };
+
+    document.getElementById("not").onclick = function(){
+        popup.style.display = "none";
+    };
+}
+
 function openPopupToDeleteGroup(idGruppo,admin){
     const popup = document.getElementById("popup");
     const text = document.getElementById("popupTextConfirm");
