@@ -131,6 +131,24 @@ input[type="checkbox"] {
     box-shadow: 0 0px 0px transparent;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: inner-spin-button !important;
+    opacity: 1 !important;
+}
+
+/* Firefox */
+input[type="number"] {
+    -moz-appearance: number-input;
+}
+
+input[type="number"]:focus {
+    border-color: var(--button-bg-color);
+    outline: none;
+    box-shadow: 0 0 5px rgba(5, 150, 105, 0.2);
+}
+
 /* Responsive per Mobile */
 @media (max-width: 480px) {
     #formCreaGruppo {
