@@ -10,8 +10,8 @@ btn.addEventListener('click', function(){
 } );
 
 function constructMessage(text,name,surname) {
-    let message = `<div class="message">
-                <h5>` + name + " " + surname + ` </h5>
+    let message = `<div class="message sent">
+                <h4>` + name + " " + surname + ` </h4>
                 <p>` + text + `</p>
             </div>`;
     return message;

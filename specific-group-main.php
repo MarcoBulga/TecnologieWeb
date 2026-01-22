@@ -73,8 +73,9 @@
     <section id="chat">
         <h3>CHAT</h3>
         <div class="messages-container" id="messages-container">
-            <?php foreach($templateParams["chat"] as $message): ?>
-                <div class="message">
+            <?php foreach($templateParams["chat"] as $message): 
+                $classeSent = ($message['mittente'] == $_SESSION['email']) ? "sent" : ""; ?>
+                <div class="message <?php echo $classeSent?>">
                     <h4><?php {echo $dbh->getUtente($message["mittente"])['nome']; echo " ".$dbh->getUtente($message["mittente"])['cognome'];} ?></h4>
                     <p><?php echo $message["testo"] ?></p>
                 </div>

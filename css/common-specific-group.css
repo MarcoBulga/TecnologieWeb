@@ -203,10 +203,20 @@ button:disabled {
     overflow: hidden;
 }
 
+.message.sent {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+    margin-left: 20%;
+}
+
 .message h4 {
     font-size: 0.8rem;
     margin: 0;
     color: var(--button-bg-color);
+}
+
+.message.sent h4 {
+    color: #047857;
 }
 
 .message p {
