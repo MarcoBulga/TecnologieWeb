@@ -6,7 +6,7 @@
 </div>
 <form action="#" method="post" class="search-bar">
     <div class="search-main-row">
-        <label for="ricerca-mio-gruppo" hidden>Barra di ricerca</label><input type="text" id="ricerca-mio-gruppo" name="ricerca-mio-gruppo" placeholder="barra di ricerca"/>
+        <label for="ricerca-mio-gruppo" class="visually-hidden">Barra di ricerca</label><input type="text" id="ricerca-mio-gruppo" name="ricerca-mio-gruppo" placeholder="barra di ricerca"/>
         <input type="submit" id="btn-search" name="btn-search" value="Cerca" />
     </div>
 

@@ -20,7 +20,7 @@
 </head>
 <body>
     <header>
-        <button type="button" id="return-button" name="return button" onclick="history.back()"></button>
+        <button type="button" id="return-button" name="return button" onclick="history.back()">indietro</button>
         <h1>Ricerca Gruppi</h1>
     </header>
     <nav>

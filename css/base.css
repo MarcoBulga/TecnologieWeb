@@ -531,6 +531,7 @@ main > section.to-enter {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    color: transparent;
 
     overflow: hidden;
     /* color: white; */
