@@ -134,6 +134,10 @@ main > div:first-of-type h2 {
     padding: 0 ;
 }
 
+.hidden-popup.active {
+    display: flex !important; /* Mostrato quando ha la classe active */
+}
+
 .popup-elements {
     background: white;
     padding: 30px;
