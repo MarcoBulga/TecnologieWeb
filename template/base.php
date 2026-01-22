@@ -23,13 +23,13 @@
         <button type="button" id="return-button" name="return button" onclick="history.back()">indietro</button>
         <h1>Ricerca Gruppi</h1>
     </header>
-    <nav>
+    <section id="sub-header">
         <ul class="normalButtons">
             <li><p><?php echo $_SESSION['name']." ".$_SESSION['surname']; ?></p></li>
-            <li><button id="bottone-notifiche">notifica</button></li>
+            <li><button id="bottone-notifiche">notifiche</button></li>
             <li><button id="bottone-menu">menu</button></li>
         </ul>
-    </nav>
+    </section>
     <nav id="menu">
         <ul>
             <?php if($_SESSION['admin'] == false): ?>
@@ -49,7 +49,7 @@
         </ul>
         <button id="chiudi-menu">Chiudi</button>
     </nav>
-    <nav id="notifiche">
+    <section id="notifiche">
         <?php foreach($templateParams["notifications"] as $notification): ?>
         <div class="notification"
             data-mittente = "<?php echo $notification['mittente']; ?>"
@@ -68,7 +68,7 @@
         </div>
         <?php endforeach; ?>
         <button id="chiudi-notifiche">Chiudi</button>
-    </nav>
+    </section>
     <main>
         <?php require $templateParams["page"]; ?>
     </main>

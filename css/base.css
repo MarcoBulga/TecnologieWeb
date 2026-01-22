@@ -66,13 +66,6 @@ header {
     box-sizing: border-box;
 }
 
-header h1 {
-    /* font-family: 'Montserrat', sans-serif; */
-}
-body {
-    /* font-family: 'Nunito', sans-serif; */
-}
-
 footer {
     background-color: var(--mint-end);
     border-top: 1px solid rgba(172, 172, 172, 0.3);
@@ -106,7 +99,7 @@ nav > ul.registerLoginBtns > li > p {
 
 /*--- Bottoni notifiche e menu ---*/
 
-nav:nth-of-type(1) > ul > li > button {
+#sub-header > ul > li > button {
     width: auto;
     height: auto;
 
@@ -124,13 +117,13 @@ nav:nth-of-type(1) > ul > li > button {
     transition: all 0.2s ease;
 }
 
-nav:nth-of-type(1) > ul > li > button:hover {
+#sub-header > ul > li > button:hover {
     /* Si alza leggermente */
     transform: translateY(-2px);
     box-shadow: 0 6px 0px var(--button-hover-bg-color);
 }
 
-nav:nth-of-type(1) > ul > li > button:active {
+#sub-header > ul > li > button:active {
     /* Quando clicchi, il bottone si "schiaccia" */
     transform: translateY(4px);
     box-shadow: 0 0px 0px var(--button-hover-bg-color);
@@ -160,12 +153,12 @@ nav:nth-of-type(1) > ul > li > button:active {
 }
 
 /*Aiutano il piazzamento dei bottoni e l'allineamento delle loro etichette e scritte*/
-nav:nth-of-type(1) {
+#sub-header, nav {
     text-align: center;
     max-width: 100%;
 }
 
-nav:nth-of-type(1) > ul {
+#sub-header > ul, nav > ul{
     display: flex;
     flex-direction: row;
     padding-left: 2%;
@@ -174,7 +167,7 @@ nav:nth-of-type(1) > ul {
 
 @media (min-width: 768px) {
     /* Solo su schermi grandi separiamo il nome dai bottoni */
-    nav:nth-of-type(1) > ul > li:nth-child(2) {
+    #sub-header > ul > li:nth-child(2) {
         margin-left: auto;
     }
 }
@@ -186,20 +179,20 @@ nav:nth-of-type(1) > ul {
         gap: 10%;
     }
     
-    nav:nth-of-type(1) > ul > li > p {
+    #sub-header > ul > li > p {
         font-size: 1.1rem; /* Rimpiccioliamo un po' il nome per salvare spazio */
         text-align: center;
         width: 100%; /* Il nome prende la riga sopra */
     }
 
-    nav:nth-of-type(1) > ul > li > button {
+    #sub-header > ul > li > button {
         padding: 8px 12px; /* Bottoni leggermente più piccoli su mobile */
         font-size: 1.2rem;
     }
 }
 
 /*--- menu ---*/
-nav:nth-of-type(2) {
+#menu {
     position: fixed;
     width: 350px;
     max-width: 85vw;
@@ -223,9 +216,10 @@ nav:nth-of-type(2) {
     transform: translateX(100%);
     opacity: 0;
     transition: transform 0.4s ease-in-out, opacity 0.3s;
+    visibility: hidden;
 }
 
-nav:nth-of-type(2) > ul {
+#menu > ul {
     width: 90%;
     height: calc(100% - 80px); /* Prende tutta l'altezza meno lo spazio occupato dal tasto chiudi */
     display: flex;
@@ -236,7 +230,7 @@ nav:nth-of-type(2) > ul {
     margin: 0;
 }
 
-nav:nth-of-type(2) > ul > li {
+#menu > ul > li {
     flex: 1; /* Forza ogni riga a prendersi una fetta uguale dell'altezza */
     display: flex;
     align-items: center;
@@ -244,7 +238,7 @@ nav:nth-of-type(2) > ul > li {
     margin: 5px 0; /* Piccolo margine per non farli incollare */
 }
 
-nav:nth-of-type(2) > ul > li > button {
+#menu > ul > li > button {
     width: 100%;
     height: 80%; /* Il bottone si espande in altezza per riempire la sua fetta */
     max-height: 80px; /* Evita che diventino giganti su schermi alti */
@@ -278,19 +272,19 @@ nav:nth-of-type(2) > ul > li > button {
     z-index: 10;
 }
 
-nav:nth-of-type(2) > ul > li > button:hover {
+#menu > ul > li > button:hover {
     /* Si alza leggermente */
     transform: translateY(-2px);
     box-shadow: 0 6px 0px var(--button-hover-bg-color);
 }
 
-nav:nth-of-type(2) > ul > li > button:active {
+#menu > ul > li > button:active {
     /* Quando clicchi, il bottone si "schiaccia" */
     transform: translateY(4px);
     box-shadow: 0 0px 0px var(--button-hover-bg-color);
 }
 
-nav:nth-of-type(n+2) > button {
+#menu > button, #notifiche > button {
     position:absolute;
     right:2px;
     top:2px;
@@ -300,16 +294,16 @@ nav:nth-of-type(n+2) > button {
     font-weight: bold;
 }
 
-nav:nth-of-type(n+2) > button:hover {
+#menu > button:hover, #notifiche > button:hover {
     border: 2px solid black;
 }
 
 /*--- notifiche ---*/
-nav:nth-of-type(3) {
+#notifiche {
     position: fixed;
     margin: 0;
     width: 350px;
-    max-width: 85vw; /* ma non più largo dell'85% della viewport */
+    max-width: 70vw; /* ma non più largo dell'85% della viewport */
     right: 0;
     top: 0;
     max-width: 100%;
@@ -330,9 +324,10 @@ nav:nth-of-type(3) {
     transform:translateX(100%); /* trasla inizialmente tutta la tendina fuori a destra */
     opacity: 0; 
     transition: transform 0.4s ease-in-out, opacity 0.3s;
+    visibility: hidden;
 }
 
-nav:nth-of-type(3)> div {
+#notifiche > div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -349,7 +344,7 @@ nav:nth-of-type(3)> div {
     overflow: hidden;  /* Necessario per far sparire il contenuto quando max-height va a 0 */
 }
 
-nav:nth-of-type(3) > div > button {
+#notifiche > div > button {
     flex: 0 0 auto;
     margin: 0 0 20% 0;
     display: block;
@@ -359,11 +354,11 @@ nav:nth-of-type(3) > div > button {
     cursor: pointer;
 }
 
-nav:nth-of-type(3) > div > button:hover {
+#notifiche > div > button:hover {
     border: 2px solid black;
 }
 
-nav:nth-of-type(3) > div > div {
+#notifiche > div > div {
     display: flex;
     flex-direction: column;
     overflow-wrap: break-word;
@@ -381,11 +376,12 @@ nav:nth-of-type(3) > div > div {
     font-weight: bold;
 }
 
-nav.show {
+#menu.show, #notifiche.show {
     transform: translateX(0);
     pointer-events: auto;
     opacity: 1;
     box-shadow: -5px 0 15px rgba(0,0,0,0.2); /* ombra sul lato sinistro */
+    visibility: visible;
 }
 
 /*--- Popup ---*/
