@@ -7,7 +7,7 @@
     --header-footer-bg-color: #F0F4F2;
     --nav-lateral-bg-color: #D1DBD7;
     --text-color: #2F3E38;
-    --button-bg-color: #059669;
+    --button-bg-color: #04865D;
     --button-hover-bg-color: #047857;
     --mint-start: #E8F1ED;
     --mint-end: #F8FAF9;
@@ -36,6 +36,10 @@ body {
     scrollbar-width:none;  /*per Firefox*/
     background: linear-gradient(180deg, var(--mint-start) 0%, var(--mint-end) 100%);
     font-family: var(--font-body);
+}
+
+body > button {
+    font-weight: bold;
 }
 
 /*--- Font e dimensione delle scritte ---*/
