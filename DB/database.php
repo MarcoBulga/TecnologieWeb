@@ -436,9 +436,13 @@ class DatabaseHelper {
 
     public function getGroupMessages($groupId) {
         $stmt = $this->db->prepare("SELECT notifica.* 
-                                    from notifica join messaggio join chat on notifica.idNotifica = messaggio.idNotifica and messaggio.idChat = chat.idChat
-                                    where chat.idGruppo = ?");
-        $stmt->bind_param('i',$groupId);
+                                    from notifica join messaggio on notifica.idNotifica = messaggio.idNotifica 
+                                    join chat  on messaggio.idChat = chat.idChat
+                                    join fa_parte on fa_parte.idGruppo = chat.idGruppo
+                                    where chat.idGruppo = ?
+                                    and fa_parte.email = ?
+                                    and notifica.data >= fa_parte.data_unione");
+        $stmt->bind_param('is',$groupId,$_SESSION['email']);
         $stmt->execute();
         $result = $stmt->get_result();
 
