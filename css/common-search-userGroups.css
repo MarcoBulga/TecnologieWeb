@@ -81,7 +81,7 @@ main > section > p.descrizione-gruppo {
 /*--- Barra di ricerca ---*/
 .search-main-row{
     display: flex;
-    justify-content: space-between;
+    justify-content: normal;
     align-items: center;
     gap: 2%;
     padding: 0 5%;
@@ -133,6 +133,8 @@ main > section > p.descrizione-gruppo {
     box-shadow: 1px 1px 0 0 rgb(40, 40, 40);
     margin: 2%;
     border-radius: 20%;
+    max-height: 40px;
+    max-width: 40px;
 }
 
 #btn-search:hover {
