@@ -16,10 +16,6 @@ function generateFormandText() {
                         <td headers="useremail"><input type="email" name="email" id="email" /></td>
                     </tr>
                     <tr>
-                        <th id="userphone"><label for="phone">Telefono: </label></th>
-                        <td headers="userphone"><input type="number" name="phone" id="phone"/></td>
-                    </tr>
-                    <tr>
                         <th id="userpassword"><label for="password">Password: </label></th>
                         <td headers="userpassword"><input type="password" name="password" id="password" /></td>
                     </tr>
@@ -64,21 +60,18 @@ function registerAttempt() {
         const name = document.querySelector("#name").value;
         const surname = document.querySelector("#surname").value;
         const email = document.querySelector("#email").value;
-        const phone = document.querySelector("#phone").value;
         const password = document.querySelector("#password").value;
-        console.log("voila: ", name,surname,email,phone,password);
-        register(name, surname, email, phone, password);
+        register(name, surname, email, password);
     });
 }
 
-async function register(name, surname, email, phone, password) {
+async function register(name, surname, email, password) {
     const url = 'api-register.php';
     const formData = new FormData();
 
     formData.append('name', name);
     formData.append('surname', surname);
     formData.append('email', email);
-    formData.append('phone', phone);
     formData.append('password', password);
 
     try {

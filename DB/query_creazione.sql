@@ -2,20 +2,20 @@ use tecnologieWeb;
 insert into corso(nome) 
 values ("Tecnologie Web"),("OOP"),("Programmazione"),("Basi di dati");
 
-insert into utente(nome,cognome,email,telefono,password) 
-values ("Alessandro", "Ravaioli", "alessandro.ravaioli@studio.unibo.it", 1234567890,"Ciao"),
-	("Daniele", "Tramonti", "daniele.tramonti@studio.unibo.it", 1234567890,"ciao"),
-       ("Marco", "Bulgarelli", "marco.bulgarelli@studio.unibo.it", 1234567890,"ciao"),
-       ("Carlo", "Verdi", "carlo.verdi@studio.unibo.it", 1234567890,"ciao"),
-       ("Mario", "Rossi", "mario.rossi@studio.unibo.it", 1234567890,"ciao"),
-       ("Fulvia", "Bianchi", "fulvia.bianchi@studio.unibo.it", 1234567890,"ciao"),
-       ("Caterina", "Gialli", "caterina.gialli@studio.unibo.it", 1234567890,"ciao"),
-       ("Gennaro", "Fabbri", "gennaro.fabbri@studio.unibo.it", 1234567890,"ciao"),
-       ("Giovanni", "Bianchi", "giovanni.bianchi@studio.unibo.it", 1234567890,"ciao"),
-       ("Roberto", "Verdi", "roberto.verdi@studio.unibo.it", 1234567890,"ciao");
+insert into utente(nome,cognome,email,password) 
+values ("Alessandro", "Ravaioli", "alessandro.ravaioli@studio.unibo.it","Ciao"),
+	("Daniele", "Tramonti", "daniele.tramonti@studio.unibo.it","ciao"),
+       ("Marco", "Bulgarelli", "marco.bulgarelli@studio.unibo.it","ciao"),
+       ("Carlo", "Verdi", "carlo.verdi@studio.unibo.it","ciao"),
+       ("Mario", "Rossi", "mario.rossi@studio.unibo.it","ciao"),
+       ("Fulvia", "Bianchi", "fulvia.bianchi@studio.unibo.it","ciao"),
+       ("Caterina", "Gialli", "caterina.gialli@studio.unibo.it","ciao"),
+       ("Gennaro", "Fabbri", "gennaro.fabbri@studio.unibo.it","ciao"),
+       ("Giovanni", "Bianchi", "giovanni.bianchi@studio.unibo.it","ciao"),
+       ("Roberto", "Verdi", "roberto.verdi@studio.unibo.it","ciao");
 
-insert into utente(nome,cognome,email,telefono,password,admin)
-values ("Gianni","Rossi","gianni.rossi@studio.unibo.it",1234567890,"admin",true); 
+insert into utente(nome,cognome,email,password,admin)
+values ("Gianni","Rossi","gianni.rossi@studio.unibo.it","admin",true); 
        
 insert into gruppo(nome,numero_partecipanti,descr_breve,descr_lunga,privato,corso_di_riferimento,creatore)
 values ("test",3,"breve","luuuuuunga",false,"Tecnologie Web","alessandro.ravaioli@studio.unibo.it"),

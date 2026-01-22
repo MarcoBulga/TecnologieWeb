@@ -113,10 +113,10 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function insertNewUser($name, $surname, $email, $phone, $password) {
-        $stmt = $this->db->prepare("INSERT into utente(nome,cognome,email,telefono,password) 
-                                    values (?,?,?,?,?)");
-        $stmt->bind_param('sssis',$name,$surname,$email,$phone,$password);
+    public function insertNewUser($name, $surname, $email, $password) {
+        $stmt = $this->db->prepare("INSERT into utente(nome,cognome,email,password) 
+                                    values (?,?,?,?)");
+        $stmt->bind_param('ssss',$name,$surname,$email,$password);
         $stmt->execute();
         $result = $this->db->affected_rows;
 

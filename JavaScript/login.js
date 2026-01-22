@@ -64,7 +64,6 @@ function loginAttempt() {
         event.preventDefault();
         const email = document.querySelector("#email").value;
         const password = document.querySelector("#password").value;
-        console.log("voila: ", email,password);
         login(email, password);
     });
 }
