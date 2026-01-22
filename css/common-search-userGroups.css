@@ -130,24 +130,26 @@ main > section > p.descrizione-gruppo {
 }
 
 /*--- Bottone ricerca ---*/
-#btn-search{
-    all: unset;
+@media (max-width:768px){
+    #btn-search{
+        all: unset;
 
-    background-color: #f0f0f0;
-    background-image: url(../upload/search.png);
-    background-size: 65%;
-    background-repeat: no-repeat;
-    background-position: center;
-    cursor: pointer;
-    text-indent: -9999999px;
-    width: 8vw;
-    height: 8vw;
-    box-shadow: 1px 1px 0 0 rgb(40, 40, 40);
-    margin: 2%;
-    border-radius: 20%;
+        background-color: #f0f0f0;
+        background-image: url(../upload/search.png);
+        background-size: 65%;
+        background-repeat: no-repeat;
+        background-position: center;
+        cursor: pointer;
+        text-indent: -9999999px;
+        width: 8vw;
+        height: 8vw;
+        box-shadow: 1px 1px 0 0 rgb(40, 40, 40);
+        margin: 2%;
+        border-radius: 20%;
     max-height: 40px;
     max-width: 40px;
-}
+    }
+} 
 
 #btn-search:hover {
     box-shadow: unset;
