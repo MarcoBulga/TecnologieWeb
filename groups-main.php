@@ -69,7 +69,7 @@
         <?php endforeach; ?>
     <?php endif; ?>
 <?php else: ?>
-    <?php if(empty($templateParams['report'])): ?>
+    <?php if(empty($templateParams['Segnalazioni'])): ?>
         <p id="no-report">Nessuna segnalazione...</p>
     <?php else: ?>
         <?php foreach($templateParams["Segnalazioni"] as $segnalazione): ?>
