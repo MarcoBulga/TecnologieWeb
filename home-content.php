@@ -15,8 +15,8 @@
         </p>
         <!-- Screenshot pagina ricerca gruppi -->
         <picture class="phone-mockup">
-            <source media="(max-width: 768px)" srcset="./upload/placeholder(275x183).png" />
-            <img src="./upload/placeholder(275x183).png" alt="placeholder" />
+            <source media="(max-width: 768px)" srcset="./upload/cerca-gruppo-PHONE.png" />
+            <img src="./upload/cerca-gruppo-PC.png" alt="placeholder" />
         </picture>
     </section>
 
@@ -28,12 +28,12 @@
         </p>
         <!-- Screenshot pagina di creazione o modifica dei gruppi -->
         <picture class="phone-mockup">
-            <source media="(max-width: 768px)" srcset="./upload/Creazione-Gruppo-screenshot.png" />
-            <img src="./upload/Creazione-Gruppo.png" alt="immagine creazione gruppo" />
+            <source media="(max-width: 768px)" srcset="./upload/crea-gruppo-PHONE.png" />
+            <img src="./upload/crea-gruppo-PC.png" alt="immagine creazione gruppo" />
         </picture>
         <picture class="phone-mockup">
-            <source media="(max-width: 768px)" srcset="./upload/Modifica-Gruppo-screenshot.png" />
-            <img src="./upload/Modifica-Gruppo.png" alt="immagine modifica gruppo" />
+            <source media="(max-width: 768px)" srcset="./upload/modifica-gruppo-PC.png" />
+            <img src="./upload/modifica-gruppo-PHONE.png" alt="immagine modifica gruppo" />
         </picture>
          
     </section>
