@@ -159,6 +159,8 @@ document.addEventListener('click', function(event){
     const btnMenu = document.getElementById('bottone-menu');
     const notifiche = document.getElementById('notifiche');
     const btnNotifiche = document.getElementById('bottone-notifiche');
+    const chat = document.getElementById('chat');
+    const btnChat = document.getElementById('chat-btn');
 
     const popupNormal = document.getElementById("notificationPopup");
     const popupRequest = document.getElementById("notificationPopupRequest");
@@ -189,6 +191,15 @@ document.addEventListener('click', function(event){
 
         if(!clickInsideNotifiche && !clickInsideNotificheButton && !isClickInsideAnyPopup) {
             notifiche.classList.remove('show');
+        }
+    }
+
+    if (chat.classList.contains('show')) {
+        const clickInsideChat = chat.contains(event.target);
+        const clickInsideButtonChat = btnChat.contains(event.target);
+
+        if(!clickInsideChat && !clickInsideButtonChat && !isClickInsideAnyPopup) {
+            chat.classList.remove('show');
         }
     }
 })
